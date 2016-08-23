@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AiZheAiNa.Model
 {
-    public partial class AiZheAiNa_SYS_UserModel
+    [Serializable]
+    public partial class AiZheAiNa_SYS_UserInfo
     {
 
         /// <summary>
@@ -55,5 +56,7 @@ namespace AiZheAiNa.Model
         /// ISValid
         /// </summary>
         public string MingPassWord { get; set; }
+
+        public string UserImg { get; set; }
     }
 }

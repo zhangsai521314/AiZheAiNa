@@ -23,7 +23,7 @@ namespace AiZheAiNa.BLL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public AiZheAiNa_SYS_UserModel GetModelAiZheAiNa_SYS_UserByID(int id)
+        public AiZheAiNa_SYS_UserInfo GetModelAiZheAiNa_SYS_UserByID(int id)
         {
             return Dal_user.GetModelAiZheAiNa_SYS_UserByID(id);
         } 
@@ -34,7 +34,7 @@ namespace AiZheAiNa.BLL
         /// 查询所有有效用户
         /// </summary>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_User()
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_User()
         {
             return Dal_user.GetListAiZheAiNa_SYS_User();
         } 
@@ -46,7 +46,7 @@ namespace AiZheAiNa.BLL
         /// </summary>
         /// <param name="loginName"></param>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_UserByLoginName(string loginName)
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByLoginName(string loginName)
         {
             return Dal_user.GetListAiZheAiNa_SYS_UserByLoginName(loginName);
         } 
@@ -58,7 +58,7 @@ namespace AiZheAiNa.BLL
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter)
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter)
         {
             return Dal_user.GetListAiZheAiNa_SYS_UserByParameter(parameter);
         }
@@ -69,7 +69,7 @@ namespace AiZheAiNa.BLL
 
         #region 更改相关
 
-        public void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserModel model)
+        public void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserInfo model)
         {
             Dal_user.AddAiZheAiNa_SYS_User(model);
         }

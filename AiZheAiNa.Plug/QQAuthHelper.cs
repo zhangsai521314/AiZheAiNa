@@ -6,6 +6,8 @@ using System.Net;
 using System.Web;
 using System.IO;
 using AiZheAiNa.CommonHelp;
+using AiZheAiNa.Model;
+using Newtonsoft.Json;
 
 namespace AiZheAiNa.Plug
 {
@@ -18,17 +20,17 @@ namespace AiZheAiNa.Plug
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static QQOauthInfo GetOauthInfo(string code)
+        public static AiZheAiNa_SYS_QQUserInfo GetOauthInfo(string code)
         {
             string callback = HttpUtility.UrlEncode(ConfigurationHelper.QQCallBack, Encoding.UTF8);
             string url = string.Format("https://graph.qq.com/oauth2.0/token?grant_type={0}&client_id={1}&client_secret={2}&code={3}&redirect_uri={4}", "authorization_code", ConfigurationHelper.QQAppID, ConfigurationHelper.QQAppKey, code, ConfigurationHelper.QQCallBack);
             string res = LoadHtmlUserGetType(url, Encoding.UTF8);
-            QQOauthInfo qqOauthInfo = new QQOauthInfo();
-            qqOauthInfo.AccessToken = CutString(res, "access_token=", "&expires_in=");
-            qqOauthInfo.ExpiresIn = CutString(res, "&expires_in=", "&refresh_token=");
-            qqOauthInfo.RefreshToken = res.Split(new string[] { "&refresh_token=" }, StringSplitOptions.None)[1];
-            return qqOauthInfo;
-        } 
+            AiZheAiNa_SYS_QQUserInfo AiZheAiNa_SYS_QQUserInfo = new AiZheAiNa_SYS_QQUserInfo();
+            AiZheAiNa_SYS_QQUserInfo.Access_token = CutString(res, "access_token=", "&expires_in=");
+            AiZheAiNa_SYS_QQUserInfo.Access_tokenExpiresIn = CutString(res, "&expires_in=", "&refresh_token=");
+            AiZheAiNa_SYS_QQUserInfo.Refresh_token = res.Split(new string[] { "&refresh_token=" }, StringSplitOptions.None)[1];
+            return AiZheAiNa_SYS_QQUserInfo;
+        }
         #endregion
 
         #region 截取字符串中两个字符串中的字符串
@@ -45,7 +47,7 @@ namespace AiZheAiNa.Plug
             begin = str.IndexOf(startStr, 0) + startStr.Length; //开始位置
             end = str.IndexOf(endStr, begin); //结束位置
             return str.Substring(begin, end - begin); //取搜索的条数，用结束的位置-开始的位置,并返回
-        } 
+        }
         #endregion
 
         #region get请求
@@ -92,18 +94,18 @@ namespace AiZheAiNa.Plug
             streamReader.Close();
             stream.Close();
             return htmlString;
-        } 
+        }
         #endregion
 
         #region 获取QQ账号的OpenID
         /// <summary>
         /// 获取QQ账号的OpenID,这个ID是QQ给我们的用户的唯一ID，可以作为我们系统用户唯一性的判断存在我们自己的库中
         /// </summary>
-        /// <param name="qqOauthInfo"></param>
+        /// <param name="AiZheAiNa_SYS_QQUserInfo"></param>
         /// <returns></returns>
-        public static string GetOpenID(QQOauthInfo qqOauthInfo)
+        public static string GetOpenID(AiZheAiNa_SYS_QQUserInfo AiZheAiNa_SYS_QQUserInfo)
         {
-            string res = LoadHtmlUserGetType("https://graph.qq.com/oauth2.0/me?access_token=" + qqOauthInfo.AccessToken, Encoding.UTF8);
+            string res = LoadHtmlUserGetType("https://graph.qq.com/oauth2.0/me?access_token=" + AiZheAiNa_SYS_QQUserInfo.Access_token, Encoding.UTF8);
             return CutString(res, @"openid"":""", @"""}");
         }
         #endregion
@@ -112,21 +114,15 @@ namespace AiZheAiNa.Plug
         /// <summary>
         /// 获取QQ昵称
         /// </summary>
-        /// <param name="qqOauthInfo"></param>
+        /// <param name="AiZheAiNa_SYS_QQUserInfo"></param>
         /// <param name="openID"></param>
         /// <returns></returns>
-        public static string GetUserInfo(QQOauthInfo qqOauthInfo, string openID)
+        public static AiZheAiNa_SYS_QQUserInfo GetUserInfo(AiZheAiNa_SYS_QQUserInfo AiZheAiNa_SYS_QQUserInfo, string openID)
         {
-            string urlGetInfo = string.Format(@"https://graph.qq.com/user/get_user_info?access_token={0}&oauth_consumer_key={1}&openid={2}", qqOauthInfo.AccessToken, ConfigurationHelper.QQAppID, openID);
+            string urlGetInfo = string.Format(@"https://graph.qq.com/user/get_user_info?access_token={0}&oauth_consumer_key={1}&openid={2}", AiZheAiNa_SYS_QQUserInfo.Access_token, ConfigurationHelper.QQAppID, openID);
             string resUserInfo = LoadHtmlUserGetType(urlGetInfo, Encoding.UTF8);
-            return CutString(resUserInfo, @"""nickname"": """, @""",");
-        } 
+            return JsonConvert.DeserializeObject<AiZheAiNa_SYS_QQUserInfo>(resUserInfo);
+        }
         #endregion
-    }
-    public class QQOauthInfo
-    {
-        public string AccessToken { get; set; }
-        public string ExpiresIn { get; set; }
-        public string RefreshToken { get; set; }
     }
 }

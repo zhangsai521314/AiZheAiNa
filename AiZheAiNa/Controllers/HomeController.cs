@@ -30,7 +30,7 @@ namespace AiZheAiNa.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            AiZheAiNa_SYS_UserModel m = (AiZheAiNa_SYS_UserModel)Session["UserInfo"];
+            AiZheAiNa_SYS_UserInfo m = (AiZheAiNa_SYS_UserInfo)Session["UserInfo"];
             if (Session["UserInfo"] != null)
             {
                 ViewBag.LoginStatus = 1;
@@ -87,9 +87,9 @@ namespace AiZheAiNa.Controllers
         /// <returns></returns>
         [HttpPost]
 
-        public ActionResult UserLogin(AiZheAiNa_SYS_UserModel model_User)
+        public ActionResult UserLogin(AiZheAiNa_SYS_UserInfo model_User)
         {
-            List<AiZheAiNa_SYS_UserModel> list_User = bll_User.GetListAiZheAiNa_SYS_UserByLoginName(model_User.LoginName);
+            List<AiZheAiNa_SYS_UserInfo> list_User = bll_User.GetListAiZheAiNa_SYS_UserByLoginName(model_User.LoginName);
             model_User = list_User.Where(u => u.PassWord == StringHelper.GetMd5Str32(model_User.PassWord)).FirstOrDefault();
             if (model_User == null)
             {
@@ -133,41 +133,40 @@ namespace AiZheAiNa.Controllers
                 {
                     try
                     {
-                        QQOauthInfo qqOauthInfo = QQOAuthHelper.GetOauthInfo(code);
+                        AiZheAiNa_SYS_QQUserInfo qqOauthInfo = QQOAuthHelper.GetOauthInfo(code);
                         string openID = QQOAuthHelper.GetOpenID(qqOauthInfo);
-                        string nickName = QQOAuthHelper.GetUserInfo(qqOauthInfo, openID);
+                        qqOauthInfo = QQOAuthHelper.GetUserInfo(qqOauthInfo, openID);
                         Session["QQOpenID"] = openID;
                         Dictionary<string, string> whereSql = new Dictionary<string, string>();
                         whereSql.Add("UserSource", "1");
                         whereSql.Add("UserSourceOnlySign", openID);
-                        AiZheAiNa_SYS_UserModel model_User = bll_User.GetListAiZheAiNa_SYS_UserByParameter(whereSql).FirstOrDefault();
+                        AiZheAiNa_SYS_UserInfo model_User = bll_User.GetListAiZheAiNa_SYS_UserByParameter(whereSql).FirstOrDefault();
                         if (model_User == null || model_User.ID <= 0)
                         {
-                            model_User = new AiZheAiNa_SYS_UserModel() { ShowName = nickName, UserSourceOnlySign = openID, UserSource = 1 };
+                            model_User = new AiZheAiNa_SYS_UserInfo() { UserImg=qqOauthInfo.Figureurl_qq_1,ShowName = qqOauthInfo.Nickname, UserSourceOnlySign = openID, UserSource = 1 };
                             bll_User.AddAiZheAiNa_SYS_User(model_User);
                         }
                         if (model_User == null || model_User.ID <= 0)
                         {
                             //失败
                         }
-                        Session["UserIofo"] = model_User;
-                        return RedirectToAction("Index", "Home");
+                        Session["UserInfo"] = model_User;
                     }
                     catch (Exception ex)
                     {
-                        return new RedirectResult("~/Error/Error.htm");
+                        return RedirectToAction("CommonError", "Error");
                     }
                 }
                 else
                 {
-                    return new RedirectResult("~/Error/Error.htm");
+                    return RedirectToAction("CommonError", "Error");
                 }
             }
             else
             {
-                return new RedirectResult("~/Error/Error.htm");
+                return RedirectToAction("CommonError", "Error");
             }
-            return View();
+            return RedirectToAction("Index", "Home");
         }
         #endregion
 
@@ -225,7 +224,7 @@ namespace AiZheAiNa.Controllers
         /// <param name="model_User"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult UserRegister(AiZheAiNa_SYS_UserModel model_User)
+        public ActionResult UserRegister(AiZheAiNa_SYS_UserInfo model_User)
         {
             model_User.MingPassWord = model_User.PassWord;
             model_User.PassWord = StringHelper.GetMd5Str32(model_User.PassWord);

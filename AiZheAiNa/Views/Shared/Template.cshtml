@@ -22,7 +22,7 @@
                 </p>
             </div>
             <div id="divLoginHouShow" style="float:left;width: 40%;line-height:30px;display:none">
-                <p>
+                <p id="pLoginHouShow">
                     <span id="spanUserName"></span>
                     <a href="/Home/LoginOut">退出</a>
                 </p>
@@ -55,6 +55,9 @@
         $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
             if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
                 $("#spanUserName").html("欢迎-" + AiZheAiNa_SYS_UserModel.ShowName)
+                if (AiZheAiNa_SYS_UserModel.UserImg != null && AiZheAiNa_SYS_UserModel.UserImg != "") {
+                    $("#pLoginHouShow").prepend($("<img style='width:30px' id='imgShowUserImg' src='" + AiZheAiNa_SYS_UserModel.UserImg + "'/>"));
+                }
                 $("#divHuanYing").css("display", "none");
                 $("#divLoginHouShow").css("display", "block");
             }

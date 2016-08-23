@@ -22,21 +22,21 @@ namespace AiZheAiNa.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public AiZheAiNa_SYS_UserModel GetModelAiZheAiNa_SYS_UserByID(int id)
+        public AiZheAiNa_SYS_UserInfo GetModelAiZheAiNa_SYS_UserByID(int id)
         {
             try
             {
-                string sql = " select * from AiZheAiNa_SYS_User where ISValid=1 and id=@id";
+                string sql = " select * from AiZheAiNa_SYS_UserInfo where ISValid=1 and id=@id";
                 SqlParameter[] para = {
                     SqlHelper.MakeInParam("@id",SqlDbType.Int,15,id)
                 };
                 DataTable tb = SqlHelper.ExecuteDatatable(ConfigurationHelper.AiZheAiNaRead, CommandType.Text, sql, para);
-                AiZheAiNa_SYS_UserModel model_User = ModelConvertHelper<AiZheAiNa_SYS_UserModel>.ConvertToModel(tb);
+                AiZheAiNa_SYS_UserInfo model_User = ModelConvertHelper<AiZheAiNa_SYS_UserInfo>.ConvertToModel(tb);
                 return model_User;
             }
             catch (Exception ex)
             {
-                return new AiZheAiNa_SYS_UserModel();
+                return new AiZheAiNa_SYS_UserInfo();
             }
         }
         #endregion
@@ -46,18 +46,18 @@ namespace AiZheAiNa.DAL
         /// 查询所有有效用户
         /// </summary>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_User()
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_User()
         {
             try
             {
-                string sql = " select * from AiZheAiNa_SYS_User where ISValid=1 ";
+                string sql = " select * from AiZheAiNa_SYS_UserInfo where ISValid=1 ";
                 DataTable tb = SqlHelper.ExecuteDatatable(ConfigurationHelper.AiZheAiNaRead, CommandType.Text, sql);
-                List<AiZheAiNa_SYS_UserModel> list_User = ModelConvertHelper<AiZheAiNa_SYS_UserModel>.ConvertToModelList(tb);
+                List<AiZheAiNa_SYS_UserInfo> list_User = ModelConvertHelper<AiZheAiNa_SYS_UserInfo>.ConvertToModelList(tb);
                 return list_User;
             }
             catch (Exception ex)
             {
-                return new List<AiZheAiNa_SYS_UserModel>();
+                return new List<AiZheAiNa_SYS_UserInfo>();
             }
         }
         #endregion
@@ -68,21 +68,21 @@ namespace AiZheAiNa.DAL
         /// </summary>
         /// <param name="loginName"></param>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_UserByLoginName(string loginName)
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByLoginName(string loginName)
         {
             try
             {
-                string sql = " select * from AiZheAiNa_SYS_User where ISValid=1 and loginName=@loginName";
+                string sql = " select * from AiZheAiNa_SYS_UserInfo where ISValid=1 and loginName=@loginName";
                 SqlParameter[] para = {
                     SqlHelper.MakeInParam("@loginName",SqlDbType.NVarChar,34,loginName)
                 };
                 DataTable tb = SqlHelper.ExecuteDatatable(ConfigurationHelper.AiZheAiNaRead, CommandType.Text, sql, para);
-                List<AiZheAiNa_SYS_UserModel> list_User = ModelConvertHelper<AiZheAiNa_SYS_UserModel>.ConvertToModelList(tb);
+                List<AiZheAiNa_SYS_UserInfo> list_User = ModelConvertHelper<AiZheAiNa_SYS_UserInfo>.ConvertToModelList(tb);
                 return list_User;
             }
             catch (Exception ex)
             {
-                return new List<AiZheAiNa_SYS_UserModel>();
+                return new List<AiZheAiNa_SYS_UserInfo>();
             }
         }
         #endregion
@@ -93,13 +93,13 @@ namespace AiZheAiNa.DAL
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter)
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter)
         {
             try
             {
                 if (parameter == null || parameter.Count <= 0)
                 {
-                    return new List<AiZheAiNa_SYS_UserModel>();
+                    return new List<AiZheAiNa_SYS_UserInfo>();
                 }
                 List<SqlParameter> listPara = new List<SqlParameter>();
                 StringBuilder whereSql = new StringBuilder();
@@ -109,13 +109,13 @@ namespace AiZheAiNa.DAL
                     listPara.Add(new SqlParameter("@" + item.Key, item.Value));
                 }
                 whereSql.Append(" 1=1 ");
-                string sql = " select * from AiZheAiNa_SYS_User where ISValid=1 and " + whereSql.ToString();
+                string sql = " select * from AiZheAiNa_SYS_UserInfo where ISValid=1 and " + whereSql.ToString();
                 DataTable tb = SqlHelper.ExecuteDatatable(ConfigurationHelper.AiZheAiNaRead, CommandType.Text, sql, listPara.ToArray());
-                return ModelConvertHelper<AiZheAiNa_SYS_UserModel>.ConvertToModelList(tb);
+                return ModelConvertHelper<AiZheAiNa_SYS_UserInfo>.ConvertToModelList(tb);
             }
             catch (Exception ex)
             {
-                return new List<AiZheAiNa_SYS_UserModel>();
+                return new List<AiZheAiNa_SYS_UserInfo>();
             }
         } 
         #endregion
@@ -124,12 +124,12 @@ namespace AiZheAiNa.DAL
 
         #region 更改相关
 
-        public void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserModel model)
+        public void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserInfo model)
         {
             try
             {
-                string sql = @" insert into AiZheAiNa_SYS_User(LoginName, [PassWord],MingPassWord, ShowName, GenDer, UserSource, UserSourceOnlySign, CreateDate, ISValid)
-                                values( @LoginName, @PassWord,@MingPassWord,  @ShowName,  @GenDer,  @UserSource,  @UserSourceOnlySign,  @CreateDate,  @ISValid) select @@IDENTITY";
+                string sql = @" insert into AiZheAiNa_SYS_UserInfo(LoginName, [PassWord],MingPassWord, ShowName, GenDer, UserSource, UserImg,UserSourceOnlySign, CreateDate, ISValid)
+                                values( @LoginName, @PassWord,@MingPassWord,  @ShowName,  @GenDer,  @UserSource, @UserImg, @UserSourceOnlySign,  @CreateDate,  @ISValid) select @@IDENTITY";
                 SqlParameter[] para = {
                     SqlHelper.MakeInParam("@LoginName",SqlDbType.Int,15,model.LoginName),
                     SqlHelper.MakeInParam("@PassWord",SqlDbType.NVarChar,50,model.PassWord),
@@ -137,6 +137,7 @@ namespace AiZheAiNa.DAL
                     SqlHelper.MakeInParam("@ShowName",SqlDbType.NVarChar,50,model.ShowName),
                     SqlHelper.MakeInParam("@GenDer",SqlDbType.NVarChar,6,model.GenDer),
                     SqlHelper.MakeInParam("@UserSource",SqlDbType.Int,2,model.UserSource),
+                    SqlHelper.MakeInParam("@UserImg",SqlDbType.NVarChar,300,model.UserImg),
                     SqlHelper.MakeInParam("@UserSourceOnlySign",SqlDbType.NVarChar,100,model.UserSourceOnlySign),
                     SqlHelper.MakeInParam("@CreateDate",SqlDbType.DateTime,32,model.CreateDate),
                     SqlHelper.MakeInParam("@ISValid",SqlDbType.Bit,2,model.ISValid)
@@ -145,7 +146,7 @@ namespace AiZheAiNa.DAL
             }
             catch (Exception ex)
             {
-                model = new AiZheAiNa_SYS_UserModel();
+                model = new AiZheAiNa_SYS_UserInfo();
             }
         }
         #endregion

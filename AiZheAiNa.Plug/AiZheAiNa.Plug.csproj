@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AiZheAiNa.Library\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -48,6 +52,10 @@
     <ProjectReference Include="..\AiZheAiNa.CommonHelp\AiZheAiNa.CommonHelp.csproj">
       <Project>{01df8b71-ab0a-4e5c-b109-1b3f349f2fc9}</Project>
       <Name>AiZheAiNa.CommonHelp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AiZheAiNa.Model\AiZheAiNa.Model.csproj">
+      <Project>{11467600-24a0-4a8d-bea2-92f606283e96}</Project>
+      <Name>AiZheAiNa.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,7 +16,7 @@ namespace AiZheAiNa.IDAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        AiZheAiNa_SYS_UserModel GetModelAiZheAiNa_SYS_UserByID(int id);
+        AiZheAiNa_SYS_UserInfo GetModelAiZheAiNa_SYS_UserByID(int id);
         #endregion
 
         #region 查询所有有效用户
@@ -24,7 +24,7 @@ namespace AiZheAiNa.IDAL
         /// 查询所有有效用户
         /// </summary>
         /// <returns></returns>
-        List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_User();
+        List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_User();
         #endregion
 
         #region 根据登录名称查询用户
@@ -33,7 +33,7 @@ namespace AiZheAiNa.IDAL
         /// </summary>
         /// <param name="loginName"></param>
         /// <returns></returns>
-        List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_UserByLoginName(string loginName);
+        List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByLoginName(string loginName);
         #endregion
 
         #region 根据条件查询用户
@@ -42,12 +42,12 @@ namespace AiZheAiNa.IDAL
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        List<AiZheAiNa_SYS_UserModel> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter); 
+        List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter); 
         #endregion
         #endregion
 
         #region 查询相关
-        void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserModel model);
+        void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserInfo model);
 
         #endregion
 

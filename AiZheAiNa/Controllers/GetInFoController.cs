@@ -24,7 +24,7 @@ namespace AiZheAiNa.Controllers
         public string GetUserInfo()
         {
             object s = Session["UserInfo"];
-            return JsonConvert.SerializeObject((AiZheAiNa_SYS_UserModel)Session["UserInfo"]);
+            return JsonConvert.SerializeObject((AiZheAiNa_SYS_UserInfo)Session["UserInfo"]);
         } 
         #endregion
     }
