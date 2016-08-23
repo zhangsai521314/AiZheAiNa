@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa", "AiZheAiNa\AiZheAiNa.csproj", "{9D56F60C-64D1-47CC-898C-8B09A547491B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.IDAL", "AiZheAiNa.IDAL\AiZheAiNa.IDAL.csproj", "{6C2C526F-4F47-4E7F-99A6-3DF589F302B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.DAL", "AiZheAiNa.DAL\AiZheAiNa.DAL.csproj", "{FB307C76-1213-42C9-8DB6-C5AF335EBA00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.BLL", "AiZheAiNa.BLL\AiZheAiNa.BLL.csproj", "{0CAE627B-553A-4A5E-8CFF-D5B06C20CA7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.CommonHelp", "AiZheAiNa.CommonHelp\AiZheAiNa.CommonHelp.csproj", "{01DF8B71-AB0A-4E5C-B109-1B3F349F2FC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.Model", "AiZheAiNa.Model\AiZheAiNa.Model.csproj", "{11467600-24A0-4A8D-BEA2-92F606283E96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.Factory", "AiZheAiNa.Factory\AiZheAiNa.Factory.csproj", "{29FD985E-D9A3-4462-B313-8C455B583B33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AiZheAiNa.WebServer", "AiZheAiNa.WebServer", "{D713A117-9076-4FF9-95F8-4739114CA212}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AiZheAiNa.Basics", "AiZheAiNa.Basics", "{EE84A08C-B65B-49E4-9E1A-148D25CDF00F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AiZheAiNa.Library", "AiZheAiNa.Library", "{AB95688D-320D-4EFC-9007-A9B59D4B56C6}"
+	ProjectSection(SolutionItems) = preProject
+		D:\X.Code2016\Library\Encode.dll = D:\X.Code2016\Library\Encode.dll
+		D:\X.Code2016\Library\log4net.dll = D:\X.Code2016\Library\log4net.dll
+		D:\X.Code2016\Library\Newtonsoft.Json.dll = D:\X.Code2016\Library\Newtonsoft.Json.dll
+		D:\用户目录\下载\QConnectSDK相关DLL\QConnectSDK.dll = D:\用户目录\下载\QConnectSDK相关DLL\QConnectSDK.dll
+		D:\用户目录\下载\QConnectSDK相关DLL\RestSharp.dll = D:\用户目录\下载\QConnectSDK相关DLL\RestSharp.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.Plug", "AiZheAiNa.Plug\AiZheAiNa.Plug.csproj", "{AFE265CE-6A61-4E2F-980D-042C97C93A62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D56F60C-64D1-47CC-898C-8B09A547491B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D56F60C-64D1-47CC-898C-8B09A547491B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D56F60C-64D1-47CC-898C-8B09A547491B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D56F60C-64D1-47CC-898C-8B09A547491B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2C526F-4F47-4E7F-99A6-3DF589F302B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2C526F-4F47-4E7F-99A6-3DF589F302B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2C526F-4F47-4E7F-99A6-3DF589F302B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2C526F-4F47-4E7F-99A6-3DF589F302B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB307C76-1213-42C9-8DB6-C5AF335EBA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB307C76-1213-42C9-8DB6-C5AF335EBA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB307C76-1213-42C9-8DB6-C5AF335EBA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB307C76-1213-42C9-8DB6-C5AF335EBA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CAE627B-553A-4A5E-8CFF-D5B06C20CA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAE627B-553A-4A5E-8CFF-D5B06C20CA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAE627B-553A-4A5E-8CFF-D5B06C20CA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAE627B-553A-4A5E-8CFF-D5B06C20CA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01DF8B71-AB0A-4E5C-B109-1B3F349F2FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DF8B71-AB0A-4E5C-B109-1B3F349F2FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DF8B71-AB0A-4E5C-B109-1B3F349F2FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DF8B71-AB0A-4E5C-B109-1B3F349F2FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11467600-24A0-4A8D-BEA2-92F606283E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11467600-24A0-4A8D-BEA2-92F606283E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11467600-24A0-4A8D-BEA2-92F606283E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11467600-24A0-4A8D-BEA2-92F606283E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29FD985E-D9A3-4462-B313-8C455B583B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29FD985E-D9A3-4462-B313-8C455B583B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29FD985E-D9A3-4462-B313-8C455B583B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29FD985E-D9A3-4462-B313-8C455B583B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE265CE-6A61-4E2F-980D-042C97C93A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE265CE-6A61-4E2F-980D-042C97C93A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE265CE-6A61-4E2F-980D-042C97C93A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE265CE-6A61-4E2F-980D-042C97C93A62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D56F60C-64D1-47CC-898C-8B09A547491B} = {D713A117-9076-4FF9-95F8-4739114CA212}
+		{6C2C526F-4F47-4E7F-99A6-3DF589F302B7} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+		{FB307C76-1213-42C9-8DB6-C5AF335EBA00} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+		{0CAE627B-553A-4A5E-8CFF-D5B06C20CA7B} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+		{01DF8B71-AB0A-4E5C-B109-1B3F349F2FC9} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+		{11467600-24A0-4A8D-BEA2-92F606283E96} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+		{29FD985E-D9A3-4462-B313-8C455B583B33} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+		{AFE265CE-6A61-4E2F-980D-042C97C93A62} = {EE84A08C-B65B-49E4-9E1A-148D25CDF00F}
+	EndGlobalSection
+EndGlobal

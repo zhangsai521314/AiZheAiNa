@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Template</title>
+    <link href="~/Scripts/bootstrap/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div style="height: 30px; width: 60%;margin:0 auto;background-color:#f1e9e9;">
+            <div id="divHuanYing" style="float:left;width: 40%;line-height:30px">
+                <p>
+                    <span>欢迎来到爱这爱那网</span>
+                    <a href="/Home/UserLogin">请登录</a>
+                    <a href="/Home/UserRegister">免费注册</a>
+                </p>
+            </div>
+            <div id="divLoginHouShow" style="float:left;width: 40%;line-height:30px;display:none">
+                <p>
+                    <span id="spanUserName"></span>
+                    <a href="/Home/LoginOut">退出</a>
+                </p>
+            </div>
+            <div style="float:right;width: 60%;line-height:30px">
+                <div style="">
+                    <ul class="list-inline">
+                        <li><a>我的爱</a></li>
+                        <li><a>我关注的品牌</a></li>
+                        <li><a>购物车0件</a></li>
+                        <li><a>收藏夹</a></li>
+                        <li>|</li>
+                        <li><a>手机版</a></li>
+                        <li><a>商家支持</a></li>
+                        <li><a>网站导航</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="width: 60%;margin:0 auto">
+            @RenderBody()
+        </div>
+        <div style="height:70px; width: 60%;margin:0 auto">
+        </div>
+    </div>
+    <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
+    <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        //根据用户登录判断模板数据样式
+        $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
+            if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
+                $("#spanUserName").html("欢迎-" + AiZheAiNa_SYS_UserModel.ShowName)
+                $("#divHuanYing").css("display", "none");
+                $("#divLoginHouShow").css("display", "block");
+            }
+            else {
+                $("#divHuanYing").css("display", "block");
+                $("#divLoginHouShow").css("display", "none");
+            }
+        });
+    </script>
+</body>
+</html>
