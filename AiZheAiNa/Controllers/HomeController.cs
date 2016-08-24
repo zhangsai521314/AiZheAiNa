@@ -113,9 +113,9 @@ namespace AiZheAiNa.Controllers
         {
             string state = Guid.NewGuid().ToString().Replace("-", "");
             Session["QQState"] = state;
-            string appID = ConfigurationManager.AppSettings["QQAppID"];
-            string qqAuthorizeURL = ConfigurationManager.AppSettings["QQAuthorizeURL"];
-            string callback = ConfigurationManager.AppSettings["QQCallBack"];
+            string appID = ConfigurationHelper.QQAppID;
+            string qqAuthorizeURL = ConfigurationHelper.QQAuthorizeURL;
+            string callback = ConfigurationHelper.QQCallBack;
             string authenticationUrl = string.Format("{0}?client_id={1}&response_type=code&redirect_uri={2}&state={3}", qqAuthorizeURL, appID, callback, state);
             return new RedirectResult(authenticationUrl);
         }
