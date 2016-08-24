@@ -295,9 +295,9 @@
       <Project>{11467600-24a0-4a8d-bea2-92f606283e96}</Project>
       <Name>AiZheAiNa.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AiZheAiNa.Plug\AiZheAiNa.Plug.csproj">
-      <Project>{afe265ce-6a61-4e2f-980d-042c97c93a62}</Project>
-      <Name>AiZheAiNa.Plug</Name>
+    <ProjectReference Include="..\AiZheAiNa.Plug.QQ\AiZheAiNa.Plug.QQ.csproj">
+      <Project>{384512ba-37fa-4cf3-b82d-b3d6cbfa9636}</Project>
+      <Name>AiZheAiNa.Plug.QQ</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

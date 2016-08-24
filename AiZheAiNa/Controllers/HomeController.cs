@@ -7,7 +7,7 @@ using AiZheAiNa.Model;
 using AiZheAiNa.BLL;
 using AiZheAiNa.CommonHelp;
 using System.Configuration;
-using AiZheAiNa.Plug;
+using AiZheAiNa.Plug.QQ;
 using QConnectSDK.Context;
 using QConnectSDK;
 using AiZheAiNa.Filters;
