@@ -96,7 +96,7 @@ namespace AiZheAiNa.Controllers
             model_User = list_User.Where(u => u.PassWord == StringHelper.GetMd5Str32(model_User.PassWord)).FirstOrDefault();
             if (model_User == null)
             {
-                return RedirectPermanent("/Home/UserRegister");
+                return RedirectPermanent("/Home/Register");
             }
             Session["UserInfo"] = model_User;
             //1把passWord转换MD5然后和用户名一起在结果集中查找

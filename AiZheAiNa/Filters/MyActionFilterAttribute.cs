@@ -58,14 +58,7 @@ namespace AiZheAiNa.Filters
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
 
-            #region 这是禁用浏览器缓存的
-            filterContext.HttpContext.Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
-            filterContext.HttpContext.Response.Cache.SetValidUntilExpires(false);
-            filterContext.HttpContext.Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-            filterContext.HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            filterContext.HttpContext.Response.Cache.SetNoStore();
-            base.OnResultExecuting(filterContext);
-            #endregion
+          
         }
 
         #endregion
