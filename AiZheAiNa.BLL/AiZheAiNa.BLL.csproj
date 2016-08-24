@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AiZheAiNa_SYS_UserBll.cs" />
+    <Compile Include="AiZheAiNa_SYS_QQUserInfoBll.cs" />
+    <Compile Include="AiZheAiNa_SYS_UserInfoBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using AiZheAiNa.IDAL;
 using AiZheAiNa.Model;
-using System.Collections.Generic;
 using AiZheAiNa.CommonHelp;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace AiZheAiNa.DAL
 {
-    public class AiZheAiNa_SYS_UserDal : AiZheAiNa_ISYS_UserDal
+    /// <summary>
+    /// 本站用户接口
+    /// </summary>
+    public class AiZheAiNa_SYS_UserInfoDal : AiZheAiNa_SYS_UserInfoIDal
     {
         #region 查询相关
 
@@ -22,7 +23,7 @@ namespace AiZheAiNa.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public AiZheAiNa_SYS_UserInfo GetModelAiZheAiNa_SYS_UserByID(int id)
+        public AiZheAiNa_SYS_UserInfo GetModelAiZheAiNa_SYS_UserInfoByID(int id)
         {
             try
             {
@@ -46,7 +47,7 @@ namespace AiZheAiNa.DAL
         /// 查询所有有效用户
         /// </summary>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_User()
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserInfo()
         {
             try
             {
@@ -68,7 +69,7 @@ namespace AiZheAiNa.DAL
         /// </summary>
         /// <param name="loginName"></param>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByLoginName(string loginName)
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserInfoByLoginName(string loginName)
         {
             try
             {
@@ -93,7 +94,7 @@ namespace AiZheAiNa.DAL
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserByParameter(Dictionary<string, string> parameter)
+        public List<AiZheAiNa_SYS_UserInfo> GetListAiZheAiNa_SYS_UserInfoByParameter(Dictionary<string, string> parameter)
         {
             try
             {
@@ -117,14 +118,20 @@ namespace AiZheAiNa.DAL
             {
                 return new List<AiZheAiNa_SYS_UserInfo>();
             }
-        } 
+        }
         #endregion
 
         #endregion
 
         #region 更改相关
 
-        public void AddAiZheAiNa_SYS_User(AiZheAiNa_SYS_UserInfo model)
+
+        #region 新增用户
+        /// <summary>
+        /// 新增用户
+        /// </summary>
+        /// <param name="model"></param>
+        public void AddAiZheAiNa_SYS_UserInfo(AiZheAiNa_SYS_UserInfo model)
         {
             try
             {
@@ -147,6 +154,59 @@ namespace AiZheAiNa.DAL
             catch (Exception ex)
             {
                 model = new AiZheAiNa_SYS_UserInfo();
+            }
+        }
+        #endregion
+
+        #region 更新用户
+        /// <summary>
+        /// 更新用户
+        /// </summary>
+        /// <param name="model"></param>
+        public int UpdateAiZheAiNa_SYS_UserInfo(AiZheAiNa_SYS_UserInfo model)
+        {
+            string sql = "UPDATE [AiZheAiNa_SYS_UserInfo] SET ";
+            List<SqlParameter> listPara = new List<SqlParameter>();
+            try
+            {
+                foreach (PropertyInfo p in model.GetType().GetProperties())
+                {
+                    if (p.GetValue(model, null) != null)
+                    {
+
+                        if (p.Name.ToLower() == "id")
+                        {
+                            listPara.Add(new SqlParameter("@" + p.Name, p.GetValue(model, null)));
+                        }
+                        else
+                        {
+                            sql += " [" + p.Name + "] = @" + p.Name + ",";
+                            listPara.Add(new SqlParameter("@" + p.Name, ToDBValue(p.GetValue(model, null))));
+                        }
+                    }
+                }
+                sql = sql.Substring(0, sql.Length - 1) + " WHERE ID = @ID";
+                return SqlHelper.ExecuteNonQuery(ConfigurationHelper.AiZheAiNaWrite, CommandType.Text, sql, listPara.ToArray());
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region ToDBValue
+        public object ToDBValue(object value)
+        {
+            if (value == null)
+            {
+                return DBNull.Value;
+            }
+            else
+            {
+                return value;
             }
         }
         #endregion

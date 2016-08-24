@@ -17,7 +17,8 @@ namespace AiZheAiNa.Controllers
     public class HomeController : Controller
     {
         #region 私有变量
-        private AiZheAiNa_SYS_UserBll bll_User = new AiZheAiNa_SYS_UserBll();
+        private AiZheAiNa_SYS_UserInfoBll bll_User = new AiZheAiNa_SYS_UserInfoBll();
+        private AiZheAiNa_SYS_QQUserInfoBll bll_QQUser = new AiZheAiNa_SYS_QQUserInfoBll();
         private EnumResultCold resultcode = new EnumResultCold();
         private ResultInfo resultInfo = new ResultInfo();
         #endregion
@@ -127,6 +128,11 @@ namespace AiZheAiNa.Controllers
         /// </summary>
         public ActionResult QQConnect()
         {
+            ////获取 完整url （协议名+域名+虚拟目录名+文件名+参数） 
+            //string reqUrl = Request.Url.ToString();
+            ////获取 虚拟目录名+页面名：
+            //string reqUrl2 = Request.Url.AbsolutePath;
+            //string reqUrl3 = Request.Path;
             if (!string.IsNullOrEmpty(Request.Params["code"]) && !string.IsNullOrEmpty(Request.Params["state"]))
             {
                 var code = Request.Params["code"];
@@ -137,37 +143,44 @@ namespace AiZheAiNa.Controllers
                     try
                     {
                         AiZheAiNa_SYS_QQUserInfo qqOauthInfo = QQOAuthHelper.GetOauthInfo(code);
-                        string openID = QQOAuthHelper.GetOpenID(qqOauthInfo);
-                        qqOauthInfo = QQOAuthHelper.GetUserInfo(qqOauthInfo, openID);
-                        Session["QQOpenID"] = openID;
+                        qqOauthInfo.OpenID = QQOAuthHelper.GetOpenID(qqOauthInfo);
+                        qqOauthInfo = QQOAuthHelper.GetUserInfo(qqOauthInfo);
+                        Session["QQOpenID"] = qqOauthInfo.OpenID;
                         Dictionary<string, string> whereSql = new Dictionary<string, string>();
                         whereSql.Add("UserSource", "1");
-                        whereSql.Add("UserSourceOnlySign", openID);
-                        AiZheAiNa_SYS_UserInfo model_User = bll_User.GetListAiZheAiNa_SYS_UserByParameter(whereSql).FirstOrDefault();
+                        whereSql.Add("UserSourceOnlySign", qqOauthInfo.OpenID);
+                        AiZheAiNa_SYS_UserInfo model_User = bll_User.GetListAiZheAiNa_SYS_UserInfoByParameter(whereSql).FirstOrDefault();
                         if (model_User == null || model_User.ID <= 0)
                         {
-                            model_User = new AiZheAiNa_SYS_UserInfo() { UserImg = qqOauthInfo.Figureurl_qq_1, ShowName = qqOauthInfo.Nickname, UserSourceOnlySign = openID, UserSource = 1 };
-                            bll_User.AddAiZheAiNa_SYS_User(model_User);
+                            qqOauthInfo.Access_tokenExpiresDate = DateTime.Now.AddSeconds(Convert.ToInt32(qqOauthInfo.Access_tokenExpiresIn));
+                            bll_QQUser.AddAiZheAiNa_SYS_QQUserInfo(qqOauthInfo);
+                            model_User = new AiZheAiNa_SYS_UserInfo() { UserImg = qqOauthInfo.Figureurl_qq_1, ShowName = qqOauthInfo.Nickname, UserSourceOnlySign = qqOauthInfo.OpenID, UserSource = 1 };
+                            bll_User.AddAiZheAiNa_SYS_UserInfo(model_User);
+                        }
+                        else
+                        {
+                            qqOauthInfo.UpdateDate = DateTime.Now;
+                            bll_QQUser.UpdateAiZheAiNa_SYS_QQUserInfo(qqOauthInfo);
                         }
                         if (model_User == null || model_User.ID <= 0)
                         {
-                            //失败
+                            return RedirectPermanent("/Error/Index?errorStatus=loginError");
                         }
                         Session["UserInfo"] = model_User;
                     }
                     catch (Exception ex)
                     {
-                        return RedirectToAction("CommonError", "Error");
+                        return RedirectPermanent("/Error/Index?errorStatus=loginError");
                     }
                 }
                 else
                 {
-                    return RedirectToAction("CommonError", "Error");
+                    return RedirectPermanent("/Error/Index?errorStatus=loginError");
                 }
             }
             else
             {
-                return RedirectToAction("CommonError", "Error");
+                return RedirectPermanent("/Error/Index?errorStatus=loginError");
             }
             return RedirectToAction("Index", "Home");
         }
@@ -231,7 +244,12 @@ namespace AiZheAiNa.Controllers
         {
             model_User.MingPassWord = model_User.PassWord;
             model_User.PassWord = StringHelper.GetMd5Str32(model_User.PassWord);
-            bll_User.AddAiZheAiNa_SYS_User(model_User);
+            List<AiZheAiNa_SYS_UserInfo> list_User = bll_User.GetListAiZheAiNa_SYS_UserByLoginName(model_User.LoginName);
+            if (list_User.Count > 0)
+            {
+                return View();
+            }
+            bll_User.AddAiZheAiNa_SYS_UserInfo(model_User);
             if (model_User != null && model_User.ID > 0)
             {
                 Session["UserInfo"] = model_User;

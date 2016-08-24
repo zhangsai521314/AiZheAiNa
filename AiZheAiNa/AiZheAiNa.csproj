@@ -283,6 +283,7 @@
     <Content Include="Views\Home\QQConnect.cshtml" />
     <Content Include="Views\Error\CommonError.cshtml" />
     <Content Include="Views\Pay\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AiZheAiNa.BLL\AiZheAiNa.BLL.csproj">

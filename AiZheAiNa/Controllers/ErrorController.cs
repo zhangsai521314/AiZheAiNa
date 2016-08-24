@@ -11,6 +11,8 @@ namespace AiZheAiNa.Controllers
         // GET: Error
         public ActionResult Index()
         {
+            //返回网址
+            ViewBag.errorStatus = Request.QueryString["errorStatus"] ?? "";
             return View();
         }
 

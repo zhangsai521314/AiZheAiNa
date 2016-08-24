@@ -8,6 +8,9 @@ using System.Text.RegularExpressions;
 
 namespace AiZheAiNa.CommonHelp
 {
+    /// <summary>
+    /// 字符串操作帮助类
+    /// </summary>
     public abstract class StringHelper
     {
         #region 获得一个16位时间随机数

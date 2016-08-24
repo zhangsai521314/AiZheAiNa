@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AiZheAiNa.Model
 {
+    /// <summary>
+    /// 本站用户类
+    /// </summary>
     [Serializable]
     public partial class AiZheAiNa_SYS_UserInfo
     {
@@ -53,7 +56,7 @@ namespace AiZheAiNa.Model
         public bool ISValid { get; set; } = true;
 
         /// <summary>
-        /// ISValid
+        /// 明文密码
         /// </summary>
         public string MingPassWord { get; set; }
 

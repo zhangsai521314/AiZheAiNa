@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace AiZheAiNa.Model
 {
+    /// <summary>
+    /// qq用户类
+    /// </summary>
     [Serializable]
     public partial class AiZheAiNa_SYS_QQUserInfo
     {
-
         /// <summary>
         /// OpenID
         /// </summary>
@@ -77,22 +79,23 @@ namespace AiZheAiNa.Model
         /// <summary>
         /// 黄钻等级
         /// </summary>
-        public string Yellow_vip_level { get; set; }
+        public int? Yellow_vip_level { get; set; }
         /// <summary>
         /// 会员等级
         /// </summary>
-        public string Level { get; set; }
+        public int? Level { get; set; }
         /// <summary>
         /// 标识是否为年费黄钻用户（0：不是； 1：是）
         /// </summary>
-        public string Is_yellow_year_vip { get; set; }
+        public int? Is_yellow_year_vip { get; set; }
         /// <summary>
         /// CreateDate
         /// </summary>
-        public DateTime CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
         /// <summary>
         /// UpdateDate
         /// </summary>
         public DateTime? UpdateDate { get; set; }
+
     }
 }
