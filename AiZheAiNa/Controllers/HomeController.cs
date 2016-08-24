@@ -10,6 +10,7 @@ using System.Configuration;
 using AiZheAiNa.Plug;
 using QConnectSDK.Context;
 using QConnectSDK;
+using AiZheAiNa.Filters;
 
 namespace AiZheAiNa.Controllers
 {
@@ -45,7 +46,8 @@ namespace AiZheAiNa.Controllers
         /// 用户登录
         /// </summary>
         /// <returns></returns>
-        public ActionResult UserLogin()
+        [NoPageCache]
+        public ActionResult Login()
         {
             return View();
         }
@@ -57,7 +59,8 @@ namespace AiZheAiNa.Controllers
         /// </summary>
         /// <param name="model_User"></param>
         /// <returns></returns>
-        public ActionResult UserRegister()
+        [NoPageCache]
+        public ActionResult Register()
         {
             return View();
         }
@@ -87,7 +90,7 @@ namespace AiZheAiNa.Controllers
         /// <returns></returns>
         [HttpPost]
 
-        public ActionResult UserLogin(AiZheAiNa_SYS_UserInfo model_User)
+        public ActionResult Login(AiZheAiNa_SYS_UserInfo model_User)
         {
             List<AiZheAiNa_SYS_UserInfo> list_User = bll_User.GetListAiZheAiNa_SYS_UserByLoginName(model_User.LoginName);
             model_User = list_User.Where(u => u.PassWord == StringHelper.GetMd5Str32(model_User.PassWord)).FirstOrDefault();
@@ -143,7 +146,7 @@ namespace AiZheAiNa.Controllers
                         AiZheAiNa_SYS_UserInfo model_User = bll_User.GetListAiZheAiNa_SYS_UserByParameter(whereSql).FirstOrDefault();
                         if (model_User == null || model_User.ID <= 0)
                         {
-                            model_User = new AiZheAiNa_SYS_UserInfo() { UserImg=qqOauthInfo.Figureurl_qq_1,ShowName = qqOauthInfo.Nickname, UserSourceOnlySign = openID, UserSource = 1 };
+                            model_User = new AiZheAiNa_SYS_UserInfo() { UserImg = qqOauthInfo.Figureurl_qq_1, ShowName = qqOauthInfo.Nickname, UserSourceOnlySign = openID, UserSource = 1 };
                             bll_User.AddAiZheAiNa_SYS_User(model_User);
                         }
                         if (model_User == null || model_User.ID <= 0)
@@ -224,7 +227,7 @@ namespace AiZheAiNa.Controllers
         /// <param name="model_User"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult UserRegister(AiZheAiNa_SYS_UserInfo model_User)
+        public ActionResult Register(AiZheAiNa_SYS_UserInfo model_User)
         {
             model_User.MingPassWord = model_User.PassWord;
             model_User.PassWord = StringHelper.GetMd5Str32(model_User.PassWord);

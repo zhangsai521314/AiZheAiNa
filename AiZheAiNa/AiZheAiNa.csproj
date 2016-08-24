@@ -206,9 +206,15 @@
     <Compile Include="Ashx\Jsonp.ashx.cs">
       <DependentUpon>Jsonp.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Attributes\Attributes.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GetInFoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\MyActionFilterAttribute.cs" />
+    <Compile Include="Filters\MyAuthorizeAttribute.cs" />
+    <Compile Include="Filters\MyHandleErrorAttibute.cs" />
+    <Compile Include="Filters\MyResultFilterattribute.cs" />
+    <Compile Include="Filters\NoPageCache.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -263,10 +269,10 @@
     <Content Include="Config\AppSeetings.config" />
     <Content Include="Ashx\Jsonp.ashx" />
     <Content Include="Views\Shared\Template.cshtml" />
-    <Content Include="Views\Home\UserLogin.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Properties\PublishProfiles\AiZheAiNa.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\UserRegister.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\fonts\glyphicons-halflings-regular.eot" />
