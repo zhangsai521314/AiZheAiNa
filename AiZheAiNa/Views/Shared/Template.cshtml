@@ -10,43 +10,72 @@
     <meta name="viewport" content="width=device-width" />
     <title>Template</title>
     <link href="~/Scripts/bootstrap/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <div style="height: 30px; width: 60%;margin:0 auto;background-color:#f1e9e9;">
-            <div id="divHuanYing" style="float:left;width: 40%;line-height:30px">
-                <p>
-                    <span>欢迎来到爱这爱那网</span>
-                    <a href="/Home/Login">请登录</a>
-                    <a href="/Home/Register">免费注册</a>
-                </p>
-            </div>
-            <div id="divLoginHouShow" style="float:left;width: 40%;line-height:30px;display:none">
-                <p id="pLoginHouShow">
-                    <span id="spanUserName"></span>
-                    <a href="/Home/LoginOut">退出</a>
-                </p>
-            </div>
-            <div style="float:right;width: 60%;line-height:30px">
-                <div style="">
-                    <ul class="list-inline">
-                        <li><a>我的爱</a></li>
-                        <li><a>我关注的品牌</a></li>
-                        <li><a>购物车0件</a></li>
-                        <li><a>收藏夹</a></li>
-                        <li>|</li>
-                        <li><a>手机版</a></li>
-                        <li><a>商家支持</a></li>
-                        <li><a>网站导航</a></li>
-                    </ul>
+        <div style="width: 100%;background-color:#333333;height:30px">
+            <div id="divTou" style="width: 60%;margin:0 20%;background-color:#333333;line-height:30px;position:absolute">
+                <div id="divHuanYing" style="float:left;width: 40%;">
+                    <p>
+                        <span style="color:#ffffff">欢迎来到爱这爱那网</span>
+                        <a href="/Home/Login">请登录</a>
+                        <a href="/Home/Register">免费注册</a>
+                    </p>
+                </div>
+                <div id="divLoginHouShow" style="float:left;width: 40%;display:none;">
+                    <p id="pLoginHouShow">
+                        <span id="spanUserName" style="color:#ffffff"></span>
+                        <a href="/Home/LoginOut">退出</a>
+                    </p>
+                </div>
+                <div style="float:right;width: 60%;">
+                    <div>
+                        <ul class="list-inline">
+                            <li><a>我的爱</a></li>
+                            <li><a>我关注的品牌</a></li>
+                            <li><a>购物车0件</a></li>
+                            <li><a>收藏夹</a></li>
+                            <li>|</li>
+                            <li><a>手机版</a></li>
+                            <li><a>商家支持</a></li>
+                            <li><a>网站导航</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="width: 60%;margin:0 auto">
-            @RenderBody()
+        <div style="height: 115px; width: 100%;background-color:#808080;line-height:100px;position:absolute">
+            <div id="divTouBuDaoHang" style="width: 60%;margin:0 20%;background-color:#808080;position:absolute">
+                <div id="divLogImg" style="width:10%;float:left">log</div>
+                <div id="divContent" style="width: 65%;float:left">
+                    <ul class="list-inline" style="margin-left:5%;">
+                        <li><a>全部商品分类</a></li>
+                        <li><a>小米手机</a></li>
+                        <li><a>红米</a></li>
+                        <li><a>平板·电脑</a></li>
+                        <li><a>电视</a></li>
+                        <li><a>盒子·影音</a></li>
+                        <li><a>路由器</a></li>
+                        <li><a>只能硬件</a></li>
+                        <li><a>服务</a></li>
+                        <li><a>社区</a></li>
+                    </ul>
+                </div>
+                <div id="divSearch" style="height:100px;width: 25%;float:right;">
+                    <div class="input-group" style="margin-top:10%">
+                        <input type="text" class="form-control">
+                        <span class="input-group-addon">搜索</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="height:70px; width: 60%;margin:0 auto">
-        </div>
+        @RenderBody()
     </div>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
