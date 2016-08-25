@@ -3,7 +3,58 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template.cshtml";
 }
-@*<h2>@ViewBag.LoginMsg</h2>*@
+<style type="text/css">
+    /*.divFenLei ul {
+        background-color: #5C544C;
+        color: #ffffff;
+    }
+
+        .divFenLei ul li:hover {
+            background-color: #ff6a00;
+            cursor: pointer;
+        }
+
+        .divFenLei ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }*/
+
+
+    /*li {
+        border: 1px solid #808080;
+        background-color: red;
+    }*/
+</style>
+<script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("img").each(function (index, item) {
+            $(item).height($(item).parent().height());
+            $(item).width($(item).parent().width());
+        });
+
+    })
+</script>
+@*<div style="width: 70%;margin:115px 20% auto 20%;background-color:red;">
+    <div class="divFenLei" style="width:20%;height:500px;float:left;">
+        <ul class="list-unstyled text-center" style="line-height: 50px;">
+            <li><a>手机电话卡</a></li>
+            <li><a>笔记本 平板</a></li>
+            <li><a>电视 盒子</a></li>
+            <li><a>路由器 智能硬件</a></li>
+            <li><a>移动电源 电池 插排</a></li>
+            <li><a>耳机 音响</a></li>
+            <li><a>保护套 贴膜</a></li>
+            <li><a>线材 支架 存储卡</a></li>
+            <li><a>箱包 服饰</a></li>
+            <li><a>米兔 生活周边</a></li>
+        </ul>
+    </div>
+    <div style="width:80%;height:500px;float:right;">
+        <img srcset="http://i3.mifile.cn/a4/fe6cff31-aa1f-4262-ab8a-02c03f115f42 2x" src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b">
+    </div>
+</div>*@
 
 
 
