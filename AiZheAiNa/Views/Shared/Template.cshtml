@@ -19,24 +19,40 @@
 </head>
 <body>
     <div>
-        <div style="width: 100%;background-color:#333333;height:30px">
-            <div id="divTou" style="width: 70%;margin:0 10%;background-color:#333333;line-height:30px;position:absolute">
+        @*头部*@
+        <div style="width: 100%;background-color:#333333;height:40px">
+
+
+
+            <div id="divTou" style="width: 1450px;height:40px;background-color:#333333;margin:0 15%;">
                 <div id="divHuanYing" style="float:left;width: 20%;">
-                    <p>
-                        <span style="color:#ffffff">欢迎来到爱这爱那网</span>
-                        <a href="/Home/Login">请登录</a>
-                        <a href="/Home/Register">免费注册</a>
-                    </p>
+                    <ul class="list-inline text-center" style="margin:3% 0">
+                        <li>
+                            <span style="color:#ffffff">欢迎来到爱这爱那网</span>
+                        </li>
+                        <li>
+                            <a href="/Home/Login">请登录</a>
+                        </li>
+                        <li>
+                            <a href="/Home/Register">免费注册</a>
+                        </li>
+                    </ul>
                 </div>
                 <div id="divLoginHouShow" style="float:left;width: 20%;display:none;">
-                    <p id="pLoginHouShow">
-                        <span id="spanUserName" style="color:#ffffff"></span>
-                        <a href="/Home/LoginOut">退出</a>
-                    </p>
+                    <ul class="list-inline text-center" style="margin:1.5% 0">
+                        <li>
+                        </li>
+                        <li>
+                            <span id="spanUserName" style="color:#ffffff"></span>
+                        </li>
+                        <li>
+                            <a href="/Home/LoginOut">退出</a>
+                        </li>
+                    </ul>
                 </div>
                 <div style="float:right;width: 60%;">
                     <div>
-                        <ul class="list-inline">
+                        <ul class="list-inline text-center" style="margin:1% 0">
                             <li><a>我的爱</a></li>
                             <li><a>我关注的品牌</a></li>
                             <li><a>购物车0件</a></li>
@@ -50,11 +66,11 @@
                 </div>
             </div>
         </div>
-        <div style="height: 115px; width: 100%;background-color:#ffffff;line-height:100px;position:absolute">
-            <div id="divTouBuDaoHang" style="width: 70%;margin:0 10%;background-color:#ffffff;position:absolute">
-                <div id="divLogImg" style="width:10%;float:left;border:0.5px solid #808080">log</div>
-                <div id="divContent" style="width: 60%;float:left">
-                    <ul class="list-inline text-center" style="margin-left:5%;">
+        <div style="height: 115px; width: 100%;background-color:#d7d7d7;">
+            <div id="divTouBuDaoHang" style="width: 1450px;margin:0 15%;">
+                <div id="divLogImg" style="float:left;height:115px;width:10%;border:1px solid #808080">log</div>
+                <div id="divContent" style="width: 60%;float:left;height:115px;">
+                    <ul class="list-inline text-center" style="margin:5% 0">
                         <li><a>全部商品分类</a></li>
                         <li><a>小米手机</a></li>
                         <li><a>红米</a></li>
@@ -67,8 +83,8 @@
                         <li><a>社区</a></li>
                     </ul>
                 </div>
-                <div id="divSearch" style="height:100px;width: 30%;float:right;">
-                    <div class="input-group" style="margin-top:8%">
+                <div id="divSearch" style="width:25%;float:left;height:115px;">
+                    <div class="input-group" style="margin:10% 0 ">
                         <input type="text" class="form-control">
                         <span class="input-group-addon">搜索</span>
                     </div>
@@ -85,7 +101,7 @@
             if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
                 $("#spanUserName").html("欢迎-" + AiZheAiNa_SYS_UserModel.ShowName)
                 if (AiZheAiNa_SYS_UserModel.UserImg != null && AiZheAiNa_SYS_UserModel.UserImg != "") {
-                    $("#pLoginHouShow").prepend($("<img style='width:30px' id='imgShowUserImg' src='" + AiZheAiNa_SYS_UserModel.UserImg + "'/>"));
+                    $("#divLoginHouShow ul li:first").prepend($("<img style='width:30px' id='imgShowUserImg' src='" + AiZheAiNa_SYS_UserModel.UserImg + "'/>"));
                 }
                 $("#divHuanYing").css("display", "none");
                 $("#divLoginHouShow").css("display", "block");
