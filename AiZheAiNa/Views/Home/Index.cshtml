@@ -54,20 +54,104 @@
         padding: 15px 0 15px 0;
         border: 1px solid #b6ff00;
     }
+
+    .divJingMeiDanPin ul li {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        padding-top: 4px;
+        border: 1px solid #bfbebe;
+    }
+
+    .divJingMeiDanPin li:hover {
+        background-color: #ff6a00;
+    }
+
+    .ulJingMeiDanPin li div {
+        width: 277px;
+        height: 300px;
+    }
+
+        .ulJingMeiDanPin li div img {
+            width: 130px;
+            height: 170px;
+        }
+
+        .ulJingMeiDanPin li div div {
+            width: 277px;
+            height: 80px;
+        }
+
+    .ulDaPeiFenLei {
+        width: 300px;
+    }
+
+        .ulDaPeiFenLei li:hover {
+            color: #ff6a00;
+            font-size: 24px;
+        }
+
+    .ulDaPei1 li div {
+        width: 220px;
+        height: 320px;
+    }
+
+    .ulDaPei1, .ulDaPei2 {
+        margin-top: 10px;
+    }
+
+        .ulDaPei2 li div {
+            width: 230px;
+            height: 320px;
+        }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script type="text/javascript">
     $(function () {
 
+        //图片的大小超过容器后更改图片的大小为容器的大小
         $("img").each(function (index, item) {
-            $(item).height($(item).parent().height());
-            $(item).width($(item).parent().width());
+            if ($(item).height() > $(item).parent().height()) {
+                $(item).height($(item).parent().height());
+            }
+            if ($(item).width() > $(item).parent().width()) {
+                $(item).width($(item).parent().width());
+            }
+        });
+        $(".ulDaPeiFenLei li").each(function (index, item) {
+            $(item).hover(function () {
+                switch ($(item).html()) {
+                    case "耳机音箱":
+                        DaPeiShow("erJi");
+                        break;
+                    case "数据线":
+                        DaPeiShow("shuJuXian");
+                        break;
+                    case "电源":
+                        break;
+                    case "电池储存卡":
+                        break;
+                    default:
+                };
+            });
         });
 
-    })
+        $(".ulDaPeiFenLei").mouseout(function () {
+            DaPeiShow("erJi");
+        });
+    });
+    function DaPeiShow(leiname) {
+        $(".DaPei").each(function (index, item) {
+            if ($(item).attr("leiname") == leiname) {
+                $(item).show();
+            } else {
+                $(item).hide();
+            }
+        });
+    };
 </script>
 <div style="width: 100%">
-    <div style="width: 1450px;background-color:red;margin-left:15%;height:500px;">
+    <div style="width: 1450px;background-color:#cbc8c8;margin-left:15%;height:500px;">
         <div class="divShuPaiFeiLeiDaoHang" style="width:20%;float:left;" miaoshu="竖排分类导航">
             <ul class="list-unstyled text-center">
                 <li><a>手机电话卡</a></li>
@@ -126,14 +210,239 @@
         </div>
     </div>
 
-    <div style="width: 1450px;background-color:red;height:200px;margin:10px auto auto 15%;">
-        <div style="border:1px solid #ff0000;width:30%;float:left; height:50px">
-
+    <div style="width: 1450px;height:50px;margin:10px auto auto 15%;">
+        <div style="float:left;font-size:24px">
+            精美单品
         </div>
-        <div style="border:1px solid #ff0000;width:60%;float:right;height:50px">
-
+        <div style="width:5%;float:right;" class="divJingMeiDanPin">
+            <p />
+            <p />
+            <p />
+            <ul class="text-center list-inline">
+                <li>
+                    <
+                </li>
+                <li>
+                    >
+                </li>
+            </ul>
         </div>
     </div>
+    @*border:1px solid #ff0000*@
+    <div style="width: 1450px;height:300px;margin:10px auto auto 15%;" class="text-center">
+        <ul class="list-inline ulJingMeiDanPin">
+            <li>
+                <a>
+                    <div style="border-top:1px solid #ffd800">
+                        <img src="http://i3.mifile.cn/a4/40d24892-317d-4883-ad63-647f1b9e3cdf" alt="1">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #b6ff00">
+                        <img src="http://i3.mifile.cn/a4/0df5d106-ab01-4013-87de-a9793094245d" alt="2">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #ff0000">
+                        <img src="http://i3.mifile.cn/a4/a8a21b9a-1b93-467d-baf3-1653976c4bdf" alt="3">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #00ff21">
+                        <img src="http://i3.mifile.cn/a4/4c68c352-fbd3-452d-be90-7b47e4f6ce76" alt="4">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #4bef95">
+                        <img src="http://i3.mifile.cn/a4/4c68c352-fbd3-452d-be90-7b47e4f6ce76" alt="5">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div style="width: 1450px;height:50px;margin:10px auto auto 15%;">
+        <div style="float:left;font-size:24px">
+            搭配
+        </div>
+        <div style="width:20%;float:right;">
+            <p />
+            <p />
+            <p />
+            <ul class="list-inline text-center ulDaPeiFenLei">
+                <li>耳机音箱</li>
+                <li>数据线</li>
+                <li>电源</li>
+                <li>电池储存卡</li>
+            </ul>
+        </div>
+    </div>
+    <div style="width: 1450px;height:650px;margin:10px auto auto 15%;">
+        <div style="float:left;width:15%;">
+            <ul class="text-center list-inline ulDaPei1">
+                <li>
+                    <div>
+                        <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div style="float:right;width:85%;">
+            <ul class="text-center list-inline ulDaPei2 DaPei" leiname="erJi">
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                    </div>
+                </li>
+            </ul>
+            <ul class="text-center list-inline ulDaPei2 DaPei" leiname="shuJuXian" style="display:none">
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 </div>
 
 
@@ -167,11 +476,12 @@
 
 
 @*q js sdk 登录*@
-@*<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101346412" charset="utf-8">    //data-callback="true" 这条js加入此属性则会返回点击登录的页面</script>
+@*
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101346412" charset="utf-8">    //data-callback="true" 这条js加入此属性则会返回点击登录的页面</script>
     <script type="text/javascript">
         QC.Login.getMe(function (openId, accessToken) {
             alert(openId);
-             ajax提交后台处理
+            ajax提交后台处理
             //return false;
         })
 
