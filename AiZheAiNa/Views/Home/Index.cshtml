@@ -4,28 +4,34 @@
     Layout = "~/Views/Shared/Template.cshtml";
 }
 <style type="text/css">
-    .divFenLei ul {
+    .divShuPaiFeiLeiDaoHang ul {
         background-color: #5C544C;
         color: #ffffff;
     }
-
-        /*.divFenLei ul li:not(:first-child)  {
+        /*.divShuPaiFeiLeiDaoHang ul li:not(:first-child)  {
             padding-top: 20px;
         }*/
-        .divFenLei ul li {
+        .divShuPaiFeiLeiDaoHang ul li {
             padding-top: 15px;
             padding-bottom: 15px;
         }
 
-            .divFenLei ul li:hover {
+            .divShuPaiFeiLeiDaoHang ul li:hover {
                 background-color: #ff6a00;
-                cursor: pointer;
             }
 
-            .divFenLei ul li a {
-                color: #ffffff;
-                text-decoration: none;
-            }
+    ul li:hover {
+        cursor: pointer;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+
+    .divShuPaiFeiLeiDaoHang ul li a {
+        color: #ffffff;
+        text-decoration: none;
+    }
 
     #divLunBoImg a {
         display: inline-block;
@@ -33,14 +39,21 @@
         height: 500px;
     }
 
-    .zspading5 {
+    .ulKuaiSuZhiDa3GeImgLianJie {
         height: 200px;
     }
 
-        .zspading5 li div {
+        .ulKuaiSuZhiDa3GeImgLianJie li div {
             width: 365px;
             height: 200px;
         }
+
+    .divKuaiSuZhiDa6GePuTongLianJie li {
+        height: 90px;
+        width: 30%;
+        padding: 15px 0 15px 0;
+        border: 1px solid #b6ff00;
+    }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script type="text/javascript">
@@ -54,8 +67,8 @@
     })
 </script>
 <div style="width: 100%">
-    <div style="width: 1450px;margin:0 15%;background-color:red;">
-        <div class="divFenLei" style="width:20%;height:500px;float:left;">
+    <div style="width: 1450px;background-color:red;margin-left:15%;height:500px;">
+        <div class="divShuPaiFeiLeiDaoHang" style="width:20%;float:left;" miaoshu="竖排分类导航">
             <ul class="list-unstyled text-center">
                 <li><a>手机电话卡</a></li>
                 <li><a>笔记本 平板</a></li>
@@ -69,16 +82,31 @@
                 <li><a>米兔 生活周边</a></li>
             </ul>
         </div>
-        <div id="divLunBoImg" style="width:80%;height:500px;float:right;">
+        <div id="divLunBoImg" style="width:80%;float:right;" miaoshu="滚动大图">
             <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
         </div>
     </div>
-    <div style="width: 1450px;margin:0 15%;">
-        <div style="width:20%;height:200px;float:left;margin-top:10px;">
 
+    <div style="width: 1450px;;margin:10px auto auto 15%;height:200px;">
+        <div class="divKuaiSuZhiDa6GePuTongLianJie" style="width:20%;float:left;border:1px solid #ff6a00;background-color:rosybrown;" miaoshu="快速直达-6个普通链接小分类">
+            <div>
+                <ul class="list-inline text-center">
+                    <li><a>买买买买</a><br /><a>买买买买</a></li>
+                    <li><a>买买买买</a><br /><a>买买买买</a></li>
+                    <li><a>买买买买</a><br /><a>买买买买</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="list-inline text-center">
+                    <li><a>买买买买</a><br /><a>买买买买</a></li>
+                    <li><a>买买买买</a><br /><a>买买买买</a></li>
+                    <li><a>买买买买</a><br /><a>买买买买</a></li>
+                </ul>
+            </div>
         </div>
-        <div style="width:78%;float:right;margin-top:10px;">
-            <ul class="list-inline zspading5">
+
+        <div style="width:78%;float:right;" miaoshu="快速直达-3个小图展示链接小分类">
+            <ul class="list-inline ulKuaiSuZhiDa3GeImgLianJie">
                 <li>
                     <div>
                         <img src="http://i3.mifile.cn/a4/b16fa801-335d-4b38-9dbd-d1f3371307ee" alt="小米Max赠风扇">
@@ -95,6 +123,15 @@
                     </div>
                 </li>
             </ul>
+        </div>
+    </div>
+
+    <div style="width: 1450px;background-color:red;height:200px;margin:10px auto auto 15%;">
+        <div style="border:1px solid #ff0000;width:30%;float:left; height:50px">
+
+        </div>
+        <div style="border:1px solid #ff0000;width:60%;float:right;height:50px">
+
         </div>
     </div>
 </div>
