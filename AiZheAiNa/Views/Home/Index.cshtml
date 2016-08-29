@@ -20,17 +20,25 @@
                 background-color: #ff6a00;
             }
 
+            .divShuPaiFeiLeiDaoHang ul li a {
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            .divShuPaiFeiLeiDaoHang ul li div {
+                width: calc(1450*0.2px);
+                height: 500px;
+                position: absolute;
+                z-index: 2;
+                display: none;
+            }
+
     ul li:hover {
         cursor: pointer;
     }
 
     a:hover {
         cursor: pointer;
-    }
-
-    .divShuPaiFeiLeiDaoHang ul li a {
-        color: #ffffff;
-        text-decoration: none;
     }
 
     #divLunBoImg a {
@@ -135,10 +143,33 @@
                 };
             });
         });
-
         $(".ulDaPeiFenLei").mouseout(function () {
             DaPeiShow("erJi");
         });
+
+        $(".divShuPaiFeiLeiDaoHang ul li div").each(function (index, item) {
+            var $d = $(item);
+            var bcolor = "#00ff21", width = "300px";
+            if (index % 2 == 0) {
+                bcolor = "#f19a9a";
+                width = "400px";
+            }
+            $d.css({ "left": $(window).width() * 0.15 + $d.parents("div").width(), "top": $d.parents(".divShuPaiFeiLeiDaoHang").offset().top, "background-color": bcolor, "width": width }).html(index);
+
+            $d.parents("li").mousemove(function () {
+                $(this).children("div").show();
+            });
+            $d.parents("li").mouseout(function () {
+                $(this).children("div").hide();
+            });
+            $d.mousemove(function () {
+                $(this).show();
+            });
+            $d.mouseout(function () {
+                $(this).hide();
+            });
+        });
+
     });
     function DaPeiShow(leiname) {
         $(".DaPei").each(function (index, item) {
@@ -154,16 +185,64 @@
     <div style="width: 1450px;background-color:#cbc8c8;margin-left:15%;height:500px;">
         <div class="divShuPaiFeiLeiDaoHang" style="width:20%;float:left;" miaoshu="竖排分类导航">
             <ul class="list-unstyled text-center">
-                <li><a>手机电话卡</a></li>
-                <li><a>笔记本 平板</a></li>
-                <li><a>电视 盒子</a></li>
-                <li><a>路由器 智能硬件</a></li>
-                <li><a>移动电源 电池 插排</a></li>
-                <li><a>耳机 音响</a></li>
-                <li><a>保护套 贴膜</a></li>
-                <li><a>线材 支架 存储卡</a></li>
-                <li><a>箱包 服饰</a></li>
-                <li><a>米兔 生活周边</a></li>
+                <li>
+                    <a>手机电话卡</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>笔记本 平板</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>电视 盒子</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>路由器 智能硬件</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>移动电源 电池 插排</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>耳机 音响</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>保护套 贴膜</a>
+                    <div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>线材 支架 存储卡</a><div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>箱包 服饰</a><div>
+
+                    </div>
+                </li>
+                <li>
+                    <a>米兔 生活周边</a>
+                    <div>
+
+                    </div>
+                </li>
             </ul>
         </div>
         <div id="divLunBoImg" style="width:80%;float:right;" miaoshu="滚动大图">
