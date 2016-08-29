@@ -9,7 +9,7 @@ using AiZheAiNa.CommonHelp;
 using AiZheAiNa.Model;
 using Newtonsoft.Json;
 
-namespace AiZheAiNa.Plug
+namespace AiZheAiNa.Plug.QQ
 {
     public static class QQOAuthHelper
     {
@@ -117,11 +117,18 @@ namespace AiZheAiNa.Plug
         /// <param name="AiZheAiNa_SYS_QQUserInfo"></param>
         /// <param name="openID"></param>
         /// <returns></returns>
-        public static AiZheAiNa_SYS_QQUserInfo GetUserInfo(AiZheAiNa_SYS_QQUserInfo AiZheAiNa_SYS_QQUserInfo, string openID)
+        public static AiZheAiNa_SYS_QQUserInfo GetUserInfo(AiZheAiNa_SYS_QQUserInfo AiZheAiNa_SYS_QQUserInfo)
         {
-            string urlGetInfo = string.Format(@"https://graph.qq.com/user/get_user_info?access_token={0}&oauth_consumer_key={1}&openid={2}", AiZheAiNa_SYS_QQUserInfo.Access_token, ConfigurationHelper.QQAppID, openID);
+            string urlGetInfo = string.Format(@"https://graph.qq.com/user/get_user_info?access_token={0}&oauth_consumer_key={1}&openid={2}", AiZheAiNa_SYS_QQUserInfo.Access_token, ConfigurationHelper.QQAppID, AiZheAiNa_SYS_QQUserInfo.OpenID);
             string resUserInfo = LoadHtmlUserGetType(urlGetInfo, Encoding.UTF8);
-            return JsonConvert.DeserializeObject<AiZheAiNa_SYS_QQUserInfo>(resUserInfo);
+            string Access_token = AiZheAiNa_SYS_QQUserInfo.Access_token;
+            string Access_tokenExpiresIn = AiZheAiNa_SYS_QQUserInfo.Access_tokenExpiresIn;
+            string Refresh_token = AiZheAiNa_SYS_QQUserInfo.Refresh_token;
+            AiZheAiNa_SYS_QQUserInfo = JsonConvert.DeserializeObject<AiZheAiNa_SYS_QQUserInfo>(resUserInfo);
+            AiZheAiNa_SYS_QQUserInfo.Access_token = Access_token;
+            AiZheAiNa_SYS_QQUserInfo.Access_tokenExpiresIn = Access_tokenExpiresIn;
+            AiZheAiNa_SYS_QQUserInfo.Refresh_token = Refresh_token;
+            return AiZheAiNa_SYS_QQUserInfo;
         }
         #endregion
     }

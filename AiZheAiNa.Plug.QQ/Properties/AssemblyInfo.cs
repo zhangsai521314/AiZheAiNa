@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Plug")]
+[assembly: AssemblyTitle("AiZheAiNa.Plug.QQ")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Plug")]
+[assembly: AssemblyProduct("AiZheAiNa.Plug.QQ")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("a6c703a7-592f-4897-a322-0941434b2ce0")]
+[assembly: Guid("8e1ee588-57b6-45de-ba83-257a17984cac")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

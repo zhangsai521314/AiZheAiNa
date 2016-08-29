@@ -300,7 +300,7 @@
       <Name>AiZheAiNa.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\AiZheAiNa.Plug.QQ\AiZheAiNa.Plug.QQ.csproj">
-      <Project>{384512ba-37fa-4cf3-b82d-b3d6cbfa9636}</Project>
+      <Project>{8e1ee588-57b6-45de-ba83-257a17984cac}</Project>
       <Name>AiZheAiNa.Plug.QQ</Name>
     </ProjectReference>
   </ItemGroup>
