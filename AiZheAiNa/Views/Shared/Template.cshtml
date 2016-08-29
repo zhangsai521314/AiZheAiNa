@@ -17,6 +17,14 @@
             margin: 0px;
             padding: 0px;
         }
+
+        #divContent ul li div {
+            width: calc(1450*0.2px);
+            height: 200px;
+            position: absolute;
+            z-index: 2;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -69,18 +77,68 @@
                 <div id="divLogImg" style="float:left;width:10%;border:1px solid #808080">
                     log
                 </div>
-                <div id="divContent" style="width: 60%;float:left;">
+                <div id="divContent" style="width: 60%;float:left;" class="divContent">
                     <ul class="list-inline text-center" style="margin:5% 0">
-                        <li><a>全部商品分类</a></li>
-                        <li><a>小米手机</a></li>
-                        <li><a>红米</a></li>
-                        <li><a>平板·电脑</a></li>
-                        <li><a>电视</a></li>
-                        <li><a>盒子·影音</a></li>
-                        <li><a>路由器</a></li>
-                        <li><a>只能硬件</a></li>
-                        <li><a>服务</a></li>
-                        <li><a>社区</a></li>
+                        <li>
+                            <a>全部商品分类</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>小米手机</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>红米</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>平板·电脑</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>电视</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>盒子·影音</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>路由器</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>只能硬件</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>服务</a>
+                            <div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a>社区</a>
+                            <div>
+
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div id="divSearch" style="width:25%;float:left;">
@@ -114,6 +172,31 @@
                 $("#divLoginHouShow").css("display", "none");
             }
         });
+
+
+        $("#divContent ul li div").each(function (index, item) {
+            var $d = $(item);
+            var bcolor = "#00ff21", width = "300px";
+            if (index % 2 == 0) {
+                bcolor = "#f19a9a";
+                width = "400px";
+            }
+            $d.css({ "top": $d.parents(".divContent").parent().offset().top, "background-color": bcolor, "width": $(window).width() }).html(index);
+
+            $d.parents("li").mousemove(function () {
+                $(this).children("div").show();
+            });
+            $d.parents("li").mouseout(function () {
+                $(this).children("div").hide();
+            });
+            $d.mousemove(function () {
+                $(this).show();
+            });
+            $d.mouseout(function () {
+                $(this).hide();
+            });
+        });
+
     </script>
 </body>
 </html>

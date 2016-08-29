@@ -4,28 +4,28 @@
     Layout = "~/Views/Shared/Template.cshtml";
 }
 <style type="text/css">
-    .divShuPaiFeiLeiDaoHang ul {
+    #divShuPaiFeiLeiDaoHang ul {
         background-color: #5C544C;
         color: #ffffff;
     }
-        /*.divShuPaiFeiLeiDaoHang ul li:not(:first-child)  {
+        /*#divShuPaiFeiLeiDaoHang ul li:not(:first-child)  {
             padding-top: 20px;
         }*/
-        .divShuPaiFeiLeiDaoHang ul li {
+        #divShuPaiFeiLeiDaoHang ul li {
             padding-top: 15px;
             padding-bottom: 15px;
         }
 
-            .divShuPaiFeiLeiDaoHang ul li:hover {
+            #divShuPaiFeiLeiDaoHang ul li:hover {
                 background-color: #ff6a00;
             }
 
-            .divShuPaiFeiLeiDaoHang ul li a {
+            #divShuPaiFeiLeiDaoHang ul li a {
                 color: #ffffff;
                 text-decoration: none;
             }
 
-            .divShuPaiFeiLeiDaoHang ul li div {
+            #divShuPaiFeiLeiDaoHang ul li div {
                 width: calc(1450*0.2px);
                 height: 500px;
                 position: absolute;
@@ -47,23 +47,23 @@
         height: 500px;
     }
 
-    .ulKuaiSuZhiDa3GeImgLianJie {
+    #ulKuaiSuZhiDa3GeImgLianJie {
         height: 200px;
     }
 
-        .ulKuaiSuZhiDa3GeImgLianJie li div {
+        #ulKuaiSuZhiDa3GeImgLianJie li div {
             width: 365px;
             height: 200px;
         }
 
-    .divKuaiSuZhiDa6GePuTongLianJie li {
+    #divKuaiSuZhiDa6GePuTongLianJie li {
         height: 90px;
         width: 30%;
         padding: 15px 0 15px 0;
         border: 1px solid #b6ff00;
     }
 
-    .divJingMeiDanPin ul li {
+    #divJingMeiDanPin ul li {
         width: 30px;
         height: 30px;
         cursor: pointer;
@@ -71,44 +71,44 @@
         border: 1px solid #bfbebe;
     }
 
-    .divJingMeiDanPin li:hover {
+    #divJingMeiDanPin li:hover {
         background-color: #ff6a00;
     }
 
-    .ulJingMeiDanPin li div {
+    #ulJingMeiDanPin li div {
         width: 277px;
         height: 300px;
     }
 
-        .ulJingMeiDanPin li div img {
+        #ulJingMeiDanPin li div img {
             width: 130px;
             height: 170px;
         }
 
-        .ulJingMeiDanPin li div div {
+        #ulJingMeiDanPin li div div {
             width: 277px;
             height: 80px;
         }
 
-    .ulDaPeiFenLei {
+    #ulDaPeiFenLei {
         width: 300px;
     }
 
-        .ulDaPeiFenLei li:hover {
+        #ulDaPeiFenLei li:hover {
             color: #ff6a00;
             font-size: 24px;
         }
 
-    .ulDaPei1 li div {
+    #ulDaPei1 li div {
         width: 220px;
         height: 320px;
     }
 
-    .ulDaPei1, .ulDaPei2 {
+    #ulDaPei1, #ulDaPei2 {
         margin-top: 10px;
     }
 
-        .ulDaPei2 li div {
+        #ulDaPei2 li div {
             width: 230px;
             height: 320px;
         }
@@ -126,7 +126,7 @@
                 $(item).width($(item).parent().width());
             }
         });
-        $(".ulDaPeiFenLei li").each(function (index, item) {
+        $("#ulDaPeiFenLei li").each(function (index, item) {
             $(item).hover(function () {
                 switch ($(item).html()) {
                     case "耳机音箱":
@@ -143,18 +143,18 @@
                 };
             });
         });
-        $(".ulDaPeiFenLei").mouseout(function () {
+        $("#ulDaPeiFenLei").mouseout(function () {
             DaPeiShow("erJi");
         });
 
-        $(".divShuPaiFeiLeiDaoHang ul li div").each(function (index, item) {
+        $("#divShuPaiFeiLeiDaoHang ul li div").each(function (index, item) {
             var $d = $(item);
             var bcolor = "#00ff21", width = "300px";
             if (index % 2 == 0) {
                 bcolor = "#f19a9a";
                 width = "400px";
             }
-            $d.css({ "left": $(window).width() * 0.15 + $d.parents("div").width(), "top": $d.parents(".divShuPaiFeiLeiDaoHang").offset().top, "background-color": bcolor, "width": width }).html(index);
+            $d.css({ "left": $(window).width() * 0.15 + $d.parents("div").width(), "top": $d.parents("div").offset().top, "background-color": bcolor, "width": width }).html(index);
 
             $d.parents("li").mousemove(function () {
                 $(this).children("div").show();
@@ -183,7 +183,7 @@
 </script>
 <div style="width: 100%">
     <div style="width: 1450px;background-color:#cbc8c8;margin-left:15%;height:500px;">
-        <div class="divShuPaiFeiLeiDaoHang" style="width:20%;float:left;" miaoshu="竖排分类导航">
+        <div id="divShuPaiFeiLeiDaoHang" style="width:20%;float:left;" miaoshu="竖排分类导航">
             <ul class="list-unstyled text-center">
                 <li>
                     <a>手机电话卡</a>
@@ -251,7 +251,7 @@
     </div>
 
     <div style="width: 1450px;;margin:10px auto auto 15%;height:200px;">
-        <div class="divKuaiSuZhiDa6GePuTongLianJie" style="width:20%;float:left;border:1px solid #ff6a00;background-color:rosybrown;" miaoshu="快速直达-6个普通链接小分类">
+        <div id="divKuaiSuZhiDa6GePuTongLianJie" style="width:20%;float:left;border:1px solid #ff6a00;background-color:rosybrown;" miaoshu="快速直达-6个普通链接小分类">
             <div>
                 <ul class="list-inline text-center">
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
@@ -269,7 +269,7 @@
         </div>
 
         <div style="width:78%;float:right;" miaoshu="快速直达-3个小图展示链接小分类">
-            <ul class="list-inline ulKuaiSuZhiDa3GeImgLianJie">
+            <ul class="list-inline" id="ulKuaiSuZhiDa3GeImgLianJie">
                 <li>
                     <div>
                         <img src="http://i3.mifile.cn/a4/b16fa801-335d-4b38-9dbd-d1f3371307ee" alt="小米Max赠风扇">
@@ -293,7 +293,7 @@
         <div style="float:left;font-size:24px">
             精美单品
         </div>
-        <div style="width:5%;float:right;" class="divJingMeiDanPin">
+        <div style="width:5%;float:right;" id="divJingMeiDanPin">
             <p />
             <p />
             <p />
@@ -309,7 +309,7 @@
     </div>
     @*border:1px solid #ff0000*@
     <div style="width: 1450px;height:300px;margin:10px auto auto 15%;" class="text-center">
-        <ul class="list-inline ulJingMeiDanPin">
+        <ul class="list-inline" id="ulJingMeiDanPin">
             <li>
                 <a>
                     <div style="border-top:1px solid #ffd800">
@@ -391,7 +391,7 @@
             <p />
             <p />
             <p />
-            <ul class="list-inline text-center ulDaPeiFenLei">
+            <ul class="list-inline text-center" id="ulDaPeiFenLei">
                 <li>耳机音箱</li>
                 <li>数据线</li>
                 <li>电源</li>
@@ -401,7 +401,7 @@
     </div>
     <div style="width: 1450px;height:650px;margin:10px auto auto 15%;">
         <div style="float:left;width:15%;">
-            <ul class="text-center list-inline ulDaPei1">
+            <ul class="text-center list-inline" id="ulDaPei1">
                 <li>
                     <div>
                         <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
@@ -415,7 +415,7 @@
             </ul>
         </div>
         <div style="float:right;width:85%;">
-            <ul class="text-center list-inline ulDaPei2 DaPei" leiname="erJi">
+            <ul class="text-center list-inline DaPei" leiname="erJi" id="ulDaPei2">
                 <li>
                     <div>
                         <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
