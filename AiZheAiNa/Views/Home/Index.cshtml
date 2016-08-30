@@ -198,6 +198,15 @@
         #divLunBoAnNiuIndivLunBoImg div:last-child {
             right: 10px;
         }
+
+    #divLunBoBiaoShiIndivLunBoImg {
+        position: absolute;
+        bottom: 10px;
+        z-index: 6;
+        line-height: 30px;
+        right: 100px;
+        font-size: 20px;
+    }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script type="text/javascript">
@@ -249,6 +258,7 @@
         });
 
         //大图点击轮播
+        GenJuImgShuShengChengBiaoShi("#divLunBoImg a img", "#divLunBoBiaoShiIndivLunBoImg ul");
         $("#divLunBoImg").mousemove(function () {
             clearInterval(daTuZiDongLunBoID);
         });
@@ -266,9 +276,13 @@
                     } else {
                         lunBoAnNiuClickJiShu--;
                     }
-                    $("#divLunBoImg a").each(function (i, x) {
+                    $("#divLunBoImg a").each(function () {
                         $(this).hide();
                     });
+                    $("#divLunBoBiaoShiIndivLunBoImg ul li").each(function () {
+                        $(this).html("○");
+                    });
+                    $("#divLunBoBiaoShiIndivLunBoImg ul li").eq(lunBoAnNiuClickJiShu).html("●");
                     $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
                     TuPianZiShiYing("#divLunBoImg img");
                     DaTuZiDongLunBo();
@@ -282,9 +296,13 @@
                     } else {
                         lunBoAnNiuClickJiShu++;
                     }
-                    $("#divLunBoImg a").each(function (i, x) {
+                    $("#divLunBoImg a").each(function () {
                         $(this).hide();
                     });
+                    $("#divLunBoBiaoShiIndivLunBoImg ul li").each(function () {
+                        $(this).html("○");
+                    });
+                    $("#divLunBoBiaoShiIndivLunBoImg ul li").eq(lunBoAnNiuClickJiShu).html("●");
                     $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
                     TuPianZiShiYing("#divLunBoImg img");
                     DaTuZiDongLunBo();
@@ -296,8 +314,30 @@
             $(this).mouseout(function () {
                 $("#divLunBoImg").mouseout();
             })
+            if (index == 0) {
+                $("#divLunBoBiaoShiIndivLunBoImg ul li").each(function () {
+                    $(this).mousemove(function () {
+                        $("#divLunBoImg").mousemove();
+
+                        $("#divLunBoImg a").each(function () {
+                            $(this).hide();
+                        });
+                        $("#divLunBoBiaoShiIndivLunBoImg ul li").each(function () {
+                            $(this).html("○");
+                        });
+                        $("#divLunBoBiaoShiIndivLunBoImg ul li").eq($(this).index()).html("●");
+                        $("#divLunBoImg a").eq($(this).index()).show();
+                    });
+                    $(this).mouseout(function () {
+                        $("#divLunBoImg").mouseout();
+                    })
+                });
+            };
         });
         DaTuZiDongLunBo();
+
+
+
 
         //精美单品击轮播
         $("#divJingMeiDanPinContent").mousemove(function () {
@@ -317,7 +357,7 @@
                     } else {
                         lunBoJinMeiDanPinAnNiuShu--;
                     }
-                    $("#divJingMeiDanPinContent ul").each(function (i, x) {
+                    $("#divJingMeiDanPinContent ul").each(function () {
                         $(this).hide();
                     });
                     $("#divJingMeiDanPinContent ul").eq(lunBoJinMeiDanPinAnNiuShu).show();
@@ -332,7 +372,7 @@
                     } else {
                         lunBoJinMeiDanPinAnNiuShu++;
                     }
-                    $("#divJingMeiDanPinContent ul").each(function (i, x) {
+                    $("#divJingMeiDanPinContent ul").each(function () {
                         $(this).hide();
                     });
                     $("#divJingMeiDanPinContent ul").eq(lunBoJinMeiDanPinAnNiuShu).show();
@@ -374,12 +414,16 @@
             } else {
                 lunBoAnNiuClickJiShu++;
             }
-            $("#divLunBoImg a").each(function (i, x) {
+            $("#divLunBoImg a").each(function () {
                 $(this).hide();
             });
+            $("#divLunBoBiaoShiIndivLunBoImg ul li").each(function () {
+                $(this).html("○");
+            });
+            $("#divLunBoBiaoShiIndivLunBoImg ul li").eq(lunBoAnNiuClickJiShu).html("●");
             $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
             TuPianZiShiYing("#divLunBoImg img");
-        }, 3000);
+        }, 4000);
     };
 
     //精美单品自动轮播和前进一样
@@ -390,15 +434,24 @@
             } else {
                 lunBoJinMeiDanPinAnNiuShu++;
             }
-            $("#divJingMeiDanPinContent ul").each(function (i, x) {
+            $("#divJingMeiDanPinContent ul").each(function () {
                 $(this).hide();
             });
             $("#divJingMeiDanPinContent ul").eq(lunBoJinMeiDanPinAnNiuShu).show();
-        }, 4000);
+        }, 3000);
 
     };
 
-
+    //根据图片的多少生成<li>○</li>
+    function GenJuImgShuShengChengBiaoShi(select, appendToSelect) {
+        $(select).each(function (index, item) {
+            if (index == 0) {
+                $(appendToSelect).append($("<li>●</li>"));
+            } else {
+                $(appendToSelect).append($("<li>○</li>"));
+            }
+        });
+    };
 </script>
 <div style="width: 100%">
     <div style="width: 1450px;background-color:#cbc8c8;margin-left:15%;height:500px;">
@@ -478,6 +531,10 @@
                 <div class="text-center">
                     >
                 </div>
+            </div>
+
+            <div id="divLunBoBiaoShiIndivLunBoImg">
+                <ul class="list-inline"></ul>
             </div>
         </div>
     </div>
