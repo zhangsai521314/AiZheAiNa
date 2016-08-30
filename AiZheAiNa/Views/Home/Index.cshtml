@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template.cshtml";
 }
+<link href="~/Scripts/bootstrap/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" />
 <style type="text/css">
     #divShuPaiFeiLeiDaoHang {
         width: 20%;
@@ -92,6 +93,7 @@
             background-color: #ff6a00;
         }
 
+
     #ulJingMeiDanPin li div {
         width: 277px;
         height: 300px;
@@ -121,14 +123,27 @@
         height: 320px;
     }
 
-    #ulDaPei1, #ulDaPei2 {
+    #ulDaPei1, .ulDaPeiN {
         margin-top: 10px;
     }
 
-        #ulDaPei2 li div {
-            width: 230px;
-            height: 320px;
+    .ulDaPeiN {
+        display: none;
+    }
+
+        .ulDaPeiN:first-child {
+            display: block;
         }
+
+        #ulDaPei1 li, .ulDaPeiN li {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+            .ulDaPeiN li div {
+                width: 230px;
+                height: 320px;
+            }
 
     #divLunBoImg {
         width: 80%;
@@ -155,7 +170,7 @@
     }
 
         #divLunBoAnNiuIndivLunBoImg div {
-            width: 40px;
+            width: 80px;
             margin-top: 15%;
             height: 60px;
             line-height: 60px;
@@ -168,28 +183,20 @@
             }
 
             #divLunBoAnNiuIndivLunBoImg div:first-child {
-                float: right;
+                float: left;
             }
 
             #divLunBoAnNiuIndivLunBoImg div:last-child {
-                float: left;
+                float: right;
             }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script type="text/javascript">
     $(function () {
-
+        var lunBoAnNiuClickJiShu = 0;
         //图片的大小超过容器后更改图片的大小为容器的大小
-        $("img").each(function (index, item) {
-            if ($(item).height() > $(item).parent().height()) {
-                $(item).height($(item).parent().height());
-            }
-            if ($(item).width() > $(item).parent().width()) {
-                $(item).width($(item).parent().width());
-            }
-        });
-
-       //搭配选项切换
+        TuPianZiShiYing("img");
+        //搭配选项切换
         $("#ulDaPeiFenLei li").each(function (index, item) {
             $(item).hover(function () {
                 switch ($(item).html()) {
@@ -206,9 +213,6 @@
                     default:
                 };
             });
-        });
-        $("#ulDaPeiFenLei").mouseout(function () {
-            DaPeiShow("erJi");
         });
 
         //竖排导航每个li中的内容出现和隐藏
@@ -235,14 +239,70 @@
             });
         });
 
+        //大图点击轮播
+        $("#divLunBoAnNiuIndivLunBoImg div").each(function (index, item) {
+            var $i = $(item);
+            if (index == 0) {
+                //后退
+                $i.click(function () {
+                    if (lunBoAnNiuClickJiShu == 0) {
+                        lunBoAnNiuClickJiShu = $("#divLunBoImg a").length - 1;
+                    } else {
+                        lunBoAnNiuClickJiShu--;
+                    }
+                    $("#divLunBoImg a").each(function (i, x) {
+                        $(this).hide();
+                    });
+                    $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
+                    TuPianZiShiYing("#divLunBoImg img");
+                });
+            } else {
+                //前进
+                $i.click(function () {
+                    if ($("#divLunBoImg a").length - 1 == lunBoAnNiuClickJiShu) {
+                        lunBoAnNiuClickJiShu = 0;
+                    } else {
+                        lunBoAnNiuClickJiShu++;
+                    }
+                    $("#divLunBoImg a").each(function (i, x) {
+                        $(this).hide();
+                    });
+                    $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
+                    TuPianZiShiYing("#divLunBoImg img");
+                });
+            }
+        });
+
+        //大图自动轮播和前进一样
+        setInterval(function () {
+            if ($("#divLunBoImg a").length - 1 == lunBoAnNiuClickJiShu) {
+                lunBoAnNiuClickJiShu = 0;
+            } else {
+                lunBoAnNiuClickJiShu++;
+            }
+            $("#divLunBoImg a").each(function (i, x) {
+                $(this).hide();
+            });
+            $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
+            TuPianZiShiYing("#divLunBoImg img");
+        }, 1500);
+
     });
+
     function DaPeiShow(leiname) {
-        $(".DaPei").each(function (index, item) {
+        $(".ulDaPeiN").each(function (index, item) {
             if ($(item).attr("leiname") == leiname) {
                 $(item).show();
             } else {
                 $(item).hide();
             }
+        });
+    };
+
+    function TuPianZiShiYing(select) {
+        $(select).each(function (index, item) {
+            $(item).height($(item).parents("div").height());
+            $(item).width($(item).parents("div").width());
         });
     };
 </script>
@@ -312,15 +372,15 @@
         </div>
         <div id="divLunBoImg" miaoshu="滚动大图">
             <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
-            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
-            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
-            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
+            <a><img src="http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"></a>
+            <a><img src="http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"></a>
+            <a><img src="http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"></a>
             <div id="divLunBoAnNiuIndivLunBoImg">
                 <div class="text-center">
-                    >
+                    <
                 </div>
                 <div class="text-center">
-                    <
+                    >
                 </div>
             </div>
         </div>
@@ -384,7 +444,7 @@
         </div>
     </div>
     @*border:1px solid #ff0000*@
-    <div style="width: 1450px;height:300px;margin:10px auto auto 15%;" class="text-center">
+    <div style="width: 1450px;height:400px;margin:10px auto auto 15%;" class="text-center">
         <ul class="list-inline" id="ulJingMeiDanPin">
             <li>
                 <a>
@@ -475,7 +535,7 @@
             </ul>
         </div>
     </div>
-    <div style="width: 1450px;height:650px;margin:10px auto auto 15%;">
+    <div style="width: 1450px;height:665px;margin:3px auto auto 15%;">
         <div style="float:left;width:15%;">
             <ul class="text-center list-inline" id="ulDaPei1">
                 <li>
@@ -491,7 +551,7 @@
             </ul>
         </div>
         <div style="float:right;width:85%;">
-            <ul class="text-center list-inline DaPei" leiname="erJi" id="ulDaPei2">
+            <ul class="text-center list-inline ulDaPeiN" leiname="erJi">
                 <li>
                     <div>
                         <img alt="" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
@@ -543,7 +603,8 @@
                     </div>
                 </li>
             </ul>
-            <ul class="text-center list-inline ulDaPei2 DaPei" leiname="shuJuXian" style="display:none">
+
+            <ul class="text-center list-inline ulDaPeiN" leiname="shuJuXian">
                 <li>
                     <div>
                         <img alt="" src="http://i3.mifile.cn/a4/ffe46b8a-6c97-4b92-a053-da243df50e23">
