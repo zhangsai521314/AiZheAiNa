@@ -18,13 +18,29 @@
             padding: 0px;
         }
 
-        #divContent ul li div {
+        #divContentIndivShuPaiTouBuDaoHang ul li div {
             width: calc(1450*0.2px);
             height: 200px;
             position: absolute;
             z-index: 2;
             display: none;
         }
+
+        #divContentIndivShuPaiTouBuDaoHang ul li {
+            padding: 43px 4.6px 43.5px 4.6px;
+            margin-right: -2px;
+        }
+
+        #divHengPaiTouBuDaoHang div ul li {
+            padding: 10px 2px 9.5px 2px;
+        }
+
+            #divHengPaiTouBuDaoHang div ul li div {
+                position: absolute;
+                z-index: 5;
+                display: none;
+                height: 120px;
+            }
     </style>
 </head>
 <body>
@@ -32,7 +48,7 @@
         <div style="width: 100%;background-color:#333333;height:40px;" miaoshu="头部导航">
             <div id="divTou" style="width: 1450px;background-color:#333333;margin-left:15%;">
                 <div id="divHuanYing" style="float:left;width: 20%;">
-                    <ul class="list-inline text-center" style="margin:3% 0">
+                    <ul class="list-inline text-center" style="margin:3% 0;padding:0px">
                         <li>
                             <span style="color:#ffffff">欢迎来到爱这爱那网</span>
                         </li>
@@ -45,7 +61,7 @@
                     </ul>
                 </div>
                 <div id="divLoginHouShow" style="float:left;width: 20%;display:none;">
-                    <ul class="list-inline text-center" style="margin:1.5% 0">
+                    <ul class="list-inline text-center" style="margin:1.5% 0;padding:0px">
                         <li>
                         </li>
                         <li>
@@ -56,29 +72,50 @@
                         </li>
                     </ul>
                 </div>
-                <div style="float:right;width: 60%;">
+                <div style="float:right;width: 60%;" id="divHengPaiTouBuDaoHang" class="divHengPaiTouBuDaoHang">
                     <div>
-                        <ul class="list-inline text-center" style="margin:1% 0">
-                            <li><a>我的爱</a></li>
-                            <li><a>我关注的品牌</a></li>
-                            <li><a>购物车0件</a></li>
-                            <li><a>收藏夹</a></li>
+                        <ul class="list-inline text-center" style="margin:0px;padding:0px">
+                            <li>
+                                <a>我的爱</a>
+                                <div></div>
+                            </li>
+                            <li>
+                                <a>我关注的品牌</a>
+                                <div></div>
+                            </li>
+                            <li>
+                                <a>购物车0件</a>
+                                <div></div>
+                            </li>
+                            <li>
+                                <a>收藏夹</a>
+                                <div></div>
+                            </li>
                             <li>|</li>
-                            <li><a>手机版</a></li>
-                            <li><a>商家支持</a></li>
-                            <li><a>网站导航</a></li>
+                            <li>
+                                <a>手机版</a>
+                                <div></div>
+                            </li>
+                            <li>
+                                <a>商家支持</a>
+                                <div></div>
+                            </li>
+                            <li>
+                                <a>网站导航</a>
+                                <div></div>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="width: 100%;background-color:#d7d7d7;height:115px;" miaoshu="横排分类导航">
-            <div id="divTouBuDaoHang" style="width: 1450px;margin-left:15%;">
-                <div id="divLogImg" style="float:left;width:10%;border:1px solid #808080">
+        <div style="width: 100%;background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
+            <div id="divShuPaiTouBuDaoHang" style="width: 1450px;margin-left:15%;">
+                <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
                     log
                 </div>
-                <div id="divContent" style="width: 60%;float:left;" class="divContent">
-                    <ul class="list-inline text-center" style="margin:5% 0">
+                <div id="divContentIndivShuPaiTouBuDaoHang" style="width: 60%;float:left;" class="divContentIndivShuPaiTouBuDaoHang">
+                    <ul class="list-inline text-center" style="padding:0px;margin:0px">
                         <li>
                             <a>全部商品分类</a>
                             <div>
@@ -142,7 +179,7 @@
                     </ul>
                 </div>
                 <div id="divSearch" style="width:25%;float:left;">
-                    <div class="input-group" style="margin:10% 0 ">
+                    <div class="input-group" style="margin-top:30px">
                         <input type="text" class="form-control">
                         <span class="input-group-addon">搜索</span>
                     </div>
@@ -153,7 +190,7 @@
         <div id="divpageDi" style="width:100%;height:190px;background-color:#000000;color:#ffffff;margin:10px auto 0 auto">
             底部啊底部
         </div>
-    </div> 
+    </div>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script type="text/javascript">
@@ -173,20 +210,41 @@
             }
         });
 
-
-        $("#divContent ul li div").each(function (index, item) {
+        $("#divContentIndivShuPaiTouBuDaoHang ul li div").each(function (index, item) {
             var $d = $(item);
             var bcolor = "#00ff21", width = "300px";
             if (index % 2 == 0) {
                 bcolor = "#f19a9a";
                 width = "400px";
             }
-            $d.css({ "top": $d.parents(".divContent").parent().offset().top, "background-color": bcolor, "width": $(window).width() }).html(index);
+            $d.css({ "left": "0px", "top": $d.parents(".divContentIndivShuPaiTouBuDaoHang").parent().offset().top + $d.parents(".divContentIndivShuPaiTouBuDaoHang").height(), "background-color": bcolor, "width": $(window).width() }).html(index);
 
-            $d.parents("li").mousemove(function () {
+            $d.parent().mousemove(function () {
                 $(this).children("div").show();
             });
-            $d.parents("li").mouseout(function () {
+            $d.parent().mouseout(function () {
+                $(this).children("div").hide();
+            });
+            $d.mousemove(function () {
+                $(this).show();
+            });
+            $d.mouseout(function () {
+                $(this).hide();
+            });
+        });
+
+        $("#divHengPaiTouBuDaoHang div ul li div").each(function (index, item) {
+            var $d = $(item);
+            var bcolor = "#00ff21";
+            if (index % 2 == 0) {
+                bcolor = "#f19a9a";
+            }
+            $d.css({ "left": $d.parent().offset().left, "top": $d.parents(".divHengPaiTouBuDaoHang").parent().offset().top + $d.parents(".divHengPaiTouBuDaoHang").height(), "background-color": bcolor, "width": $d.parent().width() + 4.5 }).html(index);
+
+            $d.parent().mousemove(function () {
+                $(this).children("div").show();
+            });
+            $d.parent().mouseout(function () {
                 $(this).children("div").hide();
             });
             $d.mousemove(function () {

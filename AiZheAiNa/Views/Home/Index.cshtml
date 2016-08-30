@@ -29,7 +29,7 @@
                 width: calc(1450*0.2px);
                 height: 500px;
                 position: absolute;
-                z-index: 2;
+                z-index: 3;
                 display: none;
             }
 
@@ -156,10 +156,10 @@
             }
             $d.css({ "left": $(window).width() * 0.15 + $d.parents("div").width(), "top": $d.parents("div").offset().top, "background-color": bcolor, "width": width }).html(index);
 
-            $d.parents("li").mousemove(function () {
+            $d.parent().mousemove(function () {
                 $(this).children("div").show();
             });
-            $d.parents("li").mouseout(function () {
+            $d.parent().mouseout(function () {
                 $(this).children("div").hide();
             });
             $d.mousemove(function () {
