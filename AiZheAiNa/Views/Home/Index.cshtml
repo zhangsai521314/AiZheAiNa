@@ -94,20 +94,28 @@
         }
 
 
-    #ulJingMeiDanPin li div {
-        width: 277px;
-        height: 300px;
+    .ulJingMeiDanPin {
+        display: none;
     }
 
-        #ulJingMeiDanPin li div img {
-            width: 130px;
-            height: 170px;
+        .ulJingMeiDanPin:first-child {
+            display: block;
         }
 
-        #ulJingMeiDanPin li div div {
+        .ulJingMeiDanPin li div {
             width: 277px;
-            height: 80px;
+            height: 300px;
         }
+
+            .ulJingMeiDanPin li div img {
+                width: 130px;
+                height: 170px;
+            }
+
+            .ulJingMeiDanPin li div div {
+                width: 277px;
+                height: 80px;
+            }
 
     #ulDaPeiFenLei {
         width: 300px;
@@ -145,55 +153,56 @@
                 height: 320px;
             }
 
-    #divLunBoImg {
+    #divLunBoImgWai {
         width: 80%;
         float: right;
         position: relative;
     }
 
-        #divLunBoImg a {
-            display: none;
+    #divLunBoImg a {
+        display: none;
+    }
+
+        #divLunBoImg a:first-child {
+            display: block;
         }
 
-            #divLunBoImg a:first-child {
-                display: block;
-            }
-
-    #divLunBoAnNiuIndivLunBoImg {
-        /*opacity: 0;*/
+    /*#divLunBoAnNiuIndivLunBoImg {
         width: 100%;
         position: absolute;
         left: 0px;
         top: 0px;
         z-index: 6;
         height: 100%;
+    }*/
+
+    #divLunBoAnNiuIndivLunBoImg div {
+        position: absolute;
+        top: 40%;
+        z-index: 6;
+        height: 70px;
+        width: 70px;
+        line-height: 70px;
+        font-size: 30px;
     }
 
-        #divLunBoAnNiuIndivLunBoImg div {
-            width: 80px;
-            margin-top: 15%;
-            height: 60px;
-            line-height: 60px;
-            font-size: 24px;
+        #divLunBoAnNiuIndivLunBoImg div:hover {
+            background-color: #b3b8ba;
+            cursor: pointer;
         }
 
-            #divLunBoAnNiuIndivLunBoImg div:hover {
-                background-color: #b3b8ba;
-                cursor: pointer;
-            }
+        #divLunBoAnNiuIndivLunBoImg div:first-child {
+            left: 10px;
+        }
 
-            #divLunBoAnNiuIndivLunBoImg div:first-child {
-                float: left;
-            }
-
-            #divLunBoAnNiuIndivLunBoImg div:last-child {
-                float: right;
-            }
+        #divLunBoAnNiuIndivLunBoImg div:last-child {
+            right: 10px;
+        }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script type="text/javascript">
+    var lunBoAnNiuClickJiShu = 0, lunBoJinMeiDanPinAnNiuShu = 0;
     $(function () {
-        var lunBoAnNiuClickJiShu = 0;
         //图片的大小超过容器后更改图片的大小为容器的大小
         TuPianZiShiYing("img");
         //搭配选项切换
@@ -240,11 +249,18 @@
         });
 
         //大图点击轮播
+        $("#divLunBoImg").mousemove(function () {
+            clearInterval(daTuZiDongLunBoID);
+        });
+        $("#divLunBoImg").mouseout(function () {
+            DaTuZiDongLunBo();
+        });
         $("#divLunBoAnNiuIndivLunBoImg div").each(function (index, item) {
             var $i = $(item);
             if (index == 0) {
                 //后退
                 $i.click(function () {
+                    clearInterval(daTuZiDongLunBoID);
                     if (lunBoAnNiuClickJiShu == 0) {
                         lunBoAnNiuClickJiShu = $("#divLunBoImg a").length - 1;
                     } else {
@@ -255,10 +271,12 @@
                     });
                     $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
                     TuPianZiShiYing("#divLunBoImg img");
+                    DaTuZiDongLunBo();
                 });
             } else {
                 //前进
                 $i.click(function () {
+                    clearInterval(daTuZiDongLunBoID);
                     if ($("#divLunBoImg a").length - 1 == lunBoAnNiuClickJiShu) {
                         lunBoAnNiuClickJiShu = 0;
                     } else {
@@ -269,24 +287,66 @@
                     });
                     $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
                     TuPianZiShiYing("#divLunBoImg img");
+                    DaTuZiDongLunBo();
                 });
-            }
-        });
-
-        //大图自动轮播和前进一样
-        setInterval(function () {
-            if ($("#divLunBoImg a").length - 1 == lunBoAnNiuClickJiShu) {
-                lunBoAnNiuClickJiShu = 0;
-            } else {
-                lunBoAnNiuClickJiShu++;
-            }
-            $("#divLunBoImg a").each(function (i, x) {
-                $(this).hide();
+            };
+            $(this).mousemove(function () {
+                $("#divLunBoImg").mousemove();
             });
-            $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
-            TuPianZiShiYing("#divLunBoImg img");
-        }, 1500);
+            $(this).mouseout(function () {
+                $("#divLunBoImg").mouseout();
+            })
+        });
+        DaTuZiDongLunBo();
 
+        //精美单品击轮播
+        $("#divJingMeiDanPinContent").mousemove(function () {
+            clearInterval(jingMeiDanPInZiDongLunBoID);
+        });
+        $("#divJingMeiDanPinContent").mouseout(function () {
+            JingMeiDanPinZiDongLunBo();
+        });
+        $("#divJingMeiDanPin ul li").each(function (index, item) {
+            var $i = $(item);
+            if (index == 0) {
+                //后退
+                $i.click(function () {
+                    clearInterval(jingMeiDanPInZiDongLunBoID);
+                    if (lunBoJinMeiDanPinAnNiuShu == 0) {
+                        lunBoJinMeiDanPinAnNiuShu = $("#divJingMeiDanPinContent ul").length - 1;
+                    } else {
+                        lunBoJinMeiDanPinAnNiuShu--;
+                    }
+                    $("#divJingMeiDanPinContent ul").each(function (i, x) {
+                        $(this).hide();
+                    });
+                    $("#divJingMeiDanPinContent ul").eq(lunBoJinMeiDanPinAnNiuShu).show();
+                    JingMeiDanPinZiDongLunBo();
+                });
+            } else {
+                //前进
+                $i.click(function () {
+                    clearInterval(jingMeiDanPInZiDongLunBoID);
+                    if ($("#divJingMeiDanPinContent ul").length - 1 == lunBoJinMeiDanPinAnNiuShu) {
+                        lunBoJinMeiDanPinAnNiuShu = 0;
+                    } else {
+                        lunBoJinMeiDanPinAnNiuShu++;
+                    }
+                    $("#divJingMeiDanPinContent ul").each(function (i, x) {
+                        $(this).hide();
+                    });
+                    $("#divJingMeiDanPinContent ul").eq(lunBoJinMeiDanPinAnNiuShu).show();
+                    JingMeiDanPinZiDongLunBo();
+                });
+            };
+            $(this).mousemove(function () {
+                $("#divJingMeiDanPinContent").mousemove();
+            });
+            $(this).mouseout(function () {
+                $("#divJingMeiDanPinContent").mouseout();
+            })
+        });
+        JingMeiDanPinZiDongLunBo();
     });
 
     function DaPeiShow(leiname) {
@@ -305,6 +365,40 @@
             $(item).width($(item).parents("div").width());
         });
     };
+
+    //大图自动轮播和前进一样
+    function DaTuZiDongLunBo() {
+        daTuZiDongLunBoID = setInterval(function () {
+            if ($("#divLunBoImg a").length - 1 == lunBoAnNiuClickJiShu) {
+                lunBoAnNiuClickJiShu = 0;
+            } else {
+                lunBoAnNiuClickJiShu++;
+            }
+            $("#divLunBoImg a").each(function (i, x) {
+                $(this).hide();
+            });
+            $("#divLunBoImg a").eq(lunBoAnNiuClickJiShu).show();
+            TuPianZiShiYing("#divLunBoImg img");
+        }, 3000);
+    };
+
+    //精美单品自动轮播和前进一样
+    function JingMeiDanPinZiDongLunBo() {
+        jingMeiDanPInZiDongLunBoID = setInterval(function () {
+            if ($("#divJingMeiDanPinContent ul").length - 1 == lunBoJinMeiDanPinAnNiuShu) {
+                lunBoJinMeiDanPinAnNiuShu = 0;
+            } else {
+                lunBoJinMeiDanPinAnNiuShu++;
+            }
+            $("#divJingMeiDanPinContent ul").each(function (i, x) {
+                $(this).hide();
+            });
+            $("#divJingMeiDanPinContent ul").eq(lunBoJinMeiDanPinAnNiuShu).show();
+        }, 4000);
+
+    };
+
+
 </script>
 <div style="width: 100%">
     <div style="width: 1450px;background-color:#cbc8c8;margin-left:15%;height:500px;">
@@ -370,11 +464,13 @@
                 </li>
             </ul>
         </div>
-        <div id="divLunBoImg" miaoshu="滚动大图">
-            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
-            <a><img src="http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"></a>
-            <a><img src="http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"></a>
-            <a><img src="http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"></a>
+        <div id="divLunBoImgWai">
+            <div id="divLunBoImg" miaoshu="滚动大图">
+                <a href="https://www.baidu.com/"><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
+                <a href="https://www.baidu.com/"><img src="http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"></a>
+                <a href="https://www.baidu.com/"><img src="http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"></a>
+                <a href="https://www.baidu.com/"><img src="http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"></a>
+            </div>
             <div id="divLunBoAnNiuIndivLunBoImg">
                 <div class="text-center">
                     <
@@ -386,7 +482,7 @@
         </div>
     </div>
 
-    <div style="width: 1450px;;margin:10px auto auto 15%;height:200px;">
+    <div style="width: 1450px;margin:10px auto auto 15%;height:200px;">
         <div id="divKuaiSuZhiDa6GePuTongLianJie" miaoshu="快速直达-6个普通链接小分类">
             <div>
                 <ul class="list-inline text-center">
@@ -443,9 +539,8 @@
             </ul>
         </div>
     </div>
-    @*border:1px solid #ff0000*@
-    <div style="width: 1450px;height:400px;margin:10px auto auto 15%;" class="text-center">
-        <ul class="list-inline" id="ulJingMeiDanPin">
+    <div id="divJingMeiDanPinContent" style="width: 1450px;height:400px;margin:10px auto auto 15%;" class="text-center">
+        <ul class="list-inline ulJingMeiDanPin">
             <li>
                 <a>
                     <div style="border-top:1px solid #ffd800">
@@ -517,6 +612,80 @@
                 </a>
             </li>
         </ul>
+
+        <ul class="list-inline ulJingMeiDanPin" style="display:none">
+            <li>
+                <a>
+                    <div style="border-top:1px solid #ffd800">
+                        <img src="http://i3.mifile.cn/a4/4c68c352-fbd3-452d-be90-7b47e4f6ce76" alt="1">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #b6ff00">
+                        <img src="http://i3.mifile.cn/a4/a8a21b9a-1b93-467d-baf3-1653976c4bdf" alt="2">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #ff0000">
+                        <img src="http://i3.mifile.cn/a4/0df5d106-ab01-4013-87de-a9793094245d" alt="3">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #00ff21">
+                        <img src="http://i3.mifile.cn/a4/0df5d106-ab01-4013-87de-a9793094245d" alt="4">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <div style="border-top:1px solid #4bef95">
+                        <img src="http://i3.mifile.cn/a4/40d24892-317d-4883-ad63-647f1b9e3cdf" alt="5">
+                        <div>
+                            买啊买啊
+                            <br />
+                            买啊买啊
+                            <br />
+                            1899元
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
     </div>
 
     <div style="width: 1450px;height:50px;margin:10px auto auto 15%;">
