@@ -4,34 +4,39 @@
     Layout = "~/Views/Shared/Template.cshtml";
 }
 <style type="text/css">
-    #divShuPaiFeiLeiDaoHang ul {
-        background-color: #5C544C;
-        color: #ffffff;
+    #divShuPaiFeiLeiDaoHang {
+        width: 20%;
+        float: left;
     }
-        /*#divShuPaiFeiLeiDaoHang ul li:not(:first-child)  {
+
+        #divShuPaiFeiLeiDaoHang ul {
+            background-color: #5C544C;
+            color: #ffffff;
+        }
+            /*#divShuPaiFeiLeiDaoHang ul li:not(:first-child)  {
             padding-top: 20px;
         }*/
-        #divShuPaiFeiLeiDaoHang ul li {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-
-            #divShuPaiFeiLeiDaoHang ul li:hover {
-                background-color: #ff6a00;
+            #divShuPaiFeiLeiDaoHang ul li {
+                padding-top: 15px;
+                padding-bottom: 15px;
             }
 
-            #divShuPaiFeiLeiDaoHang ul li a {
-                color: #ffffff;
-                text-decoration: none;
-            }
+                #divShuPaiFeiLeiDaoHang ul li:hover {
+                    background-color: #ff6a00;
+                }
 
-            #divShuPaiFeiLeiDaoHang ul li div {
-                width: calc(1450*0.2px);
-                height: 500px;
-                position: absolute;
-                z-index: 3;
-                display: none;
-            }
+                #divShuPaiFeiLeiDaoHang ul li a {
+                    color: #ffffff;
+                    text-decoration: none;
+                }
+
+                #divShuPaiFeiLeiDaoHang ul li div {
+                    width: calc(1450*0.2px);
+                    height: 500px;
+                    position: absolute;
+                    z-index: 20;
+                    display: none;
+                }
 
     ul li:hover {
         cursor: pointer;
@@ -56,24 +61,36 @@
             height: 200px;
         }
 
-    #divKuaiSuZhiDa6GePuTongLianJie li {
-        height: 90px;
-        width: 30%;
-        padding: 15px 0 15px 0;
-        border: 1px solid #b6ff00;
+    #divKuaiSuZhiDa6GePuTongLianJie {
+        width: 20%;
+        float: left;
+        border: 1px solid #ff6a00;
+        background-color: rosybrown;
     }
 
-    #divJingMeiDanPin ul li {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        padding-top: 4px;
-        border: 1px solid #bfbebe;
+        #divKuaiSuZhiDa6GePuTongLianJie li {
+            height: 90px;
+            width: 30%;
+            padding: 15px 0 15px 0;
+            border: 1px solid #b6ff00;
+        }
+
+    #divJingMeiDanPin {
+        width: 5%;
+        float: right;
     }
 
-    #divJingMeiDanPin li:hover {
-        background-color: #ff6a00;
-    }
+        #divJingMeiDanPin ul li {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding-top: 4px;
+            border: 1px solid #bfbebe;
+        }
+
+        #divJingMeiDanPin li:hover {
+            background-color: #ff6a00;
+        }
 
     #ulJingMeiDanPin li div {
         width: 277px;
@@ -112,6 +129,51 @@
             width: 230px;
             height: 320px;
         }
+
+    #divLunBoImg {
+        width: 80%;
+        float: right;
+        position: relative;
+    }
+
+        #divLunBoImg a {
+            display: none;
+        }
+
+            #divLunBoImg a:first-child {
+                display: block;
+            }
+
+    #divLunBoAnNiuIndivLunBoImg {
+        /*opacity: 0;*/
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 6;
+        height: 100%;
+    }
+
+        #divLunBoAnNiuIndivLunBoImg div {
+            width: 40px;
+            margin-top: 15%;
+            height: 60px;
+            line-height: 60px;
+            font-size: 24px;
+        }
+
+            #divLunBoAnNiuIndivLunBoImg div:hover {
+                background-color: #b3b8ba;
+                cursor:pointer;
+            }
+
+            #divLunBoAnNiuIndivLunBoImg div:first-child {
+                float: right;
+            }
+
+            #divLunBoAnNiuIndivLunBoImg div:last-child {
+                float: left;
+            }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script type="text/javascript">
@@ -183,7 +245,7 @@
 </script>
 <div style="width: 100%">
     <div style="width: 1450px;background-color:#cbc8c8;margin-left:15%;height:500px;">
-        <div id="divShuPaiFeiLeiDaoHang" style="width:20%;float:left;" miaoshu="竖排分类导航">
+        <div id="divShuPaiFeiLeiDaoHang" miaoshu="竖排分类导航">
             <ul class="list-unstyled text-center">
                 <li>
                     <a>手机电话卡</a>
@@ -245,13 +307,24 @@
                 </li>
             </ul>
         </div>
-        <div id="divLunBoImg" style="width:80%;float:right;" miaoshu="滚动大图">
+        <div id="divLunBoImg" miaoshu="滚动大图">
             <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
+            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
+            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
+            <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
+            <div id="divLunBoAnNiuIndivLunBoImg">
+                <div class="text-center">
+                    <
+                </div>
+                <div class="text-center">
+                    >
+                </div>
+            </div>
         </div>
     </div>
 
     <div style="width: 1450px;;margin:10px auto auto 15%;height:200px;">
-        <div id="divKuaiSuZhiDa6GePuTongLianJie" style="width:20%;float:left;border:1px solid #ff6a00;background-color:rosybrown;" miaoshu="快速直达-6个普通链接小分类">
+        <div id="divKuaiSuZhiDa6GePuTongLianJie" miaoshu="快速直达-6个普通链接小分类">
             <div>
                 <ul class="list-inline text-center">
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
@@ -293,7 +366,7 @@
         <div style="float:left;font-size:24px">
             精美单品
         </div>
-        <div style="width:5%;float:right;" id="divJingMeiDanPin">
+        <div id="divJingMeiDanPin">
             <p />
             <p />
             <p />
