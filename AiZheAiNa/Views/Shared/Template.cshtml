@@ -18,7 +18,7 @@
             padding: 0px;
         }
 
-        #divContentIndivShuPaiTouBuDaoHang ul li div {
+        #divContentIndivHengPaiTouBuDaoHang2 ul li div {
             width: calc(1450*0.2px);
             height: 150px;
             position: absolute;
@@ -26,18 +26,18 @@
             display: none;
         }
 
-        #divContentIndivShuPaiTouBuDaoHang ul li {
+        #divContentIndivHengPaiTouBuDaoHang2 ul li {
             padding: 43px 4.6px 43.5px 4.6px;
             margin-right: -2px;
         }
 
-        #divHengPaiTouBuDaoHang div ul li {
+        #divHengPaiTouBuDaoHang1 div ul li {
             padding: 10px 2px 9.5px 2px;
         }
 
-            #divHengPaiTouBuDaoHang div ul li div {
+            #divHengPaiTouBuDaoHang1 div ul li div {
                 position: absolute;
-                z-index: 2;
+                z-index: 20;
                 display: none;
                 height: 100px;
             }
@@ -72,7 +72,7 @@
                         </li>
                     </ul>
                 </div>
-                <div style="float:right;width: 60%;" id="divHengPaiTouBuDaoHang" class="divHengPaiTouBuDaoHang">
+                <div style="float:right;width: 60%;" id="divHengPaiTouBuDaoHang1" class="divHengPaiTouBuDaoHang1">
                     <div>
                         <ul class="list-inline text-center" style="margin:0px;padding:0px">
                             <li>
@@ -110,11 +110,11 @@
             </div>
         </div>
         <div style="width: 100%;background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
-            <div id="divShuPaiTouBuDaoHang" style="width: 1450px;margin-left:15%;">
+            <div id="divHengPaiTouBuDaoHang2" style="width: 1450px;margin-left:15%;">
                 <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
                     log
                 </div>
-                <div id="divContentIndivShuPaiTouBuDaoHang" style="width: 60%;float:left;" class="divContentIndivShuPaiTouBuDaoHang">
+                <div id="divContentIndivHengPaiTouBuDaoHang2" style="width: 60%;float:left;" class="divContentIndivHengPaiTouBuDaoHang2">
                     <ul class="list-inline text-center" style="padding:0px;margin:0px">
                         <li>
                             <a>全部商品分类</a>
@@ -210,14 +210,14 @@
             }
         });
 
-        $("#divContentIndivShuPaiTouBuDaoHang ul li div").each(function (index, item) {
+        //第一个横排导航内容的显示与隐藏
+        $("#divHengPaiTouBuDaoHang1 div ul li div").each(function (index, item) {
             var $d = $(item);
-            var bcolor = "#00ff21", width = "300px";
+            var bcolor = "#00ff21";
             if (index % 2 == 0) {
                 bcolor = "#f19a9a";
-                width = "400px";
             }
-            $d.css({ "left": "0px", "top": $d.parents(".divContentIndivShuPaiTouBuDaoHang").parent().offset().top + $d.parents(".divContentIndivShuPaiTouBuDaoHang").height(), "background-color": bcolor, "width": $(window).width() }).html(index);
+            $d.css({ "left": $d.parent().offset().left, "top": $d.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + $d.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": $d.parent().width() + 4.5 }).html(index);
 
             $d.parent().mousemove(function () {
                 $(this).children("div").show();
@@ -233,13 +233,15 @@
             });
         });
 
-        $("#divHengPaiTouBuDaoHang div ul li div").each(function (index, item) {
+        //第二个横排导航内容的显示与隐藏
+        $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function (index, item) {
             var $d = $(item);
-            var bcolor = "#00ff21";
+            var bcolor = "#00ff21", width = "300px";
             if (index % 2 == 0) {
                 bcolor = "#f19a9a";
+                width = "400px";
             }
-            $d.css({ "left": $d.parent().offset().left, "top": $d.parents(".divHengPaiTouBuDaoHang").parent().offset().top + $d.parents(".divHengPaiTouBuDaoHang").height(), "background-color": bcolor, "width": $d.parent().width() + 4.5 }).html(index);
+            $d.css({ "left": "0px", "top": $d.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + $d.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() }).html(index);
 
             $d.parent().mousemove(function () {
                 $(this).children("div").show();

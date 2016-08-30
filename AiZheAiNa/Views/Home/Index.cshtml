@@ -164,7 +164,7 @@
 
             #divLunBoAnNiuIndivLunBoImg div:hover {
                 background-color: #b3b8ba;
-                cursor:pointer;
+                cursor: pointer;
             }
 
             #divLunBoAnNiuIndivLunBoImg div:first-child {
@@ -188,6 +188,8 @@
                 $(item).width($(item).parent().width());
             }
         });
+
+       //搭配选项切换
         $("#ulDaPeiFenLei li").each(function (index, item) {
             $(item).hover(function () {
                 switch ($(item).html()) {
@@ -209,6 +211,7 @@
             DaPeiShow("erJi");
         });
 
+        //竖排导航每个li中的内容出现和隐藏
         $("#divShuPaiFeiLeiDaoHang ul li div").each(function (index, item) {
             var $d = $(item);
             var bcolor = "#00ff21", width = "300px";
@@ -314,10 +317,10 @@
             <a><img src="http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"></a>
             <div id="divLunBoAnNiuIndivLunBoImg">
                 <div class="text-center">
-                    <
+                    >
                 </div>
                 <div class="text-center">
-                    >
+                    <
                 </div>
             </div>
         </div>
