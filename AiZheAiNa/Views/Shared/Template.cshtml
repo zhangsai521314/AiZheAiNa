@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width" />
     <meta property="qc:admins" content="1555204475611205116163757" />@*QQ登录验证标签*@
     <meta property="wb:webmaster" content="2036a8d102589b80" />@*新浪微博登录验证标签*@
-    <title>Template</title>
     <link href="~/Scripts/bootstrap/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
@@ -42,6 +41,8 @@
                 height: 100px;
             }
     </style>
+    <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
+    <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 </head>
 <body>
     <div>
@@ -191,8 +192,6 @@
             底部啊底部
         </div>
     </div>
-    <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
-    <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script type="text/javascript">
         //根据用户登录判断模板数据样式
         $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
