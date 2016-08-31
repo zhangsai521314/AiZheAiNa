@@ -10,6 +10,7 @@
             isOpenZiDongLunBo: true,//是否开启自动轮播
             ZiDongLunBoMiao: 1,//每多少秒切换图片
             LunBoFangShi: "",//轮播的方式（图片的载入方式）
+            zhiDingLunShowBoAnNiuContainer: ""//指定在此select选项中放置轮播按钮,示例：#aa
         }, options);
         //数据为空则返回
         try {
