@@ -1,8 +1,4 @@
-﻿.ZS-text-center {
-    text-align: center;
-}
-
-.ZS-list-inline {
+﻿.ZS-list-inline {
     padding-left: 0;
     margin-left: -5px;
     list-style: none;
@@ -31,24 +27,33 @@
     position: absolute;
     top: 40%;
     z-index: 6;
-    height: 70px;
-    width: 70px;
-    line-height: 70px;
-    font-size: 30px;
+    width: 50px;
+    height: 80px;
 }
 
-    .divZSLunBoAnNiuIndivLunBoImg div:hover {
-        background-color: #b3b8ba;
+    .divZSLunBoAnNiuIndivLunBoImg div:first-child:hover {
+        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat 8px 40%;
+        cursor: pointer;
+    }
+
+    .divZSLunBoAnNiuIndivLunBoImg div:last-child:hover {
+        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat -41px 50%;
         cursor: pointer;
     }
 
     .divZSLunBoAnNiuIndivLunBoImg div:first-child {
         left: 10px;
+        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat -84px 40%;
     }
 
     .divZSLunBoAnNiuIndivLunBoImg div:last-child {
         right: 10px;
+        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat -115px 50%;
     }
+
+
+
+
 
 .divZSLunBoBiaoShiIndivLunBoImg {
     position: absolute;

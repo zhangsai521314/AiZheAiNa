@@ -73,7 +73,7 @@
         }
         //显示轮播按钮
         if (op.isLunShowBoAnNiu) {
-            op.container.append($("<div class='divZSLunBoAnNiuIndivLunBoImg' id='" + divZSLunBoAnNiuIndivLunBoImg + "'><div class='ZS-text-center'><</div><div class='ZS-text-center'>></div></div>"));
+            op.container.append($("<div class='divZSLunBoAnNiuIndivLunBoImg' id='" + divZSLunBoAnNiuIndivLunBoImg + "'><div></div><div></div></div>"));
             //轮播按钮点击及鼠标离开自动轮播执行方式
             $(xdivZSLunBoAnNiuIndivLunBoImg + " div").each(function (index, item) {
                 var $i = $(item);
