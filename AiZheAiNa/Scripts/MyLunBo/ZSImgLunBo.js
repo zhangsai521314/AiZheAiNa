@@ -37,7 +37,20 @@
             }
             $(xdivZSLunBoImg).append($("<a href='" + item.href + "'><img src='" + item.src + "'></a>"));
         });
-        //轮播标识加入到dom中
+        //开启自动轮播
+        if (op.isOpenZiDongLunBo) {
+            SwitchZiDongLunBo();
+            //开启自动轮播时img容器的mousemove和mouseout的定义
+            //img容器的mousemove，轮播按钮和轮播标识为mousemove等于img容器的mousemove
+            $(xdivZSLunBoImg).mousemove(function () {
+                clearInterval(daTuZiDongLunBoID);
+            });
+            //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
+            $(xdivZSLunBoImg).mouseout(function () {
+                SwitchZiDongLunBo()
+            });
+        };
+        //显示轮播标识
         if (op.isShowLunBoBiaoShi) {
             op.container.append($("<div class='divZSLunBoBiaoShiIndivLunBoImg' id='" + divZSLunBoBiaoShiIndivLunBoImg + "'><ul class='ZS-list-inline'></ul></div>"));
             GenJuImgShuShengChengBiaoShi(xdivZSLunBoImg + " a img", xdivZSLunBoBiaoShiIndivLunBoImg + " ul");
@@ -58,20 +71,9 @@
                 });
             });
         }
-        //轮播按钮加入到dom中
+        //显示轮播按钮
         if (op.isLunShowBoAnNiu) {
             op.container.append($("<div class='divZSLunBoAnNiuIndivLunBoImg' id='" + divZSLunBoAnNiuIndivLunBoImg + "'><div class='ZS-text-center'><</div><div class='ZS-text-center'>></div></div>"));
-            //开启自动轮播时img容器的mousemove和mouseout的定义
-            if (op.isOpenZiDongLunBo) {
-                //img容器的mousemove，轮播按钮和轮播标识为mousemove等于img容器的mousemove
-                $(xdivZSLunBoImg).mousemove(function () {
-                    clearInterval(daTuZiDongLunBoID);
-                });
-                //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
-                $(xdivZSLunBoImg).mouseout(function () {
-                    SwitchZiDongLunBo()
-                });
-            };
             //轮播按钮点击及鼠标离开自动轮播执行方式
             $(xdivZSLunBoAnNiuIndivLunBoImg + " div").each(function (index, item) {
                 var $i = $(item);
@@ -97,10 +99,6 @@
                 };
             });
         }
-        //自动轮播的方式，需根据传入的轮播方式选择
-        if (op.isOpenZiDongLunBo) {
-            SwitchZiDongLunBo();
-        };
 
         return daTuZiDongLunBoID;
 
