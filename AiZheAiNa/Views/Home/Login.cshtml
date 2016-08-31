@@ -33,36 +33,113 @@
         top: 210px;
         left: 70%;
     }
+
+
+    .ZS-text-center {
+        text-align: center;
+    }
+
+    .ZS-list-inline {
+        padding-left: 0;
+        margin-left: -5px;
+        list-style: none;
+    }
+
+        .ZS-list-inline > li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+
+    .divZSLunBoImg a {
+        display: inline-block;
+        width: 100%;
+        height: 500px;
+        display: none;
+    }
+
+        .divZSLunBoImg a:first-child {
+            display: block;
+        }
+
+
+    .divZSLunBoAnNiuIndivLunBoImg div {
+        position: absolute;
+        top: 40%;
+        z-index: 6;
+        height: 70px;
+        width: 70px;
+        line-height: 70px;
+        font-size: 30px;
+    }
+
+        .divZSLunBoAnNiuIndivLunBoImg div:hover {
+            background-color: #b3b8ba;
+            cursor: pointer;
+        }
+
+        .divZSLunBoAnNiuIndivLunBoImg div:first-child {
+            left: 10px;
+        }
+
+        .divZSLunBoAnNiuIndivLunBoImg div:last-child {
+            right: 10px;
+        }
+
+    .divZSLunBoBiaoShiIndivLunBoImg {
+        position: absolute;
+        bottom: 10px;
+        z-index: 6;
+        line-height: 30px;
+        right: 100px;
+        font-size: 20px;
+        cursor: pointer;
+    }
 </style>
 <div class="divLoginWai">
     @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
     {
-        <div class="divLogin">
-            <ul class="list-unstyled text-center ulLogin">
-                <li>
-                    账户：<input id="input_LoginName" name="LoginName" type="text" style="width:200px" placeholder="请输入您的账号">
-                </li>
-                <li>
-                    密码：<input id="input_PassWord" name="PassWord" type="password" style="width:200px" placeholder="请输入您的密码">
-                </li>
-                <li>
-                    <input type="checkbox">请记住我
-                </li>
-                <li>
-                    <button style="width:300px" class="btn btn-default" type="submit">登录</button>
-                </li>
-            </ul>
-            <div>
-                <span>其他方式登录:</span><a href="/Home/QQLogin"><img src="~/Content/Images/qq/qqQiEr.png" /></a>
-            </div>
+    <div class="divLogin">
+        <ul class="list-unstyled text-center ulLogin">
+            <li>
+                账户：<input id="input_LoginName" name="LoginName" type="text" style="width:200px" placeholder="请输入您的账号">
+            </li>
+            <li>
+                密码：<input id="input_PassWord" name="PassWord" type="password" style="width:200px" placeholder="请输入您的密码">
+            </li>
+            <li>
+                <input type="checkbox">请记住我
+            </li>
+            <li>
+                <button style="width:300px" class="btn btn-default" type="submit">登录</button>
+            </li>
+        </ul>
+        <div>
+            <span>其他方式登录:</span><a href="/Home/QQLogin"><img src="~/Content/Images/qq/qqQiEr.png" /></a>
         </div>
+    </div>
     }
 </div>
+<div id="ddd" style="height:500px;width:800px">
+
+</div>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
+<script src="~/Scripts/MyLunBo/ZSImgLunBo.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#divpageDi").css("margin-top", "0px");
     })
+    var s = $("#ddd").ZSImgLunBo({
+        jsonData: '{"data":[{"href":"","src":"http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"},{"href":"","src":"http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"},{"href":"","src":"http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"}]}'
+    });
+    TuPianZiShiYing(".divZSLunBoImg img");
+    function TuPianZiShiYing(select) {
+        $(select).each(function (index, item) {
+            $(item).height($(item).parents("div").height());
+            $(item).width($(item).parents("div").width());
+        });
+    };
 </script>
 
 

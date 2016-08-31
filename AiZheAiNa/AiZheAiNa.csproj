@@ -242,7 +242,8 @@
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.css" />
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.js" />
     <Content Include="Scripts\jq\jquery-2.1.4\jquery.js" />
-    <Content Include="Scripts\jq\jquery-2.1.4\jquery.min.js" />
+    <Content Include="Scripts\MyLunBo\jquery2.4.min.js" />
+    <Content Include="Scripts\MyLunBo\ZSImgLunBo.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
