@@ -58,6 +58,7 @@
             $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").each(function () {
 
                 $(this).mouseout(function () {
+                    ZSlunBoAnNiuClickJiShu = $(this).index();
                     $(xdivZSLunBoImg).mouseout();
                 })
 
@@ -68,7 +69,8 @@
                     });
                     $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").eq($(this).index()).find("span").removeClass("HollowCircle").addClass("disc");
                     //图片出现的方式，需根据轮播方式选择
-                    SwitchImgShowFangShi($(this).index());
+                    ZSlunBoAnNiuClickJiShu = $(this).index();
+                    SwitchImgShowFangShi();
                 });
             });
         }
@@ -122,7 +124,7 @@
                 return false;
             }
             //图片出现的方式，需根据轮播方式选择
-            SwitchImgShowFangShi(ZSlunBoAnNiuClickJiShu);
+            SwitchImgShowFangShi();
             //轮播标识的切换
             if (op.isShowLunBoBiaoShi) {
                 $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").each(function () {
@@ -138,16 +140,16 @@
         function ZiDongLunBoDefault() {
             daTuZiDongLunBoID = setInterval(function () {
                 LunBoAnNiuClick("up");
-                ClickLunBoAnNiuShowImgDefault(ZSlunBoAnNiuClickJiShu);
+                ClickLunBoAnNiuShowImgDefault();
             }, op.ZiDongLunBoMiao);
         };
 
         //默认点击轮播按钮图片怎么出现
-        function ClickLunBoAnNiuShowImgDefault(index) {
+        function ClickLunBoAnNiuShowImgDefault() {
             $(xdivZSLunBoImg + " a").each(function () {
                 $(this).hide();
             });
-            $(xdivZSLunBoImg + " a").eq(index).show();
+            $(xdivZSLunBoImg + " a").eq(ZSlunBoAnNiuClickJiShu).show();
         };
 
         //根据轮播方式选择自动轮播的方式
@@ -160,12 +162,12 @@
             }
         };
         //根据轮播方式选择图片的出现方式
-        function SwitchImgShowFangShi(index) {
+        function SwitchImgShowFangShi() {
             switch (op.LunBoFangShi.toLowerCase()) {
                 case "1":
                     break;
                 default:
-                    ClickLunBoAnNiuShowImgDefault(index);
+                    ClickLunBoAnNiuShowImgDefault();
             }
         };
 
