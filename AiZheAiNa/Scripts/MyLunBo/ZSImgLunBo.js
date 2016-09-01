@@ -9,7 +9,7 @@
             isLunShowBoAnNiu: true,//是否显示轮播按钮       
             isShowLunBoBiaoShi: true,//是否显示轮播标识       
             isOpenZiDongLunBo: true,//是否开启自动轮播
-            ZiDongLunBoMiao: 1,//每多少秒切换图片
+            ZiDongLunBoMiao: 3,//每多少秒切换图片
             LunBoFangShi: "",//轮播的方式（图片的载入方式）
         }, options);
         //数据为空则返回
