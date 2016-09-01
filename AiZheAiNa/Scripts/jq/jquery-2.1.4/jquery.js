@@ -9195,6 +9195,16 @@ jQuery.noConflict = function( deep ) {
 	return jQuery;
 };
 
+//张赛扩展
+jQuery.ZSIsNull = function (str) {
+    if (str == null || typeof (str) == "undefined" || $.trim(str) == "" || $.trim(str).length <= 0) {
+        return true;
+    } else {
+        return false;
+    }
+};
+//张赛扩展
+
 // Expose jQuery and $ identifiers, even in AMD
 // (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
