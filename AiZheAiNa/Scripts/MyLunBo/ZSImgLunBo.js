@@ -1,4 +1,5 @@
 ﻿//张赛图片轮播，2016.8.31
+//本插件使用jQuery v2.1.4，无需引用css文件
 //返回自动轮播的计时id
 (function ($, window) {
     $.fn.ZSImgLunBo = function (options) {
@@ -20,6 +21,14 @@
             }
         } catch (e) {
             return false;
+        }
+        //加载css
+        if (!isInclude("ZSImgLunBo.css")) {
+            var oCss = document.createElement("link");
+            oCss.setAttribute("rel", "stylesheet");
+            oCss.setAttribute("type", "text/css");
+            oCss.setAttribute("href", getRealPath() + "/Scripts/MyLunBo/ZSImgLunBo.css");
+            document.getElementsByTagName("head")[0].appendChild(oCss);
         }
         op.ZiDongLunBoMiao = op.ZiDongLunBoMiao * 1000;
         //设置容器为相对定位
@@ -192,6 +201,65 @@
                     $(appendToSelect).append($("<li><span class='HollowCircle'></span></li>"));
                 }
             });
+        };
+
+        //判断页面是否引用了css或js
+        function isInclude(name) {
+            var js = /js$/i.test(name);
+            var es = document.getElementsByTagName(js ? 'script' : 'link');
+            var isbool = false;
+            for (var i = 0; i < es.length; i++) {
+                if (es[i][js ? 'src' : 'href'].indexOf(name) != -1) {
+                    isbool = true;
+                    break;
+                }
+            }
+            if (isbool) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //获取加载过文件(js,css)的路径
+        function getMyPath(name) {
+            var kuZhanMing = name.split(".")[name.split(".").length - 1];
+            if (kuZhanMing == "js") {
+                scriptArr = document.getElementsByTagName('script');
+            } else if (kuZhanMing == "css") {
+                scriptArr = document.getElementsByTagName('link');
+            } else {
+                return "";
+            }
+            for (var i = 0; i < scriptArr.length; i++) {
+                if (kuZhanMing == "js") {
+                    if (scriptArr[i].src.split("/")[scriptArr[i].src.split('/').length - 1] == name) {
+                        return scriptArr[i].src;
+                        break;
+                    }
+                } else {
+                    if (scriptArr[i].href.split("/")[scriptArr[i].href.split('/').length - 1] == name) {
+                        return scriptArr[i].href;
+                        break;
+                    }
+                }
+            }
+            return "";
+        }
+
+        //获取web根路径
+        function getRealPath() {
+            //获取当前网址，如： http://www.aizheaina.com/或http://www.aizheaina.com/Home/Login
+            var curWwwPath = window.document.location.href;
+            //获取主机地址之后的目录，如/Home/Login
+            var pathName = window.document.location.pathname;
+            if (pathName == "/") {
+                //现在获取到的是http://www.aizheaina.com/,所以直接return
+                return curWwwPath.substring(0, curWwwPath.length - 1);
+            }
+            var pos = curWwwPath.indexOf(pathName);
+            var localhostPaht = curWwwPath.substring(0, pos);
+            return localhostPaht;
         };
     };
 })(jQuery, window);
