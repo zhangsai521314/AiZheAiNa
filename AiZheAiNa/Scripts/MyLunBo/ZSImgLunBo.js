@@ -11,7 +11,6 @@
             isOpenZiDongLunBo: true,//是否开启自动轮播
             ZiDongLunBoMiao: 1,//每多少秒切换图片
             LunBoFangShi: "",//轮播的方式（图片的载入方式）
-            zhiDingLunShowBoAnNiuContainer: ""//指定在此select选项中放置轮播按钮,示例：#aa
         }, options);
         //数据为空则返回
         try {
@@ -143,8 +142,6 @@
             }
         };
 
-        //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
-
         //默认自动轮播方式
         function ZiDongLunBoDefault() {
             daTuZiDongLunBoID = setInterval(function () {
@@ -152,7 +149,6 @@
                 ClickLunBoAnNiuShowImgDefault();
             }, op.ZiDongLunBoMiao);
         };
-
         //默认点击轮播按钮图片怎么出现
         function ClickLunBoAnNiuShowImgDefault() {
             $(xdivZSLunBoImg + " a").each(function () {
@@ -160,6 +156,9 @@
             });
             $(xdivZSLunBoImg + " a").eq(ZSlunBoAnNiuClickJiShu).show();
         };
+        //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
+
+
 
         //根据轮播方式选择自动轮播的方式
         function SwitchZiDongLunBo() {
@@ -179,6 +178,9 @@
                     ClickLunBoAnNiuShowImgDefault();
             }
         };
+
+
+
 
 
         //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
