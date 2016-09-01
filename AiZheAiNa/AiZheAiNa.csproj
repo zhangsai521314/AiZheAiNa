@@ -246,7 +246,7 @@
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.js" />
     <Content Include="Scripts\jq\jquery-2.1.4\jquery.js" />
     <Content Include="Scripts\MyLunBo\icon-slides.png" />
-    <Content Include="Scripts\MyLunBo\jquery2.4.min.js" />
+    <Content Include="Scripts\MyLunBo\jquery-2.4.js" />
     <Content Include="Scripts\MyLunBo\ZSImgLunBo.css" />
     <Content Include="Scripts\MyLunBo\ZSImgLunBo.js" />
     <Content Include="Web.config" />

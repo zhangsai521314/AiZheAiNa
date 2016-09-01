@@ -1,5 +1,5 @@
 ﻿//张赛图片轮播，2016.8.31
-//本插件使用jQuery v2.1.4，无需引用css文件
+//本插件使用jQuery v2.1.4，为JQ增加一个ZSISNull方法，无需引用css文件
 //返回自动轮播的计时id
 (function ($, window) {
     $.fn.ZSImgLunBo = function (options) {
@@ -42,7 +42,7 @@
         //图片数据加入到img容器中
         $.each(jsonData.data, function (index, item) {
             //加入图片数据
-            if (item.href == "") {
+            if ($.ZSIsNull(item.href)) {
                 item.href = "javascript:void(0)";
             }
             $(xdivZSLunBoImg).append($("<a href='" + item.href + "'><img src='" + item.src + "'></a>"));
