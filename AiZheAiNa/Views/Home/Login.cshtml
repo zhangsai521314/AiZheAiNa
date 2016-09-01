@@ -62,33 +62,12 @@
         </div>
     }
 </div>
-<div id="ddd" style="height:500px;width:800px;">
-
-</div>
-<div id="sss" style="height: 500px; width: 800px">
-
-</div>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script src="~/Scripts/MyLunBo/ZSImgLunBo.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#divpageDi").css("margin-top", "0px");
     })
-    var s = $("#ddd").ZSImgLunBo({
-        jsonData: '{"data":[{"href":"","src":"http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"},{"href":"","src":"http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"},{"href":"","src":"http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"}]}'
-    });
-    var d = $("#sss").ZSImgLunBo({
-        jsonData: '{"data":[{"href":"","src":"http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"},{"href":"","src":"http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"},{"href":"","src":"http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"}]}',
-        ZiDongLunBoMiao: 2,
-        isOpenZiDongLunBo: false
-    });
-    TuPianZiShiYing(".divZSLunBoImg img");
-    function TuPianZiShiYing(select) {
-        $(select).each(function (index, item) {
-            $(item).height($(item).parents("div").height());
-            $(item).width($(item).parents("div").width());
-        });
-    };
 </script>
 
 
