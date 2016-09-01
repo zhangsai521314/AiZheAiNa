@@ -31,23 +31,23 @@
 }
 
     .divZSLunBoAnNiuIndivLunBoImg div:first-child:hover {
-        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat 8px 40%;
+        background: url(../../Scripts/MyLunBo/icon-slides.png) no-repeat 8px 40%;
         cursor: pointer;
     }
 
     .divZSLunBoAnNiuIndivLunBoImg div:last-child:hover {
-        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat -41px 50%;
+        background: url(../../Scripts/MyLunBo/icon-slides.png) no-repeat -41px 50%;
         cursor: pointer;
     }
 
     .divZSLunBoAnNiuIndivLunBoImg div:first-child {
         left: 10px;
-        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat -84px 40%;
+        background: url(../../Scripts/MyLunBo/icon-slides.png) no-repeat -84px 40%;
     }
 
     .divZSLunBoAnNiuIndivLunBoImg div:last-child {
         right: 10px;
-        background: url(http://172.19.234.1:8020/Scripts/MyLunBo/icon-slides.png) no-repeat -115px 50%;
+        background: url(../../Scripts/MyLunBo/icon-slides.png) no-repeat -115px 50%;
     }
 
 
