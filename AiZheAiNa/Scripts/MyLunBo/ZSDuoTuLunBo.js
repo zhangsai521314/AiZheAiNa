@@ -2,7 +2,7 @@
 //本插件使用jQuery v2.1.4，为JQ增加一个ZSISNull方法，适合图片一张一张的轮播。无需引用css文件
 //返回自动轮播的计时id
 (function ($, window) {
-    $.fn.ZSImgLunBo = function (options) {
+    $.fn.ZSDuoTuLunBo = function (options) {
         var op = $.extend({
             container: $(this),//生成内容的容器（保证原内容为空，否则清除）
             jsonData: "",//轮播的数据图片路径及点击图片的跳转地址。格式 {"data":[{"href":"","src":""},{"href":"","src":""},{"href":"","src":""}]}

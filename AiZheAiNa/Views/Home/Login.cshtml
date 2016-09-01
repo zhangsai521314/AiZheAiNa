@@ -62,12 +62,74 @@
         </div>
     }
 </div>
+<div style="width:1200px;height:100px;">
+    <div style="width:1750px;height:100px">
+        <ul class="list-inline" id="s">
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160607142129Bf1a2941ce86a4b6dab7c5ef978f388d6">
+                    <img title="JULONG Steel Pipe" alt="JULONG Steel Pipe" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160607142055I426f57b8e84749199283cdde212a603f">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160322170256Bb0e3a910b9e34af19d522974b81cd4ee">
+                    <img title="PCK" alt="PCK" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160322161236Ide437f3aff4d41138be132cb87c52955">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160328131833B140b7d8ba445434e8df3bdcb4203c918">
+                    <img title="xinyegang" alt="xinyegang" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160328131715Id2968c393b43452bbdeffabd39496ffa">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160328181329Bc0fcb7aed89b42f191ebf400a0daa128">
+                    <img title="YouFa" alt="YouFa" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160328181309If4100bb3d0e34988a2e5335c2f382151">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160329185423B08c1191d8d224962b009ce71a3d6afc7">
+                    <img title="Pearl River" alt="Pearl River" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160329185418I5fdef8d404ae44cd97abd96eff5cdabf">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160330180158Be8b62471788246eaa8051eceff50e2be">
+                    <img title="ShenHua" alt="ShenHua" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160331163203Ba02eecc8eed14316939b3553eeff9a80">
+                    <img title="ShangShang" alt="ShangShang" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160331163108I8f3d3501f3014169b358579a905d658f">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160331165543B33cade3d5b9b475fb166734031013c67">
+                    <img title="Jun Cheng" alt="Jun Cheng" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160331165525Iab9e26fe3a5c411ea3a8c04566d79859">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160401160824Bf5d1bf2dcc6743209e4e9fd827ba2da6">
+                    <img title="Lontrin Steel Pipe" alt="Lontrin Steel Pipe" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160401160749I2e2d58a67a0d4111a8ebbaaf38c1dde9">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160503101352Be6bb0891aa7b4498b4ef5a3d1f0d78a1">
+                    <img title="Beisteel Pipe" alt="Beisteel Pipe" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160503092612I4e220ccb0d674c48b8b969c266eb1350">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script src="~/Scripts/MyLunBo/ZSImgLunBo.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#divpageDi").css("margin-top", "0px");
     })
+
+    setInterval(function () {
+        var $li = $("#s li:first");
+        $("#s li:first").remove();
+        $("#s").append($li);
+    }, 1000);
 </script>
 
 
