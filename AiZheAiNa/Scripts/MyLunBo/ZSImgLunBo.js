@@ -64,9 +64,9 @@
                 $(this).mousemove(function () {
                     $(xdivZSLunBoImg).mousemove();
                     $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").each(function () {
-                        $(this).html("○");
+                        $(this).find("span").removeClass("disc").addClass("HollowCircle");
                     });
-                    $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").eq($(this).index()).html("●");
+                    $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").eq($(this).index()).find("span").removeClass("HollowCircle").addClass("disc");
                     //图片出现的方式，需根据轮播方式选择
                     SwitchImgShowFangShi($(this).index());
                 });
@@ -126,9 +126,9 @@
             //轮播标识的切换
             if (op.isShowLunBoBiaoShi) {
                 $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").each(function () {
-                    $(this).html("○");
+                    $(this).find("span").removeClass("disc").addClass("HollowCircle");
                 });
-                $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").eq(ZSlunBoAnNiuClickJiShu).html("●");
+                $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").eq(ZSlunBoAnNiuClickJiShu).find("span").removeClass("HollowCircle").addClass("disc");
             }
         };
 
@@ -185,9 +185,9 @@
         function GenJuImgShuShengChengBiaoShi(select, appendToSelect) {
             $(select).each(function (index, item) {
                 if (index == 0) {
-                    $(appendToSelect).append($("<li>●</li>"));
+                    $(appendToSelect).append($("<li><span class='disc'></span></li>"));
                 } else {
-                    $(appendToSelect).append($("<li>○</li>"));
+                    $(appendToSelect).append($("<li><span class='HollowCircle'></span></li>"));
                 }
             });
         };

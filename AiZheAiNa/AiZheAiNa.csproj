@@ -227,6 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\74.jpg" />
+    <Content Include="Content\css\Font-Awesome\css\font-awesome.css" />
+    <Content Include="Content\css\Font-Awesome\css\font-awesome.min.css" />
+    <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\qq\qqQiEr.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -259,7 +262,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\css\" />
     <Folder Include="Views\GetInFo\" />
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +274,12 @@
     <Content Include="Ashx\Jsonp.ashx" />
     <Content Include="Views\Shared\Template.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Content\css\Font-Awesome\css\font-awesome.css.map" />
+    <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\css\Font-Awesome\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\AiZheAiNa.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />

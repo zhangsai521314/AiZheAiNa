@@ -63,3 +63,24 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+/*实心圆形*/
+.disc {
+    width: 15px;
+    height: 15px;
+    background: #000000;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    display: block;
+}
+/*空心圆形*/
+.HollowCircle {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000000;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    display: block;
+}
