@@ -10,14 +10,12 @@
         padding-left: 5px;
     }
 
-
-.divZSLunBoImg a {
-    display: inline-block;
+.divZSLunBoImg ul li {
     width: 100%;
     display: none;
 }
 
-    .divZSLunBoImg a:first-child {
+    .divZSLunBoImg li:first-child {
         display: block;
     }
 

@@ -37,14 +37,14 @@
         //带#号的id,选择器使用
         var xdivZSLunBoImg = "#" + divZSLunBoImg, xdivZSLunBoAnNiuIndivLunBoImg = "#" + divZSLunBoAnNiuIndivLunBoImg, xdivZSLunBoBiaoShiIndivLunBoImg = "#" + divZSLunBoBiaoShiIndivLunBoImg;
         //img容器加入到dom中
-        op.container.append($("<div class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'> </div>"));
+        op.container.append($("<div class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-inline'></ul></div>"));
         //图片数据加入到img容器中
         $.each(jsonData.data, function (index, item) {
             //加入图片数据
             if ($.ZSIsNull(item.href)) {
                 item.href = "javascript:void(0)";
             }
-            $(xdivZSLunBoImg).append($("<a href='" + item.href + "'><img src='" + item.src + "'></a>"));
+            $(xdivZSLunBoImg + " ul:first").append($("<li><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
         });
         //开启自动轮播
         if (op.isOpenZiDongLunBo) {
@@ -117,14 +117,14 @@
         function LunBoAnNiuClick(direction) {
             //图片index的增减，判断该显示哪张图片
             if (direction == "up") {
-                if ($(xdivZSLunBoImg + " a").length - 1 == ZSlunBoAnNiuClickJiShu) {
+                if ($(xdivZSLunBoImg + " li").length - 1 == ZSlunBoAnNiuClickJiShu) {
                     ZSlunBoAnNiuClickJiShu = 0;
                 } else {
                     ZSlunBoAnNiuClickJiShu++;
                 }
             } else if (direction == "down") {
                 if (ZSlunBoAnNiuClickJiShu == 0) {
-                    ZSlunBoAnNiuClickJiShu = $(xdivZSLunBoImg + " a").length - 1;
+                    ZSlunBoAnNiuClickJiShu = $(xdivZSLunBoImg + " li").length - 1;
                 } else {
                     ZSlunBoAnNiuClickJiShu--;
                 }
@@ -151,10 +151,10 @@
         };
         //默认点击轮播按钮图片怎么出现
         function ClickLunBoAnNiuShowImgDefault() {
-            $(xdivZSLunBoImg + " a").each(function () {
+            $(xdivZSLunBoImg + " li").each(function () {
                 $(this).hide();
             });
-            $(xdivZSLunBoImg + " a").eq(ZSlunBoAnNiuClickJiShu).show();
+            $(xdivZSLunBoImg + " li").eq(ZSlunBoAnNiuClickJiShu).show();
         };
         //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
 
