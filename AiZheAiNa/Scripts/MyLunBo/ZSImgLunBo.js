@@ -9,7 +9,7 @@
             isLunShowBoAnNiu: true,//是否显示轮播按钮       
             isShowLunBoBiaoShi: true,//是否显示轮播标识       
             isOpenZiDongLunBo: true,//是否开启自动轮播
-            ZiDongLunBoMiao: 3,//每多少秒切换图片
+            ZiDongLunBoMiao: 2,//每多少秒切换图片
             LunBoFangShi: "",//轮播的方式（图片的载入方式）
         }, options);
         //数据为空则返回
@@ -37,18 +37,18 @@
         //带#号的id,选择器使用
         var xdivZSLunBoImg = "#" + divZSLunBoImg, xdivZSLunBoAnNiuIndivLunBoImg = "#" + divZSLunBoAnNiuIndivLunBoImg, xdivZSLunBoBiaoShiIndivLunBoImg = "#" + divZSLunBoBiaoShiIndivLunBoImg;
         //img容器加入到dom中
-        op.container.append($("<div class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-inline'></ul></div>"));
+        op.container.append($("<div class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-unstyled'></ul></div>"));
         //图片数据加入到img容器中
         $.each(jsonData.data, function (index, item) {
             //加入图片数据
             if ($.ZSIsNull(item.href)) {
                 item.href = "javascript:void(0)";
             }
-            $(xdivZSLunBoImg + " ul:first").append($("<li><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
+            $(xdivZSLunBoImg + " ul:first").append($("<li class='" + SwitchLiYangShi() + "'><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
         });
         //开启自动轮播
         if (op.isOpenZiDongLunBo) {
-            SwitchZiDongLunBo();
+            ZiDongLunBo();
             //开启自动轮播时img容器的mousemove和mouseout的定义
             //img容器的mousemove，轮播按钮和轮播标识为mousemove等于img容器的mousemove
             $(xdivZSLunBoImg).mousemove(function () {
@@ -56,7 +56,7 @@
             });
             //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
             $(xdivZSLunBoImg).mouseout(function () {
-                SwitchZiDongLunBo()
+                ZiDongLunBo()
             });
         };
         //显示轮播标识
@@ -142,48 +142,63 @@
             }
         };
 
-        //默认自动轮播方式
-        function ZiDongLunBoDefault() {
+        //自动轮播
+        function ZiDongLunBo() {
             daTuZiDongLunBoID = setInterval(function () {
                 LunBoAnNiuClick("up");
-                ClickLunBoAnNiuShowImgDefault();
             }, op.ZiDongLunBoMiao);
         };
-        //默认点击轮播按钮图片怎么出现
-        function ClickLunBoAnNiuShowImgDefault() {
-            $(xdivZSLunBoImg + " li").each(function () {
-                $(this).hide();
-            });
-            $(xdivZSLunBoImg + " li").eq(ZSlunBoAnNiuClickJiShu).show();
-        };
-        //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
 
-
-
-        //根据轮播方式选择自动轮播的方式
-        function SwitchZiDongLunBo() {
+        //--------------------------------------------------在此处设置li的样式---------------------------------------------------
+        function SwitchLiYangShi() {
             switch (op.LunBoFangShi.toLowerCase()) {
-                case "1":
+                case "fade":
+                    return ".ZS-li-ChongDie";
                     break;
                 default:
-                    ZiDongLunBoDefault();
+                    return ".ZS-li-YinCang";
             }
         };
-        //根据轮播方式选择图片的出现方式
+        //--------------------------------------------------在此处设置li的样式---------------------------------------------------
+
+        //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
+
+        //默认出现方式
+        function ClickLunBoAnNiuShowImgDefault() {
+            $(xdivZSLunBoImg + " ul:first li").each(function () {
+                $(this).hide();
+            });
+            $(xdivZSLunBoImg + " ul:first li").eq(ZSlunBoAnNiuClickJiShu).show();
+        };
+
+        //fade轮播出现方式
+        function ClickLunBoAnNiuShowImgFade() {
+            //li重叠
+            console.log(ZSlunBoAnNiuClickJiShu);
+
+            $(xdivZSLunBoImg + " ul:first li").each(function (index, item) {
+                if (index == ZSlunBoAnNiuClickJiShu) {
+                    $(item).stop().animate({ opacity: 1 }, 500).css({ "z-index": "1", "diaplay": "block" });
+                } else {
+                    $(item).stop().animate({ opacity: 0 }, 500).css({ "z-index": "0", "diaplay": "block" });
+                }
+            });
+        };
+
+
+        //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
+
+        //--------------------------------------------------在此处选择轮播方式---------------------------------------------------
         function SwitchImgShowFangShi() {
             switch (op.LunBoFangShi.toLowerCase()) {
-                case "1":
+                case "fade":
+                    ClickLunBoAnNiuShowImgFade();
                     break;
                 default:
                     ClickLunBoAnNiuShowImgDefault();
             }
         };
-
-
-
-
-
-        //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
+        //--------------------------------------------------在此处选择轮播方式---------------------------------------------------
 
         //生成id
         function ShengChengID(str) {

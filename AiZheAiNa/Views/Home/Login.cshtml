@@ -41,29 +41,29 @@
 <div class="divLoginWai">
     @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
     {
-        <div class="divLogin">
-            <ul class="list-unstyled text-center ulLogin">
-                <li>
-                    账户：<input id="input_LoginName" name="LoginName" type="text" style="width:200px" placeholder="请输入您的账号">
-                </li>
-                <li>
-                    密码：<input id="input_PassWord" name="PassWord" type="password" style="width:200px" placeholder="请输入您的密码">
-                </li>
-                <li>
-                    <input type="checkbox">请记住我
-                </li>
-                <li>
-                    <button style="width:300px" class="btn btn-default" type="submit">登录</button>
-                </li>
-            </ul>
-            <div>
-                <span>其他方式登录:</span><a href="/Home/QQLogin"><img src="~/Content/Images/qq/qqQiEr.png" /></a>
-            </div>
+    <div class="divLogin">
+        <ul class="list-unstyled text-center ulLogin">
+            <li>
+                账户：<input id="input_LoginName" name="LoginName" type="text" style="width:200px" placeholder="请输入您的账号">
+            </li>
+            <li>
+                密码：<input id="input_PassWord" name="PassWord" type="password" style="width:200px" placeholder="请输入您的密码">
+            </li>
+            <li>
+                <input type="checkbox">请记住我
+            </li>
+            <li>
+                <button style="width:300px" class="btn btn-default" type="submit">登录</button>
+            </li>
+        </ul>
+        <div>
+            <span>其他方式登录:</span><a href="/Home/QQLogin"><img src="~/Content/Images/qq/qqQiEr.png" /></a>
         </div>
+    </div>
     }
 </div>
-<div style="width:1200px;height:100px;">
-    <div style="width:1750px;height:100px">
+<div style="width:1200px;height:100px;overflow:hidden;border:1px solid #f00;margin-left:20%">
+    <div style="width:1750px;height:100px;position:relative">
         <ul class="list-inline" id="s">
             <li>
                 <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160607142129Bf1a2941ce86a4b6dab7c5ef978f388d6">
@@ -118,21 +118,140 @@
         </ul>
     </div>
 </div>
+
+
+<div style="width:1200px;height:100px;overflow:hidden;border:1px solid #f00;margin-left:20%">
+    <div style="width:1750px;height:100px;position:relative">
+        <ul class="list-unstyled" style="position:relative" id="ddd">
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160607142129Bf1a2941ce86a4b6dab7c5ef978f388d6">
+                    <img title="JULONG Steel Pipe" alt="JULONG Steel Pipe" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160607142055I426f57b8e84749199283cdde212a603f">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160322170256Bb0e3a910b9e34af19d522974b81cd4ee">
+                    <img title="PCK" alt="PCK" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160322161236Ide437f3aff4d41138be132cb87c52955">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160328131833B140b7d8ba445434e8df3bdcb4203c918">
+                    <img title="xinyegang" alt="xinyegang" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160328131715Id2968c393b43452bbdeffabd39496ffa">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160328181329Bc0fcb7aed89b42f191ebf400a0daa128">
+                    <img title="YouFa" alt="YouFa" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160328181309If4100bb3d0e34988a2e5335c2f382151">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160329185423B08c1191d8d224962b009ce71a3d6afc7">
+                    <img title="Pearl River" alt="Pearl River" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160329185418I5fdef8d404ae44cd97abd96eff5cdabf">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160330180158Be8b62471788246eaa8051eceff50e2be">
+                    <img title="ShenHua" alt="ShenHua" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160331163203Ba02eecc8eed14316939b3553eeff9a80">
+                    <img title="ShangShang" alt="ShangShang" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160331163108I8f3d3501f3014169b358579a905d658f">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160331165543B33cade3d5b9b475fb166734031013c67">
+                    <img title="Jun Cheng" alt="Jun Cheng" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160331165525Iab9e26fe3a5c411ea3a8c04566d79859">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160401160824Bf5d1bf2dcc6743209e4e9fd827ba2da6">
+                    <img title="Lontrin Steel Pipe" alt="Lontrin Steel Pipe" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160401160749I2e2d58a67a0d4111a8ebbaaf38c1dde9">
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="http://pms2.esteelall.com/Product/ProductList?bic=BMS20160503101352Be6bb0891aa7b4498b4ef5a3d1f0d78a1">
+                    <img title="Beisteel Pipe" alt="Beisteel Pipe" src="http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160503092612I4e220ccb0d674c48b8b969c266eb1350">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="divLunBoImgWai" style="width:800px;height:500px;overflow:hidden;border:1px solid #f00;margin-left:20%">
+
+</div>
+<style type="text/css">
+    #keleyi5 .JQ-content-box {
+        border: 1px solid #ccc;
+        height: 100px;
+        line-height: 25px;
+        min-height: 25px;
+        overflow: hidden;
+        width: 300px;
+    }
+
+    #keleyi5 .JQ-content-box {
+        line-height: 25px;
+    }
+
+    #keleyi5 {
+        margin-bottom: 20px;
+        margin-left: 20%;
+    }
+
+    /*#ddd li {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }*/
+</style>
+
 <script src="~/Scripts/jq/jquery-2.1.4/jquery.js"></script>
 <script src="~/Scripts/MyLunBo/ZSImgLunBo.js"></script>
+<script src="~/Scripts/MyLunBo/ZSDuoTuLunBo.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#divpageDi").css("margin-top", "0px");
     })
 
-    setInterval(function () {
-        var $li = $("#s li:first");
-        $("#s li:first").remove();
-        $("#s").append($li);
-    }, 1000);
+    //setInterval(function () {
+    //    $("#s").animate({ "margin-left": -140 }, function () {
+    //        $("#s li:first").appendTo($("#s"));
+    //        $("#s").css("margin-left", "0px");
+    //    })
+
+    //}, 1000);
+
+    //$("#keleyi5").Slide({
+    //    effect: "scroolTxt",
+    //    speed: "normal",
+    //    timer: 1000,
+    //    steps: 1
+    //});
+
+    //////大图轮播
+    //$("#divLunBoImgWai").ZSImgLunBo({
+    //    jsonData: '{"data":[{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160607142055I426f57b8e84749199283cdde212a603f"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160503092612I4e220ccb0d674c48b8b969c266eb1350"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160331165525Iab9e26fe3a5c411ea3a8c04566d79859"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555"}]}',
+    //    LunBoFangShi: "fade"
+    //});
+
+    ////大图轮播
+    $("#divLunBoImgWai").ZSImgLunBo({
+        jsonData: '{"data":[{"href":"","src":"http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"},{"href":"","src":"http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"},{"href":"","src":"http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"},{"href":"","src":"http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"}]}',
+        LunBoFangShi: "fade",
+        isOpenZiDongLunBo: false
+    });
+
+    TuPianZiShiYing("#divLunBoImgWai Img");
+    function TuPianZiShiYing(select) {
+        $(select).each(function (index, item) {
+            $(item).height($(item).parents("div").height());
+            $(item).width($(item).parents("div").width());
+        });
+    };
+
 </script>
-
-
 
 
 

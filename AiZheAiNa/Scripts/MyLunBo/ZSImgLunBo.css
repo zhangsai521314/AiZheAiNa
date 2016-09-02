@@ -1,4 +1,5 @@
-﻿.ZS-list-inline {
+﻿/*轮播图默认轮播方式的css*/
+.ZS-list-inline {
     padding-left: 0;
     margin-left: -5px;
     list-style: none;
@@ -10,14 +11,18 @@
         padding-left: 5px;
     }
 
-.divZSLunBoImg ul li {
+
+
+.ZS-li-YinCang {
     width: 100%;
     display: none;
 }
 
-    .divZSLunBoImg li:first-child {
+    .ZS-li-YinCang:first-child {
         display: block;
     }
+
+
 
 
 .divZSLunBoAnNiuIndivLunBoImg div {
@@ -82,3 +87,28 @@
     border-radius: 50px;
     display: block;
 }
+
+.ZS-list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+    .ZS-list-unstyled > li {
+        display: none;
+    }
+
+    .ZS-list-unstyled li:first-child {
+        display: block;
+    }
+
+.ZS-li-ChongDie {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+    .ZS-li-ChongDie:first-child {
+        z-index: 1;
+    }
