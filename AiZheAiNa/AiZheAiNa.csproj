@@ -235,6 +235,7 @@
     <Content Include="Global.asax" />
     <Content Include="Html\GetJsonp.html" />
     <Content Include="Html\HtmlPage1.html" />
+    <Content Include="Scripts\VerificationCode\VerificationCode.html" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap-theme.min.css" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap.css" />
@@ -245,6 +246,7 @@
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\js\npm.js" />
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.css" />
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.js" />
+    <Content Include="Scripts\VerificationCode\VerificationCode.js" />
     <Content Include="Scripts\jq\jquery-2.1.4\jquery.js" />
     <Content Include="Scripts\MyLunBo\icon-slides.png" />
     <Content Include="Scripts\MyLunBo\jquery-2.4.js" />
