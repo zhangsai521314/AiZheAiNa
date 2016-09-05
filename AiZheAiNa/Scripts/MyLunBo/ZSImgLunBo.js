@@ -153,10 +153,10 @@
         function SwitchLiYangShi() {
             switch (op.LunBoFangShi.toLowerCase()) {
                 case "fade":
-                    return ".ZS-li-ChongDie";
+                    return "ZS-li-ChongDie";
                     break;
                 default:
-                    return ".ZS-li-YinCang";
+                    return "ZS-li-YinCang";
             }
         };
         //--------------------------------------------------在此处设置li的样式---------------------------------------------------
@@ -174,13 +174,11 @@
         //fade轮播出现方式
         function ClickLunBoAnNiuShowImgFade() {
             //li重叠
-            console.log(ZSlunBoAnNiuClickJiShu);
-
             $(xdivZSLunBoImg + " ul:first li").each(function (index, item) {
                 if (index == ZSlunBoAnNiuClickJiShu) {
-                    $(item).stop().animate({ opacity: 1 }, 500).css({ "z-index": "1", "diaplay": "block" });
+                    $(item).stop().animate({ opacity: 1 }, 500).css({ "z-index": "1" });
                 } else {
-                    $(item).stop().animate({ opacity: 0 }, 500).css({ "z-index": "0", "diaplay": "block" });
+                    $(item).stop().animate({ opacity: 0 }, 500).css({ "z-index": "0" });
                 }
             });
         };
