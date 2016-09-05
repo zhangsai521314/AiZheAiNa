@@ -3,26 +3,56 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <meta charset="utf-8" />
-    <script src="Scripts/jq/jquery-2.1.4/jquery.js"></script>
+    <style type="text/css">
+        ul li {
+            list-style: none;
+            float: left;
+        }
+    </style>
+    <script src="../Scripts/jq/jquery-2.1.4/jquery.js"></script>
+    <script src="../Scripts/laypage/laypage.js"></script>
+    <script src="../Scripts/GetJson.js"></script>
     <script type="text/javascript">
-        $.ajax({
-            url: tewPushUrl,
-            type: 'POST',
-            cache: false,
-            data: jsondata,
-            dataType: "jsonp",
-            jsonp: "zhangzhixia",
-            success: function (data) {
-                alert(data.value);
-            },
-            error: function (erm) {
-                alert("出现错误");
-            }
-        });
+        //$.ajax({
+        //    url: tewPushUrl,
+        //    type: 'POST',
+        //    cache: false,
+        //    data: jsondata,
+        //    dataType: "jsonp",
+        //    jsonp: "zhangzhixia",
+        //    success: function (data) {
+        //        alert(data.value);
+        //    },
+        //    error: function (erm) {
+        //        alert("出现错误");
+        //    }
+        //});
+        var urlJson = new UrlJson();
+
+        //var data = urlJson.GetJsonPage("post", "json", "http://172.19.234.1:8020/Ashx/GetJson.ashx", '{"pageIndex": "1", "pageSise": "10"}')
+
+        var data = urlJson.GetJsonPageJsonp("get", "zhangzhixia", "http://172.19.234.1:8020/Ashx/Jsonp.ashx", '{"pageIndex": "1", "pageSise": "10"}')
+
+        alert(data);
     </script>
 </head>
 <body>
-
+    <ul id="ul_Pagecount">
+        <li>
+            <div id="page">
+            </div>
+        </li>
+        <li style="margin: 5px">
+            <span id="sapn_sumcount" style="color: Red"></span>条 &nbsp 总：<span id="span_sumPage" style="color: Red"></span>页&nbsp<span>
+                /
+                每页条数：
+            </span>
+            <select id="page_select" style="color: Red">
+                <option>10</option>
+                <option>50</option>
+                <option>200</option>
+            </select>
+        </li>
+    </ul>
 </body>
 </html>

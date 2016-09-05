@@ -203,6 +203,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Ashx\GetJson.ashx.cs">
+      <DependentUpon>GetJson.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Ashx\Jsonp.ashx.cs">
       <DependentUpon>Jsonp.ashx</DependentUpon>
     </Compile>
@@ -235,6 +238,11 @@
     <Content Include="Global.asax" />
     <Content Include="Html\GetJsonp.html" />
     <Content Include="Html\HtmlPage1.html" />
+    <Content Include="Scripts\GetJson.js" />
+    <Content Include="Scripts\GetUrlData.js" />
+    <Content Include="Scripts\laypage\laypage.js" />
+    <Content Include="Scripts\laypage\skin\laypage.css" />
+    <Content Include="Scripts\VerificationCode\JavaScript.js" />
     <Content Include="Scripts\VerificationCode\VerificationCode.html" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap-theme.min.css" />
@@ -250,7 +258,6 @@
     <Content Include="Scripts\jq\jquery-2.1.4\jquery.js" />
     <Content Include="Scripts\MyLunBo\icon-slides.png" />
     <Content Include="Scripts\MyLunBo\jquery-2.4.js" />
-    <Content Include="Scripts\MyLunBo\ZSDuoTuLunBo.js" />
     <Content Include="Scripts\MyLunBo\ZSImgLunBo.css" />
     <Content Include="Scripts\MyLunBo\ZSImgLunBo.js" />
     <Content Include="Web.config" />
@@ -284,6 +291,7 @@
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\css\Font-Awesome\fonts\FontAwesome.otf" />
+    <Content Include="Ashx\GetJson.ashx" />
     <None Include="Properties\PublishProfiles\AiZheAiNa.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />

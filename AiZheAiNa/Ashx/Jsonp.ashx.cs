@@ -17,8 +17,10 @@ namespace AiZheAiNa.Ashx
             {
                 context.Response.ContentType = "text/plain";
                 string jsonpValue = context.Request.QueryString["zhangzhixia"];
-                string data = jsonpValue + "([" + JsonConvert.SerializeObject(new Message()) + "])";
-                context.Response.Write(data);
+                // string s = jsonpValue + "([" + JsonConvert.SerializeObject(new Message()) + "])";
+
+                string s = jsonpValue + "([" + "{ \"zongye\":\"20\",\"json\":[" + JsonConvert.SerializeObject(new jsonList()) + "]}" + "])";
+                context.Response.Write(s);
             }
             catch (Exception ex)
             {
@@ -35,8 +37,23 @@ namespace AiZheAiNa.Ashx
         }
     }
 
+    public class jsonList
+    {
+        public int id = 1;
+        public string name = "name";
+        public string gen = "gen";
+        public string ss = "ss";
+        public string vvv = "vvv";
+
+    }
+
     public class Message
     {
-        public string value = "张志霞";
+        public int id = 1;
+        public string name = "name";
+        public string gen = "gen";
+        public string ss = "ss";
+        public string vvv = "vvv";
+
     }
 }
