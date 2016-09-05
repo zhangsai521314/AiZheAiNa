@@ -10,7 +10,7 @@
             isShowLunBoBiaoShi: true,//是否显示轮播标识       
             isOpenZiDongLunBo: true,//是否开启自动轮播
             ZiDongLunBoMiao: 2,//每多少秒切换图片
-            LunBoFangShi: "",//轮播的方式（图片的载入方式）
+            LunBoFangShi: "",//轮播的方式（图片的载入方式），fade（缓慢出现），dantuzuoyi(单图左移)
         }, options);
         //数据为空则返回
         try {
@@ -37,15 +37,23 @@
         //带#号的id,选择器使用
         var xdivZSLunBoImg = "#" + divZSLunBoImg, xdivZSLunBoAnNiuIndivLunBoImg = "#" + divZSLunBoAnNiuIndivLunBoImg, xdivZSLunBoBiaoShiIndivLunBoImg = "#" + divZSLunBoBiaoShiIndivLunBoImg;
         //img容器加入到dom中
-        op.container.append($("<div class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-unstyled'></ul></div>"));
+        op.container.append($("<div style='height:" + op.container.height() + "px;width:100%' class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-unstyled " + SwitchLiYangShi() + "'></ul></div>"));
         //图片数据加入到img容器中
         $.each(jsonData.data, function (index, item) {
             //加入图片数据
             if ($.ZSIsNull(item.href)) {
                 item.href = "javascript:void(0)";
             }
-            $(xdivZSLunBoImg + " ul:first").append($("<li class='" + SwitchLiYangShi() + "'><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
+            $(xdivZSLunBoImg + " ul:first").append($("<li ><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
         });
+        //横排排版设置ul的宽为图片宽的总和
+        if (op.LunBoFangShi.toLowerCase() == "dantuzuoyi") {
+            var xdivZSLunBoImgwidth = 0;
+            $(xdivZSLunBoImg + " ul:first img").each(function () {
+                xdivZSLunBoImgwidth += $(this).width();
+            });
+            $(xdivZSLunBoImg + " ul:first").width(xdivZSLunBoImgwidth);
+        };
         //开启自动轮播
         if (op.isOpenZiDongLunBo) {
             ZiDongLunBo();
@@ -84,7 +92,16 @@
         }
         //显示轮播按钮
         if (op.isLunShowBoAnNiu) {
-            op.container.append($("<div class='divZSLunBoAnNiuIndivLunBoImg' id='" + divZSLunBoAnNiuIndivLunBoImg + "'><div></div><div></div></div>"));
+            var imgHeight = op.container.height();
+            var top = 0;
+            if (imgHeight >= 240) {
+                top = "40%";
+            } else if (imgHeight >= 160 && imgHeight < 240) {
+                top = "22%";
+            } else if (imgHeight >= 124 && imgHeight < 160) {
+                top = "18%";
+            }
+            op.container.append($("<div class='divZSLunBoAnNiuIndivLunBoImg' id='" + divZSLunBoAnNiuIndivLunBoImg + "'><div style='top:" + top + "'></div><div style='top:" + top + "'></div></div>"));
             //轮播按钮点击及鼠标离开自动轮播执行方式
             $(xdivZSLunBoAnNiuIndivLunBoImg + " div").each(function (index, item) {
                 var $i = $(item);
@@ -155,6 +172,9 @@
                 case "fade":
                     return "ZS-li-ChongDie";
                     break;
+                case "dantuzuoyi":
+                    return "ZS-list-inline";
+                    break;
                 default:
                     return "ZS-li-YinCang";
             }
@@ -183,6 +203,13 @@
             });
         };
 
+        //单图左移方式
+        function ClickLunBoAnNiuShowImgDanTuZuoYi() {
+            $(xdivZSLunBoImg + " ul:first").animate({ "margin-left": -$(xdivZSLunBoImg + " ul:first li").eq(1).width() }, function () {
+                $(xdivZSLunBoImg + " ul:first li:first").appendTo($(xdivZSLunBoImg + " ul:first"));
+                $(xdivZSLunBoImg + " ul:first").css("margin-left", "0px");
+            })
+        };
 
         //--------------------------------------------------在此处增加轮播方式---------------------------------------------------
 
@@ -191,6 +218,9 @@
             switch (op.LunBoFangShi.toLowerCase()) {
                 case "fade":
                     ClickLunBoAnNiuShowImgFade();
+                    break;
+                case "dantuzuoyi":
+                    ClickLunBoAnNiuShowImgDanTuZuoYi();
                     break;
                 default:
                     ClickLunBoAnNiuShowImgDefault();

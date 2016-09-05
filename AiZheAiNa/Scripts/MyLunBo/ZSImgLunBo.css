@@ -5,27 +5,27 @@
     list-style: none;
 }
 
-    .ZS-list-inline > li {
-        display: inline-block;
-        padding-right: 5px;
-        padding-left: 5px;
-    }
+.divZSLunBoImg {
+    overflow: hidden;
+}
 
-.ZS-li-YinCang {
+.ZS-list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.ZS-li-YinCang > li {
     width: 100%;
     display: none;
 }
 
-    .ZS-li-YinCang:first-child {
-        display: block;
-    }
-
-
-
+.ZS-li-YinCang li:first-child {
+    display: block;
+}
 
 .divZSLunBoAnNiuIndivLunBoImg div {
     position: absolute;
-    top: 40%;
     z-index: 6;
     width: 50px;
     height: 80px;
@@ -91,11 +91,7 @@
     list-style: none;
 }
 
-    .ZS-list-unstyled li:first-child {
-        display: block;
-    }
-
-.ZS-li-ChongDie {
+.ZS-li-ChongDie > li {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -103,6 +99,6 @@
     padding: 0px;
 }
 
-    .ZS-li-ChongDie:first-child {
-        z-index: 1;
-    }
+.ZS-li-ChongDie li:first-child {
+    z-index: 1;
+}
