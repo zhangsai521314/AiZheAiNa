@@ -9,32 +9,6 @@
             float: left;
         }
     </style>
-    <script src="../Scripts/jq/jquery-2.1.4/jquery.js"></script>
-    <script src="../Scripts/laypage/laypage.js"></script>
-    <script src="../Scripts/GetJson.js"></script>
-    <script type="text/javascript">
-        //$.ajax({
-        //    url: tewPushUrl,
-        //    type: 'POST',
-        //    cache: false,
-        //    data: jsondata,
-        //    dataType: "jsonp",
-        //    jsonp: "zhangzhixia",
-        //    success: function (data) {
-        //        alert(data.value);
-        //    },
-        //    error: function (erm) {
-        //        alert("出现错误");
-        //    }
-        //});
-        var urlJson = new UrlJson();
-
-        //var data = urlJson.GetJsonPage("post", "json", "http://172.19.234.1:8020/Ashx/GetJson.ashx", '{"pageIndex": "1", "pageSise": "10"}')
-
-        var data = urlJson.GetJsonPageJsonp("get", "zhangzhixia", "http://172.19.234.1:8020/Ashx/Jsonp.ashx", '{"pageIndex": "1", "pageSise": "10"}')
-
-        alert(data);
-    </script>
 </head>
 <body>
     <ul id="ul_Pagecount">
@@ -54,5 +28,29 @@
             </select>
         </li>
     </ul>
+    <script src="../Scripts/jq/jquery-2.1.4/jquery.js"></script>
+    <script src="../Scripts/laypage/laypage.js"></script>
+    <script src="../Scripts/common/GetJson.js"></script>
+    <script type="text/javascript">
+        //$.ajax({
+        //    url: tewPushUrl,
+        //    type: 'POST',
+        //    cache: false,
+        //    data: jsondata,
+        //    dataType: "jsonp",
+        //    jsonp: "zhangzhixia",
+        //    success: function (data) {
+        //        alert(data.value);
+        //    },
+        //    error: function (erm) {
+        //        alert("出现错误");
+        //    }
+        //});
+        var urlJson = new UrlJson();
+        callBack(urlJson.GetJsonPage("post", "json", "http://www.aizheaina.com/Ashx/GetJson.ashx", { pageIndex: 1, pageSise: 10 }))
+        function callBack(data) {
+            alert(data.json[0].id);
+        }
+    </script>
 </body>
 </html>

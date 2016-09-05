@@ -14,7 +14,10 @@ namespace AiZheAiNa.Ashx
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            string s = "{ \"zongye\":\"20\",\"json\":[" + JsonConvert.SerializeObject(new jsonList()) + "]}";
+            jsonList model = new jsonList();
+            string f = context.Request["pageIndex"];
+            model.id = f;
+            string s = "{ \"zongye\":\"20\",\"json\":[" + JsonConvert.SerializeObject(model) + "]}";
             context.Response.Write(s);
         }
 
@@ -29,7 +32,7 @@ namespace AiZheAiNa.Ashx
 
         public class jsonList
         {
-            public int id = 1;
+            public string id = "1";
             public string name = "name";
             public string gen = "gen";
             public string ss = "ss";

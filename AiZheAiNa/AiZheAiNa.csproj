@@ -238,8 +238,8 @@
     <Content Include="Global.asax" />
     <Content Include="Html\GetJsonp.html" />
     <Content Include="Html\HtmlPage1.html" />
-    <Content Include="Scripts\GetJson.js" />
-    <Content Include="Scripts\GetUrlData.js" />
+    <Content Include="Scripts\common\GetJson.js" />
+    <Content Include="Scripts\common\GetUrlData.js" />
     <Content Include="Scripts\laypage\laypage.js" />
     <Content Include="Scripts\laypage\skin\laypage.css" />
     <Content Include="Scripts\VerificationCode\JavaScript.js" />

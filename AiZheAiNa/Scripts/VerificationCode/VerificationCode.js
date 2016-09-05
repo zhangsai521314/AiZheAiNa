@@ -92,7 +92,7 @@
             _this.update.call(_this);
         });
     };
-
+   
     //本插件默认参数
     vCode.prototype.initOptions = function (options) {
         var f = function () {
