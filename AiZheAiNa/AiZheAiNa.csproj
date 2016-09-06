@@ -77,14 +77,21 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="QConnectSDK">
-      <HintPath>..\AiZheAiNa.Library\QConnectSDK.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\AiZheAiNa.Library\RestSharp.dll</HintPath>
+    <Reference Include="QConnectSDK, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QConnectSDK.1.1.1\lib\net40\QConnectSDK.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="RouteDebugger">
-      <HintPath>..\AiZheAiNa.Library\RouteDebugger.dll</HintPath>
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RouteDebugger, Version=2.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\routedebugger.2.1.5\lib\net40\RouteDebugger.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -149,9 +156,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -234,7 +238,6 @@
     <Content Include="Content\css\Font-Awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\qq\qqQiEr.png" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Html\GetJsonp.html" />
     <Content Include="Html\HtmlPage1.html" />
@@ -276,9 +279,6 @@
     <Folder Include="Views\GetInFo\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Config\ConnectionStrings.config" />
     <Content Include="Config\AppSeetings.config" />

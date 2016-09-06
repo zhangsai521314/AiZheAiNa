@@ -24,10 +24,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AiZheAiNa.Library", "AiZheAiNa.Library", "{AB95688D-320D-4EFC-9007-A9B59D4B56C6}"
 	ProjectSection(SolutionItems) = preProject
 		D:\X.Code2016\Library\Encode.dll = D:\X.Code2016\Library\Encode.dll
-		D:\X.Code2016\Library\log4net.dll = D:\X.Code2016\Library\log4net.dll
-		D:\X.Code2016\Library\Newtonsoft.Json.dll = D:\X.Code2016\Library\Newtonsoft.Json.dll
-		D:\用户目录\下载\QConnectSDK相关DLL\QConnectSDK.dll = D:\用户目录\下载\QConnectSDK相关DLL\QConnectSDK.dll
-		D:\用户目录\下载\QConnectSDK相关DLL\RestSharp.dll = D:\用户目录\下载\QConnectSDK相关DLL\RestSharp.dll
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AiZheAiNa.Plug", "AiZheAiNa.Plug", "{FAA1DC70-68C9-4E3D-B46E-B2AE833902AD}"
