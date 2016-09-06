@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<link href="~/Scripts/jquery.validate.1.5.1/jquery.validate.css" rel="stylesheet" />
+<script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
+<script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.extend.js"></script>
+<form action="#" method="post" id="regForm">
+    <div class="item">
+        <label for="username" class="item-label">用户名:</label>
+        <input type="text" id="username" name="username" class="item-text" placeholder="设置用户名"
+               autocomplete="off" tip="请输入用户名">
+    </div>
+    <div class="item">
+        <label for="password" class="item-label">密码:</label>
+        <input type="password" id="password" name="password" class="item-text" placeholder="设置密码"
+               tip="长度为6-16个字符">
+    </div>
+    <div class="item">
+        <label for="password" class="item-label">确认密码:</label>
+        <input type="password" name="repassword" class="item-text" placeholder="设置确认密码">
+    </div>
+    <div class="item">
+        <label for="amt" class="item-label">金额:</label>
+        <input type="text" id="amt" name="amt" class="item-text" placeholder="交易金额"
+               tip="交易金额必须==0">
+    </div>
+    <div class="item">
+        <input type="submit" value="提交" class="item-submit">
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $("#regForm").validate({
+            rules: {
+                username: {
+                    required: true,//是否必填
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 16
+                },
+                repassword: {
+                    required: true,
+                    equalTo: "#password"
+                },
+                amt: {
+                    required: true,
+                    isIntEqZero: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "用户名不能为空",//重置内置的默认提示信息
+                    minlength: "用户名的最小长度为2"
+                },
+                password: {
+                    required: "密码不能为空",
+                    minlength: "密码长度不能少于6个字符",
+                    maxlength: "密码长度不能超过16个字符"
+                },
+                repassword: {
+                    required: "确认密码不能为空",
+                    equalTo: "确认密码和密码不一致"
+                },
+                amt: {
+                    required: "金额必须为0"
+                }
+            }
+        });
+    });
+</script>

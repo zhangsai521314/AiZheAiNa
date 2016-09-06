@@ -217,6 +217,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GetInFoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JqueryValidateController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Filters\MyActionFilterAttribute.cs" />
     <Compile Include="Filters\MyAuthorizeAttribute.cs" />
@@ -239,10 +240,21 @@
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\qq\qqQiEr.png" />
     <Content Include="Global.asax" />
-    <Content Include="Html\GetJsonp.html" />
-    <Content Include="Html\HtmlPage1.html" />
+    <Content Include="Html\GetJson.html" />
     <Content Include="Scripts\common\GetJson.js" />
     <Content Include="Scripts\common\GetUrlData.js" />
+    <Content Include="Scripts\jquery.validate.1.5.1\tip.png" />
+    <Content Include="Scripts\jquery.validate.1.5.1\error.gif" />
+    <Content Include="Scripts\jquery.validate.1.5.1\valid.png" />
+    <Content Include="Scripts\jquery.validate.1.5.1\jquery.validate.css" />
+    <Content Include="Scripts\jquery.validate.1.5.1\jquery.validate.extend.js" />
+    <Content Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.js" />
+    <Content Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.min.map" />
+    <None Include="Scripts\jquery.validate.1.5.1\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.1.5.1\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.1.5.1\jquery.validate.min.js" />
+    <None Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\laypage\laypage.js" />
     <Content Include="Scripts\laypage\skin\laypage.css" />
     <Content Include="Scripts\VerificationCode\JavaScript.js" />
@@ -258,12 +270,13 @@
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.css" />
     <Content Include="Scripts\bootstrap\responsive-nav.js-master\responsive-nav.js" />
     <Content Include="Scripts\VerificationCode\VerificationCode.js" />
-    <Content Include="Scripts\jq\jquery-2.1.4\jquery.js" />
     <Content Include="Scripts\MyLunBo\icon-slides.png" />
     <Content Include="Scripts\MyLunBo\jquery-2.4.js" />
     <Content Include="Scripts\MyLunBo\ZSImgLunBo.css" />
     <Content Include="Scripts\MyLunBo\ZSImgLunBo.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -273,6 +286,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\JqueryValidate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
