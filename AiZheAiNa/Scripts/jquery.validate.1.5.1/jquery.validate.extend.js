@@ -50,6 +50,10 @@ $.validator.setDefaults({
                   jQuery Validate扩展验证方法       
 *****************************************************************/
 $(function () {
+    //密码
+    jQuery.validator.addMethod("isPwd", function (value, element) {
+        return this.optional(element) || /^[a-zA-Z][a-zA-Z|._,*|\d]{5,11}$/.test(value);
+    }, "密码必须为英文字母开头，可以包含. _ , *  特殊字符,长度6~12");
 
     // 判断整数value是否等于0 
     jQuery.validator.addMethod("isIntEqZero", function (value, element) {
@@ -159,24 +163,32 @@ $(function () {
         return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(value));
     }, "请正确填写您的手机号码。");
 
-    // 电话号码验证    
+    //手机号码的验证
+    //支持13,15,17,14,18开头  
     jQuery.validator.addMethod("isPhone", function (value, element) {
-        var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
-        return this.optional(element) || (tel.test(value));
+        var phone = /^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+        return this.optional(element) || (phone.test(value));
+    }, "请正确填写您的手机号码。");
+
+    //手机号码的验证
+    //支持13,15,17,14,18开头  
+    jQuery.validator.addMethod("isPhone", function (value, element) {
+        var TelePhone = /^(^0\d{2}-?\d{8}$)|(^0\d{3}-?\d{7}$)|(^\(0\d{2}\)-?\d{8}$)|(^\(0\d{3}\)-?\d{7}$)|(^0\d{3}-?\d{8}$)$/;
+        return this.optional(element) || (TelePhone.test(value));
     }, "请正确填写您的电话号码。");
 
-    // 联系电话(手机/电话皆可)验证   
-    jQuery.validator.addMethod("isTel", function (value, element) {
-        var length = value.length;
-        var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-        var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
-        return this.optional(element) || tel.test(value) || (length == 11 && mobile.test(value));
+    //固定电话验证
+    //正确格式010-12345678、0912-1234567、(010)-12345678、(0912)1234567、(010)12345678、(0912)-1234567、01012345678、09121234567
+    jQuery.validator.addMethod("isPhoneOrTel", function (value, element) {
+        var TelePhone = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        var phone = /^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+        return this.optional(element) || phone.test(value) || (TelePhone.test(value));
     }, "请正确填写您的联系方式");
 
     // 匹配qq      
     jQuery.validator.addMethod("isQq", function (value, element) {
-        return this.optional(element) || /^[1-9]\d{4,12}$/;
-    }, "匹配QQ");
+        return this.optional(element) || /^[1-9]\d{4,12}$/.test(value);
+    }, "请正确填写您的QQ");
 
     // 邮政编码验证    
     jQuery.validator.addMethod("isZipCode", function (value, element) {
@@ -184,14 +196,8 @@ $(function () {
         return this.optional(element) || (zip.test(value));
     }, "请正确填写您的邮政编码。");
 
-    // 匹配密码，以字母开头，长度在6-12之间，只能包含字符、数字和下划线。      
-    jQuery.validator.addMethod("isPwd", function (value, element) {
-        return this.optional(element) || /^[a-zA-Z]\\w{6,12}$/.test(value);
-    }, "以字母开头，长度在6-12之间，只能包含字符、数字和下划线。");
-
     // 身份证号码验证
     jQuery.validator.addMethod("isIdCardNo", function (value, element) {
-        //var idCard = /^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/;   
         return this.optional(element) || isIdCardNo(value);
     }, "请输入正确的身份证号码。");
 
@@ -231,39 +237,60 @@ $(function () {
         return this.optional(element) || !reg.test(value);
     }, "含有中英文特殊字符");
 
+    //Web地址的验证
+    //只允许http、https、ftp这三种
+    jQuery.validator.addMethod("isWebIP", function (value, element) {
+        return this.optional(element) || /^(([hH][tT]{2}[pP][sS]?)|([fF][tT][pP]))\:\/\/[wW]{3}\.[\w-]+\.\w{2,4}(\/.*)?$/.test(value);
+    }, "请填写正确的Web地址");
 
-    //身份证号码的验证规则
-    function isIdCardNo(num) {
-        //if (isNaN(num)) {alert("输入的不是数字！"); return false;} 
-        var len = num.length, re;
-        if (len == 15)
-            re = new RegExp(/^(\d{6})()?(\d{2})(\d{2})(\d{2})(\d{2})(\w)$/);
-        else if (len == 18)
-            re = new RegExp(/^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/);
-        else {
-            //alert("输入的数字位数不对。"); 
+    //结束时间是否大于开始时间
+    jQuery.validator.addMethod("isDateXiaoYuStartDate", function (value, element, param) {
+        var target = $(param);
+        var startDate = new Date(target.val().replace(/-/g, "/"));
+        var endDate = new Date(value.replace(/-/g, "/"));
+        if (startDate < endDate) {
+            return true;
+        } else {
             return false;
         }
-        var a = num.match(re);
-        if (a != null) {
-            if (len == 15) {
-                var D = new Date("19" + a[3] + "/" + a[4] + "/" + a[5]);
-                var B = D.getYear() == a[3] && (D.getMonth() + 1) == a[4] && D.getDate() == a[5];
+    }, "开始时间大于结束时间");
+
+    //15和18位的身份证号验证
+    function isIdCardNo(idCard) {
+        //15位和18位身份证号码的正则表达式
+        var regIdCard = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/;
+
+        //如果通过该验证，说明身份证格式正确，但准确性还需计算
+        if (regIdCard.test(idCard)) {
+            if (idCard.length == 18) {
+                var idCardWi = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2); //将前17位加权因子保存在数组里
+                var idCardY = new Array(1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2); //这是除以11后，可能产生的11位余数、验证码，也保存成数组
+                var idCardWiSum = 0; //用来保存前17位各自乖以加权因子后的总和
+                for (var i = 0; i < 17; i++) {
+                    idCardWiSum += idCard.substring(i, i + 1) * idCardWi[i];
+                }
+                var idCardMod = idCardWiSum % 11; //计算出校验码所在数组的位置
+                var idCardLast = idCard.substring(17); //得到最后一位身份证号码
+
+                //如果等于2，则说明校验码是10，身份证号码最后一位应该是X
+                if (idCardMod == 2) {
+                    if (idCardLast == "X" || idCardLast == "x") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    //用计算出的验证码与最后一位身份证号码匹配，如果一致，说明通过，否则是无效的身份证号码
+                    if (idCardLast == idCardY[idCardMod]) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
             }
-            else {
-                var D = new Date(a[3] + "/" + a[4] + "/" + a[5]);
-                var B = D.getFullYear() == a[3] && (D.getMonth() + 1) == a[4] && D.getDate() == a[5];
-            }
-            if (!B) {
-                //alert("输入的身份证号 "+ a[0] +" 里出生日期不对。"); 
-                return false;
-            }
-        }
-        if (!re.test(num)) {
-            //alert("身份证最后一位只能是数字和字母。");
+        } else {
             return false;
         }
-        return true;
     }
 
 
