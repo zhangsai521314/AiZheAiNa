@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody id="tableList"></tbody>
+    </table>
+    <script src="../Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
+    <script src="../Scripts/common/handlebars-v4.0.5.js"></script>
+    <!--id可以用来唯一确定一个模版,type是模版固定的写法-->
+    <script id="handlebars_table" type="text/x-handlebars">
+        {{#each student}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{sex}}</td>
+            <td>{{age}}</td>
+        </tr>
+        {{/each}}
+    </script>
+    <script type="text/javascript">
+        var data = {
+            student: [
+                {
+                    name: "张三",
+                    sex: "0",
+                    age: 18
+                },
+                {
+                    name: "李四",
+                    sex: "0",
+                    age: 22
+                },
+                {
+                    name: "妞妞",
+                    sex: "1",
+                    age: 18
+                }
+            ]
+        };
+        var tanleTemplate = Handlebars.compile($("#handlebars_table").html());
+        $("#tableList").html(tanleTemplate(data));
+
+    </script>
+</body>
+</html>
