@@ -1,25 +1,29 @@
 ﻿//张赛图片轮播，2016.8.31
-//本插件使用jQuery v2.1.4，为JQ增加一个ZSISNull方法，适合图片一张一张的轮播。无需引用css文件
+//本插件使用jQuery v2.1.4，为JQ增加一个ZSISNull方法。无需引用css文件
 //返回自动轮播的计时id
 (function ($, window) {
     $.fn.ZSImgLunBo = function (options) {
         var op = $.extend({
-            container: $(this),//生成内容的容器（保证原内容为空，否则清除）
+            container: $(this),//生成内容的容器或者renderingMethod=html时ul的直接父级div
             jsonData: "",//轮播的数据图片路径及点击图片的跳转地址。格式 {"data":[{"href":"","src":""},{"href":"","src":""},{"href":"","src":""}]}
+            renderingMethod: "json",//渲染方式，json方式指自动生成html,html方式指不需要自动生成html页面已有布局
             isShowLunBoAnNiu: true,//是否显示轮播按钮
             ziDingYiLunBoAnNiuClassName: "",//自己指定的轮播按钮（第一个为左或者上）
             isShowLunBoBiaoShi: true,//是否显示轮播标识       
             isOpenZiDongLunBo: true,//是否开启自动轮播
             ziDongLunBoMiao: 2,//每多少秒切换图片
             lunBoFangShi: "",//轮播的方式（图片的载入方式），fade（缓慢出现），toleft(单图左移)
-            toInt: 1,//每次位移的宽度=toInt*单张图片的宽度
+            toInt: 1,//每次位移的宽度=toInt*单张图片的宽度，当lunBoFangShi为toleft生效
             speed: "normal",//动画的执行速度
+            iSZiDongLunBo_Automatic: false//自动播放时是否执行倒播,在只有两组图的时候使用
         }, options);
         //数据为空则返回
         try {
-            jsonData = JSON.parse(op.jsonData);
-            if (jsonData.data.length <= 0) {
-                return false;
+            if (op.renderingMethod == "json") {
+                jsonData = JSON.parse(op.jsonData);
+                if (jsonData.data.length <= 0) {
+                    return false;
+                }
             }
         } catch (e) {
             return false;
@@ -38,51 +42,51 @@
         //生成id
         var divZSLunBoImg = ShengChengID("divZSLunBoImg"), divZSLunBoAnNiuIndivLunBoImg = ShengChengID("divZSLunBoAnNiuIndivLunBoImg"), divZSLunBoBiaoShiIndivLunBoImg = ShengChengID("divZSLunBoBiaoShiIndivLunBoImg");
         // 计数或者计算上下左右
-        var daTuZiDongLunBoID = 0, ZSlunBoAnNiuClickJiShu = 0, ToLeft = "margin-left", ToUp = "margin-top"
+        var daTuZiDongLunBoID = 0, ZSlunBoAnNiuClickJiShu = 0, ToLeft = "margin-left";
         //带#号的id,选择器使用
         var xdivZSLunBoImg = "#" + divZSLunBoImg, xdivZSLunBoAnNiuIndivLunBoImg = "#" + divZSLunBoAnNiuIndivLunBoImg, xdivZSLunBoBiaoShiIndivLunBoImg = "#" + divZSLunBoBiaoShiIndivLunBoImg;
-        //img容器加入到dom中
-        op.container.append($("<div style='height:" + op.container.height() + "px;width:100%' class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-unstyled " + SwitchLiYangShi() + "'></ul></div>"));
-        //图片数据加入到img容器中
-        $.each(jsonData.data, function (index, item) {
-            //加入图片数据
-            if ($.ZSIsNull(item.href)) {
-                item.href = "javascript:void(0)";
-            }
-            $(xdivZSLunBoImg + " ul:first").append($("<li s='" + index + "'><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
-        });
-        //横排排版设置ul的宽为图片宽的总和
-        if (op.lunBoFangShi.toLowerCase() == "toleft") {
-            var xdivZSLunBoImgwidth = 0;
-            $(xdivZSLunBoImg + " ul:first img").each(function () {
-                xdivZSLunBoImgwidth += $(this).width();
+        var s = 0;
+        //判断渲染方式
+        if (op.renderingMethod == "html") {
+            xdivZSLunBoImg = "#" + op.container.attr("id");
+        } else {
+            //img容器加入到dom中
+            op.container.append($("<div style='height:" + op.container.height() + "px;width:100%' class='divZSLunBoImg' id='" + divZSLunBoImg + "' miaoshu='滚动大图'><ul class='ZS-list-unstyled " + SwitchLiYangShi() + "'></ul></div>"));
+            //图片数据加入到img容器中
+            $.each(jsonData.data, function (index, item) {
+                //加入图片数据
+                if ($.ZSIsNull(item.href)) {
+                    item.href = "javascript:void(0)";
+                }
+                $(xdivZSLunBoImg + " ul:first").append($("<li s='" + index + "'><a href='" + item.href + "'><img src='" + item.src + "'></a></li>"));
             });
-            $(xdivZSLunBoImg + " ul:first").width(xdivZSLunBoImgwidth);
-        };
+            //横排排版设置ul的宽为图片宽的总和
+            if (op.lunBoFangShi.toLowerCase() == "toleft") {
+                var xdivZSLunBoImgwidth = 0;
+                $(xdivZSLunBoImg + " ul:first img").each(function () {
+                    xdivZSLunBoImgwidth += $(this).width();
+                });
+                $(xdivZSLunBoImg + " ul:first").width(xdivZSLunBoImgwidth);
+            };
+        }
         //开启自动轮播
         if (op.isOpenZiDongLunBo) {
-            ZiDongLunBo();
+            daTuZiDongLunBoID = setInterval(ZiDongLunBo, op.ziDongLunBoMiao);
             //开启自动轮播时img容器的mousemove和mouseout的定义
             //img容器的mousemove，轮播按钮和轮播标识为mousemove等于img容器的mousemove
             $(xdivZSLunBoImg).mousemove(function () {
                 clearInterval(daTuZiDongLunBoID);
-            });
-            //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
-            $(xdivZSLunBoImg).mouseout(function () {
-                ZiDongLunBo()
-            });
-        };
+                $(xdivZSLunBoImg + " ul:first").stop(false, true).animate(); //当前动画直接到达末状态；
+            }).mouseout(function () {
+                //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
+                daTuZiDongLunBoID = setInterval(ZiDongLunBo, op.ziDongLunBoMiao);
+            });;
+        }
         //显示轮播标识
         if (op.isShowLunBoBiaoShi) {
             op.container.append($("<div class='divZSLunBoBiaoShiIndivLunBoImg' id='" + divZSLunBoBiaoShiIndivLunBoImg + "'><ul class='ZS-list-inline'></ul></div>"));
-            GenJuImgShuShengChengBiaoShi(xdivZSLunBoImg + " a img", xdivZSLunBoBiaoShiIndivLunBoImg + " ul");
+            GenJuImgShuShengChengBiaoShi(xdivZSLunBoImg + " img", xdivZSLunBoBiaoShiIndivLunBoImg + " ul");
             $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").each(function () {
-
-                $(this).mouseout(function () {
-                    ZSlunBoAnNiuClickJiShu = $(this).index();
-                    $(xdivZSLunBoImg).mouseout();
-                })
-
                 $(this).mousemove(function () {
                     $(xdivZSLunBoImg).mousemove();
                     $(xdivZSLunBoBiaoShiIndivLunBoImg + " ul li").each(function () {
@@ -92,6 +96,9 @@
                     //图片出现的方式，需根据轮播方式选择
                     ZSlunBoAnNiuClickJiShu = $(this).index();
                     SwitchImgShowFangShi();
+                }).mouseout(function () {
+                    ZSlunBoAnNiuClickJiShu = $(this).index();
+                    $(xdivZSLunBoImg).mouseout();
                 });
             });
         }
@@ -110,7 +117,7 @@
             //轮播按钮点击及鼠标离开自动轮播执行方式
             ClickLuBoAnNiu(xdivZSLunBoAnNiuIndivLunBoImg + " div");
         }
-        //自定义录播按钮
+        //自定义轮播按钮
         if (op.ziDingYiLunBoAnNiuClassName != "") {
             ClickLuBoAnNiu("." + op.ziDingYiLunBoAnNiuClassName);
         }
@@ -131,15 +138,12 @@
                         event.preventDefault();
                     });
                 };
-                if (op.isOpenZiDongLunBo) {
-                    //轮播按钮的mousemove和mouseout等于img容器的mousemove和mouseout
-                    $(this).mousemove(function () {
-                        $(xdivZSLunBoImg).mousemove();
-                    });
-                    $(this).mouseout(function () {
-                        $(xdivZSLunBoImg).mouseout();
-                    })
-                };
+                //轮播按钮的mousemove和mouseout等于img容器的mousemove和mouseout
+                $(this).mousemove(function () {
+                    $(xdivZSLunBoImg).mousemove();
+                }).mouseout(function () {
+                    $(xdivZSLunBoImg).mouseout();
+                });
             });
         };
         return daTuZiDongLunBoID;
@@ -149,16 +153,16 @@
             //图片index的增减，判断该显示哪张图片
             if (direction == "up") {
                 ToLeft = "margin-left";
-                ToUp = "margin-top";
                 if ($(xdivZSLunBoImg + " li").length - 1 == ZSlunBoAnNiuClickJiShu) {
+                    //当往后前到最后一个的时候再翻是第一个
                     ZSlunBoAnNiuClickJiShu = 0;
                 } else {
                     ZSlunBoAnNiuClickJiShu++;
                 }
             } else if (direction == "down") {
                 ToLeft = "margin-right";
-                ToUp = "margin-bottom";
                 if (ZSlunBoAnNiuClickJiShu == 0) {
+                    //当往后翻到第一个的时候在反是最后一个
                     ZSlunBoAnNiuClickJiShu = $(xdivZSLunBoImg + " li").length - 1;
                 } else {
                     ZSlunBoAnNiuClickJiShu--;
@@ -179,9 +183,19 @@
 
         //自动轮播
         function ZiDongLunBo() {
-            daTuZiDongLunBoID = setInterval(function () {
+            if (op.iSZiDongLunBo_Automatic) {
+                if (ZSlunBoAnNiuClickJiShu == 0) {
+                    LunBoAnNiuClick("up");
+                } else {
+                    if (ToLeft == "margin-left") {
+                        LunBoAnNiuClick("down");
+                    } else {
+                        LunBoAnNiuClick("up");
+                    }
+                }
+            } else {
                 LunBoAnNiuClick("up");
-            }, op.ziDongLunBoMiao);
+            }
         };
 
         //--------------------------------------------------在此处设置li的样式---------------------------------------------------
@@ -223,6 +237,7 @@
 
         //左移方式
         function ClickLunBoAnNiuShowImgToLeft() {
+            $(xdivZSLunBoImg + " ul:first").stop(false, true).animate(); //当前动画直接到达末状态
             if (ToLeft == "margin-left") {
                 $(xdivZSLunBoImg + " ul:first").animate({ marginLeft: -$(xdivZSLunBoImg + " ul:first li").eq(0).width() * op.toInt }, op.speed, function () {
                     $(xdivZSLunBoImg + " ul:first li").each(function (index, item) {
@@ -237,7 +252,7 @@
                     $(xdivZSLunBoImg + " ul:first").prepend($(xdivZSLunBoImg + " ul:first li:last"));
                 }
                 $(xdivZSLunBoImg + " ul:first").css("margin-left", -$(xdivZSLunBoImg + " ul:first li").eq(0).width() * op.toInt);
-                $(xdivZSLunBoImg + " ul:first").stop().animate({ marginLeft: 0 }, op.speed, function () {
+                $(xdivZSLunBoImg + " ul:first").animate({ marginLeft: 0 }, op.speed, function () {
 
                 })
             }
