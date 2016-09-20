@@ -933,7 +933,7 @@
         ////大图轮播
         $("#divLunBoImgWai").ZSImgLunBo({
             jsonData: '{"data":[{"href":"","src":"http://i3.mifile.cn/a4/f4bee59d-85a5-498f-ae57-a2cabe6aeb5b"},{"href":"","src":"http://i3.mifile.cn/a4/f176643a-7db7-42e9-a4e5-f4d3bf9720f5 2x"},{"href":"","src":"http://i3.mifile.cn/a4/467eeee4-0e6b-41a0-b789-4373fa45a5a6 2x"},{"href":"","src":"http://i3.mifile.cn/a4/3d0a39fe-082f-420b-8857-eadd3b2e148c 2x"}]}',
-            LunBoFangShi: "fade"
+            lunBoFangShi: "fade"
         });
 
         //精美单品击轮播
@@ -984,6 +984,15 @@
             })
         });
         JingMeiDanPinZiDongLunBo();
+
+        //左移
+        $("#sdd").ZSImgLunBo({
+            jsonData: '{"data":[{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160607142055I426f57b8e84749199283cdde212a603f"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160503092612I4e220ccb0d674c48b8b969c266eb1350"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160331165525Iab9e26fe3a5c411ea3a8c04566d79859"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555"},{"href":"","src":"http://fms2.esteelall.com/GetImage.aspx?ic=FMS20160330173906I8a65e498ff9245ccae0c72552b938555"}]}',
+            lunBoFangShi: "toleft",
+            isShowLunBoBiaoShi: false,
+            toInt: 4,
+            ziDingYiLunBoAnNiuClassName: "ddd"
+        });
 
         //搭配描述的出现与消失
         $(".ulDaPeiN li").mouseover(function () {

@@ -259,6 +259,7 @@
     <None Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\laypage\laypage.js" />
     <Content Include="Scripts\laypage\skin\laypage.css" />
+    <Content Include="Scripts\MyLunBo\JavaScript.js" />
     <Content Include="Scripts\VerificationCode\JavaScript.js" />
     <Content Include="Scripts\VerificationCode\VerificationCode.html" />
     <Content Include="Scripts\bootstrap\bootstrap-3.3.5-dist\css\bootstrap-theme.css" />
