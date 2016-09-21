@@ -173,26 +173,27 @@
             font-size: 24px;
         }
 
-    #ulDaPei1 li div {
+    #ulDaPeiZuoContent li div {
         width: 220px;
         height: 320px;
     }
 
-    #ulDaPei1, .ulDaPeiN {
+    #ulDaPeiZuoContent, .ulDaPeiN {
         margin-top: 10px;
     }
 
     .ulDaPeiN {
         display: none;
+        position: relative;
     }
 
         .ulDaPeiN:first-child {
             display: block;
         }
 
-        #ulDaPei1 li, .ulDaPeiN li {
-            padding-top: 5px;
-            padding-bottom: 5px;
+        #ulDaPeiZuoContent li, .ulDaPeiN li {
+            /*padding-top: 5px;
+            padding-bottom: 5px;*/
         }
 
     .divDaPeiContent {
@@ -204,22 +205,16 @@
         .divDaPeiContent img {
             width: 150px;
             height: 150px;
+            margin-top: 40px;
         }
 
-    /*.divDaPeiMiaoShu1 {
-        width: 230px;
-        height: 80px;
-        position: absolute;
-        z-index: 6;
-        left: 0px;
-        bottom: 0px;
-        background-color: #ff6a00;
-        display: none;
-    }*/
+    .divDaPeiMiaoShu1 {
+        margin-top: 20px;
+    }
 
     .divDaPeiMiaoShu2 {
         width: 230px;
-        height: 80px;
+        height: 90px;
         position: absolute;
         z-index: 7;
         left: 0px;
@@ -233,6 +228,19 @@
         float: right;
         height: 500px;
     }
+
+    #divDaPei li {
+        margin-bottom: 5px;
+        background-color: #FEFEFE;
+    }
+
+        #divDaPei li > div:hover {
+            border: 1px solid;
+            border-top-color: #ff0000;
+            border-bottom-color: #ff0000;
+            border-left-color: #00ff21;
+            border-right-color: #00ff21;
+        }
 </style>
 <div style="width: 100%">
     <div style="width: 1450px; background-color: #cbc8c8; margin-left: 12%; height: 500px;">
@@ -328,9 +336,9 @@
         </div>
     </div>
 
-    <div style="width: 1450px;height:665px;margin:3px auto auto 12%;" class="divDaPei">
-        <div style="float: left; width: 15%;">
-            <ul class="text-center list-inline" id="ulDaPei1">
+    <div id="divDaPei" style="width: 1450px;height:665px;margin:3px auto auto 12%;background:#F8F5F5" class="divDaPei">
+        <div id="divDaPeiLeft" style="float: left; width: 15%;">
+            <ul class="text-center list-inline" id="ulDaPeiZuoContent">
                 <li>
                     <div>
                         <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
@@ -343,8 +351,8 @@
                 </li>
             </ul>
         </div>
-        <div style="float:right;width:85%;">
-            <ul id="ulDaPeiErJi" class="text-center list-inline ulDaPeiN" leiname="erJi"></ul>
+        <div id="divDaPeiRight" style="float:right;width:85%;">
+
         </div>
     </div>
 
@@ -360,7 +368,7 @@
         <div class="divShuPaiFeiLeiDaoHang_div1">
             <ul class="list-inline divShuPaiFeiLeiDaoHang_ul2">
                 @*进入属性*@
-                {{#with specific}}
+                {{#with Specific}}
                 {{#each this}}
                 <li class="divShuPaiFeiLeiDaoHang_li2">
                     <a href="{{XiangQing}}" class="divShuPaiFeiLeiDaoHang_a2">
@@ -384,7 +392,7 @@
     <li>
         <div style="border-top:1px solid #ffd800">
             <a herf="{{ImgWaiLink}}">
-                <img src="{{ImgSrc}}" alt="{{ImgAlt}}">
+                <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
             </a>
             <div>
                 <a herf="{{NameWaiALink}}">{{Name}}</a>
@@ -398,33 +406,68 @@
     {{/each}}
 </script>
 <script id="divDaPeiContent_Template" type="text/x-handlebars">
-    @*搭配内容模板*@
-    {{#each this}}
-    <li>
-        <a herf="{{aDaPeiLink}}">
+    <!--搭配内容模板,@@last表示最后的循环。其实handlebars应该的是@只不过这是razor视图格式所以需要转换-->
+    <ul class="text-center list-inline ulDaPeiN" FenLeiEnName="{{FenLeiEnName}}">
+        {{#with Content}}
+        {{#each this}}
+        {{#if @@last}}
+        <li style="width:240px;height:140px;position:relative;top:-122px">
+            <div style="width:230px;height:150px;">
+                <div style="height: 60px;width: 130px;position:absolute;top:55px">
+                    <a href="{{aDaPeiNameLink}}">{{Name}}</a><br />
+                    <span>{{PingJiaRenName}}</span>
+                </div>
+                <div style="height: 80px;width: 80px;position:absolute;right:20px;top:30px">
+                    <a herf="{{aDaPeiImgLink}}">
+                        <img style="width:80px;height:80px" alt="{{ImgAlt}}" src="{{ImgSrc}}" />
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li style="width:240px;height:150px;position:absolute;right:-9px;bottom:-19px">
+            <div style="width:230px;height:150px;position:absolute;right:22px;bottom:20px">
+                <div style="height: 80px;width: 130px;position:absolute;top:50px">
+                    <a href="">浏览更多</a><br />
+                    <span>热门</span>
+                </div>
+                <div style="height: 80px;width: 80px;position:absolute;right:20px;top:35px">
+                    <a herf="{{aDaPeiImgLink}}">
+                        <img style="width:90px;height:80px" src="./Content/Images/go.png" />
+                    </a>
+                </div>
+            </div>
+        </li>
+        {{else}}
+        <li>
             <div class="divDaPeiContent">
-                <img alt="{{ImgAlt}}" src="{{ImgSrc}}">
+                <a herf="{{aDaPeiImgLink}}">
+                    <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
+                </a>
                 <div class="divDaPeiMiaoShu1">
-                    <span>{{Name}}</span><br />
+                    <a href="{{aDaPeiNameLink}}">{{Name}}</a><br />
                     <span>{{JiaGe}}</span><br />
                     <span>{{PingJiaShuLiang}}</span>
                 </div>
                 <div class="divDaPeiMiaoShu2">
-                    <span>{{PingJia}}</span>
-                    <br />
-                    <span>{{PingJiaRenName}}</span>
+                    <a href="{{aDaPeiMiaoShu2Link}}">
+                        <span>{{PingJia}}</span>
+                        <br />
+                        <span>{{PingJiaRenName}}</span>
+                    </a>
                 </div>
             </div>
-        </a>
-    </li>
-    {{/each}}
+        </li>
+        {{/if}}
+        {{/each}}
+        {{/with}}
+    </ul>
 </script>
 <script type="text/javascript">
     var divShuPaiFeiLeiDaoHangData = [
     {
         AshuPaiDaoHangName: "手机电话卡",
         AshuPaiDaoHangLink: "手机电话卡",
-        specific: [
+        Specific: [
             {
                 XiangQing: "",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -451,7 +494,7 @@
    {
        AshuPaiDaoHangName: "笔记本 平板",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
           {
               XiangQing: "",
               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -472,7 +515,7 @@
    {
        AshuPaiDaoHangName: "电视 盒子",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
           {
               XiangQing: "",
               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -493,7 +536,7 @@
    {
        AshuPaiDaoHangName: "路由器 智能硬件",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
            {
                XiangQing: "",
                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -514,7 +557,7 @@
    {
        AshuPaiDaoHangName: "移动电源 电池 插排",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
           {
               XiangQing: "",
               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -535,7 +578,7 @@
    {
        AshuPaiDaoHangName: "耳机 音响",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
            {
                XiangQing: "",
                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -556,7 +599,7 @@
    {
        AshuPaiDaoHangName: "保护套 贴膜",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
           {
               XiangQing: "",
               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -577,7 +620,7 @@
    {
        AshuPaiDaoHangName: "线材 支架 存储卡",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
            {
                XiangQing: "",
                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -598,7 +641,7 @@
    {
        AshuPaiDaoHangName: "箱包 服饰",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
            {
                XiangQing: "",
                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -619,7 +662,7 @@
    {
        AshuPaiDaoHangName: "米兔 生活周边",
        AshuPaiDaoHangLink: "",
-       specific: [
+       Specific: [
            {
                XiangQing: "",
                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
@@ -732,111 +775,129 @@
     var divJingMeiDanPinContent_Template = Handlebars.compile($("#divJingMeiDanPinContent_Template").html());
     $("#ulJingMeiDanPin").html(divJingMeiDanPinContent_Template(divJingMeiDanPinContentData));
 
-    var divDaPeiContentData = [
-       {
-           aDaPeiLink: "",
-           ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
-           ImgAlt: "",
-           Name: "小米移动电源10000mAh",
-           JiaGe: "79元",
-           PingJiaShuLiang: "1.9万评价",
-           PingJia: "真的好好",
-           PingJiaRenName: "来自张赛的评价"
-       },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T1ycK_BjYv1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米圈铁耳机",
-        JiaGe: "99元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T1eSZgBjVT1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米移动电源10000mAh 高配版",
-        JiaGe: "1499元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米移动电源10000mAh",
-        JiaGe: "79元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T190DvB4dv1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米蓝牙耳机",
-        JiaGe: "79元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米移动电源10000mAh",
-
-        JiaGe: "79元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/pms_1463579883.27084326.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米插线排",
-        JiaGe: "49元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米移动电源10000mAh",
-        JiaGe: "79元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米小钢炮蓝牙音箱2",
-        JiaGe: "129元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    },
-    {
-        aDaPeiLink: "",
-        ImgSrc: "http://i2.mifile.cn/a1/T1MDK_B_YT1RXrhCrK.jpg?width=150&height=150",
-        ImgAlt: "",
-        Name: "小米蓝牙音箱",
-        JiaGe: "199元",
-        PingJiaShuLiang: "1.9万评价",
-        PingJia: "真的好好",
-        PingJiaRenName: "来自张赛的评价"
-    }
-    ];
+    var divDaPeiContentData = {
+        FenLeiEnName: "erJi",
+        Content: [
+                   {
+                       aDaPeiImgLink: "",
+                       aDaPeiNameLink: "",
+                       aDaPeiMiaoShu2Link: "",
+                       ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
+                       ImgAlt: "",
+                       Name: "小米移动电源10000mAh",
+                       JiaGe: "79元",
+                       PingJiaShuLiang: "1.9万评价",
+                       PingJia: "真的好好",
+                       PingJiaRenName: "来自张赛的评价"
+                   },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T1ycK_BjYv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米圈铁耳机",
+                        JiaGe: "99元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T1eSZgBjVT1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米移动电源10000mAh 高配版",
+                        JiaGe: "1499元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米移动电源10000mAh",
+                        JiaGe: "79元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T190DvB4dv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米蓝牙耳机",
+                        JiaGe: "79元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米移动电源10000mAh",
+                        JiaGe: "79元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/pms_1463579883.27084326.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米插线排",
+                        JiaGe: "49元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米移动电源10000mAh",
+                        JiaGe: "79元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米小钢炮蓝牙音箱2",
+                        JiaGe: "129元",
+                        PingJiaShuLiang: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/T15hZ_BsDv1RXrhCrK!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "小米小钢炮蓝牙音箱 青春版",
+                        JiaGe: "99元",
+                    }
+        ]
+    };
     var divDaPeiContent_Template = Handlebars.compile($("#divDaPeiContent_Template").html());
-    $("#ulDaPeiErJi").html(divDaPeiContent_Template(divDaPeiContentData));
+    $("#divDaPeiRight").html(divDaPeiContent_Template(divDaPeiContentData));
 
 </script>
 
@@ -917,12 +978,12 @@
         //TuPianZiShiYing("img");
         TuPianZiShiYing(".divZSLunBoImg");
         TuPianZiShiYing("#ulKuaiSuZhiDa3GeImgLianJie");
-        //TuPianZiShiYing(".divDaPei");
+        TuPianZiShiYing("#divDaPeiLeft");
     });
 
-    function DaPeiShow(leiname) {
+    function DaPeiShow(FenLeiEnName) {
         $(".ulDaPeiN").each(function (index, item) {
-            if ($(item).attr("leiname") == leiname) {
+            if ($(item).attr("FenLeiEnName") == FenLeiEnName) {
                 $(item).show();
             } else {
                 $(item).hide();

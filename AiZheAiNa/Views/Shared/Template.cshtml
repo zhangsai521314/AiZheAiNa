@@ -44,6 +44,72 @@
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="http://www.aizheaina.com:80/Scripts/common/handlebars-v4.0.5.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //根据用户登录判断模板数据样式
+            $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
+                if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
+                    $("#spanUserName").html("欢迎-" + AiZheAiNa_SYS_UserModel.ShowName)
+                    if (AiZheAiNa_SYS_UserModel.UserImg != null && AiZheAiNa_SYS_UserModel.UserImg != "") {
+                        $("#divLoginHouShow ul li:first").prepend($("<img style='width:30px' id='imgShowUserImg' src='" + AiZheAiNa_SYS_UserModel.UserImg + "'/>"));
+                    }
+                    $("#divHuanYing").css("display", "none");
+                    $("#divLoginHouShow").css("display", "block");
+                }
+                else {
+                    $("#divHuanYing").css("display", "block");
+                    $("#divLoginHouShow").css("display", "none");
+                }
+            });
+
+            //第一个横排导航内容的显示与隐藏
+            $("#divHengPaiTouBuDaoHang1 div ul li div").each(function (index, item) {
+                var $d = $(item);
+                var bcolor = "#00ff21";
+                if (index % 2 == 0) {
+                    bcolor = "#f19a9a";
+                }
+                $d.css({ "left": $d.parent().offset().left, "top": $d.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + $d.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": $d.parent().width() + 4.5 }).html(index);
+
+                $d.parent().mousemove(function () {
+                    $(this).children("div").show();
+                });
+                $d.parent().mouseout(function () {
+                    $(this).children("div").hide();
+                });
+                $d.mousemove(function () {
+                    $(this).show();
+                });
+                $d.mouseout(function () {
+                    $(this).hide();
+                });
+            });
+
+            //第二个横排导航内容的显示与隐藏
+            $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function (index, item) {
+                var $d = $(item);
+                var bcolor = "#00ff21", width = "300px";
+                if (index % 2 == 0) {
+                    bcolor = "#f19a9a";
+                    width = "400px";
+                }
+                $d.css({ "left": "0px", "top": $d.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + $d.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() }).html(index);
+
+                $d.parent().mousemove(function () {
+                    $(this).children("div").show();
+                });
+                $d.parent().mouseout(function () {
+                    $(this).children("div").hide();
+                });
+                $d.mousemove(function () {
+                    $(this).show();
+                });
+                $d.mouseout(function () {
+                    $(this).hide();
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div>
@@ -187,70 +253,5 @@
             底部啊底部
         </div>
     </div>
-    <script type="text/javascript">
-        //根据用户登录判断模板数据样式
-        $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
-            if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
-                $("#spanUserName").html("欢迎-" + AiZheAiNa_SYS_UserModel.ShowName)
-                if (AiZheAiNa_SYS_UserModel.UserImg != null && AiZheAiNa_SYS_UserModel.UserImg != "") {
-                    $("#divLoginHouShow ul li:first").prepend($("<img style='width:30px' id='imgShowUserImg' src='" + AiZheAiNa_SYS_UserModel.UserImg + "'/>"));
-                }
-                $("#divHuanYing").css("display", "none");
-                $("#divLoginHouShow").css("display", "block");
-            }
-            else {
-                $("#divHuanYing").css("display", "block");
-                $("#divLoginHouShow").css("display", "none");
-            }
-        });
-
-        //第一个横排导航内容的显示与隐藏
-        $("#divHengPaiTouBuDaoHang1 div ul li div").each(function (index, item) {
-            var $d = $(item);
-            var bcolor = "#00ff21";
-            if (index % 2 == 0) {
-                bcolor = "#f19a9a";
-            }
-            $d.css({ "left": $d.parent().offset().left, "top": $d.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + $d.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": $d.parent().width() + 4.5 }).html(index);
-
-            $d.parent().mousemove(function () {
-                $(this).children("div").show();
-            });
-            $d.parent().mouseout(function () {
-                $(this).children("div").hide();
-            });
-            $d.mousemove(function () {
-                $(this).show();
-            });
-            $d.mouseout(function () {
-                $(this).hide();
-            });
-        });
-
-        //第二个横排导航内容的显示与隐藏
-        $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function (index, item) {
-            var $d = $(item);
-            var bcolor = "#00ff21", width = "300px";
-            if (index % 2 == 0) {
-                bcolor = "#f19a9a";
-                width = "400px";
-            }
-            $d.css({ "left": "0px", "top": $d.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + $d.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() }).html(index);
-
-            $d.parent().mousemove(function () {
-                $(this).children("div").show();
-            });
-            $d.parent().mouseout(function () {
-                $(this).children("div").hide();
-            });
-            $d.mousemove(function () {
-                $(this).show();
-            });
-            $d.mouseout(function () {
-                $(this).hide();
-            });
-        });
-
-    </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ using AiZheAiNa.Plug.QQ;
 using QConnectSDK.Context;
 using QConnectSDK;
 using AiZheAiNa.Filters;
-
+using Newtonsoft.Json;
 namespace AiZheAiNa.Controllers
 {
     public class HomeController : Controller
@@ -32,12 +32,7 @@ namespace AiZheAiNa.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            AiZheAiNa_SYS_UserInfo m = (AiZheAiNa_SYS_UserInfo)Session["UserInfo"];
-            if (Session["UserInfo"] != null)
-            {
-                ViewBag.LoginStatus = 1;
-                ViewBag.LoginMsg = "登录成功";
-            }
+            //AiZheAiNa_SYS_UserInfo m = (AiZheAiNa_SYS_UserInfo)Session["UserInfo"];
             return View();
         }
         #endregion
