@@ -175,36 +175,26 @@
     }
 
     .ulDaPeiN {
-        /*display: none;*/
         position: relative;
     }
 
-        /*.ulDaPeiN:first-child {
-            display: block;
-        }*/
-
-        #ulDaPeiZuoContent li, .ulDaPeiN li {
-            /*padding-top: 5px;
-            padding-bottom: 5px;*/
-        }
-
-    .divDaPeiContent {
+    .divDaPeiRightContent {
         width: 230px;
         height: 320px;
         position: relative;
     }
 
-        .divDaPeiContent img {
+        .divDaPeiRightContent img {
             width: 150px;
             height: 150px;
             margin-top: 40px;
         }
 
-    .divDaPeiMiaoShu1 {
+    .divDaPeiRightMiaoShu1 {
         margin-top: 20px;
     }
 
-    .divDaPeiMiaoShu2 {
+    .divDaPeiRightMiaoShu2 {
         width: 230px;
         height: 90px;
         position: absolute;
@@ -215,7 +205,7 @@
         display: none;
     }
 
-    .divDaPeiMiaoShu3 {
+    .divDaPeiRightMiaoShu3 {
         background-color: #83c44e;
         height: 20px;
         left: 35%;
@@ -237,13 +227,41 @@
         background-color: #FEFEFE;
     }
 
-        #divDaPei li > div:hover {
+        #divDaPei li > div:hover ,#divZhiNengYingJian li > div:hover{
             border: 1px solid;
             border-top-color: #ff0000;
             border-bottom-color: #ff0000;
             border-left-color: #00ff21;
             border-right-color: #00ff21;
         }
+
+    #divZhiNengYingJianLeft, .ulZhiNengYingJianN {
+        margin-top: 10px;
+    }
+
+    .ulZhiNengYingJianN {
+        position: relative;
+        margin-left: 0.3px;
+    }
+
+        .ulZhiNengYingJianN li {
+        }
+
+    .divZhiNengYingJianRightContent {
+        width: 230px;
+        height: 287.5px;
+        position: relative;
+    }
+
+        .divZhiNengYingJianRightContent img {
+            width: 150px;
+            height: 150px;
+            margin-top: 40px;
+        }
+
+    .divZhiNengYingJian li {
+        margin-bottom: 5px;
+    }
 </style>
 <div style="width: 100%">
     <div style="width: 1450px; background-color: #cbc8c8; margin-left: 12%; height: 500px;">
@@ -322,6 +340,25 @@
 
     </div>
 
+
+    <div style="width: 1450px;height:50px;margin:10px auto auto 12%;">
+        <div style="float: left; font-size: 24px">
+            智能硬件
+        </div>
+        <div style="width:70%;float:right;text-align:right">
+            查看全部<img style="width:60px;height:50px" src="./Content/Images/go.png" />
+        </div>
+    </div>
+    <div id="divZhiNengYingJian" style="width: 1450px;height:625px;margin:3px auto auto 12%;" class="divZhiNengYingJian">
+        <div id="divZhiNengYingJianLeft" style="float: left; width: 15%;">
+            <img alt="" src="http://i3.mifile.cn/a4/57c2f4fb-6743-44c6-b447-6bd55aaeef89">
+        </div>
+        <div id="divZhiNengYingJianRight" style="float:right;width:85%;">
+
+        </div>
+    </div>
+
+
     <div style="width: 1450px;height:50px;margin:10px auto auto 12%;">
         <div style="float: left; font-size: 24px">
             搭配
@@ -339,8 +376,7 @@
             </ul>
         </div>
     </div>
-
-    <div id="divDaPei" style="width: 1450px;height:665px;margin:3px auto auto 12%;background:#F8F5F5" class="divDaPei">
+    <div id="divDaPei" style="width: 1450px;height:665px;margin:3px auto auto 12%;background-color:#F8F5F5" class="divDaPei">
         <div id="divDaPeiLeft" style="float: left; width: 15%;">
             <ul class="text-center list-inline" id="ulDaPeiZuoContent">
                 <li>
@@ -402,19 +438,17 @@
                     <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
                 </a>
                 <div>
-                    <a herf="{{NameWaiALink}}">{{Name}}</a>
-                    <br />
-                    <span>{{JianShu}}</span>
-                    <br />
-                    <span>{{JiaGe}}</span>
+                    <a herf="{{NameWaiALink}}">{{Name}}</a><p/>
+                    <p>{{JianShu}}</p>
+                    <p>{{JiaGe}}</p>
                 </div>
             </div>
         </li>
         {{/each}}
     </ul>
 </script>
-<script id="divDaPeiContent_Template" type="text/x-handlebars">
-    <!--搭配内容模板,@@last表示最后的循环。其实handlebars应该的是@只不过这是razor视图格式所以需要转换-->
+<script id="divDaPeiRight_Template" type="text/x-handlebars">
+    <!--搭配右边内容模板,@@last表示最后的循环。其实handlebars应该的是@只不过这是razor视图格式所以需要转换-->
     <ul class="text-center list-inline ulDaPeiN" FenLeiEnName="{{FenLeiEnName}}">
         {{#with Content}}
         {{#each this}}
@@ -434,27 +468,30 @@
         </li>
         {{else}}
         <li>
-            <div class="divDaPeiContent">
+            <div class="divDaPeiRightContent">
                 {{#if TeDian}}
-                <div class="divDaPeiMiaoShu3 divISXinPin">
+                <!--没有特点则不生成特点div-->
+                <div class="divDaPeiRightMiaoShu3">
                     {{TeDian}}
                 </div>
                 {{/if}}
                 <a herf="{{aDaPeiImgLink}}">
                     <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                 </a>
-                <div class="divDaPeiMiaoShu1">
-                    <a href="{{aDaPeiNameLink}}">{{Name}}</a><br />
-                    <span>{{JiaGe}}</span><br />
-                    <span>{{PingJiaShuLiang}}</span>
+                <div class="divDaPeiRightMiaoShu1">
+                    <a href="{{aDaPeiNameLink}}">{{Name}}</a><p />
+                    <p>{{JiaGe}}</p>
+                    <p>{{PingJiaShuLiang}}</p>
                 </div>
-                <div class="divDaPeiMiaoShu2">
+                {{#if PingJia}}
+                <!--没有评价则不生成评价div-->
+                <div class="divDaPeiRightMiaoShu2">
                     <a href="{{aDaPeiMiaoShu2Link}}">
-                        <span>{{PingJia}}</span>
-                        <br />
-                        <span>{{PingJiaRenName}}</span>
+                        <p>{{PingJia}}</p>
+                        <p>{{PingJiaRenName}}</p>
                     </a>
                 </div>
+                {{/if}}
             </div>
         </li>
         {{/if}}
@@ -463,8 +500,8 @@
         <li style="width:240px;height:150px;position:absolute;right:-9px;bottom:-19px">
             <div style="width:230px;height:150px;position:absolute;right:22px;bottom:20px">
                 <div style="height: 80px;width: 130px;position:absolute;top:50px">
-                    <a href="">浏览更多</a><br />
-                    <span>{{FenLeiCnName}}</span>
+                    <a href="">浏览更多</a><p />
+                    <p>{{FenLeiCnName}}</p>
                 </div>
                 <div style="height: 80px;width: 80px;position:absolute;right:20px;top:35px">
                     <a herf="{{aDaPeiImgLink}}">
@@ -473,6 +510,31 @@
                 </div>
             </div>
         </li>
+    </ul>
+</script>
+<script id="divZhiNengYingJianRight_Template" type="text/x-handlebars">
+    <!--智能右边内容能硬件模板-->
+    <ul class="text-center list-inline ulZhiNengYingJianN" FenLeiEnName="{{FenLeiEnName}}">
+        {{#each this}}
+        <li>
+            <div class="divZhiNengYingJianRightContent">
+                @*{{#if TeDian}}
+                    <div class="divZhiNengYingJianRightMiaoShu3">
+                        {{TeDian}}
+                    </div>
+                    {{/if}}*@
+                <a herf="{{aDaPeiImgLink}}">
+                    <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
+                </a>
+                <div class="divZhiNengYingJianRightMiaoShu1">
+                    <a href="{{aDaPeiNameLink}}">{{Name}}</a></p>
+                    <p>{{JianShu}}</p>
+                    <p>{{JiaGe}}</p>
+                    <p>{{PingJiaShuLiang}}
+                </div>
+            </div>
+        </li>
+        {{/each}}
     </ul>
 </script>
 <script type="text/javascript">
@@ -788,7 +850,7 @@
     var divJingMeiDanPinContent_Template = Handlebars.compile($("#divJingMeiDanPinContent_Template").html());
     $("#divJingMeiDanPinContent").html(divJingMeiDanPinContent_Template(divJingMeiDanPinContentData));
 
-    var divDaPeiContentData1 = {
+    var divDaPeiRight1 = {
         FenLeiCnName: "热门",
         FenLeiEnName: "reMen",
         Content: [
@@ -920,10 +982,10 @@
                     }
         ]
     };
-    var divDaPeiContent_Template = Handlebars.compile($("#divDaPeiContent_Template").html());
-    $("#divDaPeiRight").html(divDaPeiContent_Template(divDaPeiContentData1));
+    var divDaPeiRight_Template = Handlebars.compile($("#divDaPeiRight_Template").html());
+    $("#divDaPeiRight").html(divDaPeiRight_Template(divDaPeiRight1));
 
-    var divDaPeiContentData2 = {
+    var divDaPeiRight2 = {
         FenLeiCnName: "耳机",
         FenLeiEnName: "erJi",
         Content: [
@@ -1056,6 +1118,141 @@
         ]
     };
 
+    var divZhiNengYingJianRightData = [
+                   {
+                       aDaPeiImgLink: "",
+                       aDaPeiNameLink: "",
+                       aDaPeiMiaoShu2Link: "",
+                       ImgSrc: "http://i3.mifile.cn/a4/376f5f19-d1f5-4f87-8ef9-38e86891bc87",
+                       ImgAlt: "",
+                       Name: "小米路由器3",
+                       JiaGe: "149元",
+                       JianShu: "四天线设计，更安全更稳定",
+                       PingJia: "真的好好",
+                       PingJiaRenName: "来自张赛的评价",
+                       TeDian: "我想"
+                   },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i3.mifile.cn/a4/2b69b930-a2fd-4d09-a46a-8690cb79f764",
+                        ImgAlt: "",
+                        Name: "电助力折叠自行车",
+                        JiaGe: "2999元",
+                        JianShu: "力矩传感电助力，折叠便携设计",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "我玩"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/pms_1474338357.52216545!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "米兔定位电话",
+                        JiaGe: "169元",
+                        JianShu: "时刻定位，守护你所爱",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: ""
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/T1PXhgBbdT1RXrhCrK!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "小米蓝牙耳机",
+                        JiaGe: "79元",
+                        JianShu: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "搞飞机"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/T190DvB4dv1RXrhCrK.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "九号平衡车",
+                        JiaGe: "1999元",
+                        JianShu: "年轻人的酷玩具，骑行遥控两种玩法",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: ""
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/pms_1464615180.86261317!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "米兔智能故事机",
+                        JiaGe: "199元",
+                        JianShu: "宝宝又不好好吃饭，让米兔来哄宝宝吧",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "真带劲"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i2.mifile.cn/a1/pms_1463579883.27084326.jpg?width=150&height=150",
+                        ImgAlt: "",
+                        Name: "小米小钢炮蓝牙音箱2",
+                        JiaGe: "129元",
+                        JianShu: "1.9万评价",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "真带劲"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/T1OVC_ByY_1RXrhCrK!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "米家压力IH电饭煲",
+                        JiaGe: "999元",
+                        JianShu: "智能定时烹饪，花呗6期免息",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "来啦"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/pms_1469583266.7193851!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "小米笔记本Air 12.5英寸",
+                        JiaGe: "3499元",
+                        JianShu: "更轻更薄，像杂志一样随身携带",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "滚吧"
+                    },
+                    {
+                        aDaPeiImgLink: "",
+                        aDaPeiNameLink: "",
+                        aDaPeiMiaoShu2Link: "",
+                        ImgSrc: "http://i1.mifile.cn/a1/pms_1464071511.37197399!220x220.jpg",
+                        ImgAlt: "",
+                        Name: "米家 LED 智能台灯",
+                        JiaGe: "169元",
+                        JianShu: "无可视频闪，亮度色温无级调节",
+                        PingJia: "真的好好",
+                        PingJiaRenName: "来自张赛的评价",
+                        TeDian: "滚吧"
+                    }
+    ];
+
+    var divZhiNengYingJianRight_Template = Handlebars.compile($("#divZhiNengYingJianRight_Template").html());
+    $("#divZhiNengYingJianRight").html(divZhiNengYingJianRight_Template(divZhiNengYingJianRightData));
 </script>
 
 
@@ -1127,10 +1324,10 @@
         });
         //搭配描述的出现与消失
         $(".ulDaPeiN li").mouseover(function () {
-            $(this).find(".divDaPeiMiaoShu2").show();
+            $(this).find(".divDaPeiRightMiaoShu2").show();
         });
         $(".ulDaPeiN li").mouseout(function () {
-            $(this).find(".divDaPeiMiaoShu2").hide();
+            $(this).find(".divDaPeiRightMiaoShu2").hide();
         });
 
 
@@ -1139,6 +1336,7 @@
         TuPianZiShiYing(".divZSLunBoImg");
         TuPianZiShiYing("#ulKuaiSuZhiDa3GeImgLianJie");
         TuPianZiShiYing("#divDaPeiLeft");
+        TuPianZiShiYing("#divZhiNengYingJianLeft");
     });
 
     function DaPeiShow(FenLeiEnName) {
@@ -1161,7 +1359,7 @@
             //此处相当于ajax请求后台获取数据
             if (FenLeiEnName == "erJi") {
                 //相当于请求成功后，否则后死循环
-                $("#divDaPeiRight").html($("#divDaPeiRight").html() + divDaPeiContent_Template(divDaPeiContentData2));
+                $("#divDaPeiRight").html($("#divDaPeiRight").html() + divDaPeiRight_Template(divDaPeiRight2));
                 DaPeiShow(FenLeiEnName);
             }
         }
