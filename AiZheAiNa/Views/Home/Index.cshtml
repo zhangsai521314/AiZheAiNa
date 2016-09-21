@@ -12,7 +12,7 @@
         cursor: pointer;
     }
 
-    .divShuPaiFeiLeiDaoHang {
+    #divShuPaiFeiLeiDaoHang {
         width: 20%;
         float: left;
     }
@@ -21,9 +21,7 @@
         background-color: #5C544C;
         color: #ffffff;
     }
-    /*#divShuPaiFeiLeiDaoHang ul li:not(:first-child)  {
-            padding-top: 20px;
-        }*/
+
     .divShuPaiFeiLeiDaoHang_li1 {
         padding-top: 15px;
         padding-bottom: 15px;
@@ -135,18 +133,12 @@
 
 
     .ulJingMeiDanPin {
-        display: none;
         width: 3000px;
         margin-left: 0px;
     }
 
         .ulJingMeiDanPin > li {
             float: left;
-        }
-
-
-        .ulJingMeiDanPin:first-child {
-            display: block;
         }
 
         .ulJingMeiDanPin li div {
@@ -255,8 +247,8 @@
 </style>
 <div style="width: 100%">
     <div style="width: 1450px; background-color: #cbc8c8; margin-left: 12%; height: 500px;">
-        <div id="divShuPaiFeiLeiDaoHang" class="divShuPaiFeiLeiDaoHang" miaoshu="竖排分类导航">
-            <ul class="list-unstyled text-center divShuPaiFeiLeiDaoHang_ul1" id="ulShuPaiFeiLeiDaoHang"></ul>
+        <div id="divShuPaiFeiLeiDaoHang" miaoshu="竖排分类导航">
+
         </div>
         <div id="divLunBoImgWai">
 
@@ -326,10 +318,10 @@
             </ul>
         </div>
     </div>
-
     <div id="divJingMeiDanPinContent" style="width: 1450px;height:300px;margin:10px auto auto 12%;overflow:hidden" class="text-center">
-        <ul id="ulJingMeiDanPin" class="list-inline ulJingMeiDanPin"></ul>
+
     </div>
+
     <div style="width: 1450px;height:50px;margin:10px auto auto 12%;">
         <div style="float: left; font-size: 24px">
             搭配
@@ -374,48 +366,52 @@
 <script src="http://www.aizheaina.com:80/Scripts/common/handlebars-v4.0.5.js"></script>
 <script id="divShuPaiFeiLeiDaoHang_Template" type="text/x-handlebars">
     @*竖排分类导航模板*@
-    {{#each this}}
-    <li class="divShuPaiFeiLeiDaoHang_li1">
-        <a href="{{AshuPaiDaoHangLink}}" class="divShuPaiFeiLeiDaoHang_a1">{{AshuPaiDaoHangName}}</a>
-        <div class="divShuPaiFeiLeiDaoHang_div1">
-            <ul class="list-inline divShuPaiFeiLeiDaoHang_ul2">
-                @*进入属性*@
-                {{#with Specific}}
-                {{#each this}}
-                <li class="divShuPaiFeiLeiDaoHang_li2">
-                    <a href="{{XiangQing}}" class="divShuPaiFeiLeiDaoHang_a2">
-                        <img src="{{shuPaiDaoHangLiXiaoImgSrc}}" />
-                        <span>{{shuPaiDaoHangLiXiaoImgSpanMiaoShu}}</span>
-                    </a>
-                    {{#if zhiDaName }}
-                    <a href="{{zhiDaLink}}" class="divShuPaiFeiLeiDaoHang_a3">{{zhiDaName}}</a>
-                    {{/if}}
-                </li>
-                {{/each}}
-                {{/with}}
-            </ul>
-        </div>
-    </li>
-    {{/each}}
+    <ul class="list-unstyled text-center divShuPaiFeiLeiDaoHang_ul1">
+        {{#each this}}
+        <li class="divShuPaiFeiLeiDaoHang_li1">
+            <a href="{{AshuPaiDaoHangLink}}" class="divShuPaiFeiLeiDaoHang_a1">{{AshuPaiDaoHangName}}</a>
+            <div class="divShuPaiFeiLeiDaoHang_div1">
+                <ul class="list-inline divShuPaiFeiLeiDaoHang_ul2">
+                    @*进入属性*@
+                    {{#with Specific}}
+                    {{#each this}}
+                    <li class="divShuPaiFeiLeiDaoHang_li2">
+                        <a href="{{XiangQing}}" class="divShuPaiFeiLeiDaoHang_a2">
+                            <img src="{{shuPaiDaoHangLiXiaoImgSrc}}" />
+                            <span>{{shuPaiDaoHangLiXiaoImgSpanMiaoShu}}</span>
+                        </a>
+                        {{#if zhiDaName }}
+                        <a href="{{zhiDaLink}}" class="divShuPaiFeiLeiDaoHang_a3">{{zhiDaName}}</a>
+                        {{/if}}
+                    </li>
+                    {{/each}}
+                    {{/with}}
+                </ul>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
 </script>
 <script id="divJingMeiDanPinContent_Template" type="text/x-handlebars">
     @*精美单品模板*@
-    {{#each this}}
-    <li>
-        <div style="border-top:1px solid #ffd800">
-            <a herf="{{ImgWaiLink}}">
-                <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
-            </a>
-            <div>
-                <a herf="{{NameWaiALink}}">{{Name}}</a>
-                <br />
-                <span>{{JianShu}}</span>
-                <br />
-                <span>{{JiaGe}}</span>
+    <ul class="list-inline ulJingMeiDanPin">
+        {{#each this}}
+        <li>
+            <div style="border-top:1px solid #ffd800">
+                <a herf="{{ImgWaiLink}}">
+                    <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
+                </a>
+                <div>
+                    <a herf="{{NameWaiALink}}">{{Name}}</a>
+                    <br />
+                    <span>{{JianShu}}</span>
+                    <br />
+                    <span>{{JiaGe}}</span>
+                </div>
             </div>
-        </div>
-    </li>
-    {{/each}}
+        </li>
+        {{/each}}
+    </ul>
 </script>
 <script id="divDaPeiContent_Template" type="text/x-handlebars">
     <!--搭配内容模板,@@last表示最后的循环。其实handlebars应该的是@只不过这是razor视图格式所以需要转换-->
@@ -694,7 +690,7 @@
    }
     ];
     var divShuPaiFeiLeiDaoHang_Template = Handlebars.compile($("#divShuPaiFeiLeiDaoHang_Template").html());
-    $("#ulShuPaiFeiLeiDaoHang").html(divShuPaiFeiLeiDaoHang_Template(divShuPaiFeiLeiDaoHangData));
+    $("#divShuPaiFeiLeiDaoHang").html(divShuPaiFeiLeiDaoHang_Template(divShuPaiFeiLeiDaoHangData));
 
     var divJingMeiDanPinContentData = [
         {
@@ -790,7 +786,7 @@
     ];
 
     var divJingMeiDanPinContent_Template = Handlebars.compile($("#divJingMeiDanPinContent_Template").html());
-    $("#ulJingMeiDanPin").html(divJingMeiDanPinContent_Template(divJingMeiDanPinContentData));
+    $("#divJingMeiDanPinContent").html(divJingMeiDanPinContent_Template(divJingMeiDanPinContentData));
 
     var divDaPeiContentData1 = {
         FenLeiCnName: "热门",
