@@ -262,6 +262,16 @@
     .divZhiNengYingJian li {
         margin-bottom: 5px;
     }
+    .divZhiNengYingJianRightMiaoShu3 {
+        background-color: #ffd800;
+        height: 20px;
+        left: 35%;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 70px;
+        z-index: 7;
+    }
 </style>
 <div style="width: 100%">
     <div style="width: 1450px; background-color: #cbc8c8; margin-left: 12%; height: 500px;">
@@ -518,11 +528,11 @@
         {{#each this}}
         <li>
             <div class="divZhiNengYingJianRightContent">
-                @*{{#if TeDian}}
+                {{#if TeDian}}
                     <div class="divZhiNengYingJianRightMiaoShu3">
                         {{TeDian}}
                     </div>
-                    {{/if}}*@
+                    {{/if}}
                 <a herf="{{aDaPeiImgLink}}">
                     <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                 </a>
@@ -1192,7 +1202,7 @@
                         ImgAlt: "",
                         Name: "米兔智能故事机",
                         JiaGe: "199元",
-                        JianShu: "宝宝又不好好吃饭，让米兔来哄宝宝吧",
+                        JianShu: "宝宝又不好好吃饭，让米兔来哄宝宝",
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "真带劲"
