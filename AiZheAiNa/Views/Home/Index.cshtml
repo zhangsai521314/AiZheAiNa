@@ -223,6 +223,17 @@
         display: none;
     }
 
+    .divDaPeiMiaoShu3 {
+        background-color: #83c44e;
+        height: 20px;
+        left: 35%;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 70px;
+        z-index: 7;
+    }
+
     #divLunBoImgWai {
         width: 80%;
         float: right;
@@ -428,6 +439,11 @@
         {{else}}
         <li>
             <div class="divDaPeiContent">
+                {{#if IsXinPin}}
+                <div class="divDaPeiMiaoShu3 divISXinPin">
+                    新品
+                </div>
+                {{/if}}
                 <a herf="{{aDaPeiImgLink}}">
                     <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                 </a>
@@ -790,7 +806,8 @@
                        JiaGe: "79元",
                        PingJiaShuLiang: "1.9万评价",
                        PingJia: "真的好好",
-                       PingJiaRenName: "来自张赛的评价"
+                       PingJiaRenName: "来自张赛的评价",
+                       IsXinPin: 1
                    },
                     {
                         aDaPeiImgLink: "",
@@ -802,7 +819,8 @@
                         JiaGe: "99元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -814,7 +832,8 @@
                         JiaGe: "1499元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -826,7 +845,8 @@
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -838,7 +858,8 @@
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 0
                     },
                     {
                         aDaPeiImgLink: "",
@@ -850,7 +871,8 @@
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 0
                     },
                     {
                         aDaPeiImgLink: "",
@@ -862,7 +884,8 @@
                         JiaGe: "49元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -874,7 +897,8 @@
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -886,7 +910,8 @@
                         JiaGe: "129元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -895,6 +920,7 @@
                         ImgAlt: "",
                         Name: "小米小钢炮蓝牙音箱 青春版",
                         JiaGe: "99元",
+                        IsXinPin: 0
                     }
         ]
     };
@@ -915,7 +941,8 @@
                        JiaGe: "99元",
                        PingJiaShuLiang: "1.9万评价",
                        PingJia: "真的好好",
-                       PingJiaRenName: "来自张赛的评价"
+                       PingJiaRenName: "来自张赛的评价",
+                       IsXinPin: 0
                    },
                     {
                         aDaPeiImgLink: "",
@@ -927,7 +954,8 @@
                         JiaGe: "99元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -939,7 +967,8 @@
                         JiaGe: "69元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 0
                     },
                     {
                         aDaPeiImgLink: "",
@@ -951,7 +980,8 @@
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -963,7 +993,8 @@
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 0
                     },
                     {
                         aDaPeiImgLink: "",
@@ -975,7 +1006,8 @@
                         JiaGe: "69元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -987,7 +1019,8 @@
                         JiaGe: "129元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -999,7 +1032,8 @@
                         JiaGe: "199元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -1011,7 +1045,8 @@
                         JiaGe: "129元",
                         PingJiaShuLiang: "1.9万评价",
                         PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价"
+                        PingJiaRenName: "来自张赛的评价",
+                        IsXinPin: 1
                     },
                     {
                         aDaPeiImgLink: "",
@@ -1020,6 +1055,7 @@
                         ImgAlt: "",
                         Name: "小米小钢炮蓝牙音箱 青春版",
                         JiaGe: "99元",
+                        IsXinPin: 1
                     }
         ]
     };
