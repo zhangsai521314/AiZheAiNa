@@ -215,6 +215,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JqueryValidateController.cs" />
     <Compile Include="Controllers\PayController.cs" />
+    <Compile Include="Controllers\shiyanController.cs" />
     <Compile Include="Filters\MyActionFilterAttribute.cs" />
     <Compile Include="Filters\MyAuthorizeAttribute.cs" />
     <Compile Include="Filters\MyHandleErrorAttibute.cs" />
@@ -288,10 +289,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\JqueryValidate\Index.cshtml" />
+    <Content Include="Views\shiyan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\GetInFo\" />
+    <Folder Include="Views\shixian\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
