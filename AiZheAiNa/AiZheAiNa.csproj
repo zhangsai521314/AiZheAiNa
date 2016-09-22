@@ -294,7 +294,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\GetInFo\" />
-    <Folder Include="Views\shixian\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
