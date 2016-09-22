@@ -54,16 +54,23 @@
     <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
     <script type="text/javascript">
         $(function () {
+            var isResizing = true;
             window.onresize = function () {
-                $("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
-                    TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
-                });
-                $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function () {
-                    TemplateZs1($(this), "divContentIndivHengPaiTouBuDaoHang2");
-                });
-                $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
-                    TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
-                });
+                //isResizing解决window.onresize在某些浏览器下会执行两次的bug
+                if (isResizing) {
+                    $("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
+                        TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
+                    });
+                    $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function () {
+                        TemplateZs1($(this), "divContentIndivHengPaiTouBuDaoHang2");
+                    });
+                    $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
+                        TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
+                    });
+                    isResizing = false;
+                } else {
+                    isResizing = true;
+                }
             };
             //根据用户登录判断模板数据样式
             $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
