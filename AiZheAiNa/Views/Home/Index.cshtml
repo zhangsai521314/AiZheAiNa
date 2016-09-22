@@ -1283,6 +1283,12 @@
 <script type="text/javascript">
     var lunBoAnNiuClickJiShu = 0, lunBoJinMeiDanPinAnNiuShu = 0;
     $(function () {
+        //window.onresize(function () {
+        //    $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
+        //        TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
+        //    });
+        //});
+
         //搭配选项切换
         $("#ulDaPeiFenLei li").each(function (index, item) {
             $(item).hover(function () {
@@ -1313,21 +1319,8 @@
                 bcolor = "#f19a9a";
                 width = "400px";
             }
-            //$d.css({ "left": $(window).width() * 0.12 + $d.parents("div").width(), "top": $d.parents("div").offset().top, "background-color": bcolor, "width": width }).html(index);
-            $d.css({ "left": $(window).width() * 0.12 + $d.parents("div").width(), "top": $d.parents("div").offset().top });
-
-            $d.parent().mousemove(function () {
-                $(this).children("div").show();
-            });
-            $d.parent().mouseout(function () {
-                $(this).children("div").hide();
-            });
-            $d.mousemove(function () {
-                $(this).show();
-            });
-            $d.mouseout(function () {
-                $(this).hide();
-            });
+            TemplateZs1($d, "divShuPaiFeiLeiDaoHang");
+            TemplateZs2($d)
         });
 
         //精美单品
@@ -1398,6 +1391,9 @@
             $(item).width($(item).parents("div").width());
         });
     };
+
+
+
 </script>
 
 

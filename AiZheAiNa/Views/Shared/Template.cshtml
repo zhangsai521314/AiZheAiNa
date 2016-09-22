@@ -54,6 +54,17 @@
     <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
     <script type="text/javascript">
         $(function () {
+            window.onresize = function () {
+                $("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
+                    TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
+                });
+                $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function () {
+                    TemplateZs1($(this), "divContentIndivHengPaiTouBuDaoHang2");
+                });
+                $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
+                    TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
+                });
+            };
             //根据用户登录判断模板数据样式
             $.getJSON("/GetInFo/GetUserInfo", function (AiZheAiNa_SYS_UserModel) {
                 if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
@@ -77,20 +88,8 @@
                 if (index % 2 == 0) {
                     bcolor = "#f19a9a";
                 }
-                $d.css({ "left": $d.parent().offset().left, "top": $d.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + $d.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": $d.parent().width() + 4.5 }).html(index);
-
-                $d.parent().mousemove(function () {
-                    $(this).children("div").show();
-                });
-                $d.parent().mouseout(function () {
-                    $(this).children("div").hide();
-                });
-                $d.mousemove(function () {
-                    $(this).show();
-                });
-                $d.mouseout(function () {
-                    $(this).hide();
-                });
+                TemplateZs1($d, "divHengPaiTouBuDaoHang1", bcolor);
+                TemplateZs2($d);
             });
 
             //第二个横排导航内容的显示与隐藏
@@ -100,22 +99,43 @@
                 if (index % 2 == 0) {
                     bcolor = "#f19a9a";
                 }
-                $d.css({ "left": "0px", "top": $d.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + $d.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $("body").width() }).html(index);
-
-                $d.parent().mousemove(function () {
-                    $(this).children("div").show();
-                });
-                $d.parent().mouseout(function () {
-                    $(this).children("div").hide();
-                });
-                $d.mousemove(function () {
-                    $(this).show();
-                });
-                $d.mouseout(function () {
-                    $(this).hide();
-                });
+                TemplateZs1($d, "divContentIndivHengPaiTouBuDaoHang2", bcolor);
+                TemplateZs2($d);
             });
         });
+
+        //设置div的left的距离及大小
+        function TemplateZs1(item, type, bcolor) {
+            switch (type) {
+                case "divHengPaiTouBuDaoHang1":
+                    item.css({ "left": item.parent().offset().left, "top": item.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + item.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": item.parent().width() + 4.5 });
+                    break;
+                case "divContentIndivHengPaiTouBuDaoHang2":
+                    item.css({ "left": "0px", "top": item.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + item.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
+                    break;
+                case "divShuPaiFeiLeiDaoHang":
+                    item.css({ "left": item.parent().parent().offset().left + item.parent().width(), "top": item.parents("div").offset().top });
+                    break;
+                default:
+                    return false;
+            }
+        }
+
+        //设置div的mousemove和mouseout
+        function TemplateZs2(item) {
+            item.parent().mousemove(function () {
+                $(this).children("div").show();
+            });
+            item.parent().mouseout(function () {
+                $(this).children("div").hide();
+            });
+            item.mousemove(function () {
+                $(this).show();
+            });
+            item.mouseout(function () {
+                $(this).hide();
+            });
+        }
     </script>
 </head>
 <body>
