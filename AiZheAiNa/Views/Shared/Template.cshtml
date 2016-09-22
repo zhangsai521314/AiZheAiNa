@@ -16,12 +16,13 @@
             margin: 0px;
             padding: 0px;
             /*解决屏幕缩小时boty内的div设置width：100%出现空白问题*/
-            min-width: 2000px;
+            /*min-width: 2000px;*/
         }
 
         .divTemplatePageWai > div {
             /*设置div的宽度和偏移度*/
-            margin-left: 16%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #divContentIndivHengPaiTouBuDaoHang2 ul li div {
@@ -95,12 +96,11 @@
             //第二个横排导航内容的显示与隐藏
             $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function (index, item) {
                 var $d = $(item);
-                var bcolor = "#00ff21", width = "300px";
+                var bcolor = "#00ff21";
                 if (index % 2 == 0) {
                     bcolor = "#f19a9a";
-                    width = "400px";
                 }
-                $d.css({ "left": "0px", "top": $d.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + $d.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() }).html(index);
+                $d.css({ "left": "0px", "top": $d.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + $d.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $("body").width() }).html(index);
 
                 $d.parent().mousemove(function () {
                     $(this).children("div").show();
@@ -121,7 +121,7 @@
 <body>
     <div>
         <div class="divTemplatePageWai" style="width: 100%;background-color:#333333;height:40px;" miaoshu="头部导航">
-            <div id="divTou" style="background-color:#333333;width:1450px">
+            <div id="divTou" style="width:1450px">
                 <div id="divHuanYing" style="float:left;width: 20%;">
                     <ul class="list-inline text-center" style="margin:3% 0;padding:0px">
                         <li>
@@ -185,7 +185,7 @@
             </div>
         </div>
         <div class="divTemplatePageWai" style="width: 100%;background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
-            <div id="divHengPaiTouBuDaoHang2">
+            <div style="width:1450px">
                 <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
                     log
                 </div>
