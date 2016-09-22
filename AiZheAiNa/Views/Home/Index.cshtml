@@ -141,20 +141,20 @@
             float: left;
         }
 
-        .ulJingMeiDanPin li div {
-            width: 279px;
-            height: 300px;
-        }
-
-            .ulJingMeiDanPin li div img {
-                width: 130px;
-                height: 170px;
-            }
-
-            .ulJingMeiDanPin li div div {
+            .ulJingMeiDanPin > li div {
                 width: 279px;
-                height: 80px;
+                height: 300px;
             }
+
+                .ulJingMeiDanPin > li div img {
+                    width: 130px;
+                    height: 170px;
+                }
+
+                .ulJingMeiDanPin > li div div {
+                    width: 279px;
+                    height: 80px;
+                }
 
     #ulDaPeiFenLei {
         float: right;
@@ -227,7 +227,7 @@
         background-color: #FEFEFE;
     }
 
-        #divDaPei li > div:hover ,#divZhiNengYingJian li > div:hover{
+        #divDaPei li > div:hover, #divZhiNengYingJian li > div:hover {
             border: 1px solid;
             border-top-color: #ff0000;
             border-bottom-color: #ff0000;
@@ -244,9 +244,6 @@
         margin-left: 0.3px;
     }
 
-        .ulZhiNengYingJianN li {
-        }
-
     .divZhiNengYingJianRightContent {
         width: 230px;
         height: 304px;
@@ -262,6 +259,7 @@
     .divZhiNengYingJian li {
         margin-bottom: 5px;
     }
+
     .divZhiNengYingJianRightMiaoShu3 {
         background-color: #ffd800;
         height: 20px;
@@ -363,8 +361,7 @@
         <div id="divZhiNengYingJianLeft" style="float: left; width: 15%;">
             <img alt="" src="http://i3.mifile.cn/a4/57c2f4fb-6743-44c6-b447-6bd55aaeef89">
         </div>
-        <div id="divZhiNengYingJianRight" style="float:right;width:85%;">
-
+        <div id="divZhiNengYingJianRight" style="float: right; width: 85%;">
         </div>
     </div>
 
@@ -375,8 +372,7 @@
         </div>
         <div style="width:70%;float:right;">
             <p />
-            <p />
-            <p />
+            <p /><p />
             <ul class="list-inline text-center" id="ulDaPeiFenLei">
                 <li>热门</li>
                 <li>耳机音箱</li>
@@ -386,7 +382,7 @@
             </ul>
         </div>
     </div>
-    <div id="divDaPei" style="width: 1450px;height:665px;margin:3px auto auto 12%;background-color:#F8F5F5" class="divDaPei">
+    <div id="divDaPei" style="width: 1450px; height: 665px; margin: 3px auto auto 12%; background-color: #F8F5F5; " class="divDaPei">
         <div id="divDaPeiLeft" style="float: left; width: 15%;">
             <ul class="text-center list-inline" id="ulDaPeiZuoContent">
                 <li>
@@ -401,7 +397,7 @@
                 </li>
             </ul>
         </div>
-        <div id="divDaPeiRight" style="float:right;width:85%;">
+        <div id="divDaPeiRight" style="float: right; width: 85%;">
 
         </div>
     </div>
@@ -448,7 +444,7 @@
                     <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
                 </a>
                 <div>
-                    <a herf="{{NameWaiALink}}">{{Name}}</a><p/>
+                    <a herf="{{NameWaiALink}}">{{Name}}</a><p />
                     <p>{{JianShu}}</p>
                     <p>{{JiaGe}}</p>
                 </div>
@@ -529,10 +525,10 @@
         <li>
             <div class="divZhiNengYingJianRightContent">
                 {{#if TeDian}}
-                    <div class="divZhiNengYingJianRightMiaoShu3">
-                        {{TeDian}}
-                    </div>
-                    {{/if}}
+                <div class="divZhiNengYingJianRightMiaoShu3">
+                    {{TeDian}}
+                </div>
+                {{/if}}
                 <a herf="{{aDaPeiImgLink}}">
                     <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                 </a>
@@ -1333,10 +1329,10 @@
             lunBoFangShi: "fade",
         });
         //搭配描述的出现与消失
-        $(".ulDaPeiN li").mouseover(function () {
+        $(".ulDaPeiN>li").mouseover(function () {
             $(this).find(".divDaPeiRightMiaoShu2").show();
         });
-        $(".ulDaPeiN li").mouseout(function () {
+        $(".ulDaPeiN>li").mouseout(function () {
             $(this).find(".divDaPeiRightMiaoShu2").hide();
         });
 
