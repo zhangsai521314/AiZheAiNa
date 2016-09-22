@@ -19,6 +19,11 @@
             min-width: 2000px;
         }
 
+        .divTemplatePageWai > div {
+            /*设置div的宽度和偏移度*/
+            margin-left: 16%;
+        }
+
         #divContentIndivHengPaiTouBuDaoHang2 ul li div {
             width: calc(1450*0.2px);
             height: 150px;
@@ -115,8 +120,8 @@
 </head>
 <body>
     <div>
-        <div style="width: 100%;background-color:#333333;height:40px;" miaoshu="头部导航">
-            <div id="divTou" style="width: 1450px;background-color:#333333;margin-left:12%;">
+        <div class="divTemplatePageWai" style="width: 100%;background-color:#333333;height:40px;" miaoshu="头部导航">
+            <div id="divTou" style="background-color:#333333;width:1450px">
                 <div id="divHuanYing" style="float:left;width: 20%;">
                     <ul class="list-inline text-center" style="margin:3% 0;padding:0px">
                         <li>
@@ -179,8 +184,8 @@
                 </div>
             </div>
         </div>
-        <div style="width: 100%;background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
-            <div id="divHengPaiTouBuDaoHang2" style="width: 1450px;margin-left:12%;">
+        <div class="divTemplatePageWai" style="width: 100%;background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
+            <div id="divHengPaiTouBuDaoHang2">
                 <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
                     log
                 </div>
