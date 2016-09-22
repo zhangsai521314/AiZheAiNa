@@ -56,7 +56,8 @@
         $(function () {
             var isResizing = true;
             window.onresize = function () {
-                //isResizing解决window.onresize在某些浏览器下会执行两次的bug
+                isResizing = true;
+                //isResizing解决window.onresize在某些浏览器下会执行两次的bug.实践起来有点不行啊....
                 if (isResizing) {
                     $("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
                         TemplateZs1($(this), "divHengPaiTouBuDaoHang1");

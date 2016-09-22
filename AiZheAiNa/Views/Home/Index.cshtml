@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Template.cshtml";
 }
@@ -20,6 +19,7 @@
     .divShuPaiFeiLeiDaoHang_ul1 {
         background-color: #5C544C;
         color: #ffffff;
+        margin-bottom: 0;
     }
 
     .divShuPaiFeiLeiDaoHang_li1 {
@@ -41,27 +41,42 @@
         height: 500px;
         position: absolute;
         z-index: 20;
-        display: none;
+        /*display: none;*/
         background-color: #ffffff;
         overflow: hidden;
     }
 
     .divShuPaiFeiLeiDaoHang_ul2 {
         background-color: #ffffff;
-    }
-
-    .divShuPaiFeiLeiDaoHang_li2:hover {
-        background-color: #ffffff;
-    }
-
-    .divShuPaiFeiLeiDaoHang_li2 a {
-        color: #000000;
-        display: block;
+        width: 220px;
+        height: 500px;
         float: left;
     }
 
+    .divShuPaiFeiLeiDaoHang_li2 {
+        background-color: #ffffff;
+        height: 83.3px;
+        list-style-type: none;
+    }
+
+        .divShuPaiFeiLeiDaoHang_li2:hover {
+            background-color: #ffffff;
+        }
+
+        .divShuPaiFeiLeiDaoHang_li2 a {
+            color: #000000;
+            display: block;
+            float: left;
+        }
+
+        .divShuPaiFeiLeiDaoHang_li2 img {
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 30px;
+        }
+
     .divShuPaiFeiLeiDaoHang_a2 {
-        line-height: 40px;
+        line-height: 75px;
     }
 
     .divShuPaiFeiLeiDaoHang_a3 {
@@ -71,24 +86,11 @@
         width: 58px;
         height: 22px;
         line-height: 22px;
-        margin-top: 8px;
+        margin-top: 28px;
     }
 
         .divShuPaiFeiLeiDaoHang_a3:hover {
             background-color: #fb3434;
-        }
-
-    .divShuPaiFeiLeiDaoHang_li2 {
-        background-color: #ffffff;
-        height: 76px;
-        list-style-type: none;
-        margin-left: -4px;
-    }
-
-        .divShuPaiFeiLeiDaoHang_li2 img {
-            margin-left: 10px;
-            margin-right: 10px;
-            width: 30px;
         }
 
     #ulKuaiSuZhiDa3GeImgLianJie {
@@ -287,14 +289,14 @@
         margin: 10px auto auto auto;
     }
 
-        .divHomeIndexPageWai > div:first-child {
-            margin: 0 auto auto auto;
-            background-color: #cbc8c8;
-            height: 500px;
-        }
+    #divDaTouBu {
+        margin: 0 auto auto auto;
+        background-color: #cbc8c8;
+        height: 500px;
+    }
 </style>
 <div style="width: 100%" class="divHomeIndexPageWai">
-    <div>
+    <div id="divDaTouBu">
         <div id="divShuPaiFeiLeiDaoHang" miaoshu="竖排分类导航">
 
         </div>
@@ -431,7 +433,8 @@
         <li class="divShuPaiFeiLeiDaoHang_li1">
             <a href="{{AshuPaiDaoHangLink}}" class="divShuPaiFeiLeiDaoHang_a1">{{AshuPaiDaoHangName}}</a>
             <div class="divShuPaiFeiLeiDaoHang_div1">
-                <ul class="list-inline divShuPaiFeiLeiDaoHang_ul2">
+
+                <ul class="list-unstyled divShuPaiFeiLeiDaoHang_ul2 divShuPaiFeiLeiDaoHang_ul2_{{@@index}}">
                     @*进入属性*@
                     {{#with Specific}}
                     {{#each this}}
@@ -562,6 +565,18 @@
     </ul>
 </script>
 <script type="text/javascript">
+
+    Handlebars.registerHelper("isquyueq", function (i, x, options) {
+        if (i % x == 0) {
+            //满足添加继续执行
+            return options.fn(this);
+        }
+        else {
+            //不满足条件执行{{else}}部分
+            return options.inverse(this);
+        }
+    });
+
     var divShuPaiFeiLeiDaoHangData = [
     {
         AshuPaiDaoHangName: "手机电话卡",
@@ -587,196 +602,341 @@
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
                 zhiDaName: "选购",
                 zhiDaLink: ""
-            }
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选ssss",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选ssss",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选购",
+                zhiDaLink: ""
+            },
+            {
+                XiangQing: "",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                zhiDaName: "选ssss",
+                zhiDaLink: ""
+            },
+                {
+                    XiangQing: "",
+                    shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                    shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                    zhiDaName: "选ssss",
+                    zhiDaLink: ""
+                }
         ]
-    },
-   {
-       AshuPaiDaoHangName: "笔记本 平板",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-          {
-              XiangQing: "",
-              shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-              shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-              zhiDaName: "选购",
-              zhiDaLink: ""
-          },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "电视 盒子",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-          {
-              XiangQing: "",
-              shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-              shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-              zhiDaName: "选购",
-              zhiDaLink: ""
-          },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "路由器 智能硬件",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-           {
-               XiangQing: "",
-               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-               zhiDaName: "选购",
-               zhiDaLink: ""
-           },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "移动电源 电池 插排",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-          {
-              XiangQing: "",
-              shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-              shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-              zhiDaName: "选购",
-              zhiDaLink: ""
-          },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "耳机 音响",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-           {
-               XiangQing: "",
-               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-               zhiDaName: "选购",
-               zhiDaLink: ""
-           },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "保护套 贴膜",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-          {
-              XiangQing: "",
-              shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-              shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-              zhiDaName: "选购",
-              zhiDaLink: ""
-          },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "线材 支架 存储卡",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-           {
-               XiangQing: "",
-               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-               zhiDaName: "选购",
-               zhiDaLink: ""
-           },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "箱包 服饰",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-           {
-               XiangQing: "",
-               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-               zhiDaName: "",
-               zhiDaLink: ""
-           },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "",
-                zhiDaLink: ""
-            }
-       ]
-   }
-   ,
-   {
-       AshuPaiDaoHangName: "米兔 生活周边",
-       AshuPaiDaoHangLink: "",
-       Specific: [
-           {
-               XiangQing: "",
-               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-           },
-            {
-                XiangQing: "",
-                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
-                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-            }
-       ]
-   }
+        // },
+        //{
+        //    AshuPaiDaoHangName: "笔记本 平板",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //       {
+        //           XiangQing: "",
+        //           shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //           shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //           zhiDaName: "选购",
+        //           zhiDaLink: ""
+        //       },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "电视 盒子",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //       {
+        //           XiangQing: "",
+        //           shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //           shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //           zhiDaName: "选购",
+        //           zhiDaLink: ""
+        //       },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "路由器 智能硬件",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //        {
+        //            XiangQing: "",
+        //            shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //            shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //            zhiDaName: "选购",
+        //            zhiDaLink: ""
+        //        },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "移动电源 电池 插排",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //       {
+        //           XiangQing: "",
+        //           shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //           shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //           zhiDaName: "选购",
+        //           zhiDaLink: ""
+        //       },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "耳机 音响",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //        {
+        //            XiangQing: "",
+        //            shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //            shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //            zhiDaName: "选购",
+        //            zhiDaLink: ""
+        //        },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "保护套 贴膜",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //       {
+        //           XiangQing: "",
+        //           shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //           shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //           zhiDaName: "选购",
+        //           zhiDaLink: ""
+        //       },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "线材 支架 存储卡",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //        {
+        //            XiangQing: "",
+        //            shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //            shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //            zhiDaName: "选购",
+        //            zhiDaLink: ""
+        //        },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "选购",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "箱包 服饰",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //        {
+        //            XiangQing: "",
+        //            shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //            shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //            zhiDaName: "",
+        //            zhiDaLink: ""
+        //        },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //             zhiDaName: "",
+        //             zhiDaLink: ""
+        //         }
+        //    ]
+        //}
+        //,
+        //{
+        //    AshuPaiDaoHangName: "米兔 生活周边",
+        //    AshuPaiDaoHangLink: "",
+        //    Specific: [
+        //        {
+        //            XiangQing: "",
+        //            shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //            shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //        },
+        //         {
+        //             XiangQing: "",
+        //             shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+        //             shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+        //         }
+        //    ]
+    }
     ];
     var divShuPaiFeiLeiDaoHang_Template = Handlebars.compile($("#divShuPaiFeiLeiDaoHang_Template").html());
     $("#divShuPaiFeiLeiDaoHang").html(divShuPaiFeiLeiDaoHang_Template(divShuPaiFeiLeiDaoHangData));
+
+    for (var i = 0; i < 1; i++) {
+        var li = $(".divShuPaiFeiLeiDaoHang_ul2_" + i + " li");
+        if (li.length > 6) {
+            var sum = Math.floor(li.length /6)
+            for (var j = 0; j < sum; j++) {
+                li.parent().parent().append($('<ul class="list-inline divShuPaiFeiLeiDaoHang_ul2 divShuPaiFeiLeiDaoHang_ul2_create' + j + '">'));
+                if (j == sum - 1) {
+                    //最后一次取除了前6个
+                    $(".divShuPaiFeiLeiDaoHang_ul2_" + i + " li").each(function (index, item) {
+                        if (index > 5) {
+                            $(".divShuPaiFeiLeiDaoHang_ul2_create" + j).append($(item));
+                        }
+                    })
+                } else {
+                    //每次取6个
+                    $(".divShuPaiFeiLeiDaoHang_ul2_" + i + " li").each(function (index, item) {
+                        if (index < 6) {
+                            $(".divShuPaiFeiLeiDaoHang_ul2_create" + j).append($(item));
+                        }
+                    })
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
     var divJingMeiDanPinContentData = [
         {
@@ -1320,7 +1480,7 @@
                 width = "400px";
             }
             TemplateZs1($d, "divShuPaiFeiLeiDaoHang");
-            TemplateZs2($d)
+            //TemplateZs2($d)
         });
 
         //精美单品
