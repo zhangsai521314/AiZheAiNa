@@ -1,5 +1,5 @@
 ﻿/*轮播图默认轮播方式的css*/
-.ZS-list-inline {
+.ZS-list-inline, .ZS-list-inline-nopadding {
     padding-left: 0;
     margin-left: -5px;
     list-style: none;
@@ -7,6 +7,11 @@
 
 .divZSLunBoImg {
     overflow: hidden;
+}
+
+
+.ZS-list-inline-nopadding > li {
+    display: inline-block;
 }
 
 .ZS-list-inline > li {

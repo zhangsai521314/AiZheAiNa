@@ -63,8 +63,8 @@
             //横排排版设置ul的宽为图片宽的总和
             if (op.lunBoFangShi.toLowerCase() == "toleft") {
                 var xdivZSLunBoImgwidth = 0;
-                $(xdivZSLunBoImg + " ul:first img").each(function () {
-                    xdivZSLunBoImgwidth += $(this).width();
+                $(xdivZSLunBoImg + " ul img").each(function () {
+                    xdivZSLunBoImgwidth = xdivZSLunBoImgwidth + $(this).width();
                 });
                 $(xdivZSLunBoImg + " ul:first").width(xdivZSLunBoImgwidth);
             };
@@ -205,7 +205,7 @@
                     return "ZS-li-ChongDie";
                     break;
                 case "toleft":
-                    return "ZS-list-inline";
+                    return "ZS-list-inline-nopadding";
                     break;
                 default:
                     return "ZS-li-YinCang";

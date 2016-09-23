@@ -524,6 +524,10 @@
             #keleyi6 .JQ-slide-nav li img {
                 display: block;
             }
+    #sdd img {
+        width:70px;
+        height:80px;
+    }
 </style>
 <div class="divLoginWai">
     @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
@@ -552,7 +556,7 @@
 
 <input type="button" value="上" class="ddd" />
 <input type="button" value="下" class="ddd" />
-<div style="width:500px;height:80px;overflow:hidden;border:1px solid #f00;margin-left:20%" id="sdd">
+<div style="width:280px;height:80px;overflow:hidden;border:1px solid #f00;margin-left:20%" id="sdd">
 
 </div>
 
@@ -560,38 +564,6 @@
 
 </div>
 
-<div id="slide-box">
-    <b class="corner"></b>
-    <div id="keleyi4s" class="slide-content">
-        <div class="wrap">
-            <ul class="JQ-slide-content" style="width: 2040px; left: 0px;">
-                <li i="0"><a href="http://keleyi.com/a/bjac/y63we342.htm"><img width="330" height="450" alt="柯乐义" src="http://keleyi.com/image/a/dbkfr65p.jpg"></a></li>
-                <li i="1"><a href="http://keleyi.com/a/bjac/iphgrtqm.htm"><img width="330" height="450" src="http://keleyi.com/image/a/mx7s0cpe.jpg" alt="柯乐义"></a></li>
-
-
-                <li i="2"><a href="http://keleyi.com/a/bjac/jmhqxrr4.htm"><img width="330" height="450" src="http://keleyi.com/image/a/0ms3ypph.jpg" alt="柯乐义"></a></li>
-                <li i="3"><a href="http://keleyi.com/a/bjac/v6c7x9fq.htm"><img width="330" height="450" src="http://keleyi.com/image/a/01i4pfnm.jpg" alt="柯乐义"></a></li>
-
-
-                <li i="4"><a href="http://keleyi.com/a/bjac/a96fnfrf.htm"><img width="330" height="450" src="http://keleyi.com/image/a/vnb53fg9.jpg" alt="柯乐义"></a></li>
-                <li i="5"><a href="http://keleyi.com/dev/e09864db1363b7b6.htm"><img width="330" height="450" src="http://keleyi.com/image/a/4mpr7wo9.jpg" alt="柯乐义"></a></li>
-            </ul>
-        </div>
-        <div class="JQ-slide-nav">
-            <a href="#" class="prev">
-                <b class="corner"></b>
-                <span>‹</span>
-                <b class="corner"></b>
-            </a>
-            <a href="#" class="next">
-                <b class="corner"></b>
-                <span>›</span>
-                <b class="corner"></b>
-            </a>
-        </div>
-    </div>
-    <b class="corner"></b>
-</div>
 <style type="text/css">
     #keleyi5 .JQ-content-box {
         border: 1px solid #ccc;
@@ -633,28 +605,21 @@
         toInt: 1,
         ziDingYiLunBoAnNiuClassName: "ddd"
     });
-    //$("#keleyi4s").Slide({
-    //    effect: "scroolLoop",
-    //    autoPlay: false,
-    //    speed: "normal",
-    //    timer: 3000,
-    //    steps: 2
-    //});
     ////左移
-    $("#keleyi4").ZSImgLunBo({
-        jsonData: '{"data":[{"href":"","src":"http://keleyi.com/image/a/dbkfr65p.jpg"},{"href":"","src":"http://keleyi.com/image/a/mx7s0cpe.jpg"},{"href":"","src":"http://keleyi.com/image/a/0ms3ypph.jpg"},{"href":"","src":"http://keleyi.com/image/a/01i4pfnm.jpg"},{"href":"","src":"http://keleyi.com/image/a/vnb53fg9.jpg"},{"href":"","src":"http://keleyi.com/image/a/4mpr7wo9.jpg"}]}',
-        lunBoFangShi: "toleft",
-        isShowLunBoBiaoShi: false,
-        toInt: 2,
-        ziDingYiLunBoAnNiuClassName: "ddd",
-    })
-    TuPianZiShiYing("#divLunBoImgWai Img");
-    function TuPianZiShiYing(select) {
-        $(select).each(function (index, item) {
-            $(item).height($(item).parents("div").height());
-            $(item).width($(item).parents("div").width());
-        });
-    };
+    //$("#keleyi4").ZSImgLunBo({
+    //    jsonData: '{"data":[{"href":"","src":"http://keleyi.com/image/a/dbkfr65p.jpg"},{"href":"","src":"http://keleyi.com/image/a/mx7s0cpe.jpg"},{"href":"","src":"http://keleyi.com/image/a/0ms3ypph.jpg"},{"href":"","src":"http://keleyi.com/image/a/01i4pfnm.jpg"},{"href":"","src":"http://keleyi.com/image/a/vnb53fg9.jpg"},{"href":"","src":"http://keleyi.com/image/a/4mpr7wo9.jpg"}]}',
+    //    lunBoFangShi: "toleft",
+    //    isShowLunBoBiaoShi: false,
+    //    toInt: 2,
+    //    ziDingYiLunBoAnNiuClassName: "ddd",
+    //})
+    //TuPianZiShiYing("#divLunBoImgWai Img");
+    //function TuPianZiShiYing(select) {
+    //    $(select).each(function (index, item) {
+    //        $(item).height($(item).parents("div").height());
+    //        $(item).width($(item).parents("div").width());
+    //    });
+    //};
 
 </script>
 
