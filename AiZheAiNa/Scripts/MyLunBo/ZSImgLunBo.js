@@ -81,7 +81,7 @@
                 //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
                 clearInterval(daTuZiDongLunBoID);
                 daTuZiDongLunBoID = setInterval(ZiDongLunBo, op.ziDongLunBoMiao);
-            });;
+            });; 
         }
         //显示轮播标识
         if (op.isShowLunBoBiaoShi) {
