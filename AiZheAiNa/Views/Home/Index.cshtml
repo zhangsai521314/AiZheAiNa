@@ -1562,12 +1562,11 @@
             lunBoFangShi: "fade",
         });
         //搭配描述的出现与消失
-        $(".divDaPeiRightContent").mouseover(function () {
+        $(".divDaPeiRightContent").hover(function () {
             $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "90px", "opacity": 1 });
-        });
-        $(".divDaPeiRightContent").mouseout(function () {
+        }, (function () {
             $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "0px", "opacity": 1 });
-        });
+        }));
 
 
         //图片的大小超过容器后更改图片的大小为容器的大小

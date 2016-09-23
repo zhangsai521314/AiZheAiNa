@@ -131,19 +131,17 @@
 
         //设置div的mousemove和mouseout
         function TemplateZs2(item) {
-            item.parent().mousemove(function () {
+            item.parent().hover(function () {
                 $(this).children("div").show();
-            });
-            item.parent().mouseout(function () {
+            }, function () {
                 $(this).children("div").hide();
             });
-            item.mousemove(function () {
+            item.hover(function () {
                 $(this).show();
-            });
-            item.mouseout(function () {
+            }, function () {
                 $(this).hide();
             });
-        }
+        };
     </script>
 </head>
 <body>
