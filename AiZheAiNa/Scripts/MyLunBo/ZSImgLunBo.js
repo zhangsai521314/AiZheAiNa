@@ -229,9 +229,9 @@
             //li重叠
             $(xdivZSLunBoImg + " ul:first li").each(function (index, item) {
                 if (index == ZSlunBoAnNiuClickJiShu) {
-                    $(item).stop().animate({ opacity: 1 }, 500).css({ "z-index": "1" }, op.speed);
+                    $(item).stop().animate({ opacity: 1 }, op.speed).css({ "z-index": "1" }, op.speed);
                 } else {
-                    $(item).stop().animate({ opacity: 0 }, 500).css({ "z-index": "0" }, op.speed);
+                    $(item).stop().animate({ opacity: 0 }, op.speed).css({ "z-index": "0" }, op.speed);
                 }
             });
         };
