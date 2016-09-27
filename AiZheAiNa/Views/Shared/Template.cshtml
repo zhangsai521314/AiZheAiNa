@@ -19,11 +19,16 @@
             min-width: 1450px;
         }
 
-        .divTemplatePageWai > div {
-            /*设置div的宽度和偏移度*/
-            margin-left: auto;
-            margin-right: auto;
+        .divTemplatePageWai {
+            width: 100%;
         }
+
+            .divTemplatePageWai > div {
+                /*设置div的宽度和偏移度*/
+                margin-left: auto;
+                margin-right: auto;
+                width: 1450px;
+            }
 
         #divContentIndivHengPaiTouBuDaoHang2 ul li div {
             width: calc(1450*0.2px);
@@ -146,8 +151,8 @@
 </head>
 <body>
     <div>
-        <div class="divTemplatePageWai" style="width: 100%;background-color:#333333;height:40px;" miaoshu="头部导航">
-            <div id="divTou" style="width:1450px">
+        <div class="divTemplatePageWai" style="background-color:#333333;height:40px;" miaoshu="头部导航">
+            <div id="divTou">
                 <div id="divHuanYing" style="float:left;width: 20%;">
                     <ul class="list-inline text-center" style="margin:3% 0;padding:0px">
                         <li>
@@ -210,8 +215,8 @@
                 </div>
             </div>
         </div>
-        <div class="divTemplatePageWai" style="width: 100%;background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
-            <div style="width:1450px">
+        <div class="divTemplatePageWai" style="background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
+            <div>
                 <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
                     log
                 </div>
@@ -282,7 +287,7 @@
             </div>
         </div>
         @RenderBody()
-        <div id="divpageDi" style="width:100%;height:190px;background-color:#000000;color:#ffffff;margin:10px auto 0 auto">
+        <div class="divTemplatePageWai" id="divpageDi" style="height:190px;background-color:#000000;color:#ffffff;margin:10px auto 0 auto">
             底部啊底部
         </div>
     </div>
