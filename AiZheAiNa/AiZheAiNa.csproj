@@ -241,6 +241,7 @@
     <Content Include="Global.asax" />
     <Content Include="Html\GetJson.html" />
     <Content Include="Html\handlebars.html" />
+    <Content Include="Html\HtmlPage1.html" />
     <Content Include="Scripts\common\GetJson.js" />
     <Content Include="Scripts\common\GetUrlData.js" />
     <Content Include="Scripts\common\handlebars-v4.0.5.js" />

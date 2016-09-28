@@ -4,28 +4,165 @@
     Layout = "~/Views/Shared/Template.cshtml";
 }
 <style type="text/css">
-    .phonePageWai {
+    .phonePageWai > div {
+        width: 1450px;
         margin-left: auto;
         margin-right: auto;
+        height: 500px;
     }
-        .phonePageWai > div {
 
+    #divPhoneGouMaiPeiZhi {
+        width: 60%;
+        height: 500px;
+        float: right;
+    }
+
+    #divPhoneUpImg {
+        width: 40%;
+        height: 500px;
+        float: left;
+        position: relative;
+    }
+
+        #divPhoneUpImg .divUpImgZhengChang {
+            height: 400px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+            #divPhoneUpImg .divUpImgZhengChang div:first-child {
+                height: 400px;
+                width: 400px;
+            }
+
+        #divPhoneUpImg .divUpImgContent {
+            margin-left: auto;
+            margin-right: auto;
+            width: 381px;
+            margin-top: 5px;
+        }
+
+            #divPhoneUpImg .divUpImgContent ul li img {
+                border: 2px solid #ffffff;
+            }
+
+                #divPhoneUpImg .divUpImgContent ul li img:hover {
+                    border: 2px solid #000000;
+                    cursor: pointer;
+                }
+
+        #divPhoneUpImg .imgUpImgZhengChang {
+            height: 400px;
+            width: 400px;
+        }
+
+        #divPhoneUpImg .divUpimgHuaKuai {
+            width: 210px;
+            height: 210px;
+            left: 0;
+            top: 0;
+            background-color: #454545;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            position: absolute;
+            cursor: move;
+            display: none;
+        }
+
+        #divPhoneUpImg .divUpImgFangDa {
+            width: 400px;
+            height: 400px;
+            /*display: none;*/
+            position: absolute;
+            left: 540px;
+            top: 0;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+
+        #divPhoneUpImg .imgUpImgFangDa {
+            width: 900px;
+            height: 1350px;
+            margin-left: 0;
+            margin-top: 0;
         }
 </style>
-
+<script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
 <script type="text/javascript">
+    $(function () {
+        $("#divPhoneUpImg .divUpImgContent ul li").each(function () {
+            $(this).hover(function () {
+                $("#divPhoneUpImg .imgUpImgZhengChang").attr("src", $(this).find("img").attr("ZhengChang"));
+                $("#divPhoneUpImg .imgUpImgFangDa").attr("src", $(this).find("img").attr("upimg"));
+            });
+        });
 
+        $("#divPhoneUpImg .divUpImgZhengChang").mousemove(function (e) {
+            var $divUpimgHuaKuai = $(this).find(".divUpimgHuaKuai");
+            var iX = e.pageX - $(this).offset().left - $divUpimgHuaKuai.width() / 2,
+                iY = e.pageY - $(this).offset().top - $divUpimgHuaKuai.height() / 2,
+                MaxX = $(this).width() - $divUpimgHuaKuai.width(),
+                MaxY = $(this).height() - $divUpimgHuaKuai.height();
+            iX = iX > 0 ? iX : 0;
+            iX = iX < MaxX ? iX : MaxX;
+            iY = iY > 0 ? iY : 0;
+            iY = iY < MaxY ? iY : MaxY;
+            $divUpimgHuaKuai.css({ display: "block", left: iX + 'px', top: iY + 'px' });
+
+
+            multiple = $("#divPhoneUpImg .divUpImgFangDa").width() / $divUpimgHuaKuai.width();
+            $("#divPhoneUpImg .imgUpImgFangDa").css({ marginLeft: -multiple * iX + 'px', marginTop: -multiple * iY + 'px' }).parent().css("display", "block");
+
+        }).mouseout(function () {
+            $(this).find(".divUpimgHuaKuai").css({ display: "none" });
+            $("#divPhoneUpImg .imgUpImgFangDa").parent().css("display", "none");
+        });
+    });
 
 
 </script>
 <div class="phonePageWai">
     <div>
         <div id="divPhoneUpImg">
-
+            <div class="divUpImgZhengChang">
+                <div>
+                    <img class="imgUpImgZhengChang" src="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" upimg="" />
+                </div>
+                <span class="divUpimgHuaKuai"></span>
+            </div>
+            <div class="divUpImgFangDa">
+                <img class="imgUpImgFangDa" src="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg">
+            </div>
+            <div class="divUpImgContent">
+                <ul class="list-inline">
+                    <li>
+                        <img src="http://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_60x60q90.jpg" ZhengChang="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" upimg="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_60x60q90.jpg" ZhengChang="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" upimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_60x60q90.jpg" ZhengChang="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_430x430q90.jpg" upimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_60x60q90.jpg" ZhengChang="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_430x430q90.jpg" upimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i4/1695308781/TB2_p_MbpHzQeBjSZFzXXa__FXa_!!1695308781.jpg_60x60q90.jpg" ZhengChang="https://img.alicdn.com/imgextra/i4/1695308781/TB2_p_MbpHzQeBjSZFzXXa__FXa_!!1695308781.jpg_430x430q90.jpg" upimg="https://img.alicdn.com/imgextra/i4/1695308781/TB2_p_MbpHzQeBjSZFzXXa__FXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                </ul>
+            </div>
         </div>
         <div id="divPhoneGouMaiPeiZhi">
 
         </div>
     </div>
+
+
+
+
+
 </div>
 
