@@ -236,6 +236,7 @@
     <Content Include="Content\css\Font-Awesome\css\font-awesome.css" />
     <Content Include="Content\css\Font-Awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\common\myzom\myzom.css" />
     <Content Include="Content\Images\go.png" />
     <Content Include="Content\Images\qq\qqQiEr.png" />
     <Content Include="Global.asax" />
@@ -245,6 +246,7 @@
     <Content Include="Scripts\common\GetJson.js" />
     <Content Include="Scripts\common\GetUrlData.js" />
     <Content Include="Scripts\common\handlebars-v4.0.5.js" />
+    <Content Include="Scripts\common\myzom\myzom.js" />
     <Content Include="Scripts\jquery.validate.1.5.1\tip.png" />
     <Content Include="Scripts\jquery.validate.1.5.1\error.gif" />
     <Content Include="Scripts\jquery.validate.1.5.1\valid.png" />

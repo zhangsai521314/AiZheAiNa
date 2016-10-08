@@ -33,7 +33,7 @@
             var oCss = document.createElement("link");
             oCss.setAttribute("rel", "stylesheet");
             oCss.setAttribute("type", "text/css");
-            oCss.setAttribute("href", getRealPath() + "/Scripts/MyLunBo/ZSImgLunBo.css");
+            oCss.setAttribute("href", getMyPath("ZSImgLunBo.js").substring(0, getMyPath("ZSImgLunBo.js").lastIndexOf("/") + 1) + "ZSImgLunBo.css");
             document.getElementsByTagName("head")[0].appendChild(oCss);
         }
         op.ziDongLunBoMiao = op.ziDongLunBoMiao * 1000;
@@ -81,7 +81,7 @@
                 //img容器的mouseout需根据轮播方式选择开启自动轮播方式，轮播按钮和轮播标识为mouseout等于img容器的mouseout
                 clearInterval(daTuZiDongLunBoID);
                 daTuZiDongLunBoID = setInterval(ZiDongLunBo, op.ziDongLunBoMiao);
-            });; 
+            });;
         }
         //显示轮播标识
         if (op.isShowLunBoBiaoShi) {
