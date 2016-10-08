@@ -3,56 +3,68 @@
     ViewBag.Title = "Phone";
     Layout = "~/Views/Shared/Template.cshtml";
 }
+<link href="~/Scripts/common/myzom/myzom.css" rel="stylesheet" />
 <style type="text/css">
-    /*.phonePageWai > div {
+    .phonePageWai > div {
         width: 1450px;
         margin-left: auto;
         margin-right: auto;
-        height: 520px;
-    }*/
+        height: 596px;
+    }
 
-    /*#divPhoneGouMaiPeiZhi {
-        width: 60%;
-        height: 500px;
+    .divUpImgContent {
+        margin-left: 0;
+    }
+
+    #phoneImg {
+        width: 25%;
+        float: left;
+    }
+
+    #divPhoneGouMaiPeiZhi {
+        width: 75%;
+        height: 530px;
         float: right;
         border: 1px solid #000000;
-    }*/
+    }
 </style>
-<link href="~/Scripts/common/myzom/myzom.css" rel="stylesheet" />
 <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
 <div class="phonePageWai">
-    <div class="con-FangDa" id="fangdajing">
-        <div class="con-fangDaIMg">
-<!-- 正常显示的图片-->
-            <img src="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg">
-<!-- 滑块-->
-            <div class="magnifyingBegin"></div>
-<!-- 放大镜显示的图片 -->
-            <div class="magnifyingShow"><img src=""></div>
+    <div>
+        <div class="con-FangDa" id="phoneImg">
+            <div class="con-fangDaIMg">
+                <img src="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg">
+                <div class="magnifyingBegin"></div>
+                <div class="magnifyingShow"><img src="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg"></div>
+            </div>
+            <div class="divUpImgContent">
+                <ul>
+                    <li>
+                        <img src="http://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                    <li>
+                        <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_430x430q90.jpg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="divPhoneGouMaiPeiZhi">
+
         </div>
 
-        <div class="divUpImgContent">
-            <ul>
-                <li>
-                    <img src="http://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" />
-                </li>
-                <li>
-                    <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" />
-                </li>
-                <li>
-                    <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2JqbGbxvzQeBjSZFAXXaF9VXa_!!1695308781.jpg_430x430q90.jpg" />
-                </li>
-                <li>
-                    <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2v86EbBPzQeBjSZPiXXb0TpXa_!!1695308781.jpg_430x430q90.jpg" />
-                </li>
-            </ul>
-        </div>
     </div>
+
 </div>
 <script src="~/Scripts/common/myzom/myzom.js"></script>
 <script type="text/javascript">
     $(function () {
-        $("#fangdajing").myzom();
+        $("#phoneImg").myzom();
     })
 
 </script>
