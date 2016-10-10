@@ -1,0 +1,22 @@
+﻿/*常用的css*/
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mylist-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+    .mylist-inline > li {
+        display: inline-block;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+.mylist-unstyled {
+    padding-left: 0;
+    list-style: none;
+}

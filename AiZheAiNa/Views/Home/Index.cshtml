@@ -321,14 +321,14 @@
     <div style="width: 1450px;height:200px;">
         <div id="divKuaiSuZhiDa6GePuTongLianJie" miaoshu="快速直达-6个普通链接小分类">
             <div>
-                <ul class="list-inline text-center">
+                <ul class="mylist-inline text-center">
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                 </ul>
             </div>
             <div>
-                <ul class="list-inline text-center">
+                <ul class="mylist-inline text-center">
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
@@ -337,7 +337,7 @@
         </div>
 
         <div style="width:78%;float:right;" miaoshu="快速直达-3个小图展示链接小分类">
-            <ul class="list-inline" id="ulKuaiSuZhiDa3GeImgLianJie">
+            <ul class="mylist-inline" id="ulKuaiSuZhiDa3GeImgLianJie">
                 <li>
                     <a>
                         <div>
@@ -370,7 +370,7 @@
         <div id="divJingMeiDanPin">
             <p />       <p />
             <p />
-            <ul class="text-center list-inline">
+            <ul class="text-center mylist-inline">
                 <li class="liJingMeiDanPinLunBoAnNiu">
                     <
                 </li>
@@ -407,7 +407,7 @@
         <div style="width:70%;float:right;">
             <p />
             <p /><p />
-            <ul class="list-inline text-center" id="ulDaPeiFenLei">
+            <ul class="mylist-inline text-center" id="ulDaPeiFenLei">
                 <li>热门</li>
                 <li>耳机音箱</li>
                 <li>数据线</li>
@@ -418,7 +418,7 @@
     </div>
     <div id="divDaPei" class="divDaPei">
         <div id="divDaPeiLeft" style="float: left; width: 15%;">
-            <ul class="text-center list-inline" id="ulDaPeiZuoContent">
+            <ul class="text-center mylist-inline" id="ulDaPeiZuoContent">
                 <li>
                     <div>
                         <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
@@ -471,7 +471,7 @@
 </script>
 <script id="divJingMeiDanPinContent_Template" type="text/x-handlebars">
     <!--精美单品模板-->
-    <ul class="list-inline ulJingMeiDanPin">
+    <ul class="mylist-inline ulJingMeiDanPin">
         {{#each this}}
         <li>
             <div style="border-top:1px solid #ffd800">
@@ -490,7 +490,7 @@
 </script>
 <script id="divDaPeiRight_Template" type="text/x-handlebars">
     <!--搭配右边内容模板,@@last表示最后的循环。其实handlebars应该的是@只不过这是razor视图格式所以需要转换-->
-    <ul class="text-center list-inline ulDaPeiN" FenLeiEnName="{{FenLeiEnName}}">
+    <ul class="text-center mylist-inline ulDaPeiN" FenLeiEnName="{{FenLeiEnName}}">
         {{#with Content}}
         {{#each this}}
         {{#if @@last}}
@@ -541,11 +541,11 @@
         <li style="width:240px;height:140px;position:absolute;right:-9px;bottom:-19px">
             <div style="width:230px;height:140px;position:absolute;right:25px;bottom:20px;background-color:#ffffff">
                 <div style="height: 80px;width: 130px;position:absolute;top:50px">
-                    <a href="">浏览更多</a><p />
+                    <a href="/AllGoods/{{FenLeiEnName}}">浏览更多</a><p />
                     <p>{{FenLeiCnName}}</p>
                 </div>
                 <div style="height: 80px;width: 80px;position:absolute;right:20px;top:35px">
-                    <a href="{{aDaPeiImgLink}}">
+                    <a href="/AllGoods/{{FenLeiEnName}}">
                         <img style="width:90px;height:80px" src="../Content/Images/go.png" />
                     </a>
                 </div>
@@ -554,8 +554,8 @@
     </ul>
 </script>
 <script id="divZhiNengYingJianRight_Template" type="text/x-handlebars">
-    <!--智能右边内容能硬件模板-->
-    <ul class="text-center list-inline ulZhiNengYingJianN" FenLeiEnName="{{FenLeiEnName}}">
+    <!--智能硬件右边内容能硬件模板-->
+    <ul class="text-center mylist-inline ulZhiNengYingJianN">
         {{#each this}}
         <li>
             <div class="divZhiNengYingJianRightContent">

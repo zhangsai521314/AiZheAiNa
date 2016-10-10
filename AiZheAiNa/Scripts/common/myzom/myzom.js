@@ -3,14 +3,14 @@
 
     $.fn.myzom = function () {
         //加载css
-        if (!isInclude("myzom.css")) {
-            alert(1);
-            var oCss = document.createElement("link");
-            oCss.setAttribute("rel", "stylesheet");
-            oCss.setAttribute("type", "text/css");
-            oCss.setAttribute("href", getMyPath("myzom.js").substring(0, getMyPath("myzom.js").lastIndexOf("/") + 1) + "myzom.css");
-            document.getElementsByTagName("head")[0].appendChild(oCss);
-        }
+        //if (!isInclude("myzom.css")) {
+        //    alert(1);
+        //    var oCss = document.createElement("link");
+        //    oCss.setAttribute("rel", "stylesheet");
+        //    oCss.setAttribute("type", "text/css");
+        //    oCss.setAttribute("href", getMyPath("myzom.js").substring(0, getMyPath("myzom.js").lastIndexOf("/") + 1) + "myzom.css");
+        //    document.getElementsByTagName("head")[0].appendChild(oCss);
+        //}
         var that = $(this),
 		$imgCon = that.find('.con-fangDaIMg'),//正常图片容器
 	    $ZhangChangImg = $imgCon.find('img:first'),//正常图片

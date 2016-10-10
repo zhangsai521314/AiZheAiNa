@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "ErJi";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+<style type="text/css">
+    .divAllGoodsErJi > div {
+        width: 1450px;
+        margin: 10px auto auto auto;
+    }
+
+    .divDaoHangLianJie {
+        background-color: red;
+    }
+
+    .divSelectOption {
+        background-color: #b6ff00;
+    }
+
+    /*复杂查询条件样式*/
+    .divSelectOption-1 {
+        background-color: #808080;
+        height: 40px;
+        overflow: hidden;
+    }
+
+    .divSelectOption-2, .divSelectOption-3 {
+        float: left;
+    }
+
+    .divSelectOption-2, .divSelectOption-4 {
+        width: 6%;
+        text-align: center;
+        background-color: #b6ff00;
+        margin-top: 5px;
+    }
+
+    .divSelectOption-4 {
+        float: right;
+    }
+
+    .divSelectOption-3 {
+        width: 85%;
+        margin-left: 8px;
+    }
+
+        .divSelectOption-3 > ul > li {
+            min-width: 12%;
+            text-align: center;
+            margin-top: 5px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .divSelectOption-3 > ul > li:nth-child(odd) {
+                background-color: #de6363;
+            }
+
+            .divSelectOption-3 > ul > li:nth-child(even) {
+                background-color: #ff6a00;
+            }
+    /*简单查询样式*/
+    .divSimpleSelectOption {
+        height: 40px;
+    }
+
+    .divSimpleSelectOption-1 {
+        float: left;
+    }
+
+    .divSimpleSelectOption-2 {
+        float: right;
+    }
+
+    .divSimpleSelectOption-1 > ul li {
+        border-right: 1px solid #d3d0d0;
+    }
+
+        .divSimpleSelectOption-1 > ul li:last-child {
+            border-right: 0px;
+        }
+    /*详细内容样式*/
+    .divAllGoodsErJiContent {
+        background-color: #ff0000;
+    }
+
+        .divAllGoodsErJiContent > ul li {
+            background-color: #f8f5f5;
+        }
+
+    .divAllGoodsErJiContent-1 {
+        text-align: center;
+        width: 250px;
+    }
+
+    .divAllGoodsErJiContent-miaoshu {
+        text-align: left;
+        height: 20px;
+        background-color: #00ff21;
+        width: 250px;
+    }
+
+    .divAllGoodsErJiContent-shoucangANGgouwuche {
+        width: 250px;
+    }
+
+        .divAllGoodsErJiContent-shoucangANGgouwuche a:first-child {
+            display: block;
+            float: left;
+            height: 20px;
+        }
+
+        .divAllGoodsErJiContent-shoucangANGgouwuche a:last-child {
+            display: block;
+            height: 20px;
+            float: right;
+        }
+
+    .divAllGoodsErJiContent a {
+        cursor: pointer;
+    }
+
+    .ulAllGoodsErJiContentImgMin li {
+        border: 1px solid #ffffff;
+    }
+
+        .ulAllGoodsErJiContentImgMin li:hover {
+            cursor: pointer;
+            border: 1px solid #ff6a00;
+        }
+</style>
+<div class="divAllGoodsErJi">
+
+    <div class="divDaoHangLianJie">
+        <a>首页</a>><a>所有商品</a>><a>耳机</a>
+    </div>
+
+    <div class="divSelectOption">
+        <div class="divSelectOption-fenlei divSelectOption-1">
+            <div class="divSelectOption-2 divSelectOption-2">分类</div>
+            <div class="divSelectOption-3 divSelectOption-3">
+                <ul class="mylist-inline">
+                    <li>
+                        条件1
+                    </li>
+                    <li>
+                        条件2
+                    </li>
+                    <li>
+                        条件3
+                    </li>
+                    <li>
+                        条件4
+                    </li>
+                    <li>
+                        条件5
+                    </li>
+                    <li>
+                        条件6
+                    </li>
+                    <li>
+                        条件7
+                    </li>
+                    <li>
+                        条件8
+                    </li>
+                    <li>
+                        条件9
+                    </li>
+                    <li>
+                        条件10
+                    </li>
+                </ul>
+            </div>
+            <div class="divSelectOption-4 divSelectOption-4">更多</div>
+        </div>
+
+        <div class="divSelectOption-pinpai divSelectOption-1">
+            <div class="divSelectOption-pinpai-left divSelectOption-2">品牌</div>
+            <div class="divSelectOption-pinpai-middle divSelectOption-3">
+                <ul class="mylist-inline">
+                    <li>
+                        品牌1
+                    </li>
+                    <li>
+                        品牌2
+                    </li>
+                    <li>
+                        品牌3
+                    </li>
+                    <li>
+                        品牌4
+                    </li>
+                    <li>
+                        品牌5
+                    </li>
+                    <li>
+                        品牌6
+                    </li>
+                    <li>
+                        品牌7
+                    </li>
+                    <li>
+                        品牌8
+                    </li>
+                    <li>
+                        品牌9
+                    </li>
+                    <li>
+                        品牌10
+                    </li>
+                </ul>
+            </div>
+            <div class="divSelectOption-pinpai-right divSelectOption-4">更多</div>
+        </div>
+    </div>
+
+
+
+    <div class="divSimpleSelectOption">
+        <div class="divSimpleSelectOption-right divSimpleSelectOption-1">
+            <ul class="mylist-inline">
+                <li>
+                    推荐
+                </li>
+                <li>
+                    新品
+                </li>
+                <li>
+                    价格↑
+                </li>
+                <li>
+                    评论最多
+                </li>
+            </ul>
+        </div>
+        <div class="divSimpleSelectOption-left divSimpleSelectOption-2">
+            <ul class="mylist-inline">
+                <li>
+                    <input type="checkbox" /> 查看评价
+                </li>
+                <li>
+                    <input type="checkbox" />  仅显示优惠商品
+                </li>
+                <li>
+                    <input type="checkbox" />  仅显示有货商品
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="divAllGoodsErJiContent">
+        <ul class="mylist-inline">
+            <li>
+                <div class="divAllGoodsErJiContent-1">
+                    <div class="divAllGoodsErJiContent-shoucangANGgouwuche">
+                        <p>
+                            <a  href="">收藏</a>
+                            <a  href="">加入</a>
+                        </p>
+                    </div>
+                    <div>
+                        <p><a href="" class="aAllGoodsErJiContentImgMax"><img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg" alt="" /></a></p>
+                    </div>
+                    <p><a  href="">小米耳机</a></p>
+                    <p>122元</p>
+                    <ul class="mylist-inline ulAllGoodsErJiContentImgMin">
+                        <li>
+                            <img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg" alt="" />
+                        </li>
+                        <li>
+                            <img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg" alt="" />
+                        </li>
+                        <li>
+                            <img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg" alt="" />
+                        </li>
+                    </ul>
+                    <div class="divAllGoodsErJiContent-miaoshu">
+                        新品上架
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+</div>
+
+

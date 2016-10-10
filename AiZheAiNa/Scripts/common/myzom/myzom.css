@@ -52,8 +52,7 @@
     }
 
 .divUpImgContent {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
     width: 303px;
     margin-top: 5px;
 }
