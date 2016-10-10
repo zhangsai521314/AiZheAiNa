@@ -4,24 +4,28 @@
     Layout = "~/Views/Shared/Template.cshtml";
 }
 <style type="text/css">
+    div {
+        margin: 0px;
+        padding: 0px;
+    }
+
     .divAllGoodsErJi > div {
         width: 1450px;
         margin: 10px auto auto auto;
+        background-color:#f8f5f5;
     }
-
-    .divDaoHangLianJie {
-        background-color: red;
-    }
-
-    .divSelectOption {
-        background-color: #b6ff00;
-    }
-
     /*复杂查询条件样式*/
     .divSelectOption-1 {
-        background-color: #808080;
         height: 40px;
         overflow: hidden;
+        /*transition-duration 设置过渡*/
+        transition-duration: 0.5s;
+        /* Firefox 4 */
+        -moz-transition-duration: 0.5s;
+        /* Safari and Chrome */
+        -webkit-transition-duration: 0.5s;
+        /* Opera */
+        -o-transition-duration: 0.5s;
     }
 
     .divSelectOption-2, .divSelectOption-3 {
@@ -31,7 +35,6 @@
     .divSelectOption-2, .divSelectOption-4 {
         width: 6%;
         text-align: center;
-        background-color: #b6ff00;
         margin-top: 5px;
     }
 
@@ -53,11 +56,11 @@
         }
 
             .divSelectOption-3 > ul > li:nth-child(odd) {
-                background-color: #de6363;
+                background-color: #d3d0d0;
             }
 
             .divSelectOption-3 > ul > li:nth-child(even) {
-                background-color: #ff6a00;
+                background-color: #808080;
             }
     /*简单查询样式*/
     .divSimpleSelectOption {
@@ -81,36 +84,41 @@
         }
     /*详细内容样式*/
     .divAllGoodsErJiContent {
-        background-color: #ff0000;
+        background-color: #f8f5f5;
     }
 
         .divAllGoodsErJiContent > ul li {
             background-color: #f8f5f5;
+            border: 1px solid #ffffff;
+            margin-top: 5px;
+        }
+         .divAllGoodsErJiContent > ul li:hover {
+            border: 1px solid red;
         }
 
     .divAllGoodsErJiContent-1 {
         text-align: center;
-        width: 250px;
+        width: 348px;
     }
 
     .divAllGoodsErJiContent-miaoshu {
         text-align: left;
         height: 20px;
         background-color: #00ff21;
-        width: 250px;
+        width: 352px;
     }
 
     .divAllGoodsErJiContent-shoucangANGgouwuche {
         width: 250px;
     }
 
-        .divAllGoodsErJiContent-shoucangANGgouwuche a:first-child {
+        .divAllGoodsErJiContent-shoucangANGgouwuche span:first-child {
             display: block;
             float: left;
             height: 20px;
         }
 
-        .divAllGoodsErJiContent-shoucangANGgouwuche a:last-child {
+        .divAllGoodsErJiContent-shoucangANGgouwuche span:last-child {
             display: block;
             height: 20px;
             float: right;
@@ -122,12 +130,18 @@
 
     .ulAllGoodsErJiContentImgMin li {
         border: 1px solid #ffffff;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
         .ulAllGoodsErJiContentImgMin li:hover {
             cursor: pointer;
             border: 1px solid #ff6a00;
         }
+    .aAllGoodsErJiContentImgMax {
+        display:block;
+        height:260px;
+    }
 </style>
 <div class="divAllGoodsErJi">
 
@@ -136,86 +150,8 @@
     </div>
 
     <div class="divSelectOption">
-        <div class="divSelectOption-fenlei divSelectOption-1">
-            <div class="divSelectOption-2 divSelectOption-2">分类</div>
-            <div class="divSelectOption-3 divSelectOption-3">
-                <ul class="mylist-inline">
-                    <li>
-                        条件1
-                    </li>
-                    <li>
-                        条件2
-                    </li>
-                    <li>
-                        条件3
-                    </li>
-                    <li>
-                        条件4
-                    </li>
-                    <li>
-                        条件5
-                    </li>
-                    <li>
-                        条件6
-                    </li>
-                    <li>
-                        条件7
-                    </li>
-                    <li>
-                        条件8
-                    </li>
-                    <li>
-                        条件9
-                    </li>
-                    <li>
-                        条件10
-                    </li>
-                </ul>
-            </div>
-            <div class="divSelectOption-4 divSelectOption-4">更多</div>
-        </div>
 
-        <div class="divSelectOption-pinpai divSelectOption-1">
-            <div class="divSelectOption-pinpai-left divSelectOption-2">品牌</div>
-            <div class="divSelectOption-pinpai-middle divSelectOption-3">
-                <ul class="mylist-inline">
-                    <li>
-                        品牌1
-                    </li>
-                    <li>
-                        品牌2
-                    </li>
-                    <li>
-                        品牌3
-                    </li>
-                    <li>
-                        品牌4
-                    </li>
-                    <li>
-                        品牌5
-                    </li>
-                    <li>
-                        品牌6
-                    </li>
-                    <li>
-                        品牌7
-                    </li>
-                    <li>
-                        品牌8
-                    </li>
-                    <li>
-                        品牌9
-                    </li>
-                    <li>
-                        品牌10
-                    </li>
-                </ul>
-            </div>
-            <div class="divSelectOption-pinpai-right divSelectOption-4">更多</div>
-        </div>
     </div>
-
-
 
     <div class="divSimpleSelectOption">
         <div class="divSimpleSelectOption-right divSimpleSelectOption-1">
@@ -249,49 +185,519 @@
         </div>
     </div>
 
-
-
-
-
-
     <div class="divAllGoodsErJiContent">
-        <ul class="mylist-inline">
-            <li>
-                <div class="divAllGoodsErJiContent-1">
-                    <div class="divAllGoodsErJiContent-shoucangANGgouwuche">
-                        <p>
-                            <a  href="">收藏</a>
-                            <a  href="">加入</a>
-                        </p>
-                    </div>
-                    <div>
-                        <p><a href="" class="aAllGoodsErJiContentImgMax"><img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg" alt="" /></a></p>
-                    </div>
-                    <p><a  href="">小米耳机</a></p>
-                    <p>122元</p>
-                    <ul class="mylist-inline ulAllGoodsErJiContentImgMin">
-                        <li>
-                            <img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg" alt="" />
-                        </li>
-                        <li>
-                            <img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg" alt="" />
-                        </li>
-                        <li>
-                            <img src="http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg" alt="" />
-                        </li>
-                    </ul>
-                    <div class="divAllGoodsErJiContent-miaoshu">
-                        新品上架
-                    </div>
-                </div>
-            </li>
-        </ul>
 
     </div>
-
-
-
-
 </div>
+<script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
+<script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
 
+<script id="divSelectOption" type="text/x-handlebars">
+    @*多条件查询模板*@
+    {{#each this }}
+    <div class="divSelectOption-1">
+        <div class="divSelectOption-2">{{divDaoHangLianJie_leftName}}</div>
+        <div class="divSelectOption-3">
+            <ul class="mylist-inline" leixing="{{leixing}}">
+                {{#with divDaoHangLianJie_Content}}
+                {{#each this}}
+                <li>
+                    {{content}}
+                </li>
+                {{/each}}
+                {{/with}}
+            </ul>
+        </div>
+        <div class="divSelectOption-4 min">更多</div>
+    </div>
+    {{/each}}
+</script>
+
+<script id="divAllGoodsContent" type="text/x-handlebars">
+    @*商品展示*@
+    <ul class="mylist-inline">
+        {{#each this}}
+        <li leixing="{{leixing}}" shopid="{{id}}">
+            <div class="divAllGoodsErJiContent-1">
+                <div class="divAllGoodsErJiContent-shoucangANGgouwuche">
+                    <p>
+                        <span>收藏</span>
+                        <span>加入</span>
+                    </p>
+                </div>
+                <div>
+                    <p><a href="/Buy/ErJi?id={{id}}" class="aAllGoodsErJiContentImgMax"><img src="{{maxImgsrc}}" alt="{{maxImgAlt}}" /></a></p>
+                </div>
+                <p><a href="/Buy/ErJi?id={{id}}">小米耳机</a></p>
+                <p>{{jiage}}</p>
+                <ul class="mylist-inline ulAllGoodsErJiContentImgMin">
+                    {{#with minImg}}
+                    {{#each this}}
+                    <li>
+                        <img src="{{src}}" alt="{{alt}}" />
+                    </li>
+                    <li>
+                        <img src="{{src}}" alt="{{alt}}" />
+                    </li>
+                    <li>
+                        <img src="{{src}}" alt="{{alt}}" />
+                    </li>
+                    {{/each}}
+                    {{/with}}
+                </ul>
+                <div class="divAllGoodsErJiContent-miaoshu">
+                    {{miaoshu}}
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+
+<script type="text/javascript">
+    var divSelectOptionData = [
+        {
+            divDaoHangLianJie_leftName: "分类",
+            leixing: "fenlei",
+            divDaoHangLianJie_Content: [
+                {
+                    content: "条件1",
+                },
+                {
+                    content: "条件2"
+                },
+                {
+                    content: "条件3"
+                },
+                {
+                    content: "条件4"
+                },
+                {
+                    content: "条件5"
+                },
+                {
+                    content: "条件6"
+                },
+                {
+                    content: "条件7"
+                },
+                {
+                    content: "条件8"
+                },
+                {
+                    content: "条件9"
+                },
+                {
+                    content: "条件10"
+                }
+            ],
+            divDaoHangLianJie_rightName: "更多",
+        },
+        {
+            divDaoHangLianJie_leftName: "品牌",
+            leixing: "pinpai",
+            divDaoHangLianJie_Content: [
+                {
+                    content: "品牌1"
+                },
+                {
+                    content: "品牌2"
+                },
+                {
+                    content: "品牌3"
+                },
+                {
+                    content: "品牌4"
+                },
+                {
+                    content: "品牌5"
+                },
+                {
+                    content: "品牌6"
+                },
+                {
+                    content: "品牌7"
+                },
+                {
+                    content: "品牌8"
+                },
+                {
+                    content: "品牌9"
+                },
+                {
+                    content: "品牌10"
+                },
+                {
+                    content: "品牌1"
+                },
+                {
+                    content: "品牌2"
+                },
+                {
+                    content: "品牌3"
+                },
+                {
+                    content: "品牌4"
+                },
+                {
+                    content: "品牌5"
+                },
+                {
+                    content: "品牌6"
+                },
+                {
+                    content: "品牌7"
+                },
+                {
+                    content: "品牌8"
+                },
+                {
+                    content: "品牌9"
+                },
+                {
+                    content: "品牌10"
+                }
+            ],
+            divDaoHangLianJie_rightName: "更多",
+        }
+    ];
+    var divSelectOption_Template = Handlebars.compile($("#divSelectOption").html());
+    $(".divSelectOption").html(divSelectOption_Template(divSelectOptionData));
+</script>
+
+<script type="text/javascript">
+    var divAllGoodsErJiContentData = [
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "新品上架"
+        }
+    ];
+    var divAllGoodsContent_Template = Handlebars.compile($("#divAllGoodsContent").html());
+    $(".divAllGoodsErJiContent").html(divAllGoodsContent_Template(divAllGoodsErJiContentData));
+</script>
+
+<script type="text/javascript">
+    $(".divSelectOption-4").click(function () {
+        if ($(this).is(".min")) {
+            $(this).removeClass("min").addClass("max");
+            $(this).parent().height(40 * Math.ceil($(this).prev().find("ul li").length / 8) - Math.ceil($(this).prev().find("ul li").length / 8) * 2);
+
+        } else {
+            $(this).removeClass("max").addClass("min");
+            $(this).parent().height("40px");
+        }
+    });
+</script>
 

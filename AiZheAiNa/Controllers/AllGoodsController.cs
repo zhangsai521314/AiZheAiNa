@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace AiZheAiNa.Controllers
 {
+    /// <summary>
+    /// 商品全部
+    /// </summary>
     public class AllGoodsController : Controller
     {
         // GET: AllGoods

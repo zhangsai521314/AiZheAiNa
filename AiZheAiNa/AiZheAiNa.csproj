@@ -211,7 +211,7 @@
     </Compile>
     <Compile Include="Attributes\Attributes.cs" />
     <Compile Include="Controllers\AllGoodsController.cs" />
-    <Compile Include="Controllers\DetailsController.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GetInFoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -296,9 +296,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\JqueryValidate\Index.cshtml" />
     <Content Include="Views\shiyan\Index.cshtml" />
-    <Content Include="Views\Details\Phone.cshtml" />
+    <Content Include="Views\Buy\Phone.cshtml" />
     <Content Include="Views\AllGoods\ErJi.cshtml" />
     <Content Include="Views\AllGoods\ReMen.cshtml" />
+    <Content Include="Views\Buy\ErJi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
