@@ -7,34 +7,26 @@ using System.Web.Mvc;
 namespace AiZheAiNa.Controllers
 {
     /// <summary>
-    /// 商品全部
+    /// 详情页
     /// </summary>
-    public class AllGoodsController : Controller
+    public class DetailsController : Controller
     {
-        // GET: AllGoods
+        // GET: Details
         public ActionResult Index()
         {
             return View();
         }
 
-       /// <summary>
-       /// 返回热门商品
-       /// </summary>
-       /// <returns></returns>
-        public ActionResult ReMen()
-        {
-
-            return View();
-        }
-
         /// <summary>
-        /// 返回耳机
+        /// 返回指定类型的手机详情页
         /// </summary>
+        /// <param name="phoneType">手机型号</param>
         /// <returns></returns>
-        public ActionResult ErJi()
+        public ActionResult Phone(string phoneType)
         {
-
             return View();
+
         }
+
     }
 }
