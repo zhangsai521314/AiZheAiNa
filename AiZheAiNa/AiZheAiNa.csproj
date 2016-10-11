@@ -212,6 +212,7 @@
     <Compile Include="Attributes\Attributes.cs" />
     <Compile Include="Controllers\AllGoodsController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
+    <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GetInFoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -238,6 +239,9 @@
     <Content Include="Content\css\Font-Awesome\css\font-awesome.css" />
     <Content Include="Content\css\Font-Awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\editTable\editTable.js" />
+    <Content Include="Scripts\editTable\tableE.html" />
+    <Content Include="Scripts\editTable\Verification.js" />
     <Content Include="Scripts\common\myzom\myzom.css" />
     <Content Include="Content\Images\go.png" />
     <Content Include="Content\Images\qq\qqQiEr.png" />
@@ -303,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Details\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

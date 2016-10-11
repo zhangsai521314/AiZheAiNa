@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../jq/jquery-2.1.4/jquery-2.1.4.js"></script>
+    <script src="Verification.js"></script>
+    <script src="editTable.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#editTable').handleTable({
+                "tableID": "editTable",
+                "TableIdColumnindex": 0,
+                "cancel": " <span class='glyphicon glyphicon-remove'>取消</span> ",
+                "edit": " <span class='glyphicon glyphicon-edit'>编辑</span> ",
+                "add": " <span class='glyphicon glyphicon-plus'>增加</span> ",
+                "save": " <span class='glyphicon glyphicon-saved'>保存</span> ",
+                "confirm": " <span class='glyphicon glyphicon-ok'>确认</span> ",
+                "del": " <span class='glyphicon glyphicon-remove'>删除</span> ",
+                "details": "<span class='glyphicon glyphicon-info-sign'>详情</span>",
+                "zidingyiedit": "<span class='glyphicon glyphicon-info-sign'>我的修改</span>",
+                "zidingyiadd": "<span class='glyphicon glyphicon-info-sign'>我的增加</span>",
+                "operatePos": 4,
+                "editableCols": "all",
+                "order": ["edit", "add", "details", "del", "zidingyiedit", "zidingyiadd"],
+                "saveCallback": function (data, isSuccess) {
+                    var jsonData = JSON.parse(data);
+                    var verification = true;
+                    if (typeof (Verification) == "function") {
+                        verification = Verification(jsonData.dataList, "editOrAdd");
+                    }
+                    if (verification) {
+                        var json = Callback(data, "save");
+                        if (!isNull(json) && json.Status == 1) {
+                            isSuccess();
+                        }
+                        else {
+                            alert("保存失败或验证不同过,请重试");
+                        }
+                    } else {
+                        alert("验证失败");
+                    }
+                },
+                "addCallback": function (data, isSuccess) {
+                    var jsonData = JSON.parse(data);
+                    var verification = true;
+                    if (typeof (Verification) == "function") {
+                        verification = Verification(jsonData.dataList, "editOrAdd");
+                    }
+                    if (verification) {
+                        var json = Callback(data, "add");
+                        if (!isNull(json) && json.Status == 1) {
+                            isSuccess();
+                            $("#" + tableID + " tbody tr").eq(json.index).find('input[type="checkbox"]').eq(0).attr("value", json.id); //根据返回的行号设置复选框的值
+                            $("#" + tableID + " tbody tr").eq(json.index).find('td').eq(1).html(json.id); //根据返回的行号设置id列的值
+                            //trClickChecked(json.index);
+                            LoadSource(0, 1);
+                        } else {
+                            var jsonData = JSON.parse(data);
+                            var mindex;
+                            $.each(jsonData.dataList, function (index, item) {
+                                mindex = item.index;
+                                return false;
+                            });
+                            var tds = $("#" + tableID + " tbody tr").eq(mindex).find('td');
+                            for (var i = 2; i < tds.length - 1; i++) {//去除0索引的复选框和1索引的ID列
+                                tds.eq(i).html("<input type=\"text\" value='" + tds.eq(i).html() + "' class=\"form-control\"/>");
+                            }
+                            alert("保存失败,请重试");
+                        }
+                    } else {
+                        alert("验证失败");
+                    }
+                },
+                "delCallback": function (data, isSuccess) {
+                    var json = Callback(data, "del");
+                    if (!isNull(json) && json.Status == 1) {
+                        delLoadSource(1);
+                    }
+                    else {
+                        alert("删除失败,请重试");
+                    }
+                },
+                "detailsCallback": function (data) {
+                    if (typeof (detailsCallback) == "function") {
+                        //详情自定义的回调
+                        detailsCallback(JSON.parse(data));
+                    } else {
+                        var realPath = getRealPath();
+                        var jsonData = JSON.parse(data);
+                        var id;
+                        $.each(jsonData.dataList, function (index, item) {
+                            id = item.id;
+                            return false;
+                        });
+                        if (detailsUrl.toLocaleLowerCase().indexOf("?") > 0) {
+                            window.open(realPath + detailsUrl + "&ID=" + id);
+                        } else {
+                            window.open(realPath + detailsUrl + "?ID=" + id);
+                        }
+                    }
+                },
+                "zidingyieditCallback": function (data) {
+                    if (typeof (zidingyieditCallback) == "function") {
+                        //编辑自定义的回调
+                        zidingyieditCallback(JSON.parse(data));
+                    } else {
+                        var realPath = getRealPath();
+                        var jsonData = JSON.parse(data);
+                        var id;
+                        $.each(jsonData.dataList, function (index, item) {
+                            id = item.id;
+                            return false;
+                        });
+                        if (zidingyiExitUrl.toLocaleLowerCase().indexOf("?") > 0) {
+                            var url = realPath + zidingyiExitUrl + "&ID=" + id
+                            window.location.href = url;
+                        } else {
+                            var url = realPath + zidingyiExitUrl + "?ID=" + id;
+                            window.location.href = url;
+                        }
+                    }
+                },
+                "zidingyiaddCallback": function (data) {
+                    if (typeof (zidingyiaddCallback) == "function") {
+                        //增加自定义的回调
+                        zidingyiaddCallback(JSON.parse(data));
+                    } else {
+                        var url = getRealPath() + zidingyiAddUrl;
+                        window.location.href = url;
+                    }
+                }, "cancelCallback": function (trindex) {
+                    trClickChecked(trindex);
+                }
+            });
+
+
+
+            //自定义字段的验证规则
+            function Verification(data, type) {
+                var isbool = 1;
+                var trindex;
+                $.each(data, function (index, item) {
+                    trindex = item.index;
+                    if (item.name == "产品类别") {
+                        if (!(Verification_Chinese_Letter_Number_Underline(item.value, 1, 15))) {
+                            isbool = 0;
+                            errorColumnName = item.name;
+                            return false;
+                        }
+                    };
+                    if (item.name == "保修天数") {
+                        if (!(Verification_WholeNumber(item.value, 1, 7))) {
+                            isbool = 0;
+                            errorColumnName = item.name;
+                            return false;
+                        }
+                    };
+                    if (item.name == "保修里程") {
+                        if (!(Verification_WholeNumber(item.value, 1, 7))) {
+                            isbool = 0;
+                            errorColumnName = item.name;
+                            return false;
+                        }
+                    };
+                });
+                if (isbool == 0) {
+                    var c = 1; //多余列的个数
+                    if (type == "selectNull") {
+                        CreateText(trindex, type);
+                    } else if (type == "editOrAdd") {
+                        var tds = $('#editTable tbody tr').eq(trindex).find('td');
+                        for (var i = c ; i < tds.length - 1; i++) {
+                            if (tds.eq(i).find("input").length > 0) {
+                                tds.eq(i).html("<input type=\"text\" value='" + tds.eq(i).find("input").eq(0).val() + "' class=\"form-control\"/>");
+                            } else {
+                                tds.eq(i).html("<input type=\"text\" value='" + tds.eq(i).html() + "' class=\"form-control\"/>");
+                            }
+                        }
+                    };
+                    $('#editTable tr').eq(0).find("th").each(function (i) {
+                        if ($(this).html() == errorColumnName) {
+                            d = $(this).index();
+                            return false;
+                        }
+                    })
+                    //d-1是减去多余列
+                    $($('#editTable tbody tr').eq(trindex).find('input[type="text"]').eq(d - c)).focusEnd();
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+
+            //editTable处理完的回调start,这个可以卸载插件里面
+            function Callback(data, type) {
+                var backdata;
+                try {
+                    $.ajax({
+                        async: false,
+                        type: "POST",
+                        url: "",
+                        data: { data: data, type: type },
+                        dataType: "json", //可以解析正常的引号
+                        success: function (source) {
+                            backdata = source;
+                        },
+                        error: function () {
+                            backdata = "";
+                        }
+                    });
+                } catch (ex) {
+                    backdata = "";
+                }
+
+                //测试
+                backdata = { id: null, name: null, value: null, InfluenceCount: 1, index: 0, Status: 1 };
+                //测试
+
+
+                return backdata;
+            };
+            //editTable处理完的回调end
+
+
+            //删除后判断应该加载当前页还是上一页，delcount删除的条数，sumcount总条数。防止你加载的那页没有数据
+            function delLoadSource(delcount) {
+                PageSize = $("#page_select option:selected").text();
+                sumcount = sumcount - delcount;
+                var ye;
+                if (sumcount % PageSize > 0) {
+                    //向上取整
+                    ye = Math.ceil(sumcount / PageSize);
+                }
+                else {
+                    //向下取整
+                    ye = Math.floor(sumcount / PageSize);
+                }
+                if (pageIndex > ye) {
+                    pageIndex = pageIndex - 1;
+                }
+                //执行加载数据方法
+            };
+
+
+
+            //判断值是否为空
+            function isNull(str) {
+                if (str == null || typeof (str) == "undefined" || $.trim(str) == "" || $.trim(str).length <= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+        });
+
+
+
+        //使光标总是定位在文本的最后start
+        $.fn.setCursorPosition = function (position) {
+            if (this.lengh == 0) return this;
+            return $(this).setSelection(position, position);
+        }
+        $.fn.setSelection = function (selectionStart, selectionEnd) {
+            if (this.lengh == 0) return this;
+            input = this[0];
+
+            if (input.createTextRange) {
+                var range = input.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', selectionEnd);
+                range.moveStart('character', selectionStart);
+                range.select();
+            } else if (input.setSelectionRange) {
+                input.focus();
+                input.setSelectionRange(selectionStart, selectionEnd);
+            }
+
+            return this;
+        }
+        $.fn.focusEnd = function () {
+            this.setCursorPosition(this.val().length);
+        }
+        //使光标总是定位在文本的最后end
+    </script>
+
+</head>
+<body>
+    <table id="editTable">
+        <thead>
+            <tr>
+                <th style="display:none">ID</th>
+                <th>产品类别</th>
+                <th>保修天数</th>
+                <th>保修里程</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="display:none">1</td>
+                <td class="canedit">2</td>
+                <td class="canedit">3</td>
+                <td class="canedit">4</td>
+                <td ></td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
