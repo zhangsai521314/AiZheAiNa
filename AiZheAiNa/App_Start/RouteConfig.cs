@@ -7,6 +7,10 @@ using System.Web.Routing;
 
 namespace AiZheAiNa
 {
+
+    /// <summary>
+    /// 路由控制
+    /// </summary>
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
@@ -18,6 +22,42 @@ namespace AiZheAiNa
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+
+
+
+
+
+            //     routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "AStart", action = "Login", id = UrlParameter.Optional }
+            //// constraints: new { controller = "AStart" } //注意：这样S不区分大小写
+            //);
+
+            //     routes.MapRoute(
+            //         name: "RouteYueShuOne",
+            //         url: "{controller}/{action}/{id}",
+            //         constraints: new { id = @"\d*" }, //使用正则表达式建立路由约束
+            //         defaults: new { controller = "Razor语法事例", action = "RazorAdd", id = UrlParameter.Optional }
+            //     );
+
+            //     routes.MapRoute(
+            //        name: "RouteYueShuTwo",
+            //        url: "{controller}/{action}/{name}",
+            //        constraints: new { name = "[a-z]+" },  //使用正则表达式建立路由约束
+            //        defaults: new { controller = "Razor语法事例", action = "RazorAdd", name = UrlParameter.Optional }
+
+            //    );
+
+
+
+
+
+
+
+
         }
     }
 }

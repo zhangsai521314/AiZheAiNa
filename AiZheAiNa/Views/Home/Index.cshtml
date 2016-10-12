@@ -446,7 +446,7 @@
     <ul class="list-unstyled text-center divShuPaiFeiLeiDaoHang_ul1">
         {{#each this}}
         <li class="divShuPaiFeiLeiDaoHang_li1">
-            <a href="{{AshuPaiDaoHangLink}}" class="divShuPaiFeiLeiDaoHang_a1">{{AshuPaiDaoHangName}}</a>
+            <a href="/AllGoods/{{AshuPaiDaoHangNameEN}}" class="divShuPaiFeiLeiDaoHang_a1">{{AshuPaiDaoHangName}}</a>
             <div class="divShuPaiFeiLeiDaoHang_div1">
 
                 <ul class="list-unstyled divShuPaiFeiLeiDaoHang_ul2 divShuPaiFeiLeiDaoHang_ul2_{{@@index}}">
@@ -454,12 +454,20 @@
                     {{#with Specific}}
                     {{#each this}}
                     <li class="divShuPaiFeiLeiDaoHang_li2">
-                        <a href="{{XiangQing}}" class="divShuPaiFeiLeiDaoHang_a2">
+                        {{#if isShowDetails}}
+                        <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                        <a href="/Details/{{shopType}}?shopModel={{shopModel}}" class="divShuPaiFeiLeiDaoHang_a2">
                             <img src="{{shuPaiDaoHangLiXiaoImgSrc}}" />
                             <span>{{shuPaiDaoHangLiXiaoImgSpanMiaoShu}}</span>
                         </a>
-                        {{#if zhiDaName }}
-                        <a href="{{zhiDaLink}}" class="divShuPaiFeiLeiDaoHang_a3">{{zhiDaName}}</a>
+                        {{else}}
+                        <a href="/Buy/{{shopType}}?shopModel={{shopModel}}" class="divShuPaiFeiLeiDaoHang_a2">
+                            <img src="{{shuPaiDaoHangLiXiaoImgSrc}}" />
+                            <span>{{shuPaiDaoHangLiXiaoImgSpanMiaoShu}}</span>
+                        </a>
+                        {{/if}}
+                        {{#if buyName }}
+                        <a href="/Buy/{{shopType}}?shopModel={{shopModel}}" class="divShuPaiFeiLeiDaoHang_a3">{{buyName}}</a>
                         {{/if}}
                     </li>
                     {{/each}}
@@ -476,11 +484,11 @@
         {{#each this}}
         <li>
             <div style="border-top:1px solid #ffd800">
-                <a href="{{ImgWaiLink}}">
+                <a href="/Buy/{{shopType}}?shopModel={{shopModel}}">
                     <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
                 </a>
                 <div>
-                    <a href="{{NameWaiALink}}">{{Name}}</a><p />
+                    <a href="/Buy/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a><p />
                     <p>{{JianShu}}</p>
                     <p>{{JiaGe}}</p>
                 </div>
@@ -498,13 +506,25 @@
         <li style="width:240px;height:140px;position:relative;top:-122px;padding-left:0px;right:-4px">
             <div style="width:230px;height:140px;background-color:#ffffff">
                 <div style="height: 60px;width: 130px;position:absolute;top:55px">
-                    <a href="{{aDaPeiNameLink}}">{{Name}}</a><br />
+                    {{#if isShowDetails}}
+                    <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                    <a href="/Details/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a><br />
+                    {{else}}
+                    <a href="/buy/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a><br />
+                    {{/if}}
                     <span>{{PingJiaRenName}}</span>
                 </div>
                 <div style="height: 80px;width: 80px;position:absolute;right:20px;top:30px">
-                    <a href="{{aDaPeiImgLink}}">
+                    {{#if isShowDetails}}
+                    <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                    <a href="/Details/{{shopType}}?shopModel={{shopModel}}">
                         <img style="width:80px;height:80px" alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                     </a>
+                    {{else}}
+                    <a href="/buy/{{shopType}}?shopModel={{shopModel}}">
+                        <img style="width:80px;height:80px" alt="{{ImgAlt}}" src="{{ImgSrc}}" />
+                    </a>
+                    {{/if}}
                 </div>
             </div>
         </li>
@@ -517,21 +537,42 @@
                     {{TeDian}}
                 </div>
                 {{/if}}
-                <a href="{{aDaPeiImgLink}}">
+                {{#if isShowDetails}}
+                <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                <a href="/Details/{{shopType}}?shopModel={{shopModel}}">
                     <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                 </a>
+                {{else}}
+                <a href="/buy/{{shopType}}?shopModel={{shopModel}}">
+                    <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
+                </a>
+                {{/if}}
                 <div class="divDaPeiRightMiaoShu1">
-                    <a href="{{aDaPeiNameLink}}">{{Name}}</a><p />
+                    {{#if isShowDetails}}
+                    <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                    <a href="/Details/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a><p />
+                    {{else}}
+                    <a href="/buy/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a><p />
+                    {{/if}}
                     <p>{{JiaGe}}</p>
                     <p>{{PingJiaShuLiang}}</p>
                 </div>
-                {{#if PingJia}}
+
+                {{#if PingJiaID}}
                 <!--没有评价则不生成评价div-->
                 <div class="divDaPeiRightMiaoShu2">
-                    <a href="{{aDaPeiMiaoShu2Link}}">
+                    {{#if isShowDetails}}
+                    <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                    <a href="/Details/{{shopType}}?shopModel={{shopModel}}">
                         <p>{{PingJia}}</p>
                         <p>{{PingJiaRenName}}</p>
                     </a>
+                    {{else}}
+                    <a href="/buy/{{shopType}}?shopModel={{shopModel}}">
+                        <p>{{PingJia}}</p>
+                        <p>{{PingJiaRenName}}</p>
+                    </a>
+                    {{/if}}
                 </div>
                 {{/if}}
             </div>
@@ -565,11 +606,24 @@
                     {{TeDian}}
                 </div>
                 {{/if}}
-                <a href="{{aDaPeiImgLink}}">
+                {{#if isShowDetails}}
+                <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                <a href="/Details/{{shopType}}?shopModel={{shopModel}}">
                     <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
                 </a>
+                {{else}}
+                <a href="/buy/{{shopType}}?shopModel={{shopModel}}">
+                    <img alt="{{ImgAlt}}" src="{{ImgSrc}}" />
+                </a>
+                {{/if}}
                 <div class="divZhiNengYingJianRightMiaoShu1">
-                    <a href="{{aDaPeiNameLink}}">{{Name}}</a></p>
+                    {{#if isShowDetails}}
+                    <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                    <a href="/Details/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a>
+                    {{else}}
+                    <a href="/buy/{{shopType}}?shopModel={{shopModel}}">{{Name}}</a>
+                    {{/if}}
+                    <p />
                     <p>{{JianShu}}</p>
                     <p>{{JiaGe}}</p>
                     <p>{{PingJiaShuLiang}}
@@ -595,386 +649,412 @@
 
     var divShuPaiFeiLeiDaoHangData = [
     {
-        AshuPaiDaoHangName: "手机电话卡",
-        AshuPaiDaoHangLink: "手机电话卡",
+        AshuPaiDaoHangName: "手机 电话卡",
+        AshuPaiDaoHangNameEN: "PhoneAndTelcar",
         Specific: [
             {
-                XiangQing: "",
+                shopType: "Phone",//商品类型
+                shopModel: "xiaomi5", //商品类型下级
+                isShowDetails: true,//是否有大图介绍，类似http://www.mi.com/yinxiang/
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购1",
-                zhiDaLink: ""
+                buyName: "选购1"
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/maxbar80.jpg?width=40&height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米Max",
-                zhiDaName: "选购2",
-                zhiDaLink: ""
+                buyName: "选购2",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购3",
-                zhiDaLink: ""
+                buyName: "选购3",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购4",
-                zhiDaLink: ""
+                buyName: "选购4",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购5",
-                zhiDaLink: ""
+                buyName: "选购5",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/heyue.jpg?width=40&height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "合约机",
-                zhiDaName: "",
-                zhiDaLink: ""
+                buyName: "",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购7",
-                zhiDaLink: ""
+                buyName: "选购7",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购8",
-                zhiDaLink: ""
+                buyName: "选购8",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购9",
-                zhiDaLink: ""
+                buyName: "选购9",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购10",
-                zhiDaLink: ""
+                buyName: "选购10",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购11",
-                zhiDaLink: ""
+                buyName: "选购11",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购12",
-                zhiDaLink: ""
+                buyName: "选购12",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购13",
-                zhiDaLink: ""
+                buyName: "选购13",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购14",
-                zhiDaLink: ""
+                buyName: "选购14",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购15",
-                zhiDaLink: ""
+                buyName: "选购15",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购16",
-                zhiDaLink: ""
+                buyName: "选购16",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购17",
-                zhiDaLink: ""
+                buyName: "选购17",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购18",
-                zhiDaLink: ""
+                buyName: "选购18",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
                 {
-                    XiangQing: "",
+                    shopType: "Phone",
                     shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                     shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                    zhiDaName: "选购19",
-                    zhiDaLink: ""
+                    buyName: "选购19",
+                    shopModel: "xiaomi5",
+                    isShowDetails: true
                 }
         ]
     },
     {
         AshuPaiDaoHangName: "笔记本 平板",
-        AshuPaiDaoHangLink: "",
+        AshuPaiDaoHangNameEN: "NotebookAndFlat",
         Specific: [
            {
-               XiangQing: "",
+               shopType: "Phone",
+               shopModel: "xiaomi5",
                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-               zhiDaName: "选购",
-               zhiDaLink: ""
+               buyName: "选购",
+               isShowDetails: false
            },
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5",
+                 isShowDetails: true
              },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/maxbar80.jpg?width=40&height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米Max",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             },
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             }
             ,
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购ss",
-                zhiDaLink: ""
+                buyName: "选购ss",
+                shopModel: "xiaomi5",
+                isShowDetails: true
             }
         ]
     },
      {
          AshuPaiDaoHangName: "电视 盒子",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "TvAndBox",
          Specific: [
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
             },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               }
          ]
      },
      {
          AshuPaiDaoHangName: "路由器 智能硬件",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "RouterAndIntelligentHardware",
          Specific: [
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               }
          ]
      },
      {
          AshuPaiDaoHangName: "移动电源 电池 插排",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "PortableSourceAndTelevisionAndSocket",
          Specific: [
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
             },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               }
          ]
      },
      {
          AshuPaiDaoHangName: "耳机 音响",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "HeadsetAndSound",
          Specific: [
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               }
          ]
      },
      {
          AshuPaiDaoHangName: "保护套 贴膜",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "SmartcoverAndFilm",
          Specific: [
             {
-                XiangQing: "",
+                shopType: "Phone",
                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                zhiDaName: "选购",
-                zhiDaLink: ""
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
             },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/maxbar80.jpg?width=40&height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米Max",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               },
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              }
          ]
      },
      {
          AshuPaiDaoHangName: "线材 支架 存储卡",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "WirerodAndBracketAndMemorycard",
          Specific: [
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "选购",
-                 zhiDaLink: ""
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "选购",
-                  zhiDaLink: ""
+                  buyName: "选购",
+                  shopModel: "xiaomi5", isShowDetails: true
               }
          ]
      },
      {
          AshuPaiDaoHangName: "箱包 服饰",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "BagsAndDresses",
          Specific: [
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                 zhiDaName: "",
-                 zhiDaLink: ""
+                 buyName: "",
+                 shopModel: "xiaomi5", isShowDetails: true
              },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
-                  zhiDaName: "",
-                  zhiDaLink: ""
+                  buyName: "",
+                  shopModel: "xiaomi5", isShowDetails: true
               }
          ]
      },
      {
          AshuPaiDaoHangName: "米兔 生活周边",
-         AshuPaiDaoHangLink: "",
+         AshuPaiDaoHangNameEN: "MrabbitAndLifeperiphery",
          Specific: [
              {
-                 XiangQing: "",
+                 shopType: "Phone",
                  shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                  shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
              },
               {
-                  XiangQing: "",
+                  shopType: "Phone",
                   shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
                   shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
               }
@@ -1011,69 +1091,84 @@
 
     var divJingMeiDanPinContentData = [
         {
-            ImgWaiLink: "http://www.aizheaina.com/Buy/phone",
+
+            shopType: "Phone",//商品类型
+            shopModel: "xiaomi5", //商品类型下级
             ImgSrc: "http://i3.mifile.cn/a4/40d24892-317d-4883-ad63-647f1b9e3cdf",
             ImgAlt: "",
-            NameWaiALink: "",
             Name: "小米5 高配",
             JiaGe: "2055元"
         },
         {
-            ImgWaiLink: "http://www.aizheaina.com/Buy/phone",
+
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/0df5d106-ab01-4013-87de-a9793094245d",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "小米Max 优惠200元",
             JianShu: "128GB大容量，4850mAh大电池",
             JiaGe: "1799元"
         },
         {
-            ImgWaiLink: "http://www.aizheaina.com/Buy/phone",
+
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/f35e0d0a-afae-443c-a7e6-3a49c40e2df1",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "红米Pro 十核双摄",
             JianShu: "购机即送Type-C转接头",
             JiaGe: "1499元起"
         },
         {
-            ImgWaiLink: "http://www.aizheaina.com/Buy/phone",
+
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/46efda8b-672a-41a0-8ea9-434b746e5c62",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "小米笔记本",
             JianShu: "独立显卡、超轻薄、金属机身",
             JiaGe: "3499元起"
         },
         {
-            ImgWaiLink: "http://www.aizheaina.com/Buy/phone",
+
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/4c68c352-fbd3-452d-be90-7b47e4f6ce76",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "小米平板2 16GB现货",
             JianShu: "轻薄全金属，海量内容",
             JiaGe: "999元"
         },
          {
              ImgWaiLink: "",
+             shopType: "Phone",
+             shopModel: "xiaomi5",
              ImgSrc: "http://i3.mifile.cn/a4/74dd9736-f254-4964-a06a-24f0befb21ac",
              ImgAlt: "",
-             NameWaiALink: "",
+
              Name: "小米电视3S 48英寸",
              JianShu: "原装液晶屏，金属机身",
              JiaGe: "1999元"
          },
         {
             ImgWaiLink: "",
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/T146YgBKhv1RXrhCrK.jpg",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "小米盒子3 增强版",
             JianShu: "高端 4K 网络机顶盒",
             JiaGe: "399元"
         },
         {
             ImgWaiLink: "",
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/6ef55907-bbed-49be-a2bb-be0821b5f7b8",
             ImgAlt: "",
             NameWaiALink: "http://www.aizheaina.com/Buy/phone",
@@ -1083,18 +1178,22 @@
         },
         {
             ImgWaiLink: "",
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/d663ce13-c814-4f35-a7a8-46a4745e6fd7",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "小米体重秤",
             JianShu: "100克，喝杯水都可感知的精准",
             JiaGe: "99元"
         },
         {
-            ImgWaiLink: "http://www.aizheaina.com/Buy/phone",
+
+            shopType: "Phone",
+            shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/T1d__jBQYT1RXrhCrK.jpg",
             ImgAlt: "",
-            NameWaiALink: "",
+
             Name: "小米空气净化器2",
             JianShu: "10分钟，房间空气焕然一新",
             JiaGe: "699元"
@@ -1109,125 +1208,135 @@
         FenLeiEnName: "reMen",
         Content: [
                    {
-                       aDaPeiImgLink: "",
-                       aDaPeiNameLink: "",
-                       aDaPeiMiaoShu2Link: "",
+                       shopType: "Phone",//商品类型
+                       shopModel: "xiaomi5", //商品类型下级
+                       isShowDetails: false,
                        ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
                        ImgAlt: "",
                        Name: "小米移动电源10000mAh",
                        JiaGe: "79元",
                        PingJiaShuLiang: "1.9万评价",
+                       PingJiaID: 1,
                        PingJia: "真的好好",
                        PingJiaRenName: "来自张赛的评价",
                        TeDian: "新品"
                    },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T1ycK_BjYv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米圈铁耳机",
                         JiaGe: "99元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: ""
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T1eSZgBjVT1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米移动电源10000mAh 高配版",
                         JiaGe: "1499元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "新品"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米移动电源10000mAh",
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "免邮"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T190DvB4dv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米蓝牙耳机",
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: ""
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米移动电源10000mAh",
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "免邮"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/pms_1463579883.27084326.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米插线排",
                         JiaGe: "49元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "张赛"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T12HJvByEv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米移动电源10000mAh",
                         JiaGe: "79元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: ""
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米小钢炮蓝牙音箱2",
                         JiaGe: "129元",
                         PingJiaShuLiang: "1.9万评价",
+                        PingJiaID: 1,
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "牛逼"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
+                        shopType: "Phone",
+                        shopModel: "xiaomi5",
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/T15hZ_BsDv1RXrhCrK!220x220.jpg",
                         ImgAlt: "",
                         Name: "小米小钢炮蓝牙音箱 青春版",
@@ -1374,9 +1483,9 @@
 
     var divZhiNengYingJianRightData = [
                    {
-                       aDaPeiImgLink: "",
-                       aDaPeiNameLink: "",
-                       aDaPeiMiaoShu2Link: "",
+                       shopType: "Phone",//商品类型
+                       shopModel: "xiaomi5", //商品类型下级
+                       isShowDetails: true,
                        ImgSrc: "http://i3.mifile.cn/a4/376f5f19-d1f5-4f87-8ef9-38e86891bc87",
                        ImgAlt: "",
                        Name: "小米路由器3",
@@ -1387,9 +1496,9 @@
                        TeDian: "我想"
                    },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i3.mifile.cn/a4/2b69b930-a2fd-4d09-a46a-8690cb79f764",
                         ImgAlt: "",
                         Name: "电助力折叠自行车",
@@ -1400,9 +1509,9 @@
                         TeDian: "我玩"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/pms_1474338357.52216545!220x220.jpg",
                         ImgAlt: "",
                         Name: "米兔定位电话",
@@ -1413,9 +1522,9 @@
                         TeDian: ""
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/T1PXhgBbdT1RXrhCrK!220x220.jpg",
                         ImgAlt: "",
                         Name: "小米蓝牙耳机",
@@ -1426,9 +1535,9 @@
                         TeDian: "搞飞机"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/T190DvB4dv1RXrhCrK.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "九号平衡车",
@@ -1439,9 +1548,9 @@
                         TeDian: ""
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/pms_1464615180.86261317!220x220.jpg",
                         ImgAlt: "",
                         Name: "米兔智能故事机",
@@ -1452,9 +1561,9 @@
                         TeDian: "真带劲"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i2.mifile.cn/a1/pms_1463579883.27084326.jpg?width=150&height=150",
                         ImgAlt: "",
                         Name: "小米小钢炮蓝牙音箱2",
@@ -1465,9 +1574,9 @@
                         TeDian: "真带劲"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/T1OVC_ByY_1RXrhCrK!220x220.jpg",
                         ImgAlt: "",
                         Name: "米家压力IH电饭煲",
@@ -1478,9 +1587,9 @@
                         TeDian: "来啦"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/pms_1469583266.7193851!220x220.jpg",
                         ImgAlt: "",
                         Name: "小米笔记本Air 12.5英寸",
@@ -1491,9 +1600,9 @@
                         TeDian: "滚吧"
                     },
                     {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
+                        shopType: "Phone",//商品类型
+                        shopModel: "xiaomi5", //商品类型下级
+                        isShowDetails: false,
                         ImgSrc: "http://i1.mifile.cn/a1/pms_1464071511.37197399!220x220.jpg",
                         ImgAlt: "",
                         Name: "米家 LED 智能台灯",

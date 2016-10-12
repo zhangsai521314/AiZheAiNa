@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace AiZheAiNa.Controllers
 {
     /// <summary>
-    /// 商品全部
+    /// 商品全部，相当于 http://list.mi.com/17 种页
     /// </summary>
     public class AllGoodsController : Controller
     {
@@ -17,13 +17,23 @@ namespace AiZheAiNa.Controllers
             return View();
         }
 
-       /// <summary>
-       /// 返回热门商品
-       /// </summary>
-       /// <returns></returns>
-        public ActionResult ReMen()
+        /// <summary>
+        /// 返回手机电话卡
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult PhoneAndTelcar()
         {
 
+            return View();
+        }
+
+
+        /// <summary>
+        /// 返回热门商品
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ReMen()
+        {
             return View();
         }
 
@@ -36,5 +46,9 @@ namespace AiZheAiNa.Controllers
 
             return View();
         }
+
+
+
+
     }
 }

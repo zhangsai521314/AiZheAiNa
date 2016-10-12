@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace AiZheAiNa.Controllers
 {
+
     /// <summary>
-    /// 详情页
+    /// 详情页，相当于 http://www.mi.com/bluetooth-headset/ 这种页
     /// </summary>
     public class DetailsController : Controller
     {
@@ -20,11 +21,11 @@ namespace AiZheAiNa.Controllers
         /// <summary>
         /// 返回指定类型的手机详情页
         /// </summary>
-        /// <param name="phoneType">手机型号</param>
+        /// <param name="shopModel">手机型号</param>
         /// <returns></returns>
-        public ActionResult Phone(string phoneType)
+        public ActionResult Phone(string shopModel)
         {
-            return View();
+            return View("../AllGoods/ErJi");
 
         }
 

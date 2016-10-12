@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace AiZheAiNa.Controllers
 {
     /// <summary>
-    /// 商品购买
+    /// 商品购买，相当于 http://item.mi.com/buyphone/mimax 这种页
     /// </summary>
     public class BuyController : Controller
     {
@@ -20,9 +20,9 @@ namespace AiZheAiNa.Controllers
         /// <summary>
         /// 返回指定类型的耳机购买页
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="shopModel"></param>
         /// <returns></returns>
-        public ActionResult ErJi(string  erJiType)
+        public ActionResult ErJi(string shopModel)
         {
             return View();
         }
@@ -31,9 +31,9 @@ namespace AiZheAiNa.Controllers
         /// <summary>
         /// 返回指定类型的手机购买页
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="shopModel">手机大型号（小米2，小米4）</param>
         /// <returns></returns>
-        public ActionResult Phone(int phoneType)
+        public ActionResult Phone(string shopModel)
         {
 
             return View();
