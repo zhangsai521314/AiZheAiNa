@@ -46,6 +46,6 @@
         return datas;
     };
 
-    this.vCode = vCode;
+    this.jsonData = jsonData;
 
 }).call(this);

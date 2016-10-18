@@ -12,7 +12,7 @@
     .divAllGoodsErJi > div {
         width: 1450px;
         margin: 10px auto auto auto;
-        background-color:#f8f5f5;
+        background-color: #f8f5f5;
     }
     /*复杂查询条件样式*/
     .divSelectOption-1 {
@@ -89,27 +89,30 @@
 
         .divAllGoodsErJiContent > ul li {
             background-color: #f8f5f5;
-            border: 1px solid #ffffff;
             margin-top: 5px;
-        }
-         .divAllGoodsErJiContent > ul li:hover {
-            border: 1px solid red;
         }
 
     .divAllGoodsErJiContent-1 {
         text-align: center;
         width: 348px;
+        position: relative;
     }
 
     .divAllGoodsErJiContent-miaoshu {
         text-align: left;
         height: 20px;
         background-color: #00ff21;
-        width: 352px;
+        width: 348px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
     }
 
     .divAllGoodsErJiContent-shoucangANGgouwuche {
         width: 250px;
+        margin: 0 auto;
+        height: 30px;
     }
 
         .divAllGoodsErJiContent-shoucangANGgouwuche span:first-child {
@@ -131,17 +134,35 @@
     .ulAllGoodsErJiContentImgMin li {
         border: 1px solid #ffffff;
         margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
     }
 
-        .ulAllGoodsErJiContentImgMin li:hover {
-            cursor: pointer;
-            border: 1px solid #ff6a00;
-        }
-    .aAllGoodsErJiContentImgMax {
-        display:block;
-        height:260px;
+    .divAllGoodsErJiContent-img {
+        height: 200px;
+        margin-top: 30px;
+        margin-bottom: 15px;
     }
+
+    /*设置hove时的阴影效果开始*/
+    .divAllGoodsErJiContent-1 {
+        /*transition-duration 设置过渡*/
+        transition-duration: 0.5s;
+        /* Firefox 4 */
+        -moz-transition-duration: 0.5s;
+        /* Safari and Chrome */
+        -webkit-transition-duration: 0.5s;
+        /* Opera */
+        -o-transition-duration: 0.5s;
+    }
+
+        .divAllGoodsErJiContent-1:hover {
+            /*设置阴影*/
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3); /*ie*/
+            -moz-box-shadow: 5px 5px 10px #909090; /*firefox*/
+            -webkit-box-shadow: 5px 5px 10px #909090; /*safari或chrome*/
+            box-shadow: 5px 5px 10px #909090; /*opera或ie9*/
+        }
+    /*设置hove时的阴影效果结束*/
 </style>
 <div class="divAllGoodsErJi">
 
@@ -220,13 +241,11 @@
         <li leixing="{{leixing}}" shopid="{{id}}">
             <div class="divAllGoodsErJiContent-1">
                 <div class="divAllGoodsErJiContent-shoucangANGgouwuche">
-                    <p>
-                        <span>收藏</span>
-                        <span>加入</span>
-                    </p>
+                    <span>收藏</span>
+                    <span>加入</span>
                 </div>
-                <div>
-                    <p><a href="/Buy/ErJi?id={{id}}" class="aAllGoodsErJiContentImgMax"><img src="{{maxImgsrc}}" alt="{{maxImgAlt}}" /></a></p>
+                <div class="divAllGoodsErJiContent-img">
+                    <a href="/Buy/ErJi?id={{id}}"><img src="{{maxImgsrc}}" alt="{{maxImgAlt}}" /></a>
                 </div>
                 <p><a href="/Buy/ErJi?id={{id}}">小米耳机</a></p>
                 <p>{{jiage}}</p>
@@ -245,9 +264,11 @@
                     {{/each}}
                     {{/with}}
                 </ul>
+                {{#if miaoshu}}
                 <div class="divAllGoodsErJiContent-miaoshu">
                     {{miaoshu}}
                 </div>
+                {{/if}}
             </div>
         </li>
         {{/each}}
@@ -381,7 +402,7 @@
                 }
 
             ],
-            miaoshu: "新品上架"
+            miaoshu: ""
         },
         {
             leixing: "erji",
@@ -411,7 +432,37 @@
                 }
 
             ],
-            miaoshu: "新品上架"
+            miaoshu: "完爆"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: ""
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: "美美哒"
         },
         {
             leixing: "erji",
@@ -441,7 +492,22 @@
                 }
 
             ],
-            miaoshu: "新品上架"
+            miaoshu: "哈喽"
+        },
+        {
+            leixing: "erji",
+            id: 1,
+            jiage: "122元",
+            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
+            maxImgAlt: "",
+            minImg: [
+                {
+                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
+                    alt: ""
+                }
+
+            ],
+            miaoshu: ""
         },
         {
             leixing: "erji",
@@ -471,7 +537,7 @@
                 }
 
             ],
-            miaoshu: "新品上架"
+            miaoshu: ""
         },
         {
             leixing: "erji",
@@ -486,52 +552,7 @@
                 }
 
             ],
-            miaoshu: "新品上架"
-        },
-        {
-            leixing: "erji",
-            id: 1,
-            jiage: "122元",
-            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
-            maxImgAlt: "",
-            minImg: [
-                {
-                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
-                    alt: ""
-                }
-
-            ],
-            miaoshu: "新品上架"
-        },
-        {
-            leixing: "erji",
-            id: 1,
-            jiage: "122元",
-            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
-            maxImgAlt: "",
-            minImg: [
-                {
-                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
-                    alt: ""
-                }
-
-            ],
-            miaoshu: "新品上架"
-        },
-        {
-            leixing: "erji",
-            id: 1,
-            jiage: "122元",
-            maxImgsrc: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!200x200.jpg",
-            maxImgAlt: "",
-            minImg: [
-                {
-                    src: "http://i1.mifile.cn/a1/T1GQATBQbT1RXrhCrK!34x34.jpg",
-                    alt: ""
-                }
-
-            ],
-            miaoshu: "新品上架"
+            miaoshu: ""
         },
         {
             leixing: "erji",
