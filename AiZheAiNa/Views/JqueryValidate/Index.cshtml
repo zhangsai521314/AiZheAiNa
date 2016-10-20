@@ -7,7 +7,7 @@
 <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
 <script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.extend.js"></script>
-<form action="#" method="post" id="regForm">
+<form id="regForm">
     <div class="item">
         <label for="username" class="item-label">用户名:</label>
         <input type="text" id="username" name="username" class="item-text" placeholder="设置用户名"
@@ -29,11 +29,16 @@
     </div>
     <div class="item">
         <input type="submit" value="提交" class="item-submit">
+        <a style="display:none" href="http://www.aizheaina.com"><input id="s" type="button"/></a>
     </div>
 </form>
 <script>
     $(document).ready(function () {
         $("#regForm").validate({
+            submitHandler: function (form) {
+                //验证通过执行
+                myfunction();
+            },
             rules: {
                 username: {
                     required: true,//是否必填
@@ -74,4 +79,17 @@
             }
         });
     });
+    function myfunction() {
+        $.ajax({
+            url: "http://www.aizheaina.com/JqueryValidate/index",
+            cache: false,
+            success: function (data) {
+                alert(1);
+                $("#s").click();
+            },
+            error: function (data) {
+
+            }
+        })
+    }
 </script>
