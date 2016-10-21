@@ -635,20 +635,8 @@
         {{/each}}
     </ul>
 </script>
+<script src="~/Scripts/common/handlebars.extend.js"></script>
 <script type="text/javascript">
-
-    //为Handlebars增加的heper，判断取余后是否为0
-    Handlebars.registerHelper("isquyueq", function (i, x, options) {
-        if (i % x == 0) {
-            //满足添加继续执行
-            return options.fn(this);
-        }
-        else {
-            //不满足条件执行{{else}}部分
-            return options.inverse(this);
-        }
-    });
-
     var divShuPaiFeiLeiDaoHangData = [
     {
         AshuPaiDaoHangName: "手机 电话卡",

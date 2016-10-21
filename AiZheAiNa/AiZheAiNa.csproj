@@ -262,6 +262,7 @@
     <Content Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.js" />
     <Content Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jq\jquery-2.1.4\jquery-2.1.4.min.map" />
+    <Content Include="Scripts\common\handlebars.extend.js" />
     <None Include="Scripts\jquery.validate.1.5.1\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.1.5.1\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.1.5.1\jquery.validate.min.js" />

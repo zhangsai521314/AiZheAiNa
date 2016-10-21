@@ -31,18 +31,50 @@
                 width: 1450px;
             }
 
-        #divContentIndivHengPaiTouBuDaoHang2 ul li div {
+        #divHengPaiTouBuDaoHang2 > ul > li > div {
             width: calc(1450*0.2px);
-            height: 150px;
+            height: 200px;
             position: absolute;
             z-index: 22;
             display: none;
         }
 
-        #divContentIndivHengPaiTouBuDaoHang2 ul li {
-            padding: 43px 4.6px 43.5px 4.6px;
-            margin-right: -2px;
+        #divHengPaiTouBuDaoHang2 > ul > li {
+            padding: 43px 19px 43.5px;
+            float: left;
         }
+
+            #divHengPaiTouBuDaoHang2 > ul > li:first-child {
+                padding-left: 80px;
+            }
+
+        .divHengPaiTouBuDaoHang2-ul2 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 1450px;
+            background-color: black;
+        }
+
+            .divHengPaiTouBuDaoHang2-ul2 li {
+                float: left;
+                position: relative;
+            }
+
+                .divHengPaiTouBuDaoHang2-ul2 li:not(:first-child)::before {
+                    background-color: #e0e0e0;
+                    content: "";
+                    height: 100px;
+                    left: 0;
+                    position: absolute;
+                    top: 25px;
+                    width: 1px;
+                    z-index: 10;
+                }
+
+                .divHengPaiTouBuDaoHang2-ul2 li > div:first-child {
+                    margin-top: 20px;
+                    margin-bottom: 15px;
+                }
 
         #divHengPaiTouBuDaoHang1 div ul li {
             padding: 10px 2px 9.5px 2px;
@@ -58,6 +90,307 @@
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
+    <script src="~/Scripts/common/handlebars.extend.js"></script>
+    <script id="divHengPaiTouBuDaoHang2_Template" type="text/x-handlebars">
+        <!--横排导航2模板-->
+        <ul class="mylist-inline" style="margin-left:5%">
+            {{#each this}}
+            <li>
+                <a href="javascript:void(0);">{{divHengPaiTouBuDaoHang2Name }}</a>
+                {{#compare divHengPaiTouBuDaoHang2Name "!=" "服务&&社区" }}
+                <div>
+                    <ul class="list-inline divHengPaiTouBuDaoHang2-ul2">
+                        {{#with Content}}
+                        {{#each this}}
+                        <li>
+                            <div>
+                                {{#if isShowDetails}}
+                                <a href="/Details/{{shopType}}?shopModel={{shopModel}}">
+                                    <img src="{{imgsrc}}" alt="{{imgalt}}" />
+                                </a>
+                                {{else}}
+                                <a href="/buy/{{shopType}}?shopModel={{shopModel}}">
+                                    <img src="{{imgsrc}}" alt="{{imgalt}}" />
+                                </a>
+                                {{/if}}
+                            </div>
+                            <div>
+                                {{#if isShowDetails}}
+                                <a href="/Details/{{shopType}}?shopModel={{shopModel}}">{{shopName}}</a>
+                                {{else}}
+                                <a href="/buy/{{shopType}}?shopModel={{shopModel}}">{{shopName}}</a>
+                                {{/if}}
+                            </div>
+                            <p>{{JiaGe}}</p>
+                        </li>
+                        {{/each}}
+                        {{/with}}
+                    </ul>
+                </div>
+                {{/compare}}
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+    <script type="text/javascript">
+
+
+        $(function () {
+            var divHengPaiTouBuDaoHang2Data = [
+                        {
+                            divHengPaiTouBuDaoHang2Name: "小米手机",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "xm_5s",
+                                    shopName: "小米5s",
+                                    JiaGe: "1999元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "xm_5sPlus",
+                                   shopName: "小米5s Plus",
+                                   JiaGe: "2299元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "xm_5",
+                                   shopName: "小米手机5",
+                                   JiaGe: "1599元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/maxdingbu!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "xm_max",
+                                   shopName: "小米Max",
+                                   JiaGe: "1299元起"
+                               }
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "红米",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/2015/cn-index/hongmipro-320!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "hm_Pro",
+                                    shopName: "红米Pro",
+                                    JiaGe: "1099元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/hongminote4!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "hm_Note4",
+                                   shopName: "红米Note 4",
+                                   JiaGe: "899元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/note3!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "hm_Note3",
+                                   shopName: "红米Note 3",
+                                   JiaGe: "799元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/2015/video/hongmi3s!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "hm_3s",
+                                   shopName: "红米Note 3",
+                                   JiaGe: "799元起"
+                               }
+
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "平板·电脑",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "5s",
+                                    shopName: "小米5s",
+                                    JiaGe: "1999元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               }
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "电视",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "5s",
+                                    shopName: "小米5s",
+                                    JiaGe: "1999元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               }
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "盒子·影音",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "5s",
+                                    shopName: "小米5s",
+                                    JiaGe: "1999元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               }
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "路由器",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "5s",
+                                    shopName: "小米5s",
+                                    JiaGe: "1999元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               }
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "智能硬件",
+                            Content: [
+                                {
+                                    isShowDetails: false,
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgalt: "",
+                                    shopType: "phone",
+                                    shopModel: "5s",
+                                    shopName: "小米5s",
+                                    JiaGe: "1999元起"
+                                },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               },
+                               {
+                                   isShowDetails: false,
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgalt: "",
+                                   shopType: "phone",
+                                   shopModel: "5s",
+                                   shopName: "小米5s",
+                                   JiaGe: "1999元起"
+                               }
+                            ]
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "服务",
+                        },
+                        {
+                            divHengPaiTouBuDaoHang2Name: "社区",
+                        }
+            ];
+            var divHengPaiTouBuDaoHang2_Template = Handlebars.compile($("#divHengPaiTouBuDaoHang2_Template").html());
+            $("#divHengPaiTouBuDaoHang2").html(divHengPaiTouBuDaoHang2_Template(divHengPaiTouBuDaoHang2Data));
+        });
+    </script>
     <script type="text/javascript">
         $(function () {
             var isResizing = true;
@@ -68,8 +401,8 @@
                     $("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
                         TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
                     });
-                    $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function () {
-                        TemplateZs1($(this), "divContentIndivHengPaiTouBuDaoHang2");
+                    $("#divHengPaiTouBuDaoHang2>ul>li>div").each(function () {
+                        TemplateZs1($(this), "divHengPaiTouBuDaoHang2");
                     });
                     $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
                         TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
@@ -107,13 +440,13 @@
             });
 
             //第二个横排导航内容的显示与隐藏
-            $("#divContentIndivHengPaiTouBuDaoHang2 ul li div").each(function (index, item) {
+            $("#divHengPaiTouBuDaoHang2>ul>li>div").each(function (index, item) {
                 var $d = $(item);
-                var bcolor = "#00ff21";
+                var bcolor = "#FFFFFF";
                 if (index % 2 == 0) {
-                    bcolor = "#f19a9a";
+                    bcolor = "#FFFFFF";
                 }
-                TemplateZs1($d, "divContentIndivHengPaiTouBuDaoHang2", bcolor);
+                TemplateZs1($d, "divHengPaiTouBuDaoHang2", bcolor);
                 TemplateZs2($d);
             });
         });
@@ -124,8 +457,8 @@
                 case "divHengPaiTouBuDaoHang1":
                     item.css({ "left": item.parent().offset().left, "top": item.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + item.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": item.parent().width() + 4.5 });
                     break;
-                case "divContentIndivHengPaiTouBuDaoHang2":
-                    item.css({ "left": "0px", "top": item.parents(".divContentIndivHengPaiTouBuDaoHang2").parent().offset().top + item.parents(".divContentIndivHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
+                case "divHengPaiTouBuDaoHang2":
+                    item.css({ "left": "0px", "top": item.parents(".divHengPaiTouBuDaoHang2").parent().offset().top + item.parents(".divHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
                     break;
                 case "divShuPaiFeiLeiDaoHang":
                     item.css({ "left": item.parent().parent().offset().left + item.parent().width(), "top": item.parents("div").offset().top });
@@ -216,72 +549,12 @@
                 </div>
             </div>
         </div>
-        <div class="divTemplatePageWai" style="background-color:#d7d7d7;height:107px;" miaoshu="横排分类导航">
+        <div class="divTemplatePageWai" style="background-color:#ffffff;height:107px;" miaoshu="横排分类导航">
             <div>
                 <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
                     log
                 </div>
-                <div id="divContentIndivHengPaiTouBuDaoHang2" style="width: 60%;float:left;" class="divContentIndivHengPaiTouBuDaoHang2">
-                    <ul class="mylist-inline text-center" style="padding:0px;margin:0px">
-                        <li>
-                            <a>小米手机</a>
-                            <div>
-                                <ul class="list-inline">
-                                    <li>
-
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a>红米</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>平板·电脑</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>电视</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>盒子·影音</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>路由器</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>只能硬件</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>服务</a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a>社区</a>
-                            <div>
-
-                            </div>
-                        </li>
-                    </ul>
+                <div id="divHengPaiTouBuDaoHang2" style="width: 60%;float:left;" class="divHengPaiTouBuDaoHang2">
                 </div>
                 <div id="divSearch" style="width:25%;float:left;">
                     <div class="input-group" style="margin-top:30px">

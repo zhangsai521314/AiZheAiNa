@@ -29,5 +29,15 @@ namespace AiZheAiNa.Controllers
 
         }
 
+        /// <summary>
+        /// 返回指定类型物品的大图介绍 相当于  http://www.mi.com/miwifi3/
+        /// </summary>
+        /// <param name="shopModel">物品类型</param>
+        /// <returns></returns>
+        public ActionResult datu(string shopModel)
+        {
+            return View("../AllGoods/ErJi");
+
+        }
     }
 }
