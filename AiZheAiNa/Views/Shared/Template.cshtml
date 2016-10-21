@@ -76,6 +76,11 @@
                     margin-bottom: 15px;
                 }
 
+            .divHengPaiTouBuDaoHang2-ul2 img {
+                width: 160px;
+                height: 110px;
+            }
+
         #divHengPaiTouBuDaoHang1 div ul li {
             padding: 10px 2px 9.5px 2px;
         }
@@ -86,6 +91,22 @@
                 display: none;
                 height: 100px;
             }
+
+        #divLogImg a:first-child::before {
+            background: rgba(0, 0, 0, 0) url("http://s01.mifile.cn/i/mi-logo.png") no-repeat scroll 50% 50%;
+            opacity: 1;
+            transform: translate3d(0px, 0px, 0px);
+            display: block;
+        }
+
+        #divLogImg a:last-child {
+            height: 95px;
+            width: 165px;
+            display: block;
+            background-image: url("http://c1.mifile.cn/f/i/g/doodle/pro.gif");
+            overflow:hidden;
+            background-repeat:no-repeat;
+        }
     </style>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
@@ -93,7 +114,7 @@
     <script src="~/Scripts/common/handlebars.extend.js"></script>
     <script id="divHengPaiTouBuDaoHang2_Template" type="text/x-handlebars">
         <!--横排导航2模板-->
-        <ul class="mylist-inline" style="margin-left:5%">
+        <ul class="mylist-inline text-center" style="margin-left:5%">
             {{#each this}}
             <li>
                 <a href="javascript:void(0);">{{divHengPaiTouBuDaoHang2Name }}</a>
@@ -121,7 +142,7 @@
                                 <a href="/buy/{{shopType}}?shopModel={{shopModel}}">{{shopName}}</a>
                                 {{/if}}
                             </div>
-                            <p>{{JiaGe}}</p>
+                            <p style="color:#ff6a00">{{JiaGe}}</p>
                         </li>
                         {{/each}}
                         {{/with}}
@@ -225,30 +246,30 @@
                             Content: [
                                 {
                                     isShowDetails: false,
-                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/mipad2-16!160x110.jpg",
                                     imgalt: "",
                                     shopType: "phone",
-                                    shopModel: "5s",
-                                    shopName: "小米5s",
-                                    JiaGe: "1999元起"
+                                    shopModel: "pb_2",
+                                    shopName: "小米平板2 16GB",
+                                    JiaGe: "999元起"
                                 },
                                {
                                    isShowDetails: false,
                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
                                    imgalt: "",
                                    shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
+                                   shopModel: "pb_2",
+                                   shopName: "小米平板2 64GB",
+                                   JiaGe: "1299元起"
                                },
                                {
                                    isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/2015/video/bijiben32012.5!160x110.jpg",
                                    imgalt: "",
                                    shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
+                                   shopModel: "bjb_Air",
+                                   shopName: "小米笔记本Air 12.5",
+                                   JiaGe: "3499元起"
                                }
                             ]
                         },
@@ -257,31 +278,13 @@
                             Content: [
                                 {
                                     isShowDetails: false,
-                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgsrc: "http://c1.mifile.cn/f/i/g/2015/cn-index/101843.png",
                                     imgalt: "",
                                     shopType: "phone",
-                                    shopModel: "5s",
-                                    shopName: "小米5s",
-                                    JiaGe: "1999元起"
-                                },
-                               {
-                                   isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
-                                   imgalt: "",
-                                   shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
-                               },
-                               {
-                                   isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
-                                   imgalt: "",
-                                   shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
-                               }
+                                    shopModel: "ds_3s",
+                                    shopName: "小米电视3s 43英寸",
+                                    JiaGe: "1799元起"
+                                }
                             ]
                         },
                         {
@@ -289,30 +292,21 @@
                             Content: [
                                 {
                                     isShowDetails: false,
-                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/hezimini.png",
                                     imgalt: "",
                                     shopType: "phone",
-                                    shopModel: "5s",
-                                    shopName: "小米5s",
-                                    JiaGe: "1999元起"
+                                    shopModel: "hz_mini",
+                                    shopName: "小米盒子mini版",
+                                    JiaGe: "179元起"
                                 },
                                {
                                    isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/hezi3.png",
                                    imgalt: "",
                                    shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
-                               },
-                               {
-                                   isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
-                                   imgalt: "",
-                                   shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
+                                   shopModel: "hz_3",
+                                   shopName: "小米盒子3",
+                                   JiaGe: "249元起"
                                }
                             ]
                         },
@@ -324,27 +318,27 @@
                                     imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
                                     imgalt: "",
                                     shopType: "phone",
-                                    shopModel: "5s",
-                                    shopName: "小米5s",
-                                    JiaGe: "1999元起"
+                                    shopModel: "ly_quanxin",
+                                    shopName: "全新小米路由器",
+                                    JiaGe: "699元"
                                 },
                                {
                                    isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/miwifi-3!160x110.jpg",
                                    imgalt: "",
                                    shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
+                                   shopModel: "ly_3",
+                                   shopName: "小米路由器 3 1200M",
+                                   JiaGe: "149元"
                                },
                                {
                                    isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/wifiExtension!160x110.jpg",
                                    imgalt: "",
                                    shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
+                                   shopModel: "wifi",
+                                   shopName: "小米WiFi放大器",
+                                   JiaGe: "39元"
                                }
                             ]
                         },
@@ -353,30 +347,21 @@
                             Content: [
                                 {
                                     isShowDetails: false,
-                                    imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5s-110!160x110.jpg",
+                                    imgsrc: "http://c1.mifile.cn/f/i/15/goods/nav/scooter!160x110.jpg",
                                     imgalt: "",
                                     shopType: "phone",
-                                    shopModel: "5s",
-                                    shopName: "小米5s",
-                                    JiaGe: "1999元起"
+                                    shopModel: "phc",
+                                    shopName: "九号平衡车",
+                                    JiaGe: "1999元"
                                 },
                                {
                                    isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
+                                   imgsrc: "http://c1.mifile.cn/f/i/g/2015/cn-index/water2!160x110.jpg",
                                    imgalt: "",
                                    shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
-                               },
-                               {
-                                   isShowDetails: false,
-                                   imgsrc: "http://c1.mifile.cn/f/i/g/doodle/5splus-220!160x110.jpg",
-                                   imgalt: "",
-                                   shopType: "phone",
-                                   shopModel: "5s",
-                                   shopName: "小米5s",
-                                   JiaGe: "1999元起"
+                                   shopModel: "jsq",
+                                   shopName: "小米净水器",
+                                   JiaGe: "1299元起"
                                }
                             ]
                         },
@@ -551,10 +536,15 @@
         </div>
         <div class="divTemplatePageWai" style="background-color:#ffffff;height:107px;" miaoshu="横排分类导航">
             <div>
-                <div id="divLogImg" style="float:left;width:10%;height:70px; border:1px solid #808080;margin-top:30px">
-                    log
+                <div id="divLogImg" style="float:left;width:16%;height:75px; border:1px solid #808080;margin-top:15px">
+                    <div>
+                        <a></a>
+                    </div>
+                    <div>
+                        <a></a>
+                    </div>
                 </div>
-                <div id="divHengPaiTouBuDaoHang2" style="width: 60%;float:left;" class="divHengPaiTouBuDaoHang2">
+                <div id="divHengPaiTouBuDaoHang2" style="width: 59%;float:left;" class="divHengPaiTouBuDaoHang2">
                 </div>
                 <div id="divSearch" style="width:25%;float:left;">
                     <div class="input-group" style="margin-top:30px">
