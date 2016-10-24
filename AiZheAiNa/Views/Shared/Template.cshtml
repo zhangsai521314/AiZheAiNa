@@ -92,20 +92,38 @@
                 height: 100px;
             }
 
-        #divLogImg a:first-child::before {
+        #divLogImg {
+            position: relative;
+        }
+
+            #divLogImg > div:first-child {
+                position: absolute;
+                left: 0;
+                top: 5px;
+            }
+
+            #divLogImg > div:last-child {
+                position: absolute;
+                right: 0;
+            }
+
+        .divLogImg_alog {
             background: rgba(0, 0, 0, 0) url("http://s01.mifile.cn/i/mi-logo.png") no-repeat scroll 50% 50%;
             opacity: 1;
             transform: translate3d(0px, 0px, 0px);
             display: block;
+            height: 55px;
+            width: 55px;
+            background-color: #ff6700;
         }
 
-        #divLogImg a:last-child {
-            height: 95px;
+        .divLogImg_aimg {
+            height: 90px;
             width: 165px;
             display: block;
             background-image: url("http://c1.mifile.cn/f/i/g/doodle/pro.gif");
-            overflow:hidden;
-            background-repeat:no-repeat;
+            overflow: hidden;
+            background-repeat: no-repeat;
         }
     </style>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
@@ -154,8 +172,6 @@
         </ul>
     </script>
     <script type="text/javascript">
-
-
         $(function () {
             var divHengPaiTouBuDaoHang2Data = [
                         {
@@ -402,6 +418,7 @@
                 if (AiZheAiNa_SYS_UserModel != null && AiZheAiNa_SYS_UserModel.ID > 0) {
                     $("#spanUserName").html("欢迎-" + AiZheAiNa_SYS_UserModel.ShowName)
                     if (AiZheAiNa_SYS_UserModel.UserImg != null && AiZheAiNa_SYS_UserModel.UserImg != "") {
+                        $("#divLoginHouShow>ul").css("margin-left", "-4px");
                         $("#divLoginHouShow ul li:first").prepend($("<img style='width:30px' id='imgShowUserImg' src='" + AiZheAiNa_SYS_UserModel.UserImg + "'/>"));
                     }
                     $("#divHuanYing").css("display", "none");
@@ -473,7 +490,7 @@
         <div class="divTemplatePageWai" style="background-color:#333333;height:40px;" miaoshu="头部导航">
             <div id="divTou">
                 <div id="divHuanYing" style="float:left;width: 20%;">
-                    <ul class="mylist-inline text-center" style="margin:3% 0;padding:0px">
+                    <ul class="mylist-inline" style="margin:3% 0;margin-left:-4px">
                         <li>
                             <a href="/Home/index" style="color:#ffffff">欢迎来到爱这爱那网</a>
                         </li>
@@ -486,7 +503,7 @@
                     </ul>
                 </div>
                 <div id="divLoginHouShow" style="float:left;width: 20%;display:none;">
-                    <ul class="mylist-inline text-center" style="margin:1.5% 0;padding:0px">
+                    <ul class="mylist-inline" style="margin:1.5% 0;margin-left:-20px">
                         <li>
                         </li>
                         <li>
@@ -497,9 +514,9 @@
                         </li>
                     </ul>
                 </div>
-                <div style="float:right;width: 60%;" id="divHengPaiTouBuDaoHang1" class="divHengPaiTouBuDaoHang1">
+                <div style="float:right;width: 80%;" id="divHengPaiTouBuDaoHang1" class="divHengPaiTouBuDaoHang1">
                     <div>
-                        <ul class="mylist-inline text-center" style="margin:0px;padding:0px">
+                        <ul class="mylist-inline" style="margin:0px;padding:0px;float:right">
                             <li>
                                 <a>我的爱</a>
                                 <div></div>
@@ -536,12 +553,12 @@
         </div>
         <div class="divTemplatePageWai" style="background-color:#ffffff;height:107px;" miaoshu="横排分类导航">
             <div>
-                <div id="divLogImg" style="float:left;width:16%;height:75px; border:1px solid #808080;margin-top:15px">
+                <div id="divLogImg" style="float:left;width:16%;height:75px; margin-top:15px">
                     <div>
-                        <a></a>
+                        <a class="divLogImg_alog"></a>
                     </div>
                     <div>
-                        <a></a>
+                        <a class="divLogImg_aimg"></a>
                     </div>
                 </div>
                 <div id="divHengPaiTouBuDaoHang2" style="width: 59%;float:left;" class="divHengPaiTouBuDaoHang2">
