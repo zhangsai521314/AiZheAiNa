@@ -56,12 +56,12 @@
             background-color: black;
         }
 
-            .divHengPaiTouBuDaoHang2-ul2 li {
+            .divHengPaiTouBuDaoHang2-ul2 > li {
                 float: left;
                 position: relative;
             }
 
-                .divHengPaiTouBuDaoHang2-ul2 li:not(:first-child)::before {
+                .divHengPaiTouBuDaoHang2-ul2 > li:not(:first-child)::before {
                     background-color: #e0e0e0;
                     content: "";
                     height: 100px;
@@ -72,7 +72,7 @@
                     z-index: 10;
                 }
 
-                .divHengPaiTouBuDaoHang2-ul2 li > div:first-child {
+                .divHengPaiTouBuDaoHang2-ul2 > li > div:first-child {
                     margin-top: 20px;
                     margin-bottom: 15px;
                 }
@@ -82,11 +82,12 @@
                 height: 110px;
             }
 
-        #divHengPaiTouBuDaoHang1 div ul li {
+        #divHengPaiTouBuDaoHang1 > div > ul > li {
             padding: 10px 2px 9.5px 2px;
+            position: relative;
         }
 
-            #divHengPaiTouBuDaoHang1 div ul li div {
+            #divHengPaiTouBuDaoHang1 > div > ul > li > div {
                 position: absolute;
                 z-index: 20;
                 display: none;
@@ -208,7 +209,7 @@
                 text-align: center;
             }
 
-            #navigation_throughTrain a {
+            #navigation_throughTrain > a {
                 color: #ffffff;
             }
         /*导航直通车*/
@@ -487,9 +488,9 @@
                 isResizing = true;
                 //isResizing解决window.onresize在某些浏览器下会执行两次的bug.实践起来有点不行啊....
                 if (isResizing) {
-                    $("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
-                        TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
-                    });
+                    //$("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
+                    //    TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
+                    //});
                     $("#divHengPaiTouBuDaoHang2>ul>li>div").each(function () {
                         TemplateZs1($(this), "divHengPaiTouBuDaoHang2");
                     });
@@ -548,7 +549,7 @@
         function TemplateZs1(item, type, bcolor) {
             switch (type) {
                 case "divHengPaiTouBuDaoHang1":
-                    item.css({ "left": item.parent().offset().left, "top": item.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + item.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": item.parent().width() + 4.5 });
+                    item.css({ "left": 0, "top": 42, "background-color": bcolor, "width": item.parent().width() + 4.5 });
                     break;
                 case "divHengPaiTouBuDaoHang2":
                     item.css({ "left": "0px", "top": item.parents("#divHengPaiTouBuDaoHang2").parent().offset().top + item.parents("#divHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
@@ -608,7 +609,7 @@
                         </li>
                     </ul>
                 </div>
-                <div style="float:right;width: 70%;" id="divHengPaiTouBuDaoHang1" class="divHengPaiTouBuDaoHang1">
+                <div style="float:right;width: 70%;" id="divHengPaiTouBuDaoHang1">
                     <div>
                         <ul class="mylist-inline" style="margin:0px;padding:0px;float:right">
                             <li>
