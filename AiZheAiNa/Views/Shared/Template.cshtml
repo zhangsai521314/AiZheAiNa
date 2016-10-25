@@ -125,11 +125,69 @@
             overflow: hidden;
             background-repeat: no-repeat;
         }
+
+
+
+
+
+        .cart {
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            top: 300px;
+        }
+
+            .cart:hover {
+                cursor: pointer;
+                background-color: red;
+            }
+
+            .cart span {
+                display: block;
+                width: 20px;
+                margin: 0 auto;
+            }
+
+            .cart i {
+                width: 35px;
+                height: 35px;
+                display: block;
+                background: url('../../Content/Images/car.png') no-repeat;
+            }
+
+        .m-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: #000;
+            z-index: 2000;
+            width: 35px;
+            height: 100%;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        #cartmsg {
+            position: fixed;
+            top: 350px;
+            right: 35px;
+            z-index: 10000;
+            height: 52px;
+            line-height: 52px;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+            background: #360;
+            display: none;
+            width: 1px;
+        }
     </style>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
     <script src="~/Scripts/common/handlebars.extend.js"></script>
+    <script src="~/Scripts/common/JoinShoppingCart/jquery.fly.min.js"></script>
     <script id="divHengPaiTouBuDaoHang2_Template" type="text/x-handlebars">
         <!--横排导航2模板-->
         <ul class="mylist-inline text-center" style="margin-left:5%">
@@ -571,10 +629,59 @@
                 </div>
             </div>
         </div>
+        <!--侧栏-->
+        <div class="m-sidebar">
+            <div class="cart">
+                <i id="end"></i>
+                <span>购物车</span>
+            </div>
+        </div>
+        <!--侧栏-->
+        <div id="cartmsg">已成功加入购物车！</div>
         @RenderBody()
         <div class="divTemplatePageWai" id="divpageDi" style="height:190px;background-color:#000000;color:#ffffff;margin:10px auto 0 auto">
             底部啊底部
         </div>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            var offset = $("#end").offset();
+            $(".addcar").click(function (event) {
+                var addcar = $(this);
+                //carimg为选购好商品时的商品src类似（https://detail.tmall.com/item.htm?spm=875.7931836/A.20161012.12.4n5FWG&id=537073732349&pvid=86bc708a-ffc0-499b-a385-62970249a3d5&abbucket=_AB-M845_B4&acm=201509290.1003.1.633870&abtest=_AB-LR845-PR845&scm=1007.12710.49899.100200300000000&pos=12）
+                //addcar.parent().find('img').attr('src')为默认方式，就是加入购物车和商品展示图片在一块
+                var img = $(".carimg");
+                var imgsrc = "";
+                if (img.length <= 0) {
+                    imgsrc = addcar.parent().find('img').attr('src');
+                } else {
+                    imgsrc = img.attr('src');
+                }
+                if (imgsrc.length > 0 || imgsrc != null) {
+                    var flyer = $('<img class="u-flyer" src="' + imgsrc + '">');
+                    flyer.fly({
+                        start: {
+                            left: event.pageX,
+                            top: event.pageY
+                        },
+                        end: {
+                            left: offset.left + 10,
+                            top: offset.top + 10,
+                            width: 0,
+                            height: 0
+                        },
+                        onEnd: function () {
+                            $("#cartmsg").show().animate({ width: '250px' }, 200).fadeOut(1000);
+                            this.destory();
+                        }
+                    });
+                }
+            });
+
+            $(".cart").click(function () {
+                alert("抱歉,暂无");
+            });
+        });
+    </script>
 </body>
 </html>

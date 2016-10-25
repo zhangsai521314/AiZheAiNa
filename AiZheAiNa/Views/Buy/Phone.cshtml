@@ -25,21 +25,65 @@
         position: relative;
     }
 
-    .s {
-        position: absolute;
-        right: 0;
-        background-color: red;
-        height: 20px;
-        width: 20px;
+
+
+
+
+
+
+
+
+
+
+    .button {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 16px/100% 'Microsoft yahei',Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0,0,0,.3);
+        -webkit-border-radius: .5em;
+        -moz-border-radius: .5em;
+        border-radius: .5em;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
     }
 
-    .p {
-        position: absolute;
-        bottom: 0;
-        background-color: red;
-        height: 20px;
-        width: 20px;
+        .button:hover {
+            text-decoration: none;
+        }
+
+        .button:active {
+            position: relative;
+            top: 1px;
+        }
+
+    /* orange */
+    .orange {
+        color: #fef4e9;
+        border: solid 1px #da7c0c;
+        background: #f78d1d;
+        background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+        background: -moz-linear-gradient(top, #faa51a, #f47a20);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
     }
+
+        .orange:hover {
+            background: #f47c20;
+            background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+            background: -moz-linear-gradient(top, #f88e11, #f06015);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+        }
+
+        .orange:active {
+            color: #fcd3a5;
+            background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+            background: -moz-linear-gradient(top, #f47a20, #faa51a);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+        }
 </style>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
 <div class="phonePageWai">
@@ -53,7 +97,7 @@
             <div class="divUpImgContent">
                 <ul>
                     <li>
-                        <img src="http://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" />
+                        <img class="carimg" src="http://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/bao/uploaded/i2/TB18eiINpXXXXcWXVXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg" />
                     </li>
                     <li>
                         <img src="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_60x60q90.jpg" data-zhengchang="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" data-bigimg="https://img.alicdn.com/imgextra/i3/1695308781/TB2__OJavPB11BjSsppXXcjYVXa_!!1695308781.jpg_430x430q90.jpg" />
@@ -68,56 +112,17 @@
             </div>
         </div>
         <div id="divPhoneGouMaiPeiZhi">
-
-            <div id="s" class="s">
-
-            </div>
-
-            <div id="p" class="p">
-
-            </div>
-
+            <a href="#" class="button orange addcar">加入购物车</a>
         </div>
 
     </div>
-    <a href="javascript:" class="add_cart_small btnCart" title="加入购物车">加入购物车</a>
 </div>
 <script src="~/Scripts/common/myzom/myzom.js"></script>
-<script src="~/Scripts/common/JoinShoppingCart.js"></script>
+<script src="~/Scripts/common/JoinShoppingCart/jquery.fly.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $("#phoneImg").myzom();
     })
-    /* 本demo演示脚本基于ieBetter.js, 项目地址：https://github.com/zhangxinxu/ieBetter.js */
 
-    // 元素以及其他一些变量
-    var eleFlyElement = document.querySelector("#p"), eleShopCart = document.querySelector("#s");
-    var numberItem = 0;
-    // 抛物线运动
-    var myParabola = funParabola(eleFlyElement, eleShopCart, {
-        speed: 400,
-        curvature: 0.002,
-        complete: function () {
-            eleFlyElement.style.visibility = "hidden";
-            eleShopCart.querySelector("span").innerHTML = ++numberItem;
-        }
-    });
-    // 绑定点击事件
-    if (eleFlyElement && eleShopCart) {
-        [].slice.call(document.getElementsByClassName("btnCart")).forEach(function (button) {
-            button.addEventListener("click", function (event) {
-                // 滚动大小
-                var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-                    scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-                eleFlyElement.style.left = event.clientX + scrollLeft + "px";
-                eleFlyElement.style.top = event.clientY + scrollTop + "px";
-                eleFlyElement.style.visibility = "visible";
-
-                // 需要重定位
-                myParabola.position().move();
-            });
-        });
-    }
 </script>
 

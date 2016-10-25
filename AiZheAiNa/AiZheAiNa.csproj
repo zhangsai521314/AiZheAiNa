@@ -240,8 +240,10 @@
     <Content Include="Content\css\Font-Awesome\css\font-awesome.css" />
     <Content Include="Content\css\Font-Awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Images\car.png" />
     <Content Include="Content\log.png" />
-    <Content Include="Scripts\common\JoinShoppingCart.js" />
+    <Content Include="Scripts\common\JoinShoppingCart\jquery.fly.min.js" />
+    <Content Include="Scripts\common\JoinShoppingCart\requestAnimationFrame.js" />
     <Content Include="Scripts\editTable\editTable.js" />
     <Content Include="Scripts\editTable\tableE.html" />
     <Content Include="Scripts\editTable\Verification.js" />
