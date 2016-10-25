@@ -126,3 +126,8 @@ Handlebars.registerHelper("compare", function (left, operator, right, options) {
         return options.inverse(this);
     }
 });
+
+//注册一个Handlebars Helper,用来将索引+1，因为默认是从0开始的
+Handlebars.registerHelper("addOne", function (index, options) {
+    return parseInt(index) + 1;
+});

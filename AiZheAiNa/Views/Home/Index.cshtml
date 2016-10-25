@@ -7,8 +7,13 @@
         cursor: pointer;
     }*/
     * {
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .divHomeIndexPageWai > div {
+        width: 1220px;
+        margin: 10px auto auto auto;
     }
 
     a:hover {
@@ -24,6 +29,7 @@
         background-color: #5C544C;
         color: #ffffff;
         margin-bottom: 0;
+        position: relative;
     }
 
     .divShuPaiFeiLeiDaoHang_li1 {
@@ -42,12 +48,15 @@
 
     .divShuPaiFeiLeiDaoHang_div1 {
         /*width: calc(1450*0.2px);*/
+        background-color: #ffffff;
         height: 500px;
+        left: 244px;
+        overflow: hidden;
         position: absolute;
+        top: 0;
+        width: 0px;
         z-index: 20;
         display: none;
-        background-color: #ffffff;
-        overflow: hidden;
     }
 
     .divShuPaiFeiLeiDaoHang_ul2 {
@@ -98,19 +107,14 @@
             background-color: #fb3434;
         }
 
-    #ulKuaiSuZhiDa3GeImgLianJie {
+    #ulKuaiSuZhiDa3GeImgLianJie > li > a > div > img {
+        width: 306.1px;
         height: 200px;
     }
-
-        #ulKuaiSuZhiDa3GeImgLianJie li a div {
-            width: 365px;
-            height: 200px;
-        }
 
     #divKuaiSuZhiDa6GePuTongLianJie {
         width: 20%;
         float: left;
-        border: 1px solid #ff6a00;
         background-color: rosybrown;
     }
 
@@ -126,7 +130,7 @@
         float: right;
     }
 
-        #divJingMeiDanPin ul li {
+        #divJingMeiDanPin > ul > li {
             width: 30px;
             height: 30px;
             cursor: pointer;
@@ -134,9 +138,9 @@
             border: 1px solid #bfbebe;
         }
 
-        #divJingMeiDanPin li:hover {
-            background-color: #ff6a00;
-        }
+            #divJingMeiDanPin > ul > li:hover {
+                background-color: #ff6a00;
+            }
 
 
     .ulJingMeiDanPin {
@@ -148,20 +152,60 @@
             float: left;
         }
 
-            .ulJingMeiDanPin > li div {
-                width: 279px;
+            .ulJingMeiDanPin > li > div {
+                width: 233px;
                 height: 300px;
             }
 
-                .ulJingMeiDanPin > li div img {
+                .ulJingMeiDanPin > li > div img {
                     width: 130px;
                     height: 170px;
                 }
 
-                .ulJingMeiDanPin > li div div {
-                    width: 279px;
+                .ulJingMeiDanPin > li > div > div {
+                    width: 233px;
                     height: 80px;
                 }
+
+    .rainbow-item-1 {
+        border-top: 1px solid #ffac13;
+    }
+
+    .rainbow-item-2 {
+        border-top: 1px solid #83c44e;
+    }
+
+    .rainbow-item-3 {
+        border-top: 1px solid #2196f3;
+    }
+
+    .rainbow-item-4 {
+        border-top: 1px solid #e53935;
+    }
+
+    .rainbow-item-5 {
+        border-top: 1px solid #00c0a5;
+    }
+
+    .rainbow-item-6 {
+        border-top: 1px solid #ffac13;
+    }
+
+    .rainbow-item-7 {
+        border-top: 1px solid #83c44e;
+    }
+
+    .rainbow-item-8 {
+        border-top: 1px solid #2196f3;
+    }
+
+    .rainbow-item-9 {
+        border-top: 1px solid #e53935;
+    }
+
+    .rainbow-item-10 {
+        border-top: 1px solid #00c0a5;
+    }
 
     #ulDaPeiFenLei {
         float: right;
@@ -179,6 +223,11 @@
     #ulDaPeiZuoContent, .ulDaPeiN {
         margin-top: 10px;
     }
+
+        #ulDaPeiZuoContent image {
+            height: 320px;
+            width: 220px;
+        }
 
     .ulDaPeiN {
         position: relative;
@@ -231,6 +280,11 @@
         height: 500px;
     }
 
+        #divLunBoImgWai img {
+            height: 500px;
+            width: 976px;
+        }
+
     #divDaPei {
         height: 665px;
         margin: 3px auto auto auto;
@@ -276,6 +330,11 @@
         margin-top: 10px;
     }
 
+        #divZhiNengYingJianLeft img, divZhiNengYingJianLeft2 img {
+            height: 614px;
+            width: 183px;
+        }
+
     .ulZhiNengYingJianN {
         position: relative;
         margin-left: 0.3px;
@@ -304,18 +363,13 @@
         z-index: 7;
     }
 
-    .divHomeIndexPageWai > div {
-        width: 1450px;
-        margin: 10px auto auto auto;
-    }
-
     #divDaTouBu {
         margin: 0 auto auto auto;
         background-color: #cbc8c8;
         height: 500px;
     }
 </style>
-@*<div style="width: 100%" class="divHomeIndexPageWai">
+<div style="width: 100%" class="divHomeIndexPageWai">
 
     <div id="divDaTouBu">
         <div id="divShuPaiFeiLeiDaoHang" miaoshu="竖排分类导航">
@@ -326,8 +380,7 @@
         </div>
     </div>
 
-    <div id="divKuaiSuZhiDa6GePuTongLianJie_wai" style="width: 1450px;height:200px;">
-
+    <div style="height:200px;">
         <div id="divKuaiSuZhiDa6GePuTongLianJie" miaoshu="快速直达-6个普通链接小分类">
             <div>
                 <ul class="mylist-inline text-center">
@@ -346,7 +399,7 @@
         </div>
 
         <div style="width:78%;float:right;" miaoshu="快速直达-3个小图展示链接小分类">
-            <ul class="mylist-inline" id="ulKuaiSuZhiDa3GeImgLianJie">
+            <ul class="mylist-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
                 <li>
                     <a>
                         <div>
@@ -482,7 +535,7 @@
 
     </div>
 
-</div>*@
+</div>
 <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
 <script src="~/Scripts/MyLunBo/ZSImgLunBo.js"></script>
 <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
@@ -528,7 +581,7 @@
     <ul class="mylist-inline ulJingMeiDanPin">
         {{#each this}}
         <li>
-            <div style="border-top:1px solid #ffd800">
+            <div class="rainbow-item-{{addOne @@index}}>
                 <a href="/Buy/{{shopType}}?shopModel={{shopModel}}">
                     <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
                 </a>
@@ -625,7 +678,7 @@
         {{/if}}
         {{/each}}
         {{/with}}
-        <li style="width:240px;height:140px;position:absolute;right:-9px;bottom:-19px">
+        <li style="width:240px;height:140px;position:absolute;right:16px;bottom:-19px">
             <div style="width:230px;height:140px;position:absolute;right:25px;bottom:20px;background-color:#ffffff">
                 <div style="height: 80px;width: 130px;position:absolute;top:50px">
                     <a href="/AllGoods/{{FenLeiEnName}}">浏览更多</a><p />
@@ -838,7 +891,8 @@
                     isShowDetails: true
                 }
         ]
-    },
+    }
+    ,
     {
         AshuPaiDaoHangName: "笔记本 平板",
         AshuPaiDaoHangNameEN: "NotebookAndFlat",
@@ -901,7 +955,8 @@
                 isShowDetails: true
             }
         ]
-    },
+    }
+    ,
      {
          AshuPaiDaoHangName: "电视 盒子",
          AshuPaiDaoHangNameEN: "TvAndBox",
@@ -1099,9 +1154,12 @@
     //竖排分类导航中的li数量为一列6个，多出的li则取出来放到新生成的ul中
     for (var i = 0; i < $(".divShuPaiFeiLeiDaoHang_li1").length ; i++) {
         var li = $(".divShuPaiFeiLeiDaoHang_ul2_" + i + " li");
+        //将li中数据分成没6个一组
         if (li.length > 6) {
             var sum = Math.floor(li.length / 6)
             for (var j = 0; j < sum; j++) {
+                //根据列数设置宽度
+                li.parent().parent().width(li.parent().parent().width() + 222);
                 li.parent().parent().append($('<ul class="list-unstyled  divShuPaiFeiLeiDaoHang_ul2 divShuPaiFeiLeiDaoHang_ul2_create' + j + '">'));
                 if (j == sum - 1) {
                     //最后一次取除了前6个的所有
@@ -1119,6 +1177,10 @@
                     })
                 }
             }
+        } else {
+            if (li.length > 0) {
+                li.parent().parent().width(222);
+            }
         }
     }
 
@@ -1133,7 +1195,6 @@
             JiaGe: "2055元"
         },
         {
-
             shopType: "Phone",
             shopModel: "xiaomi5",
             ImgSrc: "http://i3.mifile.cn/a4/0df5d106-ab01-4013-87de-a9793094245d",
@@ -1208,7 +1269,8 @@
             Name: "小米手环 2",
             JianShu: "每天早10点开售",
             JiaGe: "149元"
-        },
+        }
+    ,
         {
             ImgWaiLink: "",
             shopType: "Phone",
@@ -1351,31 +1413,32 @@
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: ""
-                    },
-                    {
-                        shopType: "Phone",
-                        shopModel: "xiaomi5",
-                        isShowDetails: false,
-                        ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
-                        ImgAlt: "",
-                        Name: "小米小钢炮蓝牙音箱2",
-                        JiaGe: "129元",
-                        PingJiaShuLiang: "1.9万评价",
-                        PingJiaID: 1,
-                        PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价",
-                        TeDian: "牛逼"
-                    },
-                    {
-                        shopType: "Phone",
-                        shopModel: "xiaomi5",
-                        isShowDetails: false,
-                        ImgSrc: "http://i1.mifile.cn/a1/T15hZ_BsDv1RXrhCrK!220x220.jpg",
-                        ImgAlt: "",
-                        Name: "小米小钢炮蓝牙音箱 青春版",
-                        JiaGe: "99元",
-                        TeDian: "起飞"
                     }
+    //,
+    //                {
+    //                    shopType: "Phone",
+    //                    shopModel: "xiaomi5",
+    //                    isShowDetails: false,
+    //                    ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
+    //                    ImgAlt: "",
+    //                    Name: "小米小钢炮蓝牙音箱2",
+    //                    JiaGe: "129元",
+    //                    PingJiaShuLiang: "1.9万评价",
+    //                    PingJiaID: 1,
+    //                    PingJia: "真的好好",
+    //                    PingJiaRenName: "来自张赛的评价",
+    //                    TeDian: "牛逼"
+    //                },
+    //                {
+    //                    shopType: "Phone",
+    //                    shopModel: "xiaomi5",
+    //                    isShowDetails: false,
+    //                    ImgSrc: "http://i1.mifile.cn/a1/T15hZ_BsDv1RXrhCrK!220x220.jpg",
+    //                    ImgAlt: "",
+    //                    Name: "小米小钢炮蓝牙音箱 青春版",
+    //                    JiaGe: "99元",
+    //                    TeDian: "起飞"
+    //                }
         ]
     };
     var divDaPeiRight_Template = Handlebars.compile($("#divDaPeiRight_Template").html());
@@ -1488,29 +1551,30 @@
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "来啦"
-                    },
-                    {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        aDaPeiMiaoShu2Link: "",
-                        ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
-                        ImgAlt: "",
-                        Name: "小米小钢炮蓝牙音箱2",
-                        JiaGe: "129元",
-                        PingJiaShuLiang: "1.9万评价",
-                        PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价",
-                        TeDian: "滚吧"
-                    },
-                    {
-                        aDaPeiImgLink: "",
-                        aDaPeiNameLink: "",
-                        ImgSrc: "http://i1.mifile.cn/a1/T15hZ_BsDv1RXrhCrK!220x220.jpg",
-                        ImgAlt: "",
-                        Name: "小米小钢炮蓝牙音箱 青春版",
-                        JiaGe: "99元",
-                        TeDian: 1
                     }
+                    //,
+                    //{
+                    //    aDaPeiImgLink: "",
+                    //    aDaPeiNameLink: "",
+                    //    aDaPeiMiaoShu2Link: "",
+                    //    ImgSrc: "http://i2.mifile.cn/a1/T1F5K_BjVv1RXrhCrK.jpg?width=150&height=150",
+                    //    ImgAlt: "",
+                    //    Name: "小米小钢炮蓝牙音箱2",
+                    //    JiaGe: "129元",
+                    //    PingJiaShuLiang: "1.9万评价",
+                    //    PingJia: "真的好好",
+                    //    PingJiaRenName: "来自张赛的评价",
+                    //    TeDian: "滚吧"
+                    //},
+                    //{
+                    //    aDaPeiImgLink: "",
+                    //    aDaPeiNameLink: "",
+                    //    ImgSrc: "http://i1.mifile.cn/a1/T15hZ_BsDv1RXrhCrK!220x220.jpg",
+                    //    ImgAlt: "",
+                    //    Name: "小米小钢炮蓝牙音箱 青春版",
+                    //    JiaGe: "99元",
+                    //    TeDian: 1
+                    //}
         ]
     };
 
@@ -1618,33 +1682,34 @@
                         PingJia: "真的好好",
                         PingJiaRenName: "来自张赛的评价",
                         TeDian: "来啦"
-                    },
-                    {
-                        shopType: "Phone",//商品类型
-                        shopModel: "xiaomi5", //商品类型下级
-                        isShowDetails: false,
-                        ImgSrc: "http://i1.mifile.cn/a1/pms_1469583266.7193851!220x220.jpg",
-                        ImgAlt: "",
-                        Name: "小米笔记本Air 12.5英寸",
-                        JiaGe: "3499元",
-                        JianShu: "更轻更薄，像杂志一样随身携带",
-                        PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价",
-                        TeDian: "滚吧"
-                    },
-                    {
-                        shopType: "Phone",//商品类型
-                        shopModel: "xiaomi5", //商品类型下级
-                        isShowDetails: false,
-                        ImgSrc: "http://i1.mifile.cn/a1/pms_1464071511.37197399!220x220.jpg",
-                        ImgAlt: "",
-                        Name: "米家 LED 智能台灯",
-                        JiaGe: "169元",
-                        JianShu: "无可视频闪，亮度色温无级调节",
-                        PingJia: "真的好好",
-                        PingJiaRenName: "来自张赛的评价",
-                        TeDian: "滚吧"
                     }
+    //,
+                    //{
+                    //    shopType: "Phone",//商品类型
+                    //    shopModel: "xiaomi5", //商品类型下级
+                    //    isShowDetails: false,
+                    //    ImgSrc: "http://i1.mifile.cn/a1/pms_1469583266.7193851!220x220.jpg",
+                    //    ImgAlt: "",
+                    //    Name: "小米笔记本Air 12.5英寸",
+                    //    JiaGe: "3499元",
+                    //    JianShu: "更轻更薄，像杂志一样随身携带",
+                    //    PingJia: "真的好好",
+                    //    PingJiaRenName: "来自张赛的评价",
+                    //    TeDian: "滚吧"
+                    //},
+                    //{
+                    //    shopType: "Phone",//商品类型
+                    //    shopModel: "xiaomi5", //商品类型下级
+                    //    isShowDetails: false,
+                    //    ImgSrc: "http://i1.mifile.cn/a1/pms_1464071511.37197399!220x220.jpg",
+                    //    ImgAlt: "",
+                    //    Name: "米家 LED 智能台灯",
+                    //    JiaGe: "169元",
+                    //    JianShu: "无可视频闪，亮度色温无级调节",
+                    //    PingJia: "真的好好",
+                    //    PingJiaRenName: "来自张赛的评价",
+                    //    TeDian: "滚吧"
+                    //}
     ];
 
     var divZhiNengYingJianRight_Template = Handlebars.compile($("#divZhiNengYingJianRight_Template").html());
@@ -1680,14 +1745,7 @@
 
         //竖排导航每个li中的内容出现和隐藏
         $("#divShuPaiFeiLeiDaoHang ul li div").each(function (index, item) {
-            var $d = $(item);
-            var bcolor = "#00ff21", width = "300px";
-            if (index % 2 == 0) {
-                bcolor = "#f19a9a";
-                width = "400px";
-            }
-            TemplateZs1($d, "divShuPaiFeiLeiDaoHang");
-            TemplateZs2($d)
+            TemplateZs2($(item))
         });
 
         //精美单品
@@ -1712,15 +1770,6 @@
         }, (function () {
             $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "0px", "opacity": 1 });
         }));
-
-
-        //图片的大小超过容器后更改图片的大小为容器的大小
-        //TuPianZiShiYing("img");
-        TuPianZiShiYing(".divZSLunBoImg");
-        TuPianZiShiYing("#ulKuaiSuZhiDa3GeImgLianJie");
-        TuPianZiShiYing("#divDaPeiLeft");
-        TuPianZiShiYing("#divZhiNengYingJianLeft");
-        TuPianZiShiYing("#divZhiNengYingJianLeft2");
     });
 
     function DaPeiShow(FenLeiEnName) {

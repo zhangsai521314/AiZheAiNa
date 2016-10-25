@@ -488,18 +488,9 @@
                 isResizing = true;
                 //isResizing解决window.onresize在某些浏览器下会执行两次的bug.实践起来有点不行啊....
                 if (isResizing) {
-                    //$("#divHengPaiTouBuDaoHang1 div ul li div").each(function () {
-                    //    TemplateZs1($(this), "divHengPaiTouBuDaoHang1");
-                    //});
                     $("#divHengPaiTouBuDaoHang2>ul>li>div").each(function () {
                         TemplateZs1($(this), "divHengPaiTouBuDaoHang2");
                     });
-                    $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
-                        TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
-                    });
-                    //$("#navigation_throughTrain").each(function () {
-                    //    TemplateZs1($(this), "navigation_throughTrain");
-                    //});
                     isResizing = false;
                 } else {
                     isResizing = true;
@@ -553,12 +544,6 @@
                     break;
                 case "divHengPaiTouBuDaoHang2":
                     item.css({ "left": "0px", "top": item.parents("#divHengPaiTouBuDaoHang2").parent().offset().top + item.parents("#divHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
-                    break;
-                case "divShuPaiFeiLeiDaoHang":
-                    item.css({ "left": item.parent().parent().offset().left + item.parent().width(), "top": item.parents("div").offset().top });
-                    break;
-                case "navigation_throughTrain":
-                    item.css({ "left": "10%" });
                     break;
                 default:
                     return false;
