@@ -6,6 +6,10 @@
     /*ul li:hover {
         cursor: pointer;
     }*/
+    * {
+        padding:0;
+        margin:0;
+    }
 
     a:hover {
         cursor: pointer;
@@ -238,12 +242,12 @@
             background-color: #FEFEFE;
         }
 
-    #divZhiNengYingJian {
+    #divZhiNengYingJian, #divZhiNengYingJian2 {
         height: 625px;
         margin: 3px auto auto auto;
     }
 
-        #divZhiNengYingJian li {
+        #divZhiNengYingJian li, #divZhiNengYingJian2 li {
             margin-bottom: 5px;
         }
 
@@ -268,7 +272,7 @@
         }
     /*设置hove时的阴影效果结束*/
 
-    #divZhiNengYingJianLeft, .ulZhiNengYingJianN {
+    #divZhiNengYingJianLeft, #divZhiNengYingJianLeft2, .ulZhiNengYingJianN {
         margin-top: 10px;
     }
 
@@ -311,7 +315,8 @@
         height: 500px;
     }
 </style>
-<div style="width: 100%" class="divHomeIndexPageWai">
+@*<div style="width: 100%" class="divHomeIndexPageWai">
+
     <div id="divDaTouBu">
         <div id="divShuPaiFeiLeiDaoHang" miaoshu="竖排分类导航">
 
@@ -321,7 +326,8 @@
         </div>
     </div>
 
-    <div style="width: 1450px;height:200px;">
+    <div id="divKuaiSuZhiDa6GePuTongLianJie_wai" style="width: 1450px;height:200px;">
+
         <div id="divKuaiSuZhiDa6GePuTongLianJie" miaoshu="快速直达-6个普通链接小分类">
             <div>
                 <ul class="mylist-inline text-center">
@@ -364,82 +370,119 @@
                 </li>
             </ul>
         </div>
-    </div>
-
-    <div style="height:50px;">
-        <div style="float:left;font-size:24px">
-            精美单品
-        </div>
-        <div id="divJingMeiDanPin">
-            <p />       <p />
-            <p />
-            <ul class="text-center mylist-inline">
-                <li class="liJingMeiDanPinLunBoAnNiu">
-                    <
-                </li>
-                <li class="liJingMeiDanPinLunBoAnNiu">
-                    >
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div id="divJingMeiDanPinContent" style="height:300px;overflow:hidden" class="text-center">
 
     </div>
 
+    <div id="divJingMeiDanPin_wai" class="navigation_anchor" anchortxt="精美单品">
 
-    <div style="height:50px">
-        <div style="float: left; font-size: 24px">
-            智能硬件
+        <div style="height:50px;">
+            <div style="float:left;font-size:24px">
+                精美单品
+            </div>
+            <div id="divJingMeiDanPin">
+                <p />       <p />
+                <p />
+                <ul class="text-center mylist-inline">
+                    <li class="liJingMeiDanPinLunBoAnNiu">
+                        <
+                    </li>
+                    <li class="liJingMeiDanPinLunBoAnNiu">
+                        >
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div style="width:70%;float:right;text-align:right">
-            查看全部<img style="width:60px;height:50px" src="../Content/Images/go.png" />
-        </div>
-    </div>
-    <div id="divZhiNengYingJian" class="divZhiNengYingJian">
-        <div id="divZhiNengYingJianLeft" style="float: left; width: 15%;">
-            <img alt="" src="http://i3.mifile.cn/a4/57c2f4fb-6743-44c6-b447-6bd55aaeef89">
-        </div>
-        <div id="divZhiNengYingJianRight" style="float: right; width: 85%;">
-        </div>
-    </div>
-    <div style="height:50px;">
-        <div style="float: left; font-size: 24px">
-            搭配
-        </div>
-        <div style="width:70%;float:right;">
-            <p />
-            <p /><p />
-            <ul class="mylist-inline text-center" id="ulDaPeiFenLei">
-                <li>热门</li>
-                <li>耳机音箱</li>
-                <li>数据线</li>
-                <li>电源</li>
-                <li>电池储存卡</li>
-            </ul>
-        </div>
-    </div>
-    <div id="divDaPei" class="divDaPei">
-        <div id="divDaPeiLeft" style="float: left; width: 15%;">
-            <ul class="text-center mylist-inline" id="ulDaPeiZuoContent">
-                <li>
-                    <div>
-                        <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="divDaPeiRight" style="float: right; width: 85%;">
+
+        <div id="divJingMeiDanPinContent" style="height:300px;overflow:hidden" class="text-center">
 
         </div>
+
     </div>
 
-</div>
+    <div id="divZhiNengYingJian_wai" class="navigation_anchor" anchortxt="智能硬件">
+
+        <div style="height:50px">
+            <div style="float: left; font-size: 24px">
+                智能硬件
+            </div>
+            <div style="width:70%;float:right;text-align:right">
+                查看全部<img style="width:60px;height:50px" src="../Content/Images/go.png" />
+            </div>
+        </div>
+
+        <div id="divZhiNengYingJian">
+            <div id="divZhiNengYingJianLeft" style="float: left; width: 15%;">
+                <img alt="" src="http://i3.mifile.cn/a4/57c2f4fb-6743-44c6-b447-6bd55aaeef89">
+            </div>
+            <div id="divZhiNengYingJianRight" style="float: right; width: 85%;">
+            </div>
+        </div>
+
+    </div>
+
+    <div id="divDaPei_wai" class="navigation_anchor" anchortxt="搭配">
+
+        <div style="height:50px;">
+            <div style="float: left; font-size: 24px">
+                搭配
+            </div>
+            <div style="width:70%;float:right;">
+                <p />
+                <p /><p />
+                <ul class="mylist-inline text-center" id="ulDaPeiFenLei">
+                    <li>热门</li>
+                    <li>耳机音箱</li>
+                    <li>数据线</li>
+                    <li>电源</li>
+                    <li>电池储存卡</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="divDaPei" class="divDaPei">
+            <div id="divDaPeiLeft" style="float: left; width: 15%;">
+                <ul class="text-center mylist-inline" id="ulDaPeiZuoContent">
+                    <li>
+                        <div>
+                            <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img alt="1" src="http://i3.mifile.cn/a4/809aed51-f9b9-482e-a249-93d44225439e">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="divDaPeiRight" style="float: right; width: 85%;">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="divZhiNengYingJian2_wai" class="navigation_anchor" anchortxt="智能硬件2">
+
+        <div style="height:50px">
+            <div style="float: left; font-size: 24px">
+                智能硬件2
+            </div>
+            <div style="width:70%;float:right;text-align:right">
+                查看全部<img style="width:60px;height:50px" src="../Content/Images/go.png" />
+            </div>
+        </div>
+
+        <div id="divZhiNengYingJian2" class="divZhiNengYingJian2">
+            <div id="divZhiNengYingJianLeft2" style="float: left; width: 15%;">
+                <img alt="" src="http://i3.mifile.cn/a4/57c2f4fb-6743-44c6-b447-6bd55aaeef89">
+            </div>
+            <div id="divZhiNengYingJianRight2" style="float: right; width: 85%;">
+            </div>
+        </div>
+
+    </div>
+
+</div>*@
 <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
 <script src="~/Scripts/MyLunBo/ZSImgLunBo.js"></script>
 <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
@@ -1606,6 +1649,9 @@
 
     var divZhiNengYingJianRight_Template = Handlebars.compile($("#divZhiNengYingJianRight_Template").html());
     $("#divZhiNengYingJianRight").html(divZhiNengYingJianRight_Template(divZhiNengYingJianRightData));
+
+    var divZhiNengYingJianRight_Template = Handlebars.compile($("#divZhiNengYingJianRight_Template").html());
+    $("#divZhiNengYingJianRight2").html(divZhiNengYingJianRight_Template(divZhiNengYingJianRightData));
 </script>
 <script type="text/javascript">
     var lunBoAnNiuClickJiShu = 0, lunBoJinMeiDanPinAnNiuShu = 0;
@@ -1674,6 +1720,7 @@
         TuPianZiShiYing("#ulKuaiSuZhiDa3GeImgLianJie");
         TuPianZiShiYing("#divDaPeiLeft");
         TuPianZiShiYing("#divZhiNengYingJianLeft");
+        TuPianZiShiYing("#divZhiNengYingJianLeft2");
     });
 
     function DaPeiShow(FenLeiEnName) {

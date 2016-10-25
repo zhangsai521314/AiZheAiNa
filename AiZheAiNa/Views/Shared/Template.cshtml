@@ -17,7 +17,7 @@
             margin: 0px;
             padding: 0px;
             /*解决屏幕缩小时boty内的div设置width：100%出现空白问题*/
-            min-width: 1450px;
+            min-width: 1220px;
         }
 
         .divTemplatePageWai {
@@ -28,7 +28,8 @@
                 /*设置div的宽度和偏移度*/
                 margin-left: auto;
                 margin-right: auto;
-                width: 1450px;
+                width: 1220px;
+                /*position:relative;*/
             }
 
         #divHengPaiTouBuDaoHang2 > ul > li > div {
@@ -40,7 +41,7 @@
         }
 
         #divHengPaiTouBuDaoHang2 > ul > li {
-            padding: 43px 19px 43.5px;
+            padding: 43px 13px 43.5px;
             float: left;
         }
 
@@ -94,6 +95,10 @@
 
         #divLogImg {
             position: relative;
+            float: left;
+            width: 20%;
+            height: 75px;
+            margin-top: 15px;
         }
 
             #divLogImg > div:first-child {
@@ -119,16 +124,26 @@
 
         .divLogImg_aimg {
             height: 90px;
-            width: 165px;
+            width: 163.5px;
             display: block;
             background-image: url("http://c1.mifile.cn/f/i/g/doodle/pro.gif");
             overflow: hidden;
             background-repeat: no-repeat;
         }
 
-
-
-
+        /*购物车*/
+        .m-sidebar {
+            /*侧栏*/
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: #000;
+            z-index: 2000;
+            width: 35px;
+            height: 100%;
+            font-size: 12px;
+            color: #fff;
+        }
 
         .cart {
             color: #fff;
@@ -156,18 +171,6 @@
                 background: url('../../Content/Images/car.png') no-repeat;
             }
 
-        .m-sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            background: #000;
-            z-index: 2000;
-            width: 35px;
-            height: 100%;
-            font-size: 12px;
-            color: #fff;
-        }
-
         #cartmsg {
             position: fixed;
             top: 350px;
@@ -182,6 +185,33 @@
             display: none;
             width: 1px;
         }
+        /*购物车*/
+
+        /*导航直通车*/
+        #navigation_throughTrain {
+            position: fixed;
+            top: 500px;
+            left: 200px;
+            background: #626262;
+            z-index: 2000;
+            width: 35px;
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+            #navigation_throughTrain > ul > li:first-child {
+                background-color: red;
+            }
+
+            #navigation_throughTrain > ul > li {
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            #navigation_throughTrain a {
+                color: #ffffff;
+            }
+        /*导航直通车*/
     </style>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
@@ -190,7 +220,7 @@
     <script src="~/Scripts/common/JoinShoppingCart/jquery.fly.min.js"></script>
     <script id="divHengPaiTouBuDaoHang2_Template" type="text/x-handlebars">
         <!--横排导航2模板-->
-        <ul class="mylist-inline text-center" style="margin-left:5%">
+        <ul class="mylist-inline text-center" style="margin-left:0">
             {{#each this}}
             <li>
                 <a href="javascript:void(0);">{{divHengPaiTouBuDaoHang2Name }}</a>
@@ -466,6 +496,9 @@
                     $("#divShuPaiFeiLeiDaoHang ul li div").each(function () {
                         TemplateZs1($(this), "divShuPaiFeiLeiDaoHang");
                     });
+                    //$("#navigation_throughTrain").each(function () {
+                    //    TemplateZs1($(this), "navigation_throughTrain");
+                    //});
                     isResizing = false;
                 } else {
                     isResizing = true;
@@ -518,10 +551,13 @@
                     item.css({ "left": item.parent().offset().left, "top": item.parents(".divHengPaiTouBuDaoHang1").parent().offset().top + item.parents(".divHengPaiTouBuDaoHang1").height(), "background-color": bcolor, "width": item.parent().width() + 4.5 });
                     break;
                 case "divHengPaiTouBuDaoHang2":
-                    item.css({ "left": "0px", "top": item.parents(".divHengPaiTouBuDaoHang2").parent().offset().top + item.parents(".divHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
+                    item.css({ "left": "0px", "top": item.parents("#divHengPaiTouBuDaoHang2").parent().offset().top + item.parents("#divHengPaiTouBuDaoHang2").height(), "background-color": bcolor, "width": $(window).width() });
                     break;
                 case "divShuPaiFeiLeiDaoHang":
                     item.css({ "left": item.parent().parent().offset().left + item.parent().width(), "top": item.parents("div").offset().top });
+                    break;
+                case "navigation_throughTrain":
+                    item.css({ "left": "10%" });
                     break;
                 default:
                     return false;
@@ -545,9 +581,9 @@
 </head>
 <body>
     <div>
-        <div class="divTemplatePageWai" style="background-color:#333333;height:40px;" miaoshu="头部导航">
+        <div class="divTemplatePageWai" style="background-color:#333333;height:42px;" miaoshu="头部导航">
             <div id="divTou">
-                <div id="divHuanYing" style="float:left;width: 20%;">
+                <div id="divHuanYing" style="float:left;width: 30%;">
                     <ul class="mylist-inline" style="margin:3% 0;margin-left:-4px">
                         <li>
                             <a href="/Home/index" style="color:#ffffff">欢迎来到爱这爱那网</a>
@@ -560,7 +596,7 @@
                         </li>
                     </ul>
                 </div>
-                <div id="divLoginHouShow" style="float:left;width: 20%;display:none;">
+                <div id="divLoginHouShow" style="float:left;width: 30%;display:none;">
                     <ul class="mylist-inline" style="margin:1.5% 0;margin-left:-20px">
                         <li>
                         </li>
@@ -572,7 +608,7 @@
                         </li>
                     </ul>
                 </div>
-                <div style="float:right;width: 80%;" id="divHengPaiTouBuDaoHang1" class="divHengPaiTouBuDaoHang1">
+                <div style="float:right;width: 70%;" id="divHengPaiTouBuDaoHang1" class="divHengPaiTouBuDaoHang1">
                     <div>
                         <ul class="mylist-inline" style="margin:0px;padding:0px;float:right">
                             <li>
@@ -611,7 +647,7 @@
         </div>
         <div class="divTemplatePageWai" style="background-color:#ffffff;height:107px;" miaoshu="横排分类导航">
             <div>
-                <div id="divLogImg" style="float:left;width:16%;height:75px; margin-top:15px">
+                <div id="divLogImg">
                     <div>
                         <a class="divLogImg_alog"></a>
                     </div>
@@ -619,9 +655,9 @@
                         <a class="divLogImg_aimg"></a>
                     </div>
                 </div>
-                <div id="divHengPaiTouBuDaoHang2" style="width: 59%;float:left;" class="divHengPaiTouBuDaoHang2">
+                <div id="divHengPaiTouBuDaoHang2" style="width: 58%;float:left;">
                 </div>
-                <div id="divSearch" style="width:25%;float:left;">
+                <div id="divSearch" style="width:22%;float:left;">
                     <div class="input-group" style="margin-top:30px">
                         <input type="text" class="form-control">
                         <span class="input-group-addon">搜索</span>
@@ -638,6 +674,14 @@
         </div>
         <!--侧栏-->
         <div id="cartmsg">已成功加入购物车！</div>
+
+        <!--导航直通车-->
+        <div id="navigation_throughTrain">
+            <ul class="list-unstyled">
+                <li>导航</li>
+            </ul>
+        </div>
+        <!--导航直通车-->
         @RenderBody()
         <div class="divTemplatePageWai" id="divpageDi" style="height:190px;background-color:#000000;color:#ffffff;margin:10px auto 0 auto">
             底部啊底部
@@ -677,9 +721,14 @@
                     });
                 }
             });
-
             $(".cart").click(function () {
                 alert("抱歉,暂无");
+            });
+
+
+            $(".navigation_anchor").each(function (index, item) {
+                var t = $(item);
+                $("#navigation_throughTrain>ul").append($("<li><a href='#" + t.attr("id") + "'>" + t.attr("anchortxt") + "</a></li>"));
             });
         });
     </script>
