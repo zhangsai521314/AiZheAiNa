@@ -662,11 +662,11 @@
         <div id="cartmsg">已成功加入购物车！</div>
 
         <!--导航直通车-->
-        <div id="navigation_throughTrain">
+        @*<div id="navigation_throughTrain">
             <ul class="list-unstyled">
                 <li>导航</li>
             </ul>
-        </div>
+        </div>*@
         <!--导航直通车-->
         @RenderBody()
         <div class="divTemplatePageWai" id="divpageDi" style="height:190px;background-color:#000000;color:#ffffff;margin:10px auto 0 auto">
@@ -712,10 +712,10 @@
             });
 
 
-            $(".navigation_anchor").each(function (index, item) {
-                var t = $(item);
-                $("#navigation_throughTrain>ul").append($("<li><a href='#" + t.attr("id") + "'>" + t.attr("anchortxt") + "</a></li>"));
-            });
+            //$(".navigation_anchor").each(function (index, item) {
+            //    var t = $(item);
+            //    $("#navigation_throughTrain>ul").append($("<li><a href='#" + t.attr("id") + "'>" + t.attr("anchortxt") + "</a></li>"));
+            //});
         });
     </script>
 </body>
