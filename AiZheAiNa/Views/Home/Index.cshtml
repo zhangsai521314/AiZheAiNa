@@ -581,7 +581,7 @@
     <ul class="mylist-inline ulJingMeiDanPin">
         {{#each this}}
         <li>
-            <div class="rainbow-item-{{addOne @@index}}>
+            <div class="rainbow-item-{{addOne @@index}}">
                 <a href="/Buy/{{shopType}}?shopModel={{shopModel}}">
                     <img src="{{ImgSrc}}" alt="{{ImgAlt}}" />
                 </a>
@@ -1156,7 +1156,7 @@
         var li = $(".divShuPaiFeiLeiDaoHang_ul2_" + i + " li");
         //将li中数据分成没6个一组
         if (li.length > 6) {
-            var sum = Math.floor(li.length / 6)
+            var sum = Math.ceil(li.length / 6)
             for (var j = 0; j < sum; j++) {
                 //根据列数设置宽度
                 li.parent().parent().width(li.parent().parent().width() + 222);
