@@ -36,11 +36,13 @@
             </div>
         </div>
         <input type="hidden" id="path" value="" />
-        <script src="../Scripts/common/WebUploader/js/jquery-1.8.2.min.js"></script>
-        <script src="../Scripts/common/WebUploader/js/webuploader.js"></script>
-        <script src="../Scripts/common/WebUploader/js/FileWebUploader.js"></script>
-        <script src="../Scripts/common/WebUploader/js/ImageWebUpLoder.js"></script>
-        <script type="text/javascript">
+        <input type="button" id="tijao" value="上传" />
+    </form>
+    <script src="../Scripts/common/WebUploader/js/jquery-1.8.2.min.js"></script>
+    <script src="../Scripts/common/WebUploader/js/webuploader.js"></script>
+    <script src="../Scripts/common/WebUploader/js/FileWebUploader.js"></script>
+    <script src="../Scripts/common/WebUploader/js/ImageWebUpLoder.js"></script>
+    <script type="text/javascript">
             $("#path").val('{"image1":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null}],"image2":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null}],"fujian1":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null}],"fujian2":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"queueId":"WU_FILE_0","name":"2227-217.jpg","size":399605,"type":".jpg","mimetype":"image/jpeg","filePath":"../File/File/Temp/20161027/20161027_2227.jpg"}]}');
             $("#BusinesslicenseId").ImageUpLoad({
                 imageList: "BusinesslicenseFileList",  //存放图片容器ID
@@ -74,16 +76,7 @@
                 showDownload: true,
                 upDndID: "fujian2tuo"
             });
-        </script>
-        <p>
-            &nbsp;
-        </p>
-        <p>
-            &nbsp;
-        </p>
-        <p>
-            <asp:Button ID="Button1" OnClick="Button1_Click" Text="提交" />
-        </p>
-    </form>
+
+    </script>
 </body>
 </html>

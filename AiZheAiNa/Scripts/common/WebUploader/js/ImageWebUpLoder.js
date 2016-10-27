@@ -33,6 +33,7 @@
         uploader,
         // 优化retina, 在retina下这个值是2
         ratio = window.devicePixelRatio || 1,
+          state = 'pending',
         newImageJsonData = {
             //新图片的存放
             fileList: []
@@ -46,7 +47,7 @@
         // 缩略图大小
         uploader = WebUploader.create({
             // 选完文件后，是否自动上传。
-            auto: true,
+            auto: false,
             //限制图片的数量
             fileNumLimit: c.maxImageCount,
             //设定单个文件大小
@@ -304,6 +305,29 @@
             }
         });
 
+        uploader.on('all', function (type) {
+            if (type === 'startUpload') {
+                state = 'uploading';
+            } else if (type === 'stopUpload') {
+                state = 'paused';
+            } else if (type === 'uploadFinished') {
+                state = 'done';
+            }
+            if (state === 'uploading') {
+                $("#tijao").text('暂停上传');
+            } else {
+                $("#tijao").text('开始上传');
+            }
+        });
+
+        //点击开始上传
+        $("#tijao").on('click', function () {
+            if (state === 'uploading') {
+                uploader.stop(true);
+            } else {
+                uploader.upload();
+            }
+        });
     };
 
     //预加载
