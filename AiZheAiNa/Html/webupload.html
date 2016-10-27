@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Scripts/common/WebUploader/css1/demo.css" rel="stylesheet" />
+    <link href="../Scripts/common/WebUploader/css1/style.css" rel="stylesheet" />
+    <link href="../Scripts/common/WebUploader/css1/webuploader.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1">
+        <div id="fujiantuo">
+            <div id="fujian">
+                <input type="hidden" id="deletefile1" value="" />
+            </div>
+        </div>
+        <div id="fujian2tuo">
+            <div id="fujian2">
+                <input type="hidden" id="deletefile2" value="" />
+            </div>
+        </div>
+        <div id="img1Tuo">
+            <input type="hidden" id="deleteImage1" value="" />
+            <input type="hidden" id="ss" value="" />
+            <div id="BusinesslicenseFileList">
+            </div>
+            <div class="cp_img_jia" id="BusinesslicenseId">
+            </div>
+        </div>
+        <div id="img2Tuo">
+            <input type="hidden" id="deleteImage2" value="" />
+            <div id="CompanyList">
+            </div>
+            <div class="cp_img_jia" id="CompanyId">
+            </div>
+        </div>
+        <input type="hidden" id="path" value="" />
+        <script src="../Scripts/common/WebUploader/js/jquery-1.8.2.min.js"></script>
+        <script src="../Scripts/common/WebUploader/js/webuploader.js"></script>
+        <script src="../Scripts/common/WebUploader/js/FileWebUploader.js"></script>
+        <script src="../Scripts/common/WebUploader/js/ImageWebUpLoder.js"></script>
+        <script type="text/javascript">
+            $("#path").val('{"image1":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null}],"image2":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null}],"fujian1":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null}],"fujian2":[{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"filePath":"../File/image/Temp/20160804/20160804_6141.jpg","IsCopy":1,"queueId":null,"name":null,"size":null,"extension":null,"mimetype":null},{"queueId":"WU_FILE_0","name":"2227-217.jpg","size":399605,"type":".jpg","mimetype":"image/jpeg","filePath":"../File/File/Temp/20161027/20161027_2227.jpg"}]}');
+            $("#BusinesslicenseId").ImageUpLoad({
+                imageList: "BusinesslicenseFileList",  //存放图片容器ID
+                imagePathHiddenId: "path",
+                imagePathAttribute: "image1",
+                deleteImagePathId: "deleteImage1",
+                newImagePathHiddenId: "ss",
+                upDndID: "img1Tuo"
+            });
+            ////企业照片
+            $("#CompanyId").ImageUpLoad({
+                imageList: "CompanyList",  //存放图片容器ID
+                imagePathHiddenId: "path",
+                imagePathAttribute: "image2",
+                deleteImagePathId: "deleteImage2",
+                upDndID: "img2Tuo"
+            });
+            $("#fujian").WebUpLoaderFile({
+                deleteFileID: "deletefile", // 被删除的正式文件的路径存放元素id
+                serverUrl: "../ashx/WebUploaderFileOrImage.ashx",
+                deleteFilePathID: "deletefile1", // 被删除的正式文件的路径存放元素id
+                fielePathHiddenId: "path",//除了删除之外的文件存放,预加载用此种
+                filePathAttribute: "fujian1"//除了删除之外的文件存放在fielePathHiddenId哪个属性下面,预加载：{"fujian1":[],"fujian2":[]，"fujian3":[]}
+            });
+            $("#fujian2").WebUpLoaderFile({
+                deleteFileID: "deletefile2", // 被删除的正式文件的路径存放元素id
+                serverUrl: "../ashx/WebUploaderFileOrImage.ashx",
+                deleteFilePathID: "deletefile2", // 被删除的正式文件的路径存放元素id
+                fielePathHiddenId: "path",//除了删除之外的文件存放,预加载用此种
+                filePathAttribute: "fujian2", //除了删除之外的文件存放在fielePathHiddenId哪个属性下面,预加载：{"fujian1":[],"fujian2":[]，"fujian3":[]}
+                showDownload: true,
+                upDndID: "fujian2tuo"
+            });
+        </script>
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            <asp:Button ID="Button1" OnClick="Button1_Click" Text="提交" />
+        </p>
+    </form>
+</body>
+</html>
