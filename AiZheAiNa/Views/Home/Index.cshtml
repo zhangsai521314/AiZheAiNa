@@ -1809,9 +1809,14 @@
             if (FenLeiEnName == "erJi") {
                 //相当于请求成功后，否则后死循环
                 $("#divDaPeiRight").html($("#divDaPeiRight").html() + divDaPeiRight_Template(divDaPeiRight2));
+                $(".divDaPeiRightContent").hover(function () {
+                    $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "90px", "opacity": 1 });
+                }, (function () {
+                    $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "0px", "opacity": 1 });
+                }));
                 DaPeiShow(FenLeiEnName);
             }
-        }
+        };
     };
 
     function TuPianZiShiYing(select) {
@@ -1823,7 +1828,6 @@
             $(item).width($(item).parents("div").width());
         });
     };
-
 </script>
 
 
