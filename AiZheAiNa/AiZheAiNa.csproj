@@ -237,6 +237,7 @@
   <ItemGroup>
     <Content Include="Content\74.jpg" />
     <Content Include="Content\css\changYong.css" />
+    <Content Include="Content\css\common\ulZhanShiLiBiao.css" />
     <Content Include="Content\css\Font-Awesome\css\font-awesome.css" />
     <Content Include="Content\css\Font-Awesome\css\font-awesome.min.css" />
     <Content Include="Content\css\Font-Awesome\fonts\fontawesome-webfont.svg" />

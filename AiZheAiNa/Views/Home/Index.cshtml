@@ -290,7 +290,7 @@
         margin: 10px auto auto auto;
     }
     /*设置hove时的阴影效果开始*/
-    .divZhiNengYingJianRightContent, .ulDaPeiN li > div {
+    .ulDaPeiN li > div {
         /*transition-duration 设置过渡*/
         transition-duration: 0.5s;
         /* Firefox 4 */
@@ -301,7 +301,7 @@
         -o-transition-duration: 0.5s;
     }
 
-        .divZhiNengYingJianRightContent:hover, .ulDaPeiN li > div:hover {
+        .ulDaPeiN li > div:hover {
             /*设置阴影*/
             filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3); /*ie*/
             -moz-box-shadow: 5px 5px 10px #909090; /*firefox*/
@@ -310,7 +310,7 @@
         }
     /*设置hove时的阴影效果结束*/
 
-    /*#divZhiNengYingJianLeft, #divZhiNengYingJianLeft2, .ulZhiNengYingJianN {
+    /*#divZhiNengYingJianLeft, #divZhiNengYingJianLeft2, .ultempplate {
         margin-top: 10px;
     }*/
 
@@ -319,25 +319,6 @@
         height: 624px;
         width: 183px;
     }
-
-    .ulZhiNengYingJianN {
-        margin: 0;
-        padding: 0;
-        position: relative;
-        margin-left: 0.3px;
-    }
-
-    .divZhiNengYingJianRightContent {
-        width: 230px;
-        height: 304px;
-        position: relative;
-    }
-
-        .divZhiNengYingJianRightContent img {
-            width: 150px;
-            height: 150px;
-            margin-top: 40px;
-        }
 
     .divZhiNengYingJianRightMiaoShu3 {
         background-color: #ffd800;
@@ -350,7 +331,15 @@
         z-index: 7;
     }
 
-    .ulZhiNengYingJianN > li, .ulJingMeiDanPin > li, .ulDaPeiN > li {
+    .ulJingMeiDanPin > li {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        background-color: #ffffff;
+    }
+
+    .ulDaPeiN > li {
         padding-left: 0;
         padding-right: 0;
         margin-left: 5px;
@@ -388,7 +377,7 @@
             width: 85%;
         }
 </style>
-
+<link href="~/Content/css/common/ulZhanShiLiBiao.css" rel="stylesheet" />
 <div class="divHomeIndexPageWai divHomeIndexPageWai1">
 
     <div id="divDaTouBu">
@@ -403,14 +392,14 @@
     <div style="height: 200px;">
         <div id="divKuaiSuZhiDa6GePuTongLianJie" miaoshu="快速直达-6个普通链接小分类">
             <div>
-                <ul class="mylist-inline text-center">
+                <ul class="my-list-inline text-center">
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                 </ul>
             </div>
             <div>
-                <ul class="mylist-inline text-center">
+                <ul class="my-list-inline text-center">
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
                     <li><a>买买买买</a><br /><a>买买买买</a></li>
@@ -419,7 +408,7 @@
         </div>
 
         <div style="width:78%;float: right;" miaoshu="快速直达-3个小图展示链接小分类">
-            <ul class="mylist-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
+            <ul class="my-list-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
                 <li>
                     <a>
                         <div>
@@ -454,7 +443,7 @@
             </div>   <div id="divJingMeiDanPin">
                 <p />       <p />
                 <p />
-                <ul class="text-center mylist-inline">
+                <ul class="text-center my-list-inline">
                     <li class="liJingMeiDanPinLunBoAnNiu">
                         <
                     </li>
@@ -506,7 +495,7 @@
             <div style="width:70%;float:right;">
                 <p />
                 <p /><p />
-                <ul class="mylist-inline text-center" id="ulDaPeiFenLei">
+                <ul class="my-list-inline text-center" id="ulDaPeiFenLei">
                     <li>热门</li>
                     <li>耳机音箱</li>
                     <li>数据线</li>
@@ -594,7 +583,7 @@
 </script>
 <script id="divJingMeiDanPinContent_Template" type="text/x-handlebars">
     <!--精美单品模板-->
-    <ul class="mylist-inline ulJingMeiDanPin">
+    <ul class="my-list-inline ulJingMeiDanPin">
         {{#each this}}
         <li>
             <div class="rainbow-item-{{addOne @@index}}">
@@ -613,7 +602,7 @@
 </script>
 <script id="divDaPeiRight_Template" type="text/x-handlebars">
     <!--搭配右边内容模板,@@last表示最后的循环。其实handlebars应该的是@只不过这是razor视图格式所以需要转换-->
-    <ul class="text-center mylist-inline ulDaPeiN" FenLeiEnName="{{FenLeiEnName}}">
+    <ul class="text-center my-list-inline ulDaPeiN" FenLeiEnName="{{FenLeiEnName}}">
         {{#with Content}}
         {{#each this}}
         {{#if @@last}}
@@ -711,10 +700,10 @@
 </script>
 <script id="divZhiNengYingJianRight_Template" type="text/x-handlebars">
     <!--智能硬件右边内容能硬件模板-->
-    <ul class="text-center mylist-inline ulZhiNengYingJianN">
+    <ul class="my-text-center my-list-inline my-ultempplate">
         {{#each this}}
         <li>
-            <div class="divZhiNengYingJianRightContent">
+            <div>
                 {{#if TeDian}}
                 <div class="divZhiNengYingJianRightMiaoShu3">
                     {{TeDian}}
