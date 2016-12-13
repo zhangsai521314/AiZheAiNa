@@ -9,14 +9,6 @@
     width: 230px;
     height: 304px;
     position: relative;
-    /*transition-duration 设置过渡*/
-    transition-duration: 0.5s;
-    /* Firefox 4 */
-    -moz-transition-duration: 0.5s;
-    /* Safari and Chrome */
-    -webkit-transition-duration: 0.5s;
-    /* Opera */
-    -o-transition-duration: 0.5s;
 }
 
 .my-ultempplate > li {
@@ -28,16 +20,157 @@
     margin-bottom: 16px;
 }
 
-.my-ultempplate-div1:hover {
-    /*设置阴影*/
-    filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3); /*ie*/
-    -moz-box-shadow: 5px 5px 10px #909090; /*firefox*/
-    -webkit-box-shadow: 5px 5px 10px #909090; /*safari或chrome*/
-    box-shadow: 5px 5px 10px #909090; /*opera或ie9*/
-}
-
 .my-ultempplate-div1 img {
     width: 150px;
     height: 150px;
     margin-top: 40px;
+}
+
+.my-list-inline-liFirst {
+    width: 230px;
+    height: 143px;
+    position: relative;
+    top: -126px;
+    padding-left: 0px;
+}
+
+    .my-list-inline-liFirst > div {
+        width: 230px;
+        height: 143px;
+        background-color: #ffffff;
+    }
+
+        .my-list-inline-liFirst > div > div:first-child {
+            height: 60px;
+            width: 130px;
+            position: absolute;
+            top: 55px;
+        }
+
+        .my-list-inline-liFirst > div > div:last-child {
+            height: 80px;
+            width: 80px;
+            position: absolute;
+            right: 20px;
+            top: 30px;
+        }
+
+            .my-list-inline-liFirst > div > div:last-child img {
+                width: 80px;
+                height: 80px;
+            }
+
+
+.my-list-inline-liLast {
+    width: 230px;
+    height: 143px;
+    position: absolute;
+    right: 33px;
+    bottom: 0px;
+}
+
+    .my-list-inline-liLast > div {
+        width: 230px;
+        height: 143px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        background-color: #ffffff;
+    }
+
+        .my-list-inline-liLast > div > div:first-child {
+            height: 80px;
+            width: 130px;
+            position: absolute;
+            top: 50px;
+        }
+
+        .my-list-inline-liLast > div > div:last-child {
+            height: 80px;
+            width: 80px;
+            position: absolute;
+            right: 20px;
+            top: 35px;
+        }
+
+            .my-list-inline-liLast > div > div:last-child img {
+                width: 90px;
+                height: 80px;
+            }
+
+    /*设置hove时的阴影效果开始*/
+    .my-ultempplate-div1, .my-list-inline-liFirst > div, .my-list-inline-liLast > div {
+        /*transition-duration 设置过渡*/
+        transition-duration: 0.5s;
+        /* Firefox 4 */
+        -moz-transition-duration: 0.5s;
+        /* Safari and Chrome */
+        -webkit-transition-duration: 0.5s;
+        /* Opera */
+        -o-transition-duration: 0.5s;
+    }
+
+        .my-ultempplate-div1:hover, .my-list-inline-liFirst > div:hover, .my-list-inline-liLast > div:hover {
+            /*设置阴影*/
+            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3); /*ie*/
+            -moz-box-shadow: 5px 5px 10px #909090; /*firefox*/
+            -webkit-box-shadow: 5px 5px 10px #909090; /*safari或chrome*/
+            box-shadow: 5px 5px 10px #909090; /*opera或ie9*/
+        }
+
+/*.divMiaoShu1 {
+    margin-top: 20px;
+}
+
+.divMiaoShu2 {
+    width: 230px;
+    height: 0px;
+    overflow: hidden;
+    transition第一个参数设置哪个属性过渡，第二个设置过渡所需时间，3使用函数，4延迟时间
+    transition: all 0.2s linear 0s;
+    opacity: 0;
+    position: absolute;
+    z-index: 7;
+    left: 0px;
+    bottom: 0px;
+    background-color: #ff6a00;
+}
+
+.divMiaoShu3 {
+    background-color: #83c44e;
+    height: 20px;
+    left: 35%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    z-index: 7;
+}*/
+.my-ultempplate-divMiaoShu1 {
+    margin-top: 20px;
+}
+
+.my-ultempplate-divMiaoShu3 {
+    background-color: #83c44e;
+    height: 20px;
+    left: 35%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    z-index: 7;
+}
+
+.my-ultempplate-divMiaoShu2 {
+    width: 230px;
+    height: 0px;
+    overflow: hidden;
+    /*transition第一个参数设置哪个属性过渡，第二个设置过渡所需时间，3使用函数，4延迟时间*/
+    transition: all 0.2s linear 0s;
+    opacity: 0;
+    position: absolute;
+    z-index: 7;
+    left: 0px;
+    bottom: 0px;
+    background-color: #ff6a00;
 }
