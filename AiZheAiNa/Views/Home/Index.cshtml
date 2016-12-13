@@ -233,17 +233,6 @@
         padding: 0;
     }
 
-    .divDaPeiRightContent {
-        width: 230px;
-        height: 304px;
-        position: relative;
-    }
-
-        .divDaPeiRightContent img {
-            width: 150px;
-            height: 150px;
-            margin-top: 40px;
-        }
 
     .divDaPeiRightMiaoShu1 {
         margin-top: 20px;
@@ -408,10 +397,10 @@
         </div>
 
         <div style="width:78%;float: right;" miaoshu="快速直达-3个小图展示链接小分类">
-            <ul class="my-list-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
+      <ul class="my-list-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
                 <li>
                     <a>
-                        <div>
+                       <div>
                             <img src="http://i3.mifile.cn/a4/b16fa801-335d-4b38-9dbd-d1f3371307ee" alt="小米Max赠风扇">
                         </div>
                     </a>
@@ -439,8 +428,7 @@
 
         <div style="height:50px;">
             <div style="float:left; font-size: 24px; ">
-                精美单品
-            </div>   <div id="divJingMeiDanPin">
+             精美单品   </div>   <div id="divJingMeiDanPin">
                 <p />       <p />
                 <p />
                 <ul class="text-center my-list-inline">
@@ -461,6 +449,9 @@
     </div>
 
 </div>
+
+<div class="divHomeIndexPageWai divHomeIndexPageWai2">
+    <div id="divZhiNengYingJian_wai" class="navigation_anchor" an
 
 <div class="divHomeIndexPageWai divHomeIndexPageWai2">
     <div id="divZhiNengYingJian_wai" class="navigation_anchor" anchortxt="智能硬件">
@@ -633,7 +624,7 @@
         </li>
         {{else}}
         <li>
-            <div class="divDaPeiRightContent">
+            <div class="my-ultempplate-div1">
                 {{#if TeDian}}
                 <!--没有特点则不生成特点div-->
                 <div class="divDaPeiRightMiaoShu3">
@@ -703,7 +694,7 @@
     <ul class="my-text-center my-list-inline my-ultempplate">
         {{#each this}}
         <li>
-            <div>
+            <div class="my-ultempplate-div1">
                 {{#if TeDian}}
                 <div class="divZhiNengYingJianRightMiaoShu3">
                     {{TeDian}}
@@ -731,6 +722,24 @@
                     <p>{{JiaGe}}</p>
                     <p>{{PingJiaShuLiang}}
                 </div>
+
+                {{#if PingJiaID}}
+                <!--没有评价则不生成评价div-->
+                <div class="divDaPeiRightMiaoShu2">
+                    {{#if isShowDetails}}
+                    <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                    <a href="/Details/{{shopType}}?shopModel={{shopModel}}">
+                        <p>{{PingJia}}</p>
+                        <p>{{PingJiaRenName}}</p>
+                    </a>
+                    {{else}}
+                    <a href="/buy/{{shopType}}?shopModel={{shopModel}}">
+                        <p>{{PingJia}}</p>
+                        <p>{{PingJiaRenName}}</p>
+                    </a>
+                    {{/if}}
+                </div>
+                {{/if}}
             </div>
         </li>
         {{/each}}
@@ -1593,6 +1602,7 @@
                        Name: "小米路由器3",
                        JiaGe: "149元",
                        JianShu: "四天线设计，更安全更稳定",
+                       PingJiaID: 1,
                        PingJia: "真的好好",
                        PingJiaRenName: "来自张赛的评价",
                        TeDian: "我想"
@@ -1770,7 +1780,7 @@
             lunBoFangShi: "fade",
         });
         //搭配描述的出现与消失
-        $(".divDaPeiRightContent").hover(function () {
+        $(".my-ultempplate-div1").hover(function () {
             $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "90px", "opacity": 1 });
         }, (function () {
             $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "0px", "opacity": 1 });
@@ -1798,7 +1808,7 @@
             if (FenLeiEnName == "erJi") {
                 //相当于请求成功后，否则后死循环
                 $("#divDaPeiRight").html($("#divDaPeiRight").html() + divDaPeiRight_Template(divDaPeiRight2));
-                $(".divDaPeiRightContent").hover(function () {
+                $(".my-ultempplate-div1").hover(function () {
                     $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "90px", "opacity": 1 });
                 }, (function () {
                     $(this).find(".divDaPeiRightMiaoShu2").css({ "height": "0px", "opacity": 1 });

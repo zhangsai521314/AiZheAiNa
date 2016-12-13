@@ -5,39 +5,39 @@
     margin-left: 0.3px;
 }
 
-    .my-ultempplate > li > div {
-        width: 230px;
-        height: 304px;
-        position: relative;
-        /*transition-duration 设置过渡*/
-        transition-duration: 0.5s;
-        /* Firefox 4 */
-        -moz-transition-duration: 0.5s;
-        /* Safari and Chrome */
-        -webkit-transition-duration: 0.5s;
-        /* Opera */
-        -o-transition-duration: 0.5s;
-    }
+.my-ultempplate-div1 {
+    width: 230px;
+    height: 304px;
+    position: relative;
+    /*transition-duration 设置过渡*/
+    transition-duration: 0.5s;
+    /* Firefox 4 */
+    -moz-transition-duration: 0.5s;
+    /* Safari and Chrome */
+    -webkit-transition-duration: 0.5s;
+    /* Opera */
+    -o-transition-duration: 0.5s;
+}
 
-    .my-ultempplate > li {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 5px;
-        margin-right: 5px;
-        background-color: #ffffff;
-        margin-bottom: 16px;
-    }
+.my-ultempplate > li {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #ffffff;
+    margin-bottom: 16px;
+}
 
-        .my-ultempplate > li > div:hover {
-            /*设置阴影*/
-            filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3); /*ie*/
-            -moz-box-shadow: 5px 5px 10px #909090; /*firefox*/
-            -webkit-box-shadow: 5px 5px 10px #909090; /*safari或chrome*/
-            box-shadow: 5px 5px 10px #909090; /*opera或ie9*/
-        }
+.my-ultempplate-div1:hover {
+    /*设置阴影*/
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3); /*ie*/
+    -moz-box-shadow: 5px 5px 10px #909090; /*firefox*/
+    -webkit-box-shadow: 5px 5px 10px #909090; /*safari或chrome*/
+    box-shadow: 5px 5px 10px #909090; /*opera或ie9*/
+}
 
-        .my-ultempplate > li > div img {
-            width: 150px;
-            height: 150px;
-            margin-top: 40px;
-        }
+.my-ultempplate-div1 img {
+    width: 150px;
+    height: 150px;
+    margin-top: 40px;
+}
