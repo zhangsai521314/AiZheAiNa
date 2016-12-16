@@ -130,7 +130,6 @@
             width: 85%;
         }
 </style>
-<link href="~/Content/css/common/ulZhanShiLiBiao.css" rel="stylesheet" />
 <div class="divHomeIndexPageWai divHomeIndexPageWai1">
 
     <div id="divDaTouBu">
@@ -161,10 +160,10 @@
         </div>
 
         <div style="width:78%;float: right;" miaoshu="快速直达-3个小图展示链接小分类">
-      <ul class="my-list-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
+            <ul class="my-list-inline" id="ulKuaiSuZhiDa3GeImgLianJie" style="margin-bottom:0">
                 <li>
                     <a>
-                       <div>
+                        <div>
                             <img src="http://i3.mifile.cn/a4/b16fa801-335d-4b38-9dbd-d1f3371307ee" alt="小米Max赠风扇">
                         </div>
                     </a>
@@ -192,7 +191,8 @@
 
         <div style="height:50px;">
             <div style="float:left; font-size: 24px; ">
-             精美单品   </div>   <div id="divJingMeiDanPin">
+                精美单品
+            </div>   <div id="divJingMeiDanPin">
                 <p />       <p />
                 <p />
                 <ul class="text-center my-list-inline ulJingMeiDanPinBtn">
@@ -213,9 +213,6 @@
     </div>
 
 </div>
-
-<div class="divHomeIndexPageWai divHomeIndexPageWai2">
-    <div id="divZhiNengYingJian_wai" class="navigation_anchor" an
 
 <div class="divHomeIndexPageWai divHomeIndexPageWai2">
     <div id="divZhiNengYingJian_wai" class="navigation_anchor" anchortxt="智能硬件">
@@ -938,7 +935,7 @@
             for (var j = 0; j < sum; j++) {
                 //根据列数设置宽度
                 li.parent().parent().width(li.parent().parent().width() + 222);
-                li.parent().parent().append($('<ul class="list-unstyled  divShuPaiFeiLeiDaoHang_ul2 divShuPaiFeiLeiDaoHang_ul2_create' + j + '">'));
+                li.parent().parent().append($('<ul class="my-list-unstyled  divShuPaiFeiLeiDaoHang_ul2 divShuPaiFeiLeiDaoHang_ul2_create' + j + '">'));
                 if (j == sum - 1) {
                     //最后一次取除了前6个的所有
                     $(".divShuPaiFeiLeiDaoHang_ul2_" + i + " li").each(function (index, item) {

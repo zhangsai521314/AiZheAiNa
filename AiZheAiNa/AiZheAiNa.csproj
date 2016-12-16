@@ -244,6 +244,7 @@
     <Content Include="Content\Images\car.png" />
     <Content Include="Content\log.png" />
     <Content Include="Html\webupload.html" />
+    <Content Include="Scripts\common\GetWebPath.js" />
     <Content Include="Scripts\common\JoinShoppingCart\jquery.fly.min.js" />
     <Content Include="Scripts\common\JoinShoppingCart\requestAnimationFrame.js" />
     <Content Include="Scripts\common\prefixfree.min.js" />

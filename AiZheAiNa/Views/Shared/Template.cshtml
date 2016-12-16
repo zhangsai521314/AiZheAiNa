@@ -32,7 +32,7 @@
                 /*position:relative;*/
             }
 
-        #divHengPaiTouBuDaoHang2 > ul > li > div {
+        #divHengPaiTouBuDaoHang2 > ul > li > div:not(:first-child) {
             width: calc(1450*0.2px);
             height: 200px;
             position: absolute;
@@ -46,7 +46,7 @@
         }
 
             #divHengPaiTouBuDaoHang2 > ul > li:first-child {
-                padding-left: 80px;
+                /*padding-left: 80px;*/
             }
 
         .divHengPaiTouBuDaoHang2-ul2 {
@@ -214,12 +214,93 @@
             }
         /*导航直通车*/
     </style>
+    <link href="~/Content/css/common/ulZhanShiLiBiao.css" rel="stylesheet" />
+    <style>
+        /*竖排分类导航样式*/
+        .temp-divShuPaiFeiLeiDaoHang_ul1 {
+            background-color: #5C544C;
+            color: #ffffff;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .temp-divShuPaiFeiLeiDaoHang_li1 {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+            .temp-divShuPaiFeiLeiDaoHang_li1:hover {
+                background-color: #ff6a00;
+            }
+
+        .temp-divShuPaiFeiLeiDaoHang_a1 {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .temp-divShuPaiFeiLeiDaoHang_div1 {
+            /*width: calc(1450*0.2px);*/
+            background-color: #ffffff;
+            height: 500px;
+            left: 219px;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 0px;
+            z-index: 20;
+            display: none;
+        }
+
+        .temp-divShuPaiFeiLeiDaoHang_ul2 {
+            width: 220px;
+            height: 500px;
+            float: left;
+        }
+
+        .temp-divShuPaiFeiLeiDaoHang_li2 {
+            height: 83.3px;
+            list-style-type: none;
+        }
+
+            .temp-divShuPaiFeiLeiDaoHang_li2 a {
+                color: #000000;
+                display: block;
+                float: left;
+            }
+
+            .temp-divShuPaiFeiLeiDaoHang_li2 img {
+                margin-left: 10px;
+                margin-right: 10px;
+                width: 30px;
+            }
+
+        .temp-divShuPaiFeiLeiDaoHang_a2 {
+            line-height: 75px;
+            width: 132px;
+        }
+
+        .temp-divShuPaiFeiLeiDaoHang_a3 {
+            margin-left: 20px;
+            margin-right: 10px;
+            border: 1px solid #fb3434;
+            width: 58px;
+            height: 22px;
+            line-height: 22px;
+            margin-top: 28px;
+        }
+
+            .temp-divShuPaiFeiLeiDaoHang_a3:hover {
+                background-color: #fb3434;
+            }
+        /*竖排分类导航样式end*/
+    </style>
     <script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
     <script src="~/Scripts/common/prefixfree.min.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
     <script src="~/Scripts/common/handlebars-v4.0.5.js"></script>
     <script src="~/Scripts/common/handlebars.extend.js"></script>
     <script src="~/Scripts/common/JoinShoppingCart/jquery.fly.min.js"></script>
+    <script src="~/Scripts/common/GetWebPath.js"></script>
     <script id="divHengPaiTouBuDaoHang2_Template" type="text/x-handlebars">
         <!--横排导航2模板-->
         <ul class="my-list-inline text-center" style="margin-left:0">
@@ -261,6 +342,45 @@
             {{/each}}
         </ul>
     </script>
+
+    <script id="TempHtml_divShuPaiFeiLeiDaoHang_Template" type="text/x-handlebars">
+        <!--竖排分类导航模板-->
+        <ul class="my-list-unstyled text-center divShuPaiFeiLeiDaoHang_ul1 temp-divShuPaiFeiLeiDaoHang_ul1 ">
+            {{#each this}}
+            <li class="temp-divShuPaiFeiLeiDaoHang_li1">
+                <a href="/AllGoods/{{AshuPaiDaoHangNameEN}}" class="temp-divShuPaiFeiLeiDaoHang_a1">{{AshuPaiDaoHangName}}</a>
+                <div class="temp-divShuPaiFeiLeiDaoHang_div1">
+
+                    <ul class="my-list-unstyled temp-divShuPaiFeiLeiDaoHang_ul2   temp-divShuPaiFeiLeiDaoHang_ul2_{{@@index}}">
+                        <!--进入属性-->
+                        {{#with Specific}}
+                        {{#each this}}
+                        <li class="temp-divShuPaiFeiLeiDaoHang_li2">
+                            {{#if isShowDetails}}
+                            <!--是否有大图介绍，类似http://www.mi.com/yinxiang/-->
+                            <a href="/Details/{{shopType}}?shopModel={{shopModel}}" class="temp-divShuPaiFeiLeiDaoHang_a2">
+                                <img src="{{shuPaiDaoHangLiXiaoImgSrc}}" />
+                                <span>{{shuPaiDaoHangLiXiaoImgSpanMiaoShu}}</span>
+                            </a>
+                            {{else}}
+                            <a href="/Buy/{{shopType}}?shopModel={{shopModel}}" class="temp-divShuPaiFeiLeiDaoHang_a2">
+                                <img src="{{shuPaiDaoHangLiXiaoImgSrc}}" />
+                                <span>{{shuPaiDaoHangLiXiaoImgSpanMiaoShu}}</span>
+                            </a>
+                            {{/if}}
+                            {{#if buyName }}
+                            <a href="/Buy/{{shopType}}?shopModel={{shopModel}}" class="temp-divShuPaiFeiLeiDaoHang_a3">{{buyName}}</a>
+                            {{/if}}
+                        </li>
+                        {{/each}}
+                        {{/with}}
+                    </ul>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
     <script type="text/javascript">
         $(function () {
             var divHengPaiTouBuDaoHang2Data = [
@@ -482,6 +602,7 @@
             $("#divHengPaiTouBuDaoHang2").html(divHengPaiTouBuDaoHang2_Template(divHengPaiTouBuDaoHang2Data));
         });
     </script>
+
     <script type="text/javascript">
         $(function () {
             var isResizing = true;
@@ -489,7 +610,7 @@
                 isResizing = true;
                 //isResizing解决window.onresize在某些浏览器下会执行两次的bug.实践起来有点不行啊....
                 if (isResizing) {
-                    $("#divHengPaiTouBuDaoHang2>ul>li>div").each(function () {
+                    $("#divHengPaiTouBuDaoHang2>ul>li:not(:first-child)>div").each(function () {
                         TemplateZs1($(this), "divHengPaiTouBuDaoHang2");
                     });
                     isResizing = false;
@@ -524,9 +645,475 @@
                 TemplateZs1($d, "divHengPaiTouBuDaoHang1", bcolor);
                 TemplateZs2($d);
             });
+            if (GetWebPath(1).toLowerCase().indexOf("home/index") > 0) {
+                $("#divHengPaiTouBuDaoHang2>ul>li:first-child").before("<li>       <div></div></li>");
+            } else {
+                $("#divHengPaiTouBuDaoHang2>ul>li:first-child").before("<li><a>全部</a> <div style='width: 220px; display: none;position:absolute;left:220px;top:148px'  id='temp_divShuPaiFeiLeiDaoHang'></div></li>");
+                var temp_divShuPaiFeiLeiDaoHangData = [
+    {
+        AshuPaiDaoHangName: "手机 电话卡",
+        AshuPaiDaoHangNameEN: "PhoneAndTelcar",
+        Specific: [
+            {
+                shopType: "Phone",//商品类型
+                shopModel: "xiaomi5", //商品类型下级
+                isShowDetails: true,//是否有大图介绍，类似http://www.mi.com/yinxiang/
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购1"
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/maxbar80.jpg?width=40&height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米Max",
+                buyName: "选购2",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购3",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购4",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购5",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/heyue.jpg?width=40&height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "合约机",
+                buyName: "",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购7",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购8",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购9",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购10",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购11",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购12",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购13",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购14",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购15",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购16",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购17",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购18",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+                {
+                    shopType: "Phone",
+                    shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                    shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                    buyName: "选购19",
+                    shopModel: "xiaomi5",
+                    isShowDetails: true
+                }
+        ]
+    }
+    ,
+    {
+        AshuPaiDaoHangName: "笔记本 平板",
+        AshuPaiDaoHangNameEN: "NotebookAndFlat",
+        Specific: [
+           {
+               shopType: "Phone",
+               shopModel: "xiaomi5",
+               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+               buyName: "选购",
+               isShowDetails: false
+           },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5",
+                 isShowDetails: true
+             },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/maxbar80.jpg?width=40&height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米Max",
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            }
+            ,
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购ss",
+                shopModel: "xiaomi5",
+                isShowDetails: true
+            }
+        ]
+    }
+    ,
+    {
+        AshuPaiDaoHangName: "电视 盒子",
+        AshuPaiDaoHangNameEN: "TvAndBox",
+        Specific: [
+           {
+               shopType: "Phone",
+               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+               buyName: "选购",
+               shopModel: "xiaomi5", isShowDetails: true
+           },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "路由器 智能硬件",
+        AshuPaiDaoHangNameEN: "RouterAndIntelligentHardware",
+        Specific: [
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "移动电源 电池 插排",
+        AshuPaiDaoHangNameEN: "PortableSourceAndTelevisionAndSocket",
+        Specific: [
+           {
+               shopType: "Phone",
+               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+               buyName: "选购",
+               shopModel: "xiaomi5", isShowDetails: true
+           },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "耳机 音响",
+        AshuPaiDaoHangNameEN: "HeadsetAndSound",
+        Specific: [
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "保护套 贴膜",
+        AshuPaiDaoHangNameEN: "SmartcoverAndFilm",
+        Specific: [
+           {
+               shopType: "Phone",
+               shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+               shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+               buyName: "选购",
+               shopModel: "xiaomi5", isShowDetails: true
+           },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/15/goods/sidebar/maxbar80.jpg?width=40&height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米Max",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "线材 支架 存储卡",
+        AshuPaiDaoHangNameEN: "WirerodAndBracketAndMemorycard",
+        Specific: [
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "选购",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "选购",
+                 shopModel: "xiaomi5", isShowDetails: true
+             }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "箱包 服饰",
+        AshuPaiDaoHangNameEN: "BagsAndDresses",
+        Specific: [
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                buyName: "",
+                shopModel: "xiaomi5", isShowDetails: true
+            },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+                 buyName: "",
+                 shopModel: "xiaomi5", isShowDetails: true
+             }
+        ]
+    },
+    {
+        AshuPaiDaoHangName: "米兔 生活周边",
+        AshuPaiDaoHangNameEN: "MrabbitAndLifeperiphery",
+        Specific: [
+            {
+                shopType: "Phone",
+                shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+            },
+             {
+                 shopType: "Phone",
+                 shuPaiDaoHangLiXiaoImgSrc: "http://c1.mifile.cn/f/i/g/doodle/hmnote4-300.jpg?width=40&amp;height=40",
+                 shuPaiDaoHangLiXiaoImgSpanMiaoShu: "小米手机5",
+             }
+        ]
+    }
+                ];
+                var TempHtml_divShuPaiFeiLeiDaoHang_Template = Handlebars.compile($("#TempHtml_divShuPaiFeiLeiDaoHang_Template").html());
+                $("#temp_divShuPaiFeiLeiDaoHang").html(TempHtml_divShuPaiFeiLeiDaoHang_Template(temp_divShuPaiFeiLeiDaoHangData));
+
+                //竖排分类导航中的li数量为一列6个，多出的li则取出来放到新生成的ul中
+                for (var i = 0; i < $(".temp-divShuPaiFeiLeiDaoHang_li1").length ; i++) {
+                    var li = $(".temp-divShuPaiFeiLeiDaoHang_ul2_" + i + " li");
+                    //将li中数据分成没6个一组
+                    if (li.length > 6) {
+                        var sum = Math.ceil(li.length / 6)
+                        for (var j = 0; j < sum; j++) {
+                            //根据列数设置宽度
+                            li.parent().parent().width(li.parent().parent().width() + 222);
+                            li.parent().parent().append($('<ul class="my-list-unstyled  temp-divShuPaiFeiLeiDaoHang_ul2 temp-divShuPaiFeiLeiDaoHang_ul2_create' + j + '">'));
+                            if (j == sum - 1) {
+                                //最后一次取除了前6个的所有
+                                $(".temp-divShuPaiFeiLeiDaoHang_ul2_" + i + " li").each(function (index, item) {
+                                    if (index > 5) {
+                                        $(".temp-divShuPaiFeiLeiDaoHang_ul2_create" + j).append($(item));
+                                    }
+                                })
+                            } else {
+                                //每次按顺序取除了前6个的li取6个
+                                $(".temp-divShuPaiFeiLeiDaoHang_ul2_" + i + " li").each(function (index, item) {
+                                    if (index > 5 && index < 12) {
+                                        $(".temp-divShuPaiFeiLeiDaoHang_ul2_create" + j).append($(item));
+                                    }
+                                })
+                            }
+                        }
+                    } else {
+                        if (li.length > 0) {
+                            li.parent().parent().width(222);
+                        }
+                    }
+                }
+                $("#divHengPaiTouBuDaoHang2>ul>li:first-child").hover(function () {
+                    $("#temp_divShuPaiFeiLeiDaoHang").show();
+                }, function () {
+                    $("#temp_divShuPaiFeiLeiDaoHang").hide();
+                });
+
+                //竖排导航每个li中的内容出现和隐藏
+                $("#temp_divShuPaiFeiLeiDaoHang>ul>li>div").each(function (index, item) {
+                    TemplateZs2($(item));
+                });
+            }
 
             //第二个横排导航内容的显示与隐藏
-            $("#divHengPaiTouBuDaoHang2>ul>li>div").each(function (index, item) {
+            $("#divHengPaiTouBuDaoHang2>ul>li:not(:first-child)>div").each(function (index, item) {
                 var $d = $(item);
                 var bcolor = "#FFFFFF";
                 if (index % 2 == 0) {
@@ -664,7 +1251,7 @@
 
         <!--导航直通车-->
         @*<div id="navigation_throughTrain">
-                <ul class="list-unstyled">
+                <ul class="my-list-unstyled">
                     <li>导航</li>
                 </ul>
             </div>*@
