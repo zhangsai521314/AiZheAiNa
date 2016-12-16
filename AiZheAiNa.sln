@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiZheAiNa.Plug.QQ", "AiZheA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySuperSocket", "MySuperSocket\MySuperSocket.csproj", "{2F298B28-A1E3-415D-8A88-AA2E86EF0721}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuiLiYanCeShi", "TExt\DuiLiYanCeShi.csproj", "{C3D86EDF-26DE-42C8-8BF1-681FEC8105C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{2F298B28-A1E3-415D-8A88-AA2E86EF0721}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F298B28-A1E3-415D-8A88-AA2E86EF0721}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F298B28-A1E3-415D-8A88-AA2E86EF0721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D86EDF-26DE-42C8-8BF1-681FEC8105C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D86EDF-26DE-42C8-8BF1-681FEC8105C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D86EDF-26DE-42C8-8BF1-681FEC8105C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D86EDF-26DE-42C8-8BF1-681FEC8105C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
