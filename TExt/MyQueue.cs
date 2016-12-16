@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace DuiLiYanCeShi
         {
         }
 
-        public Queue<QueueInfo> ListQueue = new Queue<QueueInfo>();
+        public ConcurrentQueue<QueueInfo> ListQueue = new ConcurrentQueue<QueueInfo>();
 
         public void AddQueue(string medias, string proids, string host, string userid, string feedid) //入列  
         {

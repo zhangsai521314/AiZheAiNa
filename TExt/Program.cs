@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,13 +39,14 @@ namespace DuiLiYanCeShi
         {
             while (true)
             {
-                Queue<QueueInfo> q = MyQueue.Instance.ListQueue;
+                ConcurrentQueue<QueueInfo> q = MyQueue.Instance.ListQueue;
                 if (q.Count > 0)
                 {
                     lock (lockObject)
                     {
+                        QueueInfo queueinfo = null;
                         Console.WriteLine("队列数量：" + q.Count);
-                        QueueInfo queueinfo = q.Dequeue();
+                        q.TryDequeue(out queueinfo);
                         Console.WriteLine("队列数量减少后：" + q.Count);
                     }
                 }
