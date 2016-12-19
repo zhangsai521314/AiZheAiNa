@@ -6,6 +6,10 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
+<script src="~/Scripts/jq/jquery-2.1.4/jquery-2.1.4.js"></script>
+<link href="~/Scripts/jquery.validate.1.5.1/jquery.validate.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.extend.js"></script>
 <style type="text/css">
     .form_Register {
         width: 100%;
@@ -23,35 +27,109 @@
         }
 
         .table_form > tbody > tr > td:nth-child(2n) {
-            width: 200px;
+            width: 400px;
             height: 50px;
         }
 </style>
-@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form_Register" }))
+<script type="text/javascript">
+    $(function () {
+        $("#form_Register").validate({
+            submitHandler: function (form) {
+                //验证通过执行
+                myfunction();
+            },
+            rules: {
+                input_ShowName: {
+                    required: true,
+                    minlength: 2
+                },
+                input_PassWord: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 16
+                },
+                input_rePassword: {
+                    required: true,
+                    equalTo: "#input_PassWord"
+                },
+                input_email: {
+                    required: true,
+                    //email: true
+
+                },
+                input_code: {
+                    required: true,
+                }
+            },
+            messages: {
+                input_ShowName: {
+                    required: "昵称不能为空",
+                    minlength: "昵称的最小长度为2"
+                },
+                input_PassWord: {
+                    required: "密码不能为空",
+                    minlength: "密码长度不能少于6个字符",
+                    maxlength: "密码长度不能超过16个字符"
+                },
+                input_rePassword: {
+                    required: "确认密码不能为空",
+                    equalTo: "确认密码和密码不一致"
+                },
+                input_email: {
+                    required: "邮箱为必填",
+                    // email: "邮箱格式错误"
+                },
+                input_code: {
+                    required: "验证码必填"
+                }
+            }
+        });
+
+        $("#input_email").blur(function () {
+            if ($(this).next().is("label")) {
+                var $label = $(this).next();
+                if (!$(this).next().is(":hidden")) {
+                    $(this).next().remove();
+                    $(this).parents("td").next().append($label);
+                }
+            }
+        });
+    });
+    function myfunction() {
+        alert("通过");
+    }
+</script>
+@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form_Register", id = "form_Register" }))
 {
     <div style="height:30px"></div>
     <table class="table_form">
         <tbody>
             <tr>
-                <td><label>昵称</label></td>
-                <td><input type="text" class="form-control" placeholder="请输入您的昵称" name="ShowName" id="input_ShowName"></td>
+                <td><label for="input_ShowName" class="item-label">昵称</label></td>
+                <td><input type="text" class="item-text" placeholder="请输入您的昵称" name="input_ShowName" id="input_ShowName"></td>
             </tr>
             <tr>
-                <td><label>密码</label></td>
-                <td><input type="password" class="form-control" placeholder="请输入您的密码" name="PassWord" id="input_PassWord"></td>
+                <td><label for="input_PassWord" class="item-label">密码</label></td>
+                <td><input type="password" class="item-text" placeholder="请输入您的密码" name="input_PassWord" id="input_PassWord"></td>
             </tr>
             <tr>
-                <td><label>确认密码</label></td>
-                <td><input type="password" class="form-control" placeholder="请输入您的密码" name="PassWord" id="input_PassWord2"></td>
+                <td><label for="input_rePassword" class="item-label">确认密码</label></td>
+                <td><input type="password" class="item-text" placeholder="请输入您的密码" name="input_rePassword" id="input_rePassword"></td>
             </tr>
             <tr>
-                <td><label>邮箱</label></td>
-                <td><input type="text" class="form-control" placeholder="请输入您的邮箱" name="text" id="input_email"></td>
-                <td style="text-align:right;width:110px;"><input type="button" class="btn btn-default" id="btn_sendCode" value="发送验证码" /></td>
+                <td><label for="input_email" class="item-label">邮箱</label></td>
+                <td>
+                    <nobr>
+                        <input type="text" class="item-text" placeholder="请输入您的邮箱" name="input_email" id="input_email">
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="button" style="display:inline" class="btn btn-default" id="btn_sendCode" value="发送验证码" />
+                    </nobr>
+                </td>
+                <td style="width:110px"></td>
             </tr>
             <tr>
-                <td><label>验证码</label></td>
-                <td><input type="text" class="form-control" placeholder="验证码" name="code" id="input_code"></td>
+                <td><label for="input_code" class="item-label">验证码</label></td>
+                <td><input type="text" class="item-text" placeholder="验证码" name="input_code" id="input_code"></td>
             </tr>
             <tr>
                 <td colspan="3">
