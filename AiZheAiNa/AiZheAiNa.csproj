@@ -218,6 +218,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JqueryValidateController.cs" />
     <Compile Include="Controllers\PayController.cs" />
+    <Compile Include="Controllers\SendController.cs" />
     <Compile Include="Controllers\shiyanController.cs" />
     <Compile Include="Controllers\ShopEvaluateController.cs" />
     <Compile Include="Filters\MyActionFilterAttribute.cs" />
@@ -343,6 +344,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Details\" />
+    <Folder Include="Views\Send\" />
     <Folder Include="Views\ShopEvaluate\" />
   </ItemGroup>
   <ItemGroup>

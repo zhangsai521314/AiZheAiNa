@@ -33,7 +33,7 @@
 </style>
 <script type="text/javascript">
     $(function () {
-        $("#form_Register").validate({
+        var validator = $("#form_Register").validate({
             submitHandler: function (form) {
                 //验证通过执行
                 myfunction();
@@ -94,10 +94,36 @@
                 }
             }
         });
+
+        $("#btn_reset").click(function () {
+            validator.resetForm();
+        });
+
+        $("#btn_sendCode").click(function () {
+            $(this).attr("disabled", true);
+            fun_btn_sendCode(this, 60);
+            $.post("../Send/SendEmail", { email: "1195073382@qq.com" }, function () {
+            });
+        });
+
+
     });
     function myfunction() {
         alert("通过");
     }
+
+    function fun_btn_sendCode(e, num) {
+        setTimeout(function () {
+            if (num == 0) {
+                $(e).attr("disabled", false).val("重发");
+                return false;
+            }
+            $(e).val(num + "秒后重发");
+            num--;
+            fun_btn_sendCode(e, num);
+        }, 1000)
+    }
+
 </script>
 @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form_Register", id = "form_Register" }))
 {
@@ -133,8 +159,8 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <nobr style="width:195px;margin:0 auto;display:block">
-                        <input class="btn btn-default" type="reset" value="重置">
+                    <nobr style="width:335px;margin:0 auto;display:block">
+                        <input class="btn btn-default" type="reset" value="重置" id="btn_reset">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input class="btn btn-default" type="submit" value="完成">
                     </nobr>
