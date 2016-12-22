@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AiZheAiNa.Model;
+using AiZheAiNa.Model.BusinessModel;
 using AiZheAiNa.BLL;
 using AiZheAiNa.CommonHelp;
 using System.Configuration;
@@ -12,6 +12,8 @@ using QConnectSDK.Context;
 using QConnectSDK;
 using AiZheAiNa.Filters;
 using Newtonsoft.Json;
+using AiZheAiNa.Model.CommonModel;
+
 namespace AiZheAiNa.Controllers
 {
     public class HomeController : Controller
@@ -19,8 +21,6 @@ namespace AiZheAiNa.Controllers
         #region 私有变量
         private AiZheAiNa_SYS_UserInfoBll bll_User = new AiZheAiNa_SYS_UserInfoBll();
         private AiZheAiNa_SYS_QQUserInfoBll bll_QQUser = new AiZheAiNa_SYS_QQUserInfoBll();
-        private EnumResultCold resultcode = new EnumResultCold();
-        private ResultInfo resultInfo = new ResultInfo();
         #endregion
 
         #region 视图
@@ -235,22 +235,35 @@ namespace AiZheAiNa.Controllers
         /// <param name="model_User"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Register(AiZheAiNa_SYS_UserInfo model_User)
+        public JsonResult Register(AiZheAiNa_SYS_UserInfo model_User)
         {
-            model_User.MingPassWord = model_User.PassWord;
-            model_User.PassWord = StringHelper.GetMd5Str32(model_User.PassWord);
-            List<AiZheAiNa_SYS_UserInfo> list_User = bll_User.GetListAiZheAiNa_SYS_UserByLoginName(model_User.LoginName);
-            if (list_User.Count > 0)
+            RequestStatusMsg msg = new RequestStatusMsg() { StatusMsg = "验证码错误" };
+            string code = CookieHelper.GetCookieValue("user_register_" + model_User.Email);
+            if (string.IsNullOrEmpty(code))
             {
-                return View();
+                msg.StatusMsg = "验证码以失效";
+                return Json(msg);
             }
-            bll_User.AddAiZheAiNa_SYS_UserInfo(model_User);
-            if (model_User != null && model_User.ID > 0)
+            if (model_User.ValidateCode == code)
             {
-                Session["UserInfo"] = model_User;
-                return RedirectToAction("Index", "Home");
+                model_User.MingPassWord = model_User.PassWord;
+                model_User.PassWord = StringHelper.GetMd5Str32(model_User.PassWord);
+                List<AiZheAiNa_SYS_UserInfo> list_User = bll_User.GetListAiZheAiNa_SYS_UserByLoginName(model_User.LoginName);
+                if (list_User.Count > 0)
+                {
+                    msg.StatusMsg = "用户名已存在";
+                    return Json(msg);
+                }
+                bll_User.AddAiZheAiNa_SYS_UserInfo(model_User);
+                if (model_User != null && model_User.ID > 0)
+                {
+                    Session["UserInfo"] = model_User;
+                    RedirectToAction("Index", "Home");
+                }
+                msg.StatusMsg = "执行失败";
+                return Json(msg);
             }
-            return View();
+            return Json(msg);
         }
         #endregion 
 

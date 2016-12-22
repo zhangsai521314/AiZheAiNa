@@ -10,6 +10,7 @@
 <link href="~/Scripts/jquery.validate.1.5.1/jquery.validate.css" rel="stylesheet" />
 <script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.1.5.1/jquery.validate.extend.js"></script>
+<script src="~/Scripts/Jq.form.3.46.0/jquery.form.js"></script>
 <style type="text/css">
     .form_Register {
         width: 100%;
@@ -27,7 +28,7 @@
         }
 
         .table_form > tbody > tr > td:nth-child(2n) {
-            width: 400px;
+            width: 419px;
             height: 50px;
         }
 </style>
@@ -35,11 +36,19 @@
     $(function () {
         var validator = $("#form_Register").validate({
             submitHandler: function (form) {
-                //验证通过执行
-                myfunction();
+                alert(1);
+                var options = {
+                    success: function (data) {
+                        if (data != "") {
+                            alert(data.StatusMsg);
+                        }
+                    },
+                    dataType:"json"
+                };
+                $("#form_Register").ajaxSubmit(options);
             },
             rules: {
-                input_ShowName: {
+                LoginName: {
                     required: true,
                     minlength: 2
                 },
@@ -57,12 +66,12 @@
                     //email: true
 
                 },
-                input_code: {
+                ValidateCode: {
                     required: true,
                 }
             },
             messages: {
-                input_ShowName: {
+                LoginName: {
                     required: "昵称不能为空",
                     minlength: "昵称的最小长度为2"
                 },
@@ -79,7 +88,7 @@
                     required: "邮箱为必填",
                     // email: "邮箱格式错误"
                 },
-                input_code: {
+                ValidateCode: {
                     required: "验证码必填"
                 }
             }
@@ -100,17 +109,16 @@
         });
 
         $("#btn_sendCode").click(function () {
-            $(this).attr("disabled", true);
-            fun_btn_sendCode(this, 60);
-            $.post("../Send/SendEmail", { email: "1195073382@qq.com" }, function () {
-            });
+            if (validator.element($("#LoginName")) && validator.element($("#input_email"))) {
+                $(this).attr("disabled", true);
+                fun_btn_sendCode(this, 2);
+                $.post("../Send/SendEmail", { name: $("#LoginName").val(), email: $("#input_email").val() }, function () {
+                });
+            }
         });
 
 
     });
-    function myfunction() {
-        alert("通过");
-    }
 
     function fun_btn_sendCode(e, num) {
         setTimeout(function () {
@@ -125,14 +133,14 @@
     }
 
 </script>
-@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form_Register", id = "form_Register" }))
+@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form_Register", id = "form_Register", enctype = "multipart/form-data" }))
 {
     <div style="height:30px"></div>
     <table class="table_form">
         <tbody>
             <tr>
-                <td><label for="input_ShowName" class="item-label">昵称</label></td>
-                <td><input type="text" class="item-text" placeholder="请输入您的昵称" name="input_ShowName" id="input_ShowName"></td>
+                <td><label for="LoginName" class="item-label">用户名</label></td>
+                <td><input type="text" class="item-text" placeholder="请输入您的用户名" name="LoginName" id="LoginName"></td>
             </tr>
             <tr>
                 <td><label for="input_PassWord" class="item-label">密码</label></td>
@@ -154,8 +162,8 @@
                 <td style="width:110px"></td>
             </tr>
             <tr>
-                <td><label for="input_code" class="item-label">验证码</label></td>
-                <td><input type="text" class="item-text" placeholder="验证码" name="input_code" id="input_code"></td>
+                <td><label for="ValidateCode" class="item-label">验证码</label></td>
+                <td><input type="text" class="item-text" placeholder="验证码" name="ValidateCode" id="ValidateCode"></td>
             </tr>
             <tr>
                 <td colspan="3">

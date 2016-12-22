@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AiZheAiNa_SYS_QQUserInfo.cs" />
-    <Compile Include="AiZheAiNa_SYS_UserInfo.cs" />
+    <Compile Include="BusinessModel\AiZheAiNa_SYS_QQUserInfo.cs" />
+    <Compile Include="BusinessModel\AiZheAiNa_SYS_UserInfo.cs" />
+    <Compile Include="CommonModel\EDMInfo.cs" />
+    <Compile Include="CommonModel\EDMStatus.cs" />
+    <Compile Include="CommonModel\RequestStatusMsg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PrtialModel\ResultInfo.cs" />
-    <Compile Include="PrtialModel\EnumResultCold.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

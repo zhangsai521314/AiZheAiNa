@@ -6,7 +6,7 @@ using System.Net;
 using System.Web;
 using System.IO;
 using AiZheAiNa.CommonHelp;
-using AiZheAiNa.Model;
+using AiZheAiNa.Model.BusinessModel;
 using Newtonsoft.Json;
 
 namespace AiZheAiNa.Plug.QQ

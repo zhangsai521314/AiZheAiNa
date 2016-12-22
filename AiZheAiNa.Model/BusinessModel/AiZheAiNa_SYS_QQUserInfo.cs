@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiZheAiNa.Model
+namespace AiZheAiNa.Model.BusinessModel
 {
     /// <summary>
     /// qq用户类

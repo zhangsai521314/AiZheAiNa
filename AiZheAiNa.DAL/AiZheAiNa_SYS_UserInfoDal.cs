@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AiZheAiNa.IDAL;
-using AiZheAiNa.Model;
+using AiZheAiNa.Model.BusinessModel;
 using AiZheAiNa.CommonHelp;
 using System.Data;
 using System.Data.SqlClient;

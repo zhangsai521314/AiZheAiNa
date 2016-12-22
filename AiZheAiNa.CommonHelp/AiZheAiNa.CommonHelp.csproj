@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,13 +51,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationHelper.cs" />
+    <Compile Include="CookieHelper.cs" />
     <Compile Include="ModelConvertHelper.cs" />
+    <Compile Include="RandomCodeHelper.cs" />
+    <Compile Include="SendMsgHelper.cs" />
     <Compile Include="SqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AiZheAiNa.Model\AiZheAiNa.Model.csproj">
+      <Project>{11467600-24a0-4a8d-bea2-92f606283e96}</Project>
+      <Name>AiZheAiNa.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

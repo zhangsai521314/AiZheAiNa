@@ -19,6 +19,16 @@ namespace AiZheAiNa.CommonHelp
         private static string _QQAppKey;
         private static string _QQCallBack;
         private static string _QQAuthorizeURL;
+
+        private static string _EDMAccountName;
+        private static string _EDMAccountPwd;
+        private static string _EDMAccountAlias;
+        private static string _SmtpHost;
+        private static string _EDMTitle;
+        private static int _SmtpPort;
+        private static bool? _SmtpSSL;
+
+
         #endregion
         #region 构造函数
         /// <summary>
@@ -122,5 +132,83 @@ namespace AiZheAiNa.CommonHelp
         }
 
         #endregion
+
+        public static string EDMAccountName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_EDMAccountName))
+                {
+                    _EDMAccountName = ConfigurationManager.AppSettings["EDMAccountName"];
+                }
+                return _EDMAccountName;
+            }
+        }
+        public static string EDMAccountPwd
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_EDMAccountPwd))
+                {
+                    _EDMAccountPwd = ConfigurationManager.AppSettings["EDMAccountPwd"];
+                }
+                return _EDMAccountPwd;
+            }
+        }
+        public static string EDMAccountAlias
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_EDMAccountAlias))
+                {
+                    _EDMAccountAlias = ConfigurationManager.AppSettings["EDMAccountAlias"];
+                }
+                return _EDMAccountAlias;
+            }
+        }
+        public static string SmtpHost
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_SmtpHost))
+                {
+                    _SmtpHost = ConfigurationManager.AppSettings["SmtpHost"];
+                }
+                return _SmtpHost;
+            }
+        }
+        public static string EDMTitle
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_EDMTitle))
+                {
+                    _EDMTitle = ConfigurationManager.AppSettings["EDMTitle"];
+                }
+                return _EDMTitle;
+            }
+        }
+        public static int SmtpPort
+        {
+            get
+            {
+                if (_SmtpPort <= 0)
+                {
+                    int.TryParse(ConfigurationManager.AppSettings["SmtpPort"], out _SmtpPort);
+                }
+                return _SmtpPort;
+            }
+        }
+        public static bool SmtpSSL
+        {
+            get
+            {
+                if (_SmtpSSL == null)
+                {
+                    _SmtpSSL = Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpSSL"]);
+                }
+                return Convert.ToBoolean(_SmtpSSL);
+            }
+        }
     }
 }

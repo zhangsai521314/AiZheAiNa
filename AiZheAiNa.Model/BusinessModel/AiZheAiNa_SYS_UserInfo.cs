@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiZheAiNa.Model
+namespace AiZheAiNa.Model.BusinessModel
 {
     /// <summary>
     /// 本站用户类
@@ -61,5 +61,12 @@ namespace AiZheAiNa.Model
         public string MingPassWord { get; set; }
 
         public string UserImg { get; set; }
+
+        public string Email { get; set; }
+
+        /// <summary>
+        /// 验证码
+        /// </summary>
+        public string ValidateCode { get; set; }
     }
 }

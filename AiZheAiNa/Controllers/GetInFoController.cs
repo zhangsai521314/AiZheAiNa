@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AiZheAiNa.Model;
+using AiZheAiNa.Model.BusinessModel;
 using Newtonsoft.Json;
 
 namespace AiZheAiNa.Controllers

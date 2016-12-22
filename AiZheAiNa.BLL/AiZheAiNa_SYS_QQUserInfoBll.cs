@@ -1,6 +1,6 @@
 ﻿using AiZheAiNa.Factory;
 using AiZheAiNa.IDAL;
-using AiZheAiNa.Model;
+using AiZheAiNa.Model.BusinessModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

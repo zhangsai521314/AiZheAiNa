@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AiZheAiNa.Model;
+using AiZheAiNa.Model.BusinessModel;
 using AiZheAiNa.IDAL;
 using AiZheAiNa.Factory;
 namespace AiZheAiNa.BLL
