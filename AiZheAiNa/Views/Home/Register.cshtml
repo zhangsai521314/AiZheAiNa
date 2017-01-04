@@ -43,7 +43,7 @@
                             alert(data.StatusMsg);
                         }
                     },
-                    dataType:"json"
+                    dataType: "json"
                 };
                 $("#form_Register").ajaxSubmit(options);
             },
@@ -52,16 +52,16 @@
                     required: true,
                     minlength: 2
                 },
-                input_PassWord: {
+                PassWord: {
                     required: true,
                     minlength: 6,
                     maxlength: 16
                 },
                 input_rePassword: {
                     required: true,
-                    equalTo: "#input_PassWord"
+                    equalTo: "#PassWord"
                 },
-                input_email: {
+                Email: {
                     required: true,
                     //email: true
 
@@ -75,7 +75,7 @@
                     required: "昵称不能为空",
                     minlength: "昵称的最小长度为2"
                 },
-                input_PassWord: {
+                PassWord: {
                     required: "密码不能为空",
                     minlength: "密码长度不能少于6个字符",
                     maxlength: "密码长度不能超过16个字符"
@@ -84,7 +84,7 @@
                     required: "确认密码不能为空",
                     equalTo: "确认密码和密码不一致"
                 },
-                input_email: {
+                Email: {
                     required: "邮箱为必填",
                     // email: "邮箱格式错误"
                 },
@@ -94,7 +94,7 @@
             }
         });
 
-        $("#input_email").blur(function () {
+        $("#Email").blur(function () {
             if ($(this).next().is("label")) {
                 var $label = $(this).next();
                 if (!$(this).next().is(":hidden")) {
@@ -106,13 +106,14 @@
 
         $("#btn_reset").click(function () {
             validator.resetForm();
+            $("#btn_sendCode").val("发送验证码");
         });
 
         $("#btn_sendCode").click(function () {
-            if (validator.element($("#LoginName")) && validator.element($("#input_email"))) {
+            if (validator.element($("#LoginName")) && validator.element($("#Email"))) {
                 $(this).attr("disabled", true);
                 fun_btn_sendCode(this, 2);
-                $.post("../Send/SendEmail", { name: $("#LoginName").val(), email: $("#input_email").val() }, function () {
+                $.post("../Send/SendEmail", { name: $("#LoginName").val(), email: $("#Email").val() }, function () {
                 });
             }
         });
@@ -143,18 +144,18 @@
                 <td><input type="text" class="item-text" placeholder="请输入您的用户名" name="LoginName" id="LoginName"></td>
             </tr>
             <tr>
-                <td><label for="input_PassWord" class="item-label">密码</label></td>
-                <td><input type="password" class="item-text" placeholder="请输入您的密码" name="input_PassWord" id="input_PassWord"></td>
+                <td><label for="PassWord" class="item-label">密码</label></td>
+                <td><input type="password" class="item-text" placeholder="请输入您的密码" name="PassWord" id="PassWord"></td>
             </tr>
             <tr>
                 <td><label for="input_rePassword" class="item-label">确认密码</label></td>
                 <td><input type="password" class="item-text" placeholder="请输入您的密码" name="input_rePassword" id="input_rePassword"></td>
             </tr>
             <tr>
-                <td><label for="input_email" class="item-label">邮箱</label></td>
+                <td><label for="Email" class="item-label">邮箱</label></td>
                 <td>
                     <nobr>
-                        <input type="text" class="item-text" placeholder="请输入您的邮箱" name="input_email" id="input_email">
+                        <input type="text" class="item-text" placeholder="请输入您的邮箱" name="Email" id="Email">
                         &nbsp;&nbsp;&nbsp;
                         <input type="button" style="display:inline" class="btn btn-default" id="btn_sendCode" value="发送验证码" />
                     </nobr>
