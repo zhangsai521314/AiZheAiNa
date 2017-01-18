@@ -243,6 +243,7 @@
     <Content Include="Content\log.png" />
     <Content Include="Files\SendTemlate\SendEmailTemplate.txt" />
     <Content Include="Html\SendEmailTemplate.html" />
+    <Content Include="Html\table.html" />
     <Content Include="Html\webupload.html" />
     <Content Include="Scripts\common\GetWebPath.js" />
     <Content Include="Scripts\common\JoinShoppingCart\jquery.fly.min.js" />
